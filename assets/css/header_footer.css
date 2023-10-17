@@ -58,8 +58,7 @@ html{
 
 #header .head .user a{
     text-decoration: none;
-    color: #f6f6f6;
-}
+    color: #000;
 }
 
 #header .subnav{
@@ -79,7 +78,7 @@ html{
 }
 
 .nav > li > a{
-    color: #f6f6f6;
+    color: #000000;
     text-transform: uppercase;
 }
 
