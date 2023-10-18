@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="./img/Logo/favicon_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/header_footer.css">
+    <link rel="stylesheet" href="./css/slide.css">
     <link rel="stylesheet" href="./font/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
     <title>Trang chủ</title>
@@ -18,7 +19,9 @@
                 <div class="search-text">
                     <input type="text" name="Search" id="Search" placeholder="Search">
                     <div class="btn-search">
-                        <button class="ti-search button-search"></button>
+                        <button class="button-search">
+                            <i class="ti-search"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="shopping-cart">
@@ -43,17 +46,108 @@
                             <li><a href="#">Sản Phẩm cũ</a></li>
                         </ul>
                     </li>
-                    <li><a href="./html/contact.html">Tin Tức</a></li>
-                    <li><a href="./html/aboutUs.html">Nhà Phân Phối</a></li>
+                    <li><a href="contact.html">Tin Tức</a></li>
+                    <li><a href="aboutUs.html">Nhà Phân Phối</a></li>
 
                 </ul>
             </div>
 
         </div>
-        <div id="slider"></div>
-        <div id="content"></div>
-        <div id="footer"></div>
+        <div id="slider">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 4</div>
+                    <img src="./img/slide-show/Thiet_bi_y_te_vat_ly_tri_lieu.png" style="width:100%; height: 450px">
+                    <div class="text">Caption one</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 4</div>
+                    <img src="./img/slide-show/hq720.jpg" style="width:100%; height: 450px;">
+                    <div class="text">Caption two</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 4</div>
+                    <img src="./img/slide-show/chung-nhan-iso-13485.jpg" style="width:100%; height: 450px">
+                    <div class="text">Caption three</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">4 / </div>
+                    <img src="./img/slide-show/khau-trang.jpg" style="width:100%; height: 450px">
+                    <div class="text">Caption four</div>
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+        </div>
+        <div id="content" style="height: 200px">
+
+        </div>
+        <div id="footer">
+            <div class="nameCty pad-10 dis-flex">
+                <a href="#">Tên công ty</a>
+                <span>Vài dòng giới thiệu</span>
+            </div>
+            <div class="list-menu pad-10 dis-flex">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Sản Phẩm</a>
+                <a href="contact.html">Tin Tức</a>
+                <a href="aboutUs.html">Nhà Phân Phối</a>
+            </div>
+            <div class="emailCty">
+                <div class="email pad-10">
+                    <a href="#">tbyt@gmail.com</a>
+                </div>
+                <div class="icon-socials pad-10">
+                    <a href="#" title="Instagram" class="social">
+                        <i class="ti-instagram"></i>
+                    </a>
+                    <a href="#" class="social">
+                        <i class="ti-facebook"></i>
+                    </a>
+                    <a href="#" class="social">
+                        <i class="ti-twitter"></i>
+                    </a>
+                    <a href="#" class="social">
+                        <i class="ti-google"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="branchCty">
+                <div class="branch-1 branch">
+                    <h5>Tên chi nhánh</h5>
+                    <span>Địa chỉ</span>
+                </div>
+                <div class="branch-2 branch">
+                    <h5>Tên chi nhánh</h5>
+                    <span>Địa chỉ</span>
+                </div>
+                <div class="branch-3 branch">
+                    <h5>Tên chi nhánh</h5>
+                    <span>Địa chỉ</span>
+                </div>
+                <div class="branch-4 branch">
+                    <h5>Tên chi nhánh</h5>
+                    <span>Địa chỉ</span>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <script src="js/slidebar.js">
+
+    </script>
 </body>
 </html>
