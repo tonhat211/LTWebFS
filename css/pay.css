@@ -19,12 +19,12 @@ p {
     width: 1200px;
 }
 #info {
-    width: 500px;
+    width: 620px;
     margin: 0 auto;
 }
 .items {
-    margin: 36px 0;
+    margin: 24px 0;
 }
-.form-control {
+.form-control, .form-select{
     width: 350px;
 }
