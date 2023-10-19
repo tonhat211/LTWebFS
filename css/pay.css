@@ -1,0 +1,30 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    background-color: #0FA187;
+    color: #fff;
+}
+.clearfix {
+    clear: both;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#main-container {
+    margin: 50px auto;
+    width: 1200px;
+}
+#info {
+    width: 500px;
+    margin: 0 auto;
+}
+.items {
+    margin: 36px 0;
+}
+.form-control {
+    width: 350px;
+}
