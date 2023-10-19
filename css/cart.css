@@ -31,15 +31,24 @@ p {
 
 .right {
     width: 30%;
-    float: left;
+    float: right;
+}
+.items {
+    margin: 48px 0;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #F6F6F6;
 }
 .khuyenMai {
+    padding: 20px;
     border: 1px solid #F6F6F6;
 }
 .thanhTien {
+    padding: 20px;
     border: 1px solid #F6F6F6;
 }
-
+.checkBox {
+    margin-top: 70px;
+}
 .title {
     font-size: 20px;
 }
