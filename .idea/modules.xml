@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/project_LTWeb.iml" filepath="$PROJECT_DIR$/.idea/project_LTWeb.iml" />
-=======
       <module fileurl="file://$PROJECT_DIR$/../Project.iml" filepath="$PROJECT_DIR$/../Project.iml" />
->>>>>>> 8a24f45 (trang login cơ bản)
     </modules>
   </component>
 </project>
