@@ -17,12 +17,16 @@ html{
 }
 .pad-10 > a{
     margin-bottom: 10px;
-    color: #000;
+    color: #f6f6f6;
 }
 
 .dis-flex{
     display: flex;
     flex-direction: column;
+}
+
+.color-f6{
+    color: #f6f6f6;
 }
 
 /*
@@ -65,14 +69,17 @@ html{
 }
 
 #header .head .shopping-cart a{
-    text-decoration: none;
-    color: #f6f6f6;
-    font-size: 22px;
+    font-size: 20px;
 }
 
-#header .head .user a{
+#header .head  a{
     text-decoration: none;
-    color: #000;
+    color: #f6f6f6;
+}
+
+#header .head .user a:hover{
+    color: #000000;
+    box-shadow: 0 1px #000000;
 }
 
 #header .subnav{
@@ -93,7 +100,7 @@ html{
 }
 
 .nav > li > a{
-    color: #000000;
+    color: #f6f6f6;
     text-transform: uppercase;
 }
 
@@ -109,7 +116,7 @@ html{
 
 .nav .subnav li:hover a,
 .nav > li:hover > a{
-    color: #f6f6f6;
+    color: #000000;
 }
 
 .nav .subnav{
@@ -126,7 +133,7 @@ html{
 
 .nav .subnav a{
     list-style-type: none;
-    color: #000;
+    color: #f6f6f6;
 }
 
 
@@ -138,7 +145,8 @@ html{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #ccc;
+    background-color: #0FA187;
+    color: #f6f6f6;
     font-size: 15px;
     height: 250px;
 }
