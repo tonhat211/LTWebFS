@@ -87,3 +87,32 @@ img {vertical-align: middle;}
 @media only screen and (max-width: 300px) {
     .prev, .next,.text {font-size: 11px}
 }
+
+/*
+    Partner
+ */
+.content {
+    font-size: 20px;
+    display: inline;
+    text-align: center;
+    justify-items: center;
+    margin: 30px 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.partner-img{
+    display: flex;
+    justify-content: space-around;
+}
+
+.partner-img > img{
+    width: 400px;
+    height: 400px;
+    margin: 15px 30px;
+}
+
+/*
+    Business Licences
+ */
+
