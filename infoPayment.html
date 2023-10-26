@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Thanh toán</title>
+    <title>Thông tin giao hàng</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/pay.css">
+    <link rel="stylesheet" href="assets/css/infoPayment.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
 </head>
 <body>
 <div id="main-container">
-    <h3>1. Thông tin giao hàng</h3>
+    <h3><b>1. Thông tin giao hàng</b></h3>
     <form id="info">
         <div class="row g-3 align-items-center items">
             <div class="col-5">
@@ -32,7 +32,7 @@
                 <label for="tel" class="col-form-label">Tỉnh / Thành phố</label>
             </div>
             <div class="col-5">
-                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                <select class="form-select form-select-lg" aria-label="Large select example">
                     <option selected>Chọn tỉnh thành</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -45,7 +45,7 @@
                 <label for="tel" class="col-form-label">Quận / Huyện</label>
             </div>
             <div class="col-5">
-                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                <select class="form-select form-select-lg" aria-label="Large select example">
                     <option selected>Chọn quận huyện</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -58,12 +58,29 @@
                 <label for="tel" class="col-form-label">Phường / Xã</label>
             </div>
             <div class="col-5">
-                <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                <select class="form-select form-select-lg" aria-label="Large select example">
                     <option selected>Chọn phường xã</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center items">
+            <div class="col-5">
+                <label for="addressCheck" class="col-form-label">Loại địa chỉ</label>
+            </div>
+            <div class="form-check form-switch col-5">
+                <input class="form-check-input" type="checkbox" role="switch" id="addressCheck">
+                <label class="form-check-label" for="addressCheck">Cơ quan / Công ty</label>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center items">
+            <div class="col-5">
+            </div>
+            <div class="col-5">
+                <button id="cancel" type="button" class="btn">Hủy</button>
+                <button id="confirm" type="button" class="btn btn-primary">Xác nhận</button>
             </div>
         </div>
     </form>
