@@ -1,0 +1,37 @@
+.contents{
+    width: 75%;
+    margin: 20px 20px;
+    padding: 10px;
+    float: right;
+    background-color: #0FA187;
+    height: 372px;
+    display: flex;
+    align-content: space-around;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+
+
+.btns{
+    display: flex;
+    flex-direction: column;
+}
+
+.name > span{
+    font-size: 17px;
+    font-weight: 600;
+    color: #f6f6f6;
+    margin-left: 30px;
+}
+
+.btns > button{
+    padding: 5px;
+    margin: 5px;
+}
+
+.btn-new{
+    width: 100%;
+}
