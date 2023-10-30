@@ -1,10 +1,9 @@
 .contents{
-    width: 75%;
-    margin: 20px 20px;
+    width: 100%;
     padding: 10px;
     float: right;
     background-color: #0FA187;
-    height: 372px;
+    height: 100%;
     display: flex;
     align-content: space-around;
     justify-content: space-between;
