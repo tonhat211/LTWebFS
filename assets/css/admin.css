@@ -31,6 +31,7 @@
     /*margin-left: 10px;*/
     padding: 10px 0;
     height: 100vh;
+    border-radius: 4px;
 }
 
 .ad__nav-title {
@@ -91,8 +92,12 @@
 
 /* ad-content */
 .ad-content {
+    padding: 10px;
+    /*background-color: blue;*/
+    background-color: #f1f1f1;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
 
-    background-color: blue;
 }
 
 .temp {
@@ -105,3 +110,4 @@
     padding: 20px;
     text-align: center;
 }
+

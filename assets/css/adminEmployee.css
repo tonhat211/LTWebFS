@@ -1,0 +1,174 @@
+.ad-content {
+    display: flex;
+}
+
+.ad-content-item {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.ad_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*width: 100%;*/
+}
+
+.ad_find-container {
+    display: flex;
+    align-items: center;
+}
+
+.ad_find-input {
+    border: 1px solid var(--primary-color);
+    border-radius: 14px;
+    padding: 4px 10px;
+    outline: none;
+    margin: 0 7px;
+}
+
+.ad_find-input:foem {
+    box-shadow: 0 1px 5px var(--primary-color);
+}
+
+.ad_find-btn {
+    margin: 0 7px;
+    font-size: 10px;
+    padding: 4px 7px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+}
+
+.ad_find-btn:hover {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.ad_func-container {
+    display: flex;
+    align-items: center;
+}
+
+.ad_func-btn {
+    font-size: 14px;
+    padding: 4px 10px;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.ad_func-btn:hover {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.employee-showing {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.employee-showing-item {
+    display: flex;
+    flex: 1;
+    /*justify-content: ;*/
+    padding: 20px;
+}
+
+.employee-img {
+    width: 100%;
+}
+
+.employee_info {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.employee_info-buying {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.em_total-pay {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.history-title {
+    font-size: 10px;
+}
+
+.order-item-container {
+    display: flex;
+    padding: 10px;
+    background-color: #cccccc;
+    margin: 5px 0;
+    font-size: 12px;
+    border-radius: 4px;
+
+}
+
+.order-price,
+.order-info {
+    margin: 0 20px;
+}
+
+.order-payed-price {
+    font-weight: 500;
+}
+
+/* controller*/
+.employee-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.ad_btn-control {
+    padding: 4px 7px;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    font-size: 14px;
+}
+
+.ad_btn-control:hover {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+
+/* Them */
+.form-container {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.input-wrap {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.input-item {
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid var(--primary-color);
+    padding: 4px 7px;
+    font-size: 14px;
+}
+
+.input-item:focus {
+    box-shadow: 0 1px 5px var(--primary-color);
+
+}
+
+.em-name-img {
+    display: flex;
+    /*align-items: end;*/
+    justify-content: space-between;
+}
+
+.btn-add-em-img {
+    /*margin-bottom: 10px;*/
+
+}
