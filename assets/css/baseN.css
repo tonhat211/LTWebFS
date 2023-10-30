@@ -1,5 +1,6 @@
 :root {
     --primary-color: #159f87;
+    --secondary-color: #1fd9b8;
     --white-color: #fff;
     --black-color: #000;
     --text-color: #333;
@@ -79,6 +80,31 @@ html {
 
 .m0 {
     margin: 0;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.separate-vertical {
+    /*height: 90%;*/
+    border: 1px solid var(--primary-color);
+    text-align: center;
+}
+
+.seperate-horizontal-90 {
+    width: 90%;
+    border: 1px solid var(--primary-color);
+    text-align: center;
+}
+
+.mtb-5px {
+    margin: 5px 0;
+}
+
+.show-flex-row {
+    display: flex;
+    justify-content: space-between;
 }
 
 

@@ -1,0 +1,27 @@
+.ad_container {
+    padding: 10px;
+}
+
+.pro-img-cont {
+    width: 100%;
+}
+
+.pro-img-item {
+    width: 100%;
+}
+
+.btn-add-pro-img {
+    font-size: 14px;
+    background-color: #cccccc;
+    padding: 7px;
+    border-radius: 4px;
+}
+
+.btn-add-pro-img:hover {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.pro-info {
+    font-size: 14px;
+}

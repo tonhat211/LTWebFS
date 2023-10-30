@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--fontawesome-->
+    <link rel="stylesheet" href="./assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
+
+    <!--    google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!--    css-->
+    <link rel="stylesheet" href="assets/css/baseN.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/adminemployee.css">
+    <link rel="stylesheet" href="assets/css/adminEmployee.css">
+    <title>Admin - Nhân viên</title>
+</head>
+<body>
+
+    <div class="ad-container">
+        <div class="grid">
+            <div class="gird__row ad__header">
+                    <h1>Nhom 63</h1>
+            </div>
+        </div>
+
+        <div class="grid content">
+            <div class="grid__row">
+                <div class="grid-col-2">
+                    <div class="ad__nav">
+                        <h3 class="ad__nav-title">Quản lý</h3>
+                        <ul class="ad__nav-list">
+                            <li class="ad__nav-item"><a href="">Khách hàng</a></li>
+                            <li class="ad__nav-item"><a href="">Nhân viên</a></li>
+
+                            <li class="ad__nav-item"><a href="">Sản phẩm</a></li>
+                            <li class="ad__nav-item"><a href="">Đơn hàng</a></li>
+                            <li class="ad__nav-item"><a href="">Doanh thu</a></li>
+                            <li class="ad__nav-item"><a href="">Website</a></li>
+                            <li class="ad__nav-item"><a href="">Chương trình</a></li>
+                            <li class="ad__nav-item"><a href="">Chi nhánh</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="grid-col-10">
+                    <div class="ad-content">
+<!--                        <div class="temp"> <p>noi dung</p></div> &lt;!&ndash;Xoa dong nay truoc khi code&ndash;&gt;-->
+
+                        <div class="ad-content-item">
+                            <div class="ad_header">
+                                <div class="ad_find-container">
+                                    <input type="text" placeholder="Nhập id hoặc tên" class="ad_find-input">
+                                    <div class="ad_find-btn"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                </div>
+                                <!--                            <div class="ad_func-container">-->
+                                <!--                                <div class="ad_func-add-btn ad_func-btn">Thêm</div>-->
+                                <!--                            </div>-->
+                            </div>
+                            <div class="ad_container">
+                                <div class="employee-showing">
+                                    <div class="employee-showing-item">
+<!--                                        <div class="employee-img-cont"></div>-->
+                                        <img src="assets/img/employee/nhat-it.jpg" alt="" class="employee-img">
+                                    </div>
+                                    <div class="employee-showing-item">
+                                        <div class="employee_info">
+                                            <p>ID: <span class="em_id">#emm24</span></p>
+                                            <p>Họ tên: <span class="em_name">To Minh Nhat</span></p>
+                                            <p>Cấp độ tài khoản: <span class="em_name">2</span></p>
+                                            <div class="seperate-horizontal-90 mtb-5px"></div>
+                                            <p>Bộ phận: <span class="em_name">Kĩ thuật IT</span></p>
+                                            <p>Chức vụ: <span class="em_name">Trưởng phòng A</span></p>
+                                            <p>Chi nhánh:  <span class="em_name">TP.HCM</span></p>
+                                            <div class="seperate-horizontal-90 mtb-5px"></div>
+
+                                            <p>Số điện thoại: <span class="em_phone">0385147962</span></p>
+                                            <p>Email: <span class="em_email">21130463@st.hcmuaf.edu.vn</span></p>
+                                            <p>Địa chỉ thường trú: <span class="em_address">q2 - tp.HCM</span></p>
+                                            <div class="seperate-horizontal-90 mtb-5px"></div>
+
+                                            <p>Ngày vào làm: <span class="em_dateIn">22.10.2023</span></p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="employee-control">
+                                    <div class="ad_btn-control btn-up-em">Cập nhật thông tin</div>
+                                    <div class="ad_btn-control btn-stop-em">Nghỉ</div>
+
+<!--                                    Bấm thì hiện ra thông báo gửi mật khẩu đến email đã đăng kí	-->
+                                    <div class="ad_btn-control btn-pwd-em">Cấp lại mật khẩu</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="separate-vertical"></div>
+
+                        <div class="ad-content-item">
+                            <div class="ad_header">
+                                <div class="ad_func-container">
+                                    <div class="ad_func-add-btn ad_func-btn">Thêm</div>
+                                </div>
+                            </div>
+                            <div class="ad_container">
+                                <div class="form-container">
+                                    <form action="">
+                                        <div class="em-name-img">
+                                            <div class="input-wrap">
+                                                <label for="em-name" class="input-title">Họ và tên</label>
+                                                <input type="text" class="input-item" name="em-name" id="em-name">
+                                                <span class="input-error"></span>
+                                            </div>
+                                            <div class="input-wrap">
+                                                <label class="input-title">Ảnh</label>
+
+                                                <i class="fa-solid fa-plus ad_btn-control btn-add-em-img"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="input-wrap">
+                                            <label for="em-account-level" class="input-title">Cấp độ tài khoản</label>
+                                            <input type="text" class="input-item" name="em-account-level" id="em-account-level">
+                                            <span class="input-error"></span>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <label for="em-part" class="input-title">Bộ phận</label>
+                                            <input type="text" class="input-item" name="em-part" id="em-part">
+                                            <span class="input-error"></span>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <label for="em-position" class="input-title">Chức vụ</label>
+                                            <input type="text" class="input-item" name="em-position" id="em-position">
+                                            <span class="input-error"></span>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <label for="em-branch" class="input-title">Chi nhánh</label>
+                                            <input type="text" class="input-item" name="em-branch" id="em-branch">
+                                            <span class="input-error"></span>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <label for="em-phone" class="input-title">Số điện thoại</label>
+                                            <input type="text" class="input-item" name="em-phone" id="em-phone">
+                                            <span class="input-error"></span>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <label for="em-email" class="input-title">Email</label>
+                                            <input type="text" class="input-item" name="em-email" id="em-email">
+                                            <span class="input-error"></span>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <label for="em-address" class="input-title">Địa chỉ thường trú</label>
+                                            <input type="text" class="input-item" name="em-address" id="em-address">
+                                            <span class="input-error"></span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    <div class="login-info-container">-->
+<!--        <div class="modal"></div>-->
+<!--        <div class="login-info">-->
+<!--            <div class="login-info-item">Email đăng nhập</div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+
+</body>
+</html>
