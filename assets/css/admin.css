@@ -1,7 +1,18 @@
-.ad__header{
-    background-color: #333333;
+:root {
+    --primary-color: #159f87;
+    --secondary-color: #1fd9b8;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+
+    /*--header-height: 120px;*/
+    /*--navbar-height: 34px;*/
+    /*--header-with-search-height: calc(var(--header-height) - var(--navbar-height));*/
 }
 
+.ad__header {
+    background-color: var(--primary-color);
+}
 
 
 .ad__header h1 {
@@ -25,7 +36,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #333333;
+    background-color: var(--primary-color);
     /*margin-left: 10px;*/
     padding: 10px 0;
     height: 100vh;
@@ -33,7 +44,7 @@
 }
 
 .ad__nav-title {
-    font-size:20px;
+    font-size: 20px;
     padding: 5px 10px;
 
 }
@@ -56,7 +67,7 @@
     content: "";
     width: 90%;
     margin: 0 auto;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid var(--primary-color);
     bottom: -10px;
     left: 0;
     right: 0;
@@ -83,7 +94,7 @@
 .seperate-horizontal {
     width: 60%;
     margin: 0 auto;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid var(--primary-color);
 
 }
 
@@ -93,7 +104,7 @@
     padding: 10px;
     /*background-color: blue;*/
     background-color: #f1f1f1;
-    border: 1px solid #333333;
+    border: 1px solid var(--primary-color);
     border-radius: 4px;
 
 }
