@@ -1,13 +1,18 @@
 :root {
     --primary-color: #159f87;
     --secondary-color: #1fd9b8;
-    --white-color: #fff;
+    --white-color: #f6f6f6;
     --black-color: #000;
     --text-color: #333;
 
     /*--header-height: 120px;*/
     /*--navbar-height: 34px;*/
     /*--header-with-search-height: calc(var(--header-height) - var(--navbar-height));*/
+}
+
+ul, ol {
+    padding: 0;
+    margin: 0;
 }
 
 .ad__header {
