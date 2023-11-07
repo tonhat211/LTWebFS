@@ -14,14 +14,12 @@ function hideUpdate(){
 }
 
 // Lặp qua từng thẻ button và nghe hành vi và click
-for(const updateBtn of updateBtn){
-  updateBtn.addEventListener('click', showUpdate())
-}
+updateBtn.addEventListener('click', showUpdate)
 
 // Nghe hành vi và click button close
-updateClose.addEventListener('click', hideUpdate())
+updateClose.addEventListener('click', hideUpdate)
 
-update.addEventListener('click', hideUpdate())
+update.addEventListener('click', hideUpdate)
 
 updateContainer.addEventListener('click', function (event){
   event.stopPropagation()

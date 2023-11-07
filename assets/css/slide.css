@@ -1,4 +1,8 @@
 /* Slideshow container */
+
+#slider{
+  margin-top: 110px;
+}
 .mySlides {display: none}
 img {vertical-align: middle;}
 

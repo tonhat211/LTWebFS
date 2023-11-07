@@ -7,9 +7,6 @@
 html{
     scroll-behavior: smooth;
     font-family: Helvetica, Arial, sans-serif;
-    background-color: #f6f6f6;
-    color: #000000;
-
 }
 
 .pad-10{
@@ -36,6 +33,12 @@ html{
 #header{
     height: 110px;
     background-color: #0FA187;
+    position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 .head{

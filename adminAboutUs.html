@@ -28,6 +28,9 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/qlcn.css">
+  <link rel="stylesheet" href="assets/css/news.css">
+    <link rel="stylesheet" href="assets/font/themify-icons/themify-icons.css">
 </head>
 
 <body>
@@ -107,14 +110,14 @@
         <h3 style="text-align: center">Quản lý</h3>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminBranch.html">
+            <a class="nav-link collapsed" href="adminOrder.html">
                 <!--                <i class="bi bi-grid"></i>-->
-                <span>Nhà phân phối</span>
+                <span>Đơn hàng</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link " href="#">
+            <a class="nav-link collapsed" href="adminNews.html">
                 <!--                <i class="bi bi-grid"></i>-->
                 <span>Tin tức</span>
             </a>
@@ -128,7 +131,7 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminAboutUs.html">
+            <a class="nav-link " href="adminAboutUs.html">
                 <!--                <i class="bi bi-grid"></i>-->
                 <span>Nhà phân phối</span>
             </a>
@@ -153,12 +156,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Đơn hàng</h1>
+        <h1>Nhà phân phối</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="admins.html">Quản lý</a></li>
-                <li class="breadcrumb-item active">Đơn hàng</li>
+                <li class="breadcrumb-item active">Nhà phân phối</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -169,15 +172,182 @@
             <!-- Left side columns -->
             <div class="col-11">
                 <div class="col">
-                    <div class="content">
-                        <link rel="stylesheet" href="#">
-                        <img src="" alt="" srcset="">
-                        <h4><a href="#">Một số tin tức thiếc bị y tế</a></h4>
+                  <div class="btn-row-col">
+                    <div class="btns">
+                      <button class="js-update-url button">Cập nhật thông tin</button>
+                      <button class="js-gpkd button">Thêm chi nhánh</button>
+                      <button class="js-image-kh button">Xóa chi nhánh</button>
                     </div>
+                  </div>
+
+                  <div class="content">
+                        <div class="img">
+                          <img src="assets/img/news/yduoc.png" alt="Ảnh chi nhánh">
+                        </div>
+
+                      <div class="title">
+                        <a href="#"><span>Cty Cổ phần y dược TPHCM</span></a>
+                      </div>
+
+                      <div class="address">
+                        <span>
+                          <i class="ti ti-location-pin"></i>
+                        </span>
+                        <a href="#">273 Đ. Nguyễn Văn Trỗi, Phường 10, Phú Nhuận, Thành phố Hồ Chí Minh 70000</a>
+                      </div>
+
+                    </div>
+                  <hr>
+                  <div class="content">
+                    <div class="img">
+                      <img src="assets/img/news/yduoc.png" alt="Ảnh chi nhánh">
+                    </div>
+
+                    <div class="title">
+                      <a href="#"><span>Cty Cổ phần y dược TPHCM</span></a>
+                    </div>
+
+                    <div class="address">
+                        <span>
+                          <i class="ti ti-location-pin"></i>
+                        </span>
+                      <a href="#">273 Đ. Nguyễn Văn Trỗi, Phường 10, Phú Nhuận, Thành phố Hồ Chí Minh 70000</a>
+                    </div>
+
+                  </div>
+                  <hr>
+                  <div class="content">
+                    <div class="img">
+                      <img src="assets/img/news/yduoc.png" alt="Ảnh chi nhánh">
+                    </div>
+
+                    <div class="title">
+                      <a href="#"><span>Cty Cổ phần y dược TPHCM</span></a>
+                    </div>
+
+                    <div class="address">
+                        <span>
+                          <i class="ti ti-location-pin"></i>
+                        </span>
+                      <a href="#">273 Đ. Nguyễn Văn Trỗi, Phường 10, Phú Nhuận, Thành phố Hồ Chí Minh 70000</a>
+                    </div>
+
+                  </div>
+                  <hr>
                 </div>
             </div>
             <!-- Right side columns -->
 
+          <div class="update js-update">
+            <div class="update-container">
+              <div class="update-close js-update-close">
+                <i class="ti-close"></i>
+              </div>
+
+              <header class="update-header">
+                <i class="update-heading-icon ti-upload"></i>
+                Cập Nhật thông tin
+              </header>
+
+              <div class="update-body">
+                <label  class="update-label">
+                  <i class="bi bi-image-alt"></i>
+                  Thông tin cần thiết
+                </label>
+                <input id="update-quantity" type="text" class="update-input" placeholder="Nội dung">
+
+                <label class="update-label">
+                  <i class="bi bi-image-alt"></i>
+                  Tên chi nhánh
+                </label>
+                <input id="update-email" type="email" class="update-input" placeholder="Tên">
+
+                <label class="update-label">
+                  <i class="bi bi-image-alt"></i>
+                  Địa chỉ
+                </label>
+                <input id="update-url" type="email" class="update-input" placeholder="Address">
+
+                <button id="update-tickets">
+                  Cập nhật
+                  <i class="ti-upload"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="gpkd js-update-gpkd">
+            <div class="gpkd-container">
+              <div class="gpkd-close js-gpkd-close">
+                <i class="ti-close"></i>
+              </div>
+
+              <header class="gpkd-header">
+                <i class="gpkd-heading-icon ti-upload"></i>
+                Thêm chi nhánh
+              </header>
+
+              <div class="gpkd-body">
+                <label  class="gpkd-label">
+                  <i class="bi bi-image-alt"></i>
+                  Ảnh logo chi nhánh
+                </label>
+                <input id="gpkd-quantity" type="text" class="gpkd-input" placeholder="Đường dẫn img">
+
+                <label class="gpkd-label">
+                  <i class="bi bi-command"></i>
+                  Tên chi nhánh
+                </label>
+                <input id="gpkd-email" type="email" class="gpkd-input" placeholder="Tên">
+
+                <label class="gpkd-label">
+                  <i class="ti ti-location-pin"></i>
+                  Địa chỉ chi nhánh
+                </label>
+                <input id="gpkd-url" type="email" class="gpkd-input" placeholder="Address">
+
+                <button id="gpkd-tickets">
+                  Thêm chi nhánh
+                  <i class="ti-upload"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="kh js-kh">
+            <div class="kh-container">
+              <div class="kh-close js-kh-close">
+                <i class="ti-close"></i>
+              </div>
+
+              <header class="kh-header">
+                <i class="kh-heading-icon ti-upload"></i>
+                Xóa chi nhánh
+              </header>
+
+              <div class="kh-body">
+                <label  class="kh-label">
+                  <i class="ti ti-comment"></i>
+                  Tên chi nhánh
+                </label>
+                <input id="kh-quantity" type="text" class="kh-input" placeholder="Tên chi nhánh">
+
+                <label class="gpkd-label">
+                  <i class="ti ti-location-pin"></i>
+                  Địa chỉ
+                </label>
+                <input id="kh-email" type="email" class="kh-input" placeholder="nhập địa chỉ">
+
+                <button id="kh-tickets">
+                  Xóa
+                  <i class="ri-delete-back-line"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
 
         </div>
     </section>
@@ -198,7 +368,9 @@
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
-
+<script src="assets/js/updateUrl.js"></script>
+<script src="assets/js/updateGPKD.js"></script>
+<script src="assets/js/updateImageKH.js"></script>
 </body>
 
 </html>
