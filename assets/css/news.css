@@ -1,0 +1,16 @@
+.container{
+
+}
+
+.list-news {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px;
+}
+
+.list-news >p{
+    margin: 10px 20px;
+    font-size: 17px;
+}
