@@ -1,28 +1,29 @@
 *{
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html{
-    scroll-behavior: smooth;
-    font-family: Helvetica, Arial, sans-serif;
-    background-color: #f6f6f6;
-    color: #000000;
-
+  scroll-behavior: smooth;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .pad-10{
-    padding: 10px;
+  padding: 10px;
 }
 .pad-10 > a{
-    margin-bottom: 10px;
-    color: #000;
+  margin-bottom: 10px;
+  color: #f6f6f6;
 }
 
 .dis-flex{
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.color-f6{
+  color: #f6f6f6;
 }
 
 /*
@@ -30,103 +31,112 @@ html{
 */
 
 #header{
-    height: 110px;
-    background-color: #0FA187;
+  height: 110px;
+  background-color: #0FA187;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 .head{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #header .head .search-text{
-    display: flex;
+  display: flex;
 }
 .head .search-text > input{
-    padding: 10px 150px 10px 15px;
-    border-radius: 20px;
-    border: 2px solid #f6f6f6;
-    margin: 10px;
+  padding: 10px 150px 10px 15px;
+  border-radius: 20px;
+  border: 2px solid #f6f6f6;
+  margin: 10px;
 }
 
 .head  button{
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-    font-weight: 700;
-    border: 2px;
-    border-radius: 15px;
-    margin-top: 13px;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  font-weight: 700;
+  border: 2px;
+  border-radius: 15px;
+  margin-top: 13px;
 
 }
 #header .head .shopping-cart{
-    margin-right: -125px;
+  margin-right: -125px;
 }
 
 #header .head .shopping-cart a{
-    text-decoration: none;
-    color: #f6f6f6;
-    font-size: 22px;
+  font-size: 20px;
 }
 
-#header .head .user a{
-    text-decoration: none;
-    color: #000;
+#header .head  a{
+  text-decoration: none;
+  color: #f6f6f6;
+}
+
+#header .head .user a:hover{
+  color: #000000;
+  box-shadow: 0 1px #000000;
 }
 
 #header .subnav{
-    list-style-type: none;
+  list-style-type: none;
 }
 #nav{
-    float: right;
-    padding-right: 50px;
-    font-weight: bold;
+  float: right;
+  padding-right: 50px;
+  font-weight: bold;
 }
 
 .nav > li{
-    display: inline-block;
+  display: inline-block;
 }
 
 .nav li{
-    position: relative;
+  position: relative;
 }
 
 .nav > li > a{
-    color: #000000;
-    text-transform: uppercase;
+  color: #f6f6f6;
+  text-transform: uppercase;
 }
 
 .nav li a{
-    text-decoration: none;
-    line-height: 46px;
-    padding: 0 24px;
-    display: block;
+  text-decoration: none;
+  line-height: 46px;
+  padding: 0 24px;
+  display: block;
 }
 .nav li:hover .subnav{
-    display: block;
+  display: block;
 }
 
 .nav .subnav li:hover a,
 .nav > li:hover > a{
-    color: #f6f6f6;
+  color: #000000;
 }
 
 .nav .subnav{
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-    min-width: 160px;
-    font-size: 15px;
-    background-color: #0FA187;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  min-width: 160px;
+  font-size: 15px;
+  background-color: #0FA187;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .nav .subnav a{
-    list-style-type: none;
-    color: #000;
+  list-style-type: none;
+  color: #f6f6f6;
 }
 
 
@@ -134,19 +144,19 @@ html{
     Phần footer
  */
 #footer{
-    padding: 40px 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #ccc;
-    font-size: 15px;
-    height: 250px;
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #0FA187;
+  color: #f6f6f6;
+  font-size: 15px;
+  height: 250px;
 }
 #footer  a{
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #footer .branchCty .branch{
-    padding: 5px;
+  padding: 5px;
 }
-

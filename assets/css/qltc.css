@@ -1,70 +1,24 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-body {
-  color: #222;
-  font: 400 15px arial;
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
-.thumb {
-  display: flex;
-  flex-direction: column;
-}
-
-hr {
-  margin: 2rem 0;
-  padding: 5px;
-}
-
-img {
-  border: 0;
-  font-size: 0;
-  line-height: 0;
-  max-width: 100%;
-}
-
-.content {
-  background-color: #fff;
-  padding: 10px;
-}
-
-.row-col {
-}
-
-.thumb .img {
-  width: 235px;
-  height: 141px;
-  float: left;
-  margin: 0px 15px 10px 0;
-}
-
-.contention > a {
-  color: black !important;
-}
-
-/*Button cập nhật*/
-.btn-row-col {
-  position: absolute;
-  top: 100px;
-  right: 30px;
-}
-
 .btn-row-col .btns .button {
   padding: 5px;
   border-radius: 5px;
 
 }
 
+
+.btn-row-col .btns{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px
+}
+
+.btn-row-col .btns .button{
+  margin: 10px;
+}
+
 /* Modal khi nhấn nút Buy Tickets */
-.update {
+.gpkd, .kh , .update{
   position: fixed;
   left: 200px;
   right: 0;
@@ -76,11 +30,12 @@ img {
   display: none;
 }
 
-.update.open {
+.gpkd.open , .kh.open, .update.open{
   display: flex;
 }
 
-.update .update-container {
+.gpkd .gpkd-container , .kh .kh-container,
+.update .update-container{
   background-color: #fff;
   width: 500px;
   min-height: 200px;
@@ -89,7 +44,8 @@ img {
   animation: updateFadeIn ease .65s;
 }
 
-.update .update-header {
+.gpkd .gpkd-header, .kh .kh-header,
+.update .update-header{
   background: #009688;
   height: 50px;
   display: flex;
@@ -99,11 +55,11 @@ img {
   color: #fff;
 }
 
-.update-heading-icon {
+.gpkd-heading-icon, .kh-heading-icon, .update-heading-icon {
   margin-right: 15px;
 }
 
-.update-close {
+.gpkd-close , .kh-close, .update-close{
   position: absolute;
   right: 0;
   top: 0;
@@ -113,22 +69,22 @@ img {
   opacity: 0.8;
 }
 
-.update-close:hover {
+.gpkd-close:hover , .kh-close:hover, .update-close:hover{
   background-color: #fff;
   color: #000;
 }
 
-.update-body {
+.gpkd-body , .kh-body, .update-body{
   padding: 16px;
 }
 
-.update-label {
+.gpkd-label , .kh-label, .update-label{
   display: block;
   font-size: 15px;
   margin-bottom: 12px;
 }
 
-.update-input {
+.gpkd-input , .kh-input, .update-input{
   border: 1px solid #ccc;
   width: 100%;
   padding: 10px;
@@ -136,7 +92,7 @@ img {
   margin-bottom: 24px;
 }
 
-#update-tickets {
+#gpkd-tickets, #kh-tickets, #update-tickets{
   background: #009688;
   border: none;
   color: #fff;
