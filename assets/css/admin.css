@@ -1,3 +1,4 @@
+
 :root {
     --primary-color: #159f87;
     --secondary-color: #1fd9b8;
@@ -16,10 +17,19 @@ ul, ol {
 }
 
 .ad__header {
+=======
+/*header*/
+
+.ad__header{
+>>>>>>> origin/to-nhat
     background-color: var(--primary-color);
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/to-nhat
 .ad__header h1 {
     margin: 10px 0 10px 40px;
     display: inline-block;
@@ -49,7 +59,11 @@ ul, ol {
 }
 
 .ad__nav-title {
+<<<<<<< HEAD
     font-size: 20px;
+=======
+    font-size:20px;
+>>>>>>> origin/to-nhat
     padding: 5px 10px;
 
 }
@@ -72,7 +86,11 @@ ul, ol {
     content: "";
     width: 90%;
     margin: 0 auto;
+<<<<<<< HEAD
     border-bottom: 1px solid var(--primary-color);
+=======
+    border-bottom: 1px solid var(--white-color);
+>>>>>>> origin/to-nhat
     bottom: -10px;
     left: 0;
     right: 0;
@@ -81,7 +99,11 @@ ul, ol {
 
 .ad__nav-item a {
     font-size: 17px;
+<<<<<<< HEAD
     color: white;
+=======
+    color: var(--white-color);
+>>>>>>> origin/to-nhat
     text-decoration: none;
     padding: 5px 10px;
 }
