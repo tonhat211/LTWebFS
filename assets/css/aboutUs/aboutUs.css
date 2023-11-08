@@ -1,7 +1,11 @@
 
+a{
+  text-decoration: none;
+}
+
 #name .content{
     text-align: center;
-    margin: 20px auto;
+    margin: 50px auto;
     background-color: #ffffff;
 }
 
@@ -14,9 +18,9 @@
 }
 
 #name .container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #name .title, .container{
@@ -32,8 +36,24 @@
     margin: 0 20px;
 }
 
+#name .contention .title-name{
+  margin-left: -70%;
+}
+
 #name .content-business img{
     width: 95%;
     margin: auto;
     height: 450px;
+}
+
+.contact input{
+  border-radius: 30px;
+  padding: 5px 10px;
+  border: 1px solid;
+}
+
+.contact .btn{
+  border-radius: 25px;
+  padding: 5px;
+  border: 1px solid;
 }
