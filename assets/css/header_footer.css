@@ -1,39 +1,40 @@
-*{
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-html{
-    scroll-behavior: smooth;
-    font-family: Helvetica, Arial, sans-serif;
+html {
+  scroll-behavior: smooth;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
-.pad-10{
-    padding: 10px;
-}
-.pad-10 > a{
-    margin-bottom: 10px;
-    color: #f6f6f6;
+.pad-10 {
+  padding: 10px;
 }
 
-.dis-flex{
-    display: flex;
-    flex-direction: column;
+.pad-10 > a {
+  margin-bottom: 10px;
+  color: #f6f6f6;
 }
 
-.color-f6{
-    color: #f6f6f6;
+.dis-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.color-f6 {
+  color: #f6f6f6;
 }
 
 /*
     Phần Header
 */
 
-#header{
-    height: 110px;
-    background-color: #0FA187;
-    position: fixed;
+#header {
+  height: 110px;
+  background-color: #0FA187;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -41,123 +42,147 @@ html{
   z-index: 1;
 }
 
-.head{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-#header .head .search-text{
-    display: flex;
-}
-.head .search-text > input{
-    padding: 10px 150px 10px 15px;
-    border-radius: 20px;
-    border: 2px solid #f6f6f6;
-    margin: 10px;
+#header .head .search-text {
+  display: flex;
 }
 
-.head  button{
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-    font-weight: 700;
-    border: 2px;
-    border-radius: 15px;
-    margin-top: 13px;
-
-}
-#header .head .shopping-cart{
-    margin-right: -125px;
+.head .search-text > input {
+  padding: 10px 70% 10px 10%;
+  border-radius: 30px;
+  border: 2px solid #f6f6f6;
+  margin: 10px;
 }
 
-#header .head .shopping-cart a{
-    font-size: 20px;
+.head .search-text .btn-search {
+  position: absolute;
+  right: 41%;
 }
 
-#header .head  a{
-    text-decoration: none;
-    color: #f6f6f6;
+.head button {
+  background-color: #fff;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  font-weight: 700;
+  border: 2px;
+  border-radius: 15px;
+  margin-top: 13px;
+  padding: 10px;
+  margin-right: -5px;
+
 }
 
-#header .head .user a:hover{
-    color: #000000;
-    box-shadow: 0 1px #000000;
+#header .head .shopping-cart {
+  margin-right: -125px;
 }
 
-#header .subnav{
-    list-style-type: none;
-}
-#nav{
-    float: right;
-    padding-right: 50px;
-    font-weight: bold;
+#header .head .shopping-cart a {
+  font-size: 20px;
 }
 
-.nav > li{
-    display: inline-block;
+#header .head a {
+  text-decoration: none;
+  color: #f6f6f6;
 }
 
-.nav li{
-    position: relative;
+#header .head .user a:hover {
+  color: #000000;
+  box-shadow: 0 1px #000000;
 }
 
-.nav > li > a{
-    color: #f6f6f6;
-    text-transform: uppercase;
+#header .subnav {
+  list-style-type: none;
 }
 
-.nav li a{
-    text-decoration: none;
-    line-height: 46px;
-    padding: 0 24px;
-    display: block;
+#nav {
+  float: right;
+  padding-right: 50px;
+  font-weight: bold;
 }
-.nav li:hover .subnav{
-    display: block;
+
+.nav > li {
+  display: inline-block;
+}
+
+.nav li {
+  position: relative;
+}
+
+.nav > li > a {
+  color: #f6f6f6;
+  text-transform: uppercase;
+}
+
+.nav li a {
+  text-decoration: none;
+  line-height: 46px;
+  padding: 0 24px;
+  display: block;
+}
+
+.nav li:hover .subnav {
+  display: block;
 }
 
 .nav .subnav li:hover a,
-.nav > li:hover > a{
-    color: #000000;
+.nav > li:hover > a {
+  color: #000000;
 }
 
-.nav .subnav{
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-    min-width: 160px;
-    font-size: 15px;
-    background-color: #0FA187;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.nav .subnav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  min-width: 160px;
+  font-size: 15px;
+  background-color: #0FA187;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.nav .subnav a{
-    list-style-type: none;
-    color: #f6f6f6;
+.nav .subnav a {
+  list-style-type: none;
+  color: #f6f6f6;
 }
 
 
 /*
     Phần footer
  */
-#footer{
-    padding: 40px 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #0FA187;
-    color: #f6f6f6;
-    font-size: 15px;
-    height: 250px;
-}
-#footer  a{
-    text-decoration: none;
+#footer {
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #0FA187;
+  color: #f6f6f6;
+  font-size: 15px;
+  height: 250px;
 }
 
-#footer .branchCty .branch{
-    padding: 5px;
+#footer a {
+  text-decoration: none;
 }
 
+#footer .branchCty .branch {
+  padding: 5px;
+  width: 100%;
+}
+
+#footer .branch a{
+  color: black;
+}
+
+#footer .nameCty .span-title {
+  margin-left: 125px;
+  position: absolute;
+  right: 62%;
+  margin-top: 35px;
+}

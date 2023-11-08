@@ -46,6 +46,10 @@ img {
   margin: 0px 15px 10px 0;
 }
 
+.thumb .title a{
+  text-decoration: none;
+}
+
 .contention > a {
   color: black !important;
 }
@@ -59,8 +63,10 @@ img {
 
 .btn-row-col .btns .button {
   padding: 5px;
-  border-radius: 5px;
-
+  margin: 10px;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #4154f1;
 }
 
 /* Modal khi nhấn nút Buy Tickets */
@@ -90,7 +96,7 @@ img {
 }
 
 .update .update-header {
-  background: #009688;
+  background: #4154f1;
   height: 50px;
   display: flex;
   align-items: center;
@@ -137,7 +143,7 @@ img {
 }
 
 #update-tickets {
-  background: #009688;
+  background: #4154f1;
   border: none;
   color: #fff;
   width: 100%;

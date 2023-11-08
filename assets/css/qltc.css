@@ -15,6 +15,9 @@
 
 .btn-row-col .btns .button{
   margin: 10px;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #4154f1;
 }
 
 /* Modal khi nhấn nút Buy Tickets */
@@ -46,7 +49,7 @@
 
 .gpkd .gpkd-header, .kh .kh-header,
 .update .update-header{
-  background: #009688;
+  background: #4154f1;
   height: 50px;
   display: flex;
   align-items: center;
@@ -93,7 +96,7 @@
 }
 
 #gpkd-tickets, #kh-tickets, #update-tickets{
-  background: #009688;
+  background: #4154f1;
   border: none;
   color: #fff;
   width: 100%;
