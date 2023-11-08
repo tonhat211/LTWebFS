@@ -1,5 +1,7 @@
 .ad-content {
     display: flex;
+    position: relative;
+
 }
 
 .ad-content-item {
@@ -20,15 +22,15 @@
 }
 
 .ad_find-input {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-color-ad);
     border-radius: 14px;
     padding: 4px 10px;
     outline: none;
     margin: 0 7px;
 }
 
-.ad_find-input:foem {
-    box-shadow: 0 1px 5px var(--primary-color);
+.ad_find-input:focus {
+    box-shadow: 0 1px 5px var(--primary-color-ad);
 }
 
 .ad_find-btn {
@@ -36,7 +38,7 @@
     font-size: 10px;
     padding: 4px 7px;
     border-radius: 10px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-ad);
 }
 
 .ad_find-btn:hover {
@@ -52,7 +54,7 @@
 .ad_func-btn {
     font-size: 14px;
     padding: 4px 10px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-ad);
     border-radius: 4px;
 }
 
@@ -63,8 +65,9 @@
 
 .employee-showing {
     margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+    position: relative;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
 }
 
 .employee-showing-item {
@@ -90,7 +93,7 @@
 
 .em_total-pay {
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--primary-color-ad);
 }
 
 .history-title {
@@ -121,13 +124,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: 10px;
 }
 
 .ad_btn-control {
     padding: 4px 7px;
     border-radius: 4px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-ad);
     font-size: 14px;
 }
 
@@ -137,7 +141,7 @@
 }
 
 
-/* Them */
+/* cap nhat thong tin */
 .form-container {
     margin: 0 auto;
     width: 50%;
@@ -152,13 +156,13 @@
 .input-item {
     border-radius: 4px;
     outline: none;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-color-ad);
     padding: 4px 7px;
     font-size: 14px;
 }
 
 .input-item:focus {
-    box-shadow: 0 1px 5px var(--primary-color);
+    box-shadow: 0 1px 5px var(--primary-color-ad);
 
 }
 
@@ -171,4 +175,16 @@
 .btn-add-em-img {
     /*margin-bottom: 10px;*/
 
+}
+
+.w70 {
+    width: 70%;
+}
+
+.t70 {
+    top:70px
+}
+
+.confirm-stop.active {
+    display: block;
 }

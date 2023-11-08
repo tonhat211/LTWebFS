@@ -1,5 +1,13 @@
 .ad-content {
+    position: relative;
+    margin-top: 20px;
     display: flex;
+    background-color: #FFFFFF;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+    padding: 20px;
 }
 
 .ad-content-item {
@@ -20,7 +28,7 @@
 }
 
 .ad_find-input {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-color-ad);
     border-radius: 14px;
     padding: 4px 10px;
     outline: none;
@@ -28,7 +36,7 @@
 }
 
 .ad_find-input:focus {
-    box-shadow: 0 1px 5px var(--primary-color);
+    box-shadow: 0 1px 5px var(--primary-color-ad);
 }
 
 .ad_find-btn {
@@ -36,7 +44,8 @@
     font-size: 10px;
     padding: 4px 7px;
     border-radius: 10px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-ad);
+    color: var(--white-color);
 }
 
 .ad_find-btn:hover {
@@ -52,8 +61,10 @@
 .ad_func-btn {
     font-size: 14px;
     padding: 4px 10px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-ad);
     border-radius: 4px;
+    color: var(--white-color);
+
 }
 
 .ad_func-btn:hover {
@@ -62,6 +73,7 @@
 }
 
 .customer-showing {
+    position: relative;
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
@@ -86,7 +98,7 @@
 
 .cus_total-pay {
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--primary-color-ad);
 }
 
 .history-title {
@@ -123,8 +135,9 @@
 .ad_btn-control {
     padding: 4px 7px;
     border-radius: 4px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-ad);
     font-size: 14px;
+    color: var(--white-color);
 }
 
 .ad_btn-control:hover {
@@ -132,8 +145,16 @@
     cursor: pointer;
 }
 
+.ad_func-save-btn {
+    display: none;
+}
 
-/* Them */
+.ad_func-save-btn.active {
+    display: block;
+}
+
+
+/* cap nhat thong tin */
 .form-container {
     margin: 0 auto;
     width: 50%;
@@ -148,13 +169,17 @@
 .input-item {
     border-radius: 4px;
     outline: none;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-color-ad);
     padding: 4px 7px;
     font-size: 14px;
 }
 
 .input-item:focus {
-    box-shadow: 0 1px 5px var(--primary-color);
+    box-shadow: 0 1px 5px var(--primary-color-ad);
 
+}
+
+.ad-bg-color {
+    background-color: var(--primary-color-ad);
 }
 
