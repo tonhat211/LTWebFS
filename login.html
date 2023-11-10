@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng nhập</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/login&logup.css">
+  <link rel="stylesheet" href="./assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
+  <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+<body>
+<div id="main-container">
+  <h1>Đăng nhập</h1>
+  <form action="login" method="post">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email <span style="color: #ED1212">*</span></label>
+      <input type="email" class="form-control form-control-lg" id="email" placeholder="Nhập email">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Mật khẩu <span style="color: #ED1212">*</span></label>
+      <input type="password" class="form-control form-control-lg" id="password" aria-describedby="passwordHelp"
+             placeholder="Nhập mật khẩu">
+      <div id="passwordHelp" class="form-text"><a href="">Quên mật khẩu ?</a></div>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="rememberLogin">
+      <label class="form-check-label" for="rememberLogin">Ghi nhớ đăng nhập</label>
+    </div>
+    <div class="d-grid gap-2">
+      <button id="submitLogin" class="btn" type="submit"><b>Đăng nhập</b></button>
+    </div>
+<!--    <div class="separate d-flex">-->
+<!--      <hr class="line">-->
+<!--      <p class="or">hoặc</p>-->
+<!--      <hr class="line">-->
+<!--    </div>-->
+<!--    <div class="social" style="background-color: #0a53be">-->
+<!--      <i class="fa-brands facebook"></i> Facebook-->
+<!--    </div>-->
+<!--    <div class="social" style="background-color: white; color: #333333">-->
+<!--      <i class="fa-brands google"></i> Google-->
+<!--    </div>-->
+    <p class="already">Chưa có tài khoản ? <a class="log" href="logup.html">Đăng ký</a></p>
+  </form>
+</div>
+</form>
+</div>
+</body>
+</html>
