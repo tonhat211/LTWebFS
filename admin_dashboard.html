@@ -43,12 +43,12 @@
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-            <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword">
-            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-    </div><!-- End Search Bar -->
+<!--    <div class="search-bar">-->
+<!--        <form class="search-form d-flex align-items-center" method="POST" action="#">-->
+<!--            <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword">-->
+<!--            <button type="submit" title="Search"><i class="bi bi-search"></i></button>-->
+<!--        </form>-->
+<!--    </div>&lt;!&ndash; End Search Bar &ndash;&gt;-->
 
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -265,7 +265,7 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
-        <h3 style="text-align: center">Nhân viên [role]</h3>
+        <h3 style="text-align: center">Nhân viên <span id="role">[role]</span></h3>
         <li class="nav-item">
             <a class="nav-link " href="#">
 <!--                <i class="bi bi-grid"></i>-->
@@ -301,7 +301,7 @@
                 <div class="row">
 
                     <!-- Doanh số Card -->
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-4 col-md-5">
                         <div class="card info-card sales-card">
 
                             <div class="filter">
@@ -335,8 +335,43 @@
                         </div>
                     </div><!-- End Doanh số Card -->
 
+                    <!-- Customers Card -->
+                    <div class="col-xxl-4 col-md-7">
+
+                        <div class="card info-card customers-card">
+
+                            <div class="filter">
+                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <li class="dropdown-header text-start">
+                                        <h6>Tùy chọn</h6>
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="#">Hôm nay</a></li>
+                                    <li><a class="dropdown-item" href="#">Tháng này</a></li>
+                                    <li><a class="dropdown-item" href="#">Năm này</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">Số lượng khách hàng <span>| Năm này</span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>1244</h6>
+                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">giảm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- End Customers Card -->
+
                     <!-- Doanh thu Card -->
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-4 col-xl-12">
                         <div class="card info-card revenue-card">
 
                             <div class="filter">
@@ -370,40 +405,7 @@
                         </div>
                     </div><!-- End Doanh thu Card -->
 
-                    <!-- Customers Card -->
-                    <div class="col-xxl-4 col-xl-12">
 
-                        <div class="card info-card customers-card">
-
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Tùy chọn</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Hôm nay</a></li>
-                                    <li><a class="dropdown-item" href="#">Tháng này</a></li>
-                                    <li><a class="dropdown-item" href="#">Năm này</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title">Số lượng khách hàng <span>| Năm này</span></h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <h6>1244</h6>
-                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">giảm</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div><!-- End Customers Card -->
 
                     <!-- Báo cáo -->
                     <div class="col-12">
