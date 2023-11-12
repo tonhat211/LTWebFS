@@ -133,6 +133,7 @@ html {
 .nav .subnav li:hover a,
 .nav > li:hover > a {
   color: #000000;
+  background-color: #dddddd;
 }
 
 .nav .subnav {
@@ -141,7 +142,7 @@ html {
   top: 100%;
   left: 0;
   z-index: 1;
-  min-width: 160px;
+  min-width: 200px;
   font-size: 15px;
   background-color: #0FA187;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
