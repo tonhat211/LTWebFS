@@ -62,14 +62,14 @@ img {vertical-align: middle;}
 
 /* The dots/bullets/indicators */
 .dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 10px 5px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 10px 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
 }
 
 .active, .dot:hover {
@@ -89,33 +89,35 @@ img {vertical-align: middle;}
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+    .prev, .next,.text {font-size: 11px}
 }
 
 /*
     Partner
  */
 .content {
-  font-size: 20px;
-  display: inline;
-  text-align: center;
-  justify-items: center;
-  margin: 30px 10px;
-  text-transform: uppercase;
-  font-weight: 700;
+    font-size: 20px;
+    display: inline;
+    text-align: center;
+    justify-items: center;
+    margin: 30px 10px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .partner-img{
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .partner-img > img{
-  width: 400px;
-  height: 400px;
-  margin: 15px 30px;
+    width: 400px;
+    height: 400px;
+    margin: 15px 30px;
 }
 
 /*
     Business Licences
+<<<<<<< HEAD
  */
+

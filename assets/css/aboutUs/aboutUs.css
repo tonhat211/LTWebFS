@@ -1,0 +1,60 @@
+
+a{
+  text-decoration: none;
+}
+
+#name .content{
+  text-align: center;
+  margin: 50px auto;
+  background-color: #ffffff;
+}
+
+#name .dis-flex-aboutUs{
+  display: flex;
+  margin: 20px auto;
+  background-color: #ffffff;
+  text-align: center;
+  flex-direction: column;
+}
+
+#name .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#name .title, .container{
+  margin: 10px;
+}
+
+#name .title{
+  font-weight: bold;
+  padding: 10px;
+
+}
+
+#name .container .img{
+  margin: 0 20px;
+}
+
+#name .contention .title-name{
+  margin-left: -70%;
+}
+
+#name .content-business img{
+  width: 95%;
+  margin: auto;
+  height: 450px;
+}
+
+.contact input{
+  border-radius: 30px;
+  padding: 5px 10px;
+  border: 1px solid;
+}
+
+.contact .btn{
+  border-radius: 25px;
+  padding: 5px;
+  border: 1px solid;
+}

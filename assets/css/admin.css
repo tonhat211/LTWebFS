@@ -16,20 +16,10 @@ ul, ol {
     margin: 0;
 }
 
-.ad__header {
-=======
-/*header*/
-
 .ad__header{
->>>>>>> origin/to-nhat
     background-color: var(--primary-color);
 }
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/to-nhat
 .ad__header h1 {
     margin: 10px 0 10px 40px;
     display: inline-block;
@@ -59,11 +49,11 @@ ul, ol {
 }
 
 .ad__nav-title {
-<<<<<<< HEAD
     font-size: 20px;
-=======
+}
+
+.ad__nav-title {
     font-size:20px;
->>>>>>> origin/to-nhat
     padding: 5px 10px;
 
 }
@@ -86,11 +76,9 @@ ul, ol {
     content: "";
     width: 90%;
     margin: 0 auto;
-<<<<<<< HEAD
     border-bottom: 1px solid var(--primary-color);
-=======
     border-bottom: 1px solid var(--white-color);
->>>>>>> origin/to-nhat
+    border-bottom: 1px solid var(--white-color);
     bottom: -10px;
     left: 0;
     right: 0;
@@ -99,11 +87,8 @@ ul, ol {
 
 .ad__nav-item a {
     font-size: 17px;
-<<<<<<< HEAD
     color: white;
-=======
     color: var(--white-color);
->>>>>>> origin/to-nhat
     text-decoration: none;
     padding: 5px 10px;
 }
@@ -129,11 +114,12 @@ ul, ol {
 /* ad-content */
 .ad-content {
     padding: 10px;
-    /*background-color: blue;*/
-    background-color: #f1f1f1;
+    /*!*background-color: blue;*!*/
+    /*background-color: #f1f1f1;*/
     border: 1px solid var(--primary-color);
     border-radius: 4px;
 
+    background-color: #0FA187;
 }
 
 .temp {
@@ -146,4 +132,3 @@ ul, ol {
     padding: 20px;
     text-align: center;
 }
-

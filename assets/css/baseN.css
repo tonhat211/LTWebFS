@@ -5,7 +5,9 @@
     --black-color: #000;
     --text-color: #333;
     --primary-color-ad: #4154F1;
-
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
 
     /*--header-height: 120px;*/
     /*--navbar-height: 34px;*/
@@ -17,7 +19,6 @@
     margin: 0;
     padding: 0;
 }
-
 
 html {
     /* font-size 100% = 16px */
@@ -171,8 +172,4 @@ html {
     align-items: center;
 
 }
-
-
-
-
 
