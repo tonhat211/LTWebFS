@@ -32,6 +32,23 @@ html{
     Phần Header
 */
 
+@media (max-width: 740px) {
+
+  #header{
+    width:100%;
+  }
+
+  .head .search-text .btn-search {
+    width: 0%;
+  }
+  .head {
+    display: flex;
+  }
+  #footer{
+
+  }
+}
+
 #header {
   height: 110px;
   background-color: #0FA187;
@@ -49,20 +66,17 @@ html{
   align-items: center;
 }
 
-#header .head .search-text{
-  display: flex;
-}
-
-.head .search-text > input {
-  padding: 10px 70% 10px 10%;
+.head .search-text  input {
+  padding: 10px 50% 10px 10%;
   border-radius: 30px;
   border: 2px solid #f6f6f6;
   margin: 10px;
 }
 
 .head .search-text .btn-search {
-  position: absolute;
-  right: 41%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .head button {
@@ -72,7 +86,7 @@ html{
   font-size: 20px;
   font-weight: 700;
   border: 2px;
-  border-radius: 15px;
+  border-radius: 30px;
   margin-top: 13px;
   padding: 10px;
   margin-right: -5px;
