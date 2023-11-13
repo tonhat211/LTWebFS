@@ -1,5 +1,6 @@
 :root {
     --primary-color: #159f87;
+    /*--primary-color: rgba(21, 159, 135, 0.71);*/
     --secondary-color: #1fd9b8;
     --white-color: #fff;
     --black-color: #000;
@@ -22,8 +23,7 @@
 
 html {
     /* font-size 100% = 16px */
-    font-size: 62.5%;
-    line-height: 1.6rem;
+
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }

@@ -1,6 +1,9 @@
 .product__container {
     width: 100%;
     padding: 20px;
+    font-size: 62.5%;
+    /*line-height: 1.6rem;*/
+    margin-top: 112px;
 }
 
 
@@ -29,7 +32,7 @@
 
 .subnav__kind-item {
     /*width: 100px;*/
-    padding: 14px 30px;
+    padding: 6px 30px;
     background-color: #0FA187;
     border: 2px solid #0FA187;
     border-radius: 4px;
@@ -84,6 +87,7 @@
 
 .cancel-filter:hover {
     opacity: 0.4;
+    cursor: pointer;
 }
 
 .subnav__filter-item  {
@@ -247,6 +251,10 @@
     overflow: hidden;
     padding: 10px;
     background-color: white;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-item:hover {
@@ -258,10 +266,12 @@
 
 .product-img img{
     width: 100%;
+    max-height: 170px;
 }
 
 .product-name {
-    font-size: 20px;
+    font-size: 14px;
+    line-height: 1.15;
 }
 
 .product-price {

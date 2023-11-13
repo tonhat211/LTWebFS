@@ -128,6 +128,7 @@
     padding: 10px;
 }
 
+
 .ad_btn-control {
     padding: 4px 7px;
     border-radius: 4px;
@@ -185,6 +186,12 @@
     top:70px
 }
 
+.add-img-box.active,
 .confirm-stop.active {
     display: block;
+}
+
+.add-img-btn {
+    background-color: var(--primary-color-ad);
+    color: white;
 }

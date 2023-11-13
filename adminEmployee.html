@@ -101,26 +101,60 @@
 <!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
-
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         <h3 style="text-align: center">Nhân viên [role]</h3>
-        <li class="nav-item ">
+        <li class="nav-item">
             <a class="nav-link collapsed" href="admin_dashboard.html">
                 <!--                <i class="bi bi-grid"></i>-->
                 <span>Thống kê doanh thu</span>
             </a>
         </li><!-- End Dashboard Nav -->
-        <li class="nav-item ">
-            <a class="nav-link collapsed" href="#">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý khách hàng</span>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminCustomer.html">
+                <!--                <i class="bi bi-grid"></i>-->
+                <span>Quản lý trang khách hàng</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="adminEmployee.html">
+                <!--                <i class="bi bi-grid"></i>-->
+                <span>Quản lý trang nhân viên</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminProduct.html">
+                <!--                <i class="bi bi-grid"></i>-->
+                <span>Quản lý trang sản phẩm</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminOrder.html">
+                <!--                <i class="bi bi-grid"></i>-->
+                <span>Quản lý đơn hàng</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý nhân viên</span>
+            <a class="nav-link collapsed" href="adminHomes.html">
+                <!--                <i class="bi bi-grid"></i>-->
+                <span>Quản lý trang chủ</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminAboutUs.html">
+                <!--                <i class="bi bi-grid"></i>-->
+                <span>Quản lý trang nhà phân phối</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminNews.html">
+                <!--                <i class="bi bi-grid"></i>-->
+                <span>Quản lý trang tin tức</span>
             </a>
         </li>
 
@@ -158,7 +192,7 @@
             <div class="ad_container">
                 <div class="employee-showing">
                     <div class="flexboxx">
-                        <div class="employee-showing-item">
+                        <div class="employee-showing-item em-img-cont">
                             <!--                                        <div class="employee-img-cont"></div>-->
                             <img src="assets/img/profile/profile-img.jpg" alt="" class="employee-img">
                         </div>
@@ -288,6 +322,22 @@
                 </div>
             </div>
         </div>
+        <div class="confirm-popup add-img-box">
+            <div class="modal__overlay">
+                <div class="modal__confirm-content" onclick="event.stopPropagation()">
+                    <div class="confirm__message">
+                        <div class="input-wrap">
+                            <label for="em-img" class="input-title">Nhập đường dẫn tới hình ảnh.</label>
+                            <input type="text" class="input-item" name="em-img" id="em-img">
+                        </div>
+                    </div>
+                    <div class="confirm__control">
+                        <div class="confirm-btn add-img-btn">Thêm</div>
+                        <div class="confirm-btn cancel-add-img-btn">Hủy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>
@@ -315,6 +365,7 @@
     // for(let i of inputs) {
     //     i.value = "1";
     // }
+    // addImg();
 
 </script>
 

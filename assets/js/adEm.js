@@ -4,18 +4,27 @@ const $$ = document.querySelectorAll.bind(document);
 const updateBtn = $('.btn-up-em');
 const saveChangedBtn =$('.ad_func-save-btn');
 const stopBtn =$('.btn-stop-em');
-const modalOverlay =$('.modal__overlay');
+const modalOverlays =$$('.modal__overlay');
 const yesStopBtn =$('.yes-confirm');
 const cancelStopBtn =$('.no-confirm');
 const sendPwdBtn =$('.btn-pwd-em');
+const addImgBtn =$('.btn-add-em-img');
+const yesAddImgBtn =$('.add-img-btn');
+const noAddImgBtn =$('.cancel-add-img-btn');
 
 updateBtn.addEventListener('click',getInfo);
 saveChangedBtn.addEventListener('click',saveChanged);
 stopBtn.addEventListener('click',confirmStop);
 yesStopBtn.addEventListener('click',yesStop);
-modalOverlay.addEventListener('click',noStop);
+for(let i of modalOverlays){
+    i.addEventListener('click',noStop);
+
+}
 cancelStopBtn.addEventListener('click',noStop);
 sendPwdBtn.addEventListener('click',sendPwd);
+addImgBtn.addEventListener('click',showAddImg);
+yesAddImgBtn.addEventListener('click',addImg);
+noAddImgBtn.addEventListener('click',cancelAddImg);
 
 
 function getInfo() {
@@ -65,6 +74,7 @@ function confirmStop() {
 
 function noStop() {
     $('.confirm-stop').classList.remove('active');
+    $('.add-img-box').classList.remove('active');
 }
 
 function yesStop() {
@@ -75,4 +85,18 @@ function yesStop() {
 
 function sendPwd() {
     alert("Đã gửi mật khẩu tới email " + $('.em_email').innerText);
+}
+
+function showAddImg() {
+    $('.add-img-box').classList.add('active');
+}
+
+function addImg() {
+    const imgInput = $("#em-img");
+    $('.employee-img').src = imgInput.value;
+    cancelAddImg();
+}
+
+function cancelAddImg() {
+    $('.add-img-box').classList.remove('active');
 }

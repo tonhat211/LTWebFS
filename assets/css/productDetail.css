@@ -1,6 +1,7 @@
 .product__container {
     width: 100%;
     padding: 20px;
+    margin-top: 112px;
 }
 
 
@@ -105,6 +106,7 @@
     margin: 0 7px;
     text-align: center;
     background-color: white;
+    border-radius: 4px;
 
 }
 

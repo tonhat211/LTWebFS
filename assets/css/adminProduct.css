@@ -58,12 +58,13 @@
 }
 
 
-
+.add-img-box.active,
 .confirm-resale.active,
 .confirm-stop.active {
     display: block;
 }
 
+.add-img-btn,
 .yes-resale-confirm {
     background-color: var(--primary-color-ad);
     color: white;
