@@ -76,7 +76,7 @@ html{
   margin-top: 13px;
   padding: 10px;
   margin-right: -5px;
-
+  cursor: pointer;
 }
 
 #header .head .shopping-cart{
@@ -135,23 +135,23 @@ html{
   display: block;
 }
 
-.nav .subnav li:hover a,
+/*.nav .subnav li:hover a,*/
 .nav > li:hover > a {
   color: #000000;
   background-color: #dddddd;
 }
 
-.nav .subnav {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1;
-  min-width: 200px;
-  font-size: 15px;
-  background-color: #0FA187;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
+/*.nav .subnav {*/
+/*  display: none;*/
+/*  position: absolute;*/
+/*  top: 100%;*/
+/*  left: 0;*/
+/*  z-index: 1;*/
+/*  min-width: 200px;*/
+/*  font-size: 15px;*/
+/*  background-color: #0FA187;*/
+/*  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
+/*}*/
 
 .nav .subnav a {
   list-style-type: none;

@@ -3,10 +3,14 @@ a{
   text-decoration: none;
 }
 
+#name{
+  margin: auto 50px;
+}
+
 #name .content{
   text-align: center;
   margin: 50px auto;
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
 }
 
 #name .dis-flex-aboutUs{

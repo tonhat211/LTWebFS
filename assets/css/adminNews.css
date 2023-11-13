@@ -7,7 +7,7 @@
 
 body {
   color: #222;
-  font: 400 15px arial;
+  /*font: 400 15px arial;*/
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -161,4 +161,12 @@ img {
     opacity: 0.9;
     transform: translateY(0);
   }
+}
+
+/*
+Thêm vô sau
+*/
+
+.contention a > span{
+  font-size: 15px;
 }
