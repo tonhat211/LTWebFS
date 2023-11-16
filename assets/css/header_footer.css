@@ -155,6 +155,11 @@ html{
   background-color: #dddddd;
 }
 
+.menuitem.active {
+  color: #000000;
+  background-color: #dddddd;
+}
+
 /*.nav .subnav {*/
 /*  display: none;*/
 /*  position: absolute;*/
