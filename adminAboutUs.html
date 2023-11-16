@@ -30,6 +30,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/qlcn.css">
   <link rel="stylesheet" href="assets/css/news.css">
+  <link rel="stylesheet" href="assets/css/adminNews.css">
     <link rel="stylesheet" href="assets/font/themify-icons/themify-icons.css">
 </head>
 
@@ -43,15 +44,15 @@
             <!--            <img src="assets/img/logo.png" alt="">-->
             <span class="d-none d-lg-block">Nhóm 63</span>
         </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
+<!--        <i class="bi bi-list toggle-sidebar-btn"></i>-->
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-            <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword">
-            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-    </div><!-- End Search Bar -->
+<!--    <div class="search-bar">-->
+<!--        <form class="search-form d-flex align-items-center" method="POST" action="#">-->
+<!--            <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword">-->
+<!--            <button type="submit" title="Search"><i class="bi bi-search"></i></button>-->
+<!--        </form>-->
+<!--    </div>&lt;!&ndash; End Search Bar &ndash;&gt;-->
 
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -167,8 +168,7 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="admins.html">Quản lý</a></li>
-                <li class="breadcrumb-item active">Nhà phân phối</li>
+                <li class="breadcrumb-item active">Quản lý nhà phân phối</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -259,18 +259,23 @@
               <div class="update-body">
                 <label  class="update-label">
                   <i class="bi bi-image-alt"></i>
+                  <i class="ti-comment-alt"></i>
                   Thông tin cần thiết
                 </label>
                 <input id="update-quantity" type="text" class="update-input" placeholder="Nội dung">
 
                 <label class="update-label">
                   <i class="bi bi-image-alt"></i>
+                  <i class="ti ti-notepad"></i>
                   Tên chi nhánh
                 </label>
                 <input id="update-email" type="email" class="update-input" placeholder="Tên">
 
                 <label class="update-label">
                   <i class="bi bi-image-alt"></i>
+
+                  <i class="ti ti-location-pin"></i>
+
                   Địa chỉ
                 </label>
                 <input id="update-url" type="email" class="update-input" placeholder="Address">

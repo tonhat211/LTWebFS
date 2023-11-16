@@ -101,7 +101,6 @@
 <!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
-
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         <h3 style="text-align: center">[Admin]</h3>
@@ -207,12 +206,13 @@
                     <div class="pro-info">
                         <p>ID sản phẩm: <span class="pro_id">#pro9</span></p>
                         <p>Tên: <span class="pro_name">Máy trợ thính châu âu</span></p>
+                        <p>Phân loại: <span class="pro_kind">A</span></p>
                         <p>Giá: <span class="pro_price">1500000 </span>VND</p>
                         <p>Số lượng hiện có: <span class="pro_number">1500 </span> (sản phẩm)</p>
-                        <p>Màu: <span class="pro_kind">xám, be, nâu</span></p>
                         <p>Năm sản xuất: <span class="pro_year">2023</span></p>
                         <p>Ngày nhập : <span class="pro_date-in">22.10.2023</span></p>
                         <p>Xuất xứ: <span class="pro_from">Đức</span></p>
+                        <p>Hãng sản xuất: <span class="pro_brand">Apple</span></p>
                         <p>Mô tả: <span class="pro_des">là model thiết bị mới được sản xuất và lắp ráp trực tiếp tại châu Âu, đảm bảo chất
 lượng của sp
 </span></p>
@@ -255,11 +255,25 @@ lượng của sp
         </div>
 
 
-
-
     </div>
 
     <div class="ad-content mt10">
+        <div class="confirm-popup add-img-box">
+            <div class="modal__overlay">
+                <div class="modal__confirm-content" onclick="event.stopPropagation()">
+                    <div class="confirm__message">
+                        <div class="input-wrap">
+                            <label for="pro-img" class="input-title">Nhập đường dẫn tới hình ảnh.</label>
+                            <input type="text" class="input-item" name="pro-img" id="pro-img">
+                        </div>
+                    </div>
+                    <div class="confirm__control">
+                        <div class="confirm-btn add-img-btn">Thêm</div>
+                        <div class="confirm-btn cancel-add-img-btn">Hủy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="ad-content-item">
             <div class="ad_header">
                 <div class="ad_func-container">
@@ -285,24 +299,30 @@ lượng của sp
 
                         </div>
                         <div class="input-wrap">
+                            <label for="pro-kind" class="input-title">Phân loại</label>
+                            <input type="text" class="input-item" name="pro-kind" id="pro-kind">
+                            <span class="input-error"></span>
+                        </div>
+                        <div class="input-wrap">
                             <label for="pro-price" class="input-title">Giá (VND)</label>
                             <input type="text" class="input-item" name="pro-price" id="pro-price">
                             <span class="input-error"></span>
                         </div>
                         <div class="input-wrap">
-                            <label for="pro-kind" class="input-title">Phân  loại</label>
-                            <input type="text" class="input-item" name="pro-kind" id="pro-kind">
+                            <label for="pro-number" class="input-title">Số lượng hiện có</label>
+                            <input type="text" class="input-item" name="pro-number" id="pro-number">
                             <span class="input-error"></span>
                         </div>
                         <div class="show-flex-row">
-                            <div class="input-wrap">
-                                <label for="pro-number" class="input-title">Số lượng hiện có</label>
-                                <input type="text" class="input-item" name="pro-number" id="pro-number">
-                                <span class="input-error"></span>
-                            </div>
+
                             <div class="input-wrap">
                                 <label for="pro-from" class="input-title">Xuất xứ</label>
                                 <input type="text" class="input-item" name="pro-from" id="pro-from">
+                                <span class="input-error"></span>
+                            </div>
+                            <div class="input-wrap">
+                                <label for="pro-brand" class="input-title">Hãng sản xuất</label>
+                                <input type="text" class="input-item" name="pro-brand" id="pro-brand">
                                 <span class="input-error"></span>
                             </div>
 
@@ -357,6 +377,7 @@ lượng của sp
     //     i.value = "1";
     // }
     init();
+
 </script>
 
 

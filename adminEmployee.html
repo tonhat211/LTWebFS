@@ -186,7 +186,7 @@
             <div class="ad_container">
                 <div class="employee-showing">
                     <div class="flexboxx">
-                        <div class="employee-showing-item">
+                        <div class="employee-showing-item em-img-cont">
                             <!--                                        <div class="employee-img-cont"></div>-->
                             <img src="assets/img/profile/profile-img.jpg" alt="" class="employee-img">
                         </div>
@@ -316,6 +316,22 @@
                 </div>
             </div>
         </div>
+        <div class="confirm-popup add-img-box">
+            <div class="modal__overlay">
+                <div class="modal__confirm-content" onclick="event.stopPropagation()">
+                    <div class="confirm__message">
+                        <div class="input-wrap">
+                            <label for="em-img" class="input-title">Nhập đường dẫn tới hình ảnh.</label>
+                            <input type="text" class="input-item" name="em-img" id="em-img">
+                        </div>
+                    </div>
+                    <div class="confirm__control">
+                        <div class="confirm-btn add-img-btn">Thêm</div>
+                        <div class="confirm-btn cancel-add-img-btn">Hủy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>
@@ -343,6 +359,7 @@
     // for(let i of inputs) {
     //     i.value = "1";
     // }
+    // addImg();
 
 </script>
 

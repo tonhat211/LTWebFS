@@ -5,6 +5,7 @@ const filterTitles = $$(".subnav__filter-title");
 const filterLis = $$(".filter-item");
 const cancelFilter = $(".cancel-filter");
 const filterItems= $$(".subnav__filter-item");
+const productItems= $$(".product-item");
 
 const showSliders = $$(".prd__slidebar-indicator-item");
 const sliders = $$(".prd__sliderbar-item");
@@ -17,6 +18,23 @@ slideLeft.onclick = function () {
 }
 slideRight.onclick = function () {
     changeSliderToRight(sliders, showSliders);
+}
+
+function openProductDetail() {
+    window.location = 'productDetail.html';
+    // window.location = "https://www.google.com.vn";
+}
+
+for(let i of productItems){
+    i.addEventListener('click', openProductDetail);
+}
+
+autoSlide();
+
+function autoSlide() {
+    setInterval(function() {
+        changeSliderToRight(sliders,showSliders)
+    }, 3000);
 }
 
 
