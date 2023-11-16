@@ -33,53 +33,52 @@
 <body>
     <div>
         <div id="header">
-        <div class="head col rol">
-          <div class="logo">
-            <a href="index.html">
-              <img src="assets/img/Logo/favicon_icon.png" alt="Logo"
-                   style="width: 40px; height: 40px; border-radius: 5px">
-            </a>
-          </div>
-          <div class="search-text">
-            <input type="text" name="Search" id="Search" placeholder="Tìm kiếm">
-            <div class="btn-search">
-              <button type="button" class="button-search">
-                <i class="ti-search"></i>
-              </button>
-
+            <div class="head col rol">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/img/Logo/favicon_icon.png" alt="Logo"
+                             style="width: 40px; height: 40px; border-radius: 5px">
+                    </a>
+                </div>
+                <div class="search-text">
+                    <div class="btn-search">
+                        <input type="text" name="Search" id="Search" placeholder="Tìm kiếm">
+                        <button type="button" class="button-search">
+                            <i class="ti-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="shopping-cart">
+                    <a href="cart.html">
+                        <i class="ti-shopping-cart-full"></i>
+                    </a>
+                </div>
+                <div class="user">
+                    <i class="ti-user"></i>
+                    <a href="login.html">Đăng nhập</a>
+                    <i style="color: #f6f6f6">/</i>
+                    <a href="logup.html">Đăng ký</a>
+                </div>
             </div>
-          </div>
-          <div class="shopping-cart">
-            <a href="cart.html">
-              <i class="ti-shopping-cart-full"></i>
-            </a>
-          </div>
-          <div class="user">
-            <i class="ti-user"></i>
-            <a href="login.html">Đăng nhập</a>
-            <i style="color: #f6f6f6">/</i>
-            <a href="logup.html">Đăng ký</a>
-          </div>
-        </div>
-        <div id="nav" class="nav rol col">
-          <ul class="nav">
-            <li><a href="index.html" class="color-f6">Trang chủ</a></li>
-            <li>
-              <a href="product.html" class="color-f6">Sản Phẩm
-                <!--            <i class="nav-arrow-down ti-angle-down"></i>-->
-              </a>
-              <!--          <ul class="subnav">-->
-              <!--            <li><a href="#" class="color-f6">Bán sản phẩm mới</a></li>-->
-              <!--                            <hr style="width: 70%; margin: auto; background: #000000">-->
-              <!--                            <li><a href="#" class="color-f6">Sản Phẩm cũ</a></li>-->
-              <!--          </ul>-->
-            </li>
-            <li><a href="news.html" class="color-f6">Tin Tức</a></li>
-            <li><a href="aboutUs.html" class="color-f6">Nhà Phân Phối</a></li>
-          </ul>
-        </div>
+            <div id="nav" class="nav rol col">
+                <ul class="nav">
+                    <li><a href="index.html" class="color-f6 menuitem">Trang chủ</a></li>
+                    <li>
+                        <a href="product.html" class="color-f6 menuitem active">Sản Phẩm
+                            <!--            <i class="nav-arrow-down ti-angle-down"></i>-->
+                        </a>
+                        <!--          <ul class="subnav">-->
+                        <!--            <li><a href="#" class="color-f6">Bán sản phẩm mới</a></li>-->
+                        <!--                            <hr style="width: 70%; margin: auto; background: #000000">-->
+                        <!--                            <li><a href="#" class="color-f6">Sản Phẩm cũ</a></li>-->
+                        <!--          </ul>-->
+                    </li>
+                    <li><a href="news.html" class="color-f6 menuitem">Tin Tức</a></li>
+                    <li><a href="aboutUs.html" class="color-f6 menuitem">Nhà Phân Phối</a></li>
+                </ul>
+            </div>
 
-      </div>
+        </div>
 
         <div class="product__container">
             <div class="prd__slidebar">
@@ -117,16 +116,16 @@
                 <div class="subnav__kind-filter">
                     <div class="subnav__kind">
                         <ul class="subnav__kind-list">
-                            <li class="subnav__kind-item middle active">
+                            <li class="subnav__kind-item middle active kindBtn">
                                 A
                             </li>
-                            <li class="subnav__kind-item middle">
+                            <li class="subnav__kind-item middle kindBtn">
                                 B
                             </li>
-                            <li class="subnav__kind-item middle">
+                            <li class="subnav__kind-item middle kindBtn">
                                 C
                             </li>
-                            <li class="subnav__kind-item middle">
+                            <li class="subnav__kind-item middle kindBtn">
                                 D
                             </li>
                         </ul>
@@ -248,8 +247,11 @@
                 <div class="grid">
                     <div class="grid__row">
 
+<!--                        san pham A-->
+
+
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/may-tro-thinh-geno-2-CIC-1.png" alt="">
@@ -266,7 +268,7 @@
 
 
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/phim-x-quang-18x24.jpg" alt="">
@@ -280,7 +282,7 @@
                             </div>
                         </div>
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/may-pcr.jpg" alt="">
@@ -294,7 +296,7 @@
                             </div>
                         </div>
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/ao-chi-ko-co-medic.webp" alt="">
@@ -308,7 +310,7 @@
                             </div>
                         </div>
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/den-canh-bao-tia-x.jpg" alt="">
@@ -322,7 +324,7 @@
                             </div>
                         </div>
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/tam-chi-can-xa-phong-x-quang.jpg" alt="">
@@ -336,7 +338,7 @@
                             </div>
                         </div>
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/ong-dong-y-te.jpg" alt="">
@@ -351,7 +353,7 @@
                         </div>
 
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/bo-dat-noi-khi-quan.jpg" alt="">
@@ -366,7 +368,7 @@
                         </div>
 
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/may-rung-ho-tro-nieng-rang.jpg" alt="">
@@ -381,7 +383,7 @@
                         </div>
 
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/bong-y-te-tham-nuoc.jpg" alt="">
@@ -396,7 +398,7 @@
                         </div>
 
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/kep-gap-di-vat.webp" alt="">
@@ -411,7 +413,7 @@
                         </div>
 
                         <!--                    1sp-->
-                        <div class="grid-col-2 mt20">
+                        <div class="grid-col-2 mt20 oneProduct proA">
                             <div class="product-item">
                                 <div class="product-img">
                                     <img src="./assets/img/product-img/A/bo-tieu-phau.webp" alt="">
@@ -424,6 +426,141 @@
 
                             </div>
                         </div>
+
+<!--                        san pham B-->
+                        <!--                    1sp-->
+                        <div class="grid-col-2 mt20 oneProduct proB">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./assets/img/product-img/B/may-cua-xuong.png" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name"><p>Máy cưa xương</p></div>
+                                    <p class="product-price"><span>5.900.000 </span> VND</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--                    1sp-->
+                        <div class="grid-col-2 mt20 oneProduct proB">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./assets/img/product-img/B/mo-to-dien-nha-khoa.jpg" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name"><p>Motor điện nha khoa</p></div>
+                                    <p class="product-price"><span>4.900.000 </span> VND</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--                    1sp-->
+                        <div class="grid-col-2 mt20 oneProduct proB">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./assets/img/product-img/B/tay-khoan-nhanh.webp" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name"><p>Tay khoan nhanh</p></div>
+                                    <p class="product-price"><span>1.700.000 </span> VND</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--                    1sp-->
+                        <div class="grid-col-2 mt20 oneProduct proB">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./assets/img/product-img/B/tu-lanh-am-sau.png" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name"><p>Tủ lạnh âm sâu</p></div>
+                                    <p class="product-price"><span>17.000.000 </span> VND</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+<!--                        san pham C-->
+                        <!--                    1sp-->
+                        <div class="grid-col-2 mt20 oneProduct proC">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./assets/img/product-img/C/may-theo-doi-benh-nhan.webp" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name"><p>Máy theo dõi bệnh nhân 3 thông số INFUNIX IP-1020</p></div>
+                                    <p class="product-price"><span>20.000.000 </span> VND</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--                    1sp-->
+                        <div class="grid-col-2 mt20 oneProduct proC">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./assets/img/product-img/C/may-tro-tho-bmc-g3-viethamedical-bia.webp" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name"><p>Máy Trợ Thở BMC G3 B25VT Máy Trợ Thở BiPAP</p></div>
+                                    <p class="product-price"><span>32.000.000 </span> VND</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+<!--                        san pham D-->
+
+                        <!--                    1sp-->
+                        <div class="grid-col-2 mt20 oneProduct proD">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./assets/img/product-img/D/may-chup-x-quang-ky-thuat-so-2.jpg" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name"><p>Máy chụp X quang</p></div>
+                                    <p class="product-price"><span>17.000.000 </span> VND</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--                    1sp-->
+                        <div class="grid-col-2 mt20 oneProduct proD">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./assets/img/product-img/D/may-ct.jpg" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name"><p>Máy CT</p></div>
+                                    <p class="product-price"><span>200.000.000 </span> VND</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--                    1sp-->
+                        <div class="grid-col-2 mt20 oneProduct proD">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./assets/img/product-img/D/may-soc-tim-rescue-1.png" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-name"><p>Máy khử rung tim</p></div>
+                                    <p class="product-price"><span>20.000.000 </span> VND</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -493,7 +630,7 @@
 
     </script>
 <script>
-
+    // showProInKind("B");
 </script>
 </body>
 </html>

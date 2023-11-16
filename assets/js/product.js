@@ -93,6 +93,8 @@ function changeSliderToLeft(sliders, showSliders) {
 
 }
 
+showProInKind("A");
+
 const kindProducts = $$(".subnav__kind-item");
 radioCusActive(kindProducts);
 
@@ -104,6 +106,7 @@ function radioCusActive(items) {
                 items[j].classList.remove("active");
             }
             items[i].classList.add("active");
+            showProInKind(items[i].innerText);
         }
 
     }
@@ -191,3 +194,15 @@ function brandInit() {
 }
 
 brandInit();
+
+function showProInKind(kind) {
+    var kindd = "pro" + kind;
+    const productList = $$(".oneProduct");
+    for (let i of productList){
+        if(i.classList.contains(kindd))
+            i.style.display = "block";
+        else
+            i.style.display = "none";
+    }
+}
+
