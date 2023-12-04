@@ -1,0 +1,114 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    background-color: #0FA187;
+    color: #fff;
+}
+
+.clearfix {
+    clear: both;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#main-container {
+    margin: 50px auto;
+    width: 1200px;
+}
+
+.image {
+    text-align: center;
+    width: 180px;
+}
+
+.left {
+    width: 65%;
+    float: left;
+}
+
+.right {
+    width: 30%;
+    float: right;
+}
+
+.items {
+    margin: 48px 0;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #F6F6F6;
+}
+
+.khuyenMai {
+    padding: 20px;
+    border: 1px solid #F6F6F6;
+}
+
+#thanhTien {
+    padding: 20px;
+    border: 1px solid #F6F6F6;
+    border-radius: 16px;
+}
+
+.part1 {
+    border-bottom: 1px solid #F6F6F6;
+    padding-bottom: 20px;
+}
+
+.part2 {
+    padding-top: 20px;
+}
+
+.total {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.vat {
+    font-size: 12px;
+    font-style: italic;
+}
+.note {
+    font-size: 12px;
+    font-style: italic;
+    text-align: right;
+}
+
+.checkBox {
+    margin-top: 70px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.discount {
+    text-decoration: line-through;
+    font-size: 12px;
+    float: left;
+}
+
+.percent {
+    font-size: 12px;
+    float: left;
+    margin-left: 8px;
+}
+
+.volume {
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.quantity {
+    width: 30px;
+    margin: 0 3px;
+}
+
+#pay {
+    margin-top: 16px;
+    background-color: #ED1212;
+    color: #F6F6F6;
+}
