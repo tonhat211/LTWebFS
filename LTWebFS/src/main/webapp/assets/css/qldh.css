@@ -1,0 +1,101 @@
+.hei-300{
+  height: auto;
+}
+
+.contents{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.contents .btns .btn > button{
+    padding: 5px;
+}
+
+.content-1{
+    height: 100%;
+    margin-top: 20px;
+}
+
+.content-1 .container .image{
+    width: 30%;
+    float: left;
+}
+
+.content-1 .container .image > img{
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.content-1 .container .cont{
+    float: right;
+    width: 70%;
+}
+
+.content-1 .container .cont > span{
+    font-weight: 500;
+}
+
+.cont .b1{
+    margin-left: 15px;
+    padding: 10px;
+}
+
+.btn-search .search-bar{
+  position: relative;
+  top: 0px;
+  left: 0;
+}
+
+.btn-search .search-form{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.search-form > input{
+  /*padding: 0 665px 0 10px;*/
+  /*border-radius: 15px;*/
+  padding: 5px 665px 5px 40px;
+  border-radius: 30px;
+  border: 1px solid #333;
+}
+
+.search-form > button{
+  border-radius: 30px;
+  border: 1px solid #333;
+}
+
+/*Left , up*/
+
+.row-col{
+  background-color: #fff;
+}
+
+.up{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding: 10px;
+}
+.left{
+  height: 200px;
+}
+
+.left .img{
+  height: 142px;
+  float: left;
+  width: 25%;
+}
+.left .contention{
+  position: absolute;
+  right: 13%;
+
+}
+
+.left img{
+  width: 241px;
+  height: 142px;
+}
