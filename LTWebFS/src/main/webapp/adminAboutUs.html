@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Quản lý nhà phân phối</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons-->
+    <link href="assets/img/Logo/favicon_icon.png" rel="icon">
+    <!--        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/qlcn.css">
+  <link rel="stylesheet" href="assets/css/news.css">
+  <link rel="stylesheet" href="assets/css/adminNews.css">
+    <link rel="stylesheet" href="assets/font/themify-icons/themify-icons.css">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/Logo/favicon_icon.png" alt="Logo"
+                     style="width: 40px; height: 40px; border-radius: 5px">
+            </a>
+        </div>
+<!--        <i class="bi bi-list toggle-sidebar-btn"></i>-->
+    </div><!-- End Logo -->
+
+<!--    <div class="search-bar">-->
+<!--        <form class="search-form d-flex align-items-center" method="POST" action="#">-->
+<!--            <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword">-->
+<!--            <button type="submit" title="Search"><i class="bi bi-search"></i></button>-->
+<!--        </form>-->
+<!--    </div>&lt;!&ndash; End Search Bar &ndash;&gt;-->
+
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+
+            <li class="nav-item d-block d-lg-none">
+                <a class="nav-link nav-icon search-bar-toggle " href="#">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li><!-- End Search Icon-->
+
+            <li class="nav-item dropdown pe-3">
+
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                    <img src="assets/img/admin/profile-img.jpg" alt="Profile" class="rounded-circle">
+                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                </a><!-- End Profile Iamge Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li class="dropdown-header">
+                        <h6>Kevin Anderson</h6>
+                        <span>Web Designer</span>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="profile.html">
+                            <i class="bi bi-person"></i>
+                            <span>Quản lý tài khoản</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Đăng xuất</span>
+                        </a>
+                    </li>
+
+                </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
+
+        </ul>
+    </nav><!-- End Icons Navigation -->
+
+</header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <h3 style="text-align: center">[Admin]</h3>
+        <li class="nav-item ">
+            <a class="nav-link collapsed" href="admin_dashboard.html">
+                <!--                <i class="bi bi-grid"></i>-->
+                <span>Thống kê doanh thu</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        <li class="nav-item ">
+            <a class="nav-link collapsed" href="adminCustomer.html">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Quản lý khách hàng</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminEmployee.html">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Quản lý nhân viên</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminProduct.html">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Quản lý sản phẩm</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminOrder.html">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Quản lý đơn hàng</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminNews.html">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Quản lý tin tức</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="adminHomes.html">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Quản lý trang chủ</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="adminAboutUs.html">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Nhà phân phối</span>
+            </a>
+        </li>
+
+    </ul>
+</aside><!-- End Sidebar-->
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Nhà phân phối</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Quản lý nhà phân phối</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section orders">
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-11">
+                <div class="col">
+                  <div class="btn-row-col">
+                    <div class="btns">
+                      <button class="js-update-url button">Cập nhật thông tin</button>
+                      <button class="js-gpkd button">Thêm chi nhánh</button>
+                      <button class="js-image-kh button">Xóa chi nhánh</button>
+                    </div>
+                  </div>
+
+                  <div class="content">
+                        <div class="img">
+                          <img src="assets/img/news/yduoc.png" alt="Ảnh chi nhánh">
+                        </div>
+
+                      <div class="title">
+                        <a href="#"><span>Cty Cổ phần y dược TPHCM</span></a>
+                      </div>
+
+                      <div class="address">
+                        <span>
+                          <i class="ti ti-location-pin"></i>
+                        </span>
+                        <a href="#">273 Đ. Nguyễn Văn Trỗi, Phường 10, Phú Nhuận, Thành phố Hồ Chí Minh 70000</a>
+                      </div>
+
+                    </div>
+                  <hr>
+                  <div class="content">
+                    <div class="img">
+                      <img src="assets/img/news/yduoc.png" alt="Ảnh chi nhánh">
+                    </div>
+
+                    <div class="title">
+                      <a href="#"><span>Cty Cổ phần y dược TPHCM</span></a>
+                    </div>
+
+                    <div class="address">
+                        <span>
+                          <i class="ti ti-location-pin"></i>
+                        </span>
+                      <a href="#">273 Đ. Nguyễn Văn Trỗi, Phường 10, Phú Nhuận, Thành phố Hồ Chí Minh 70000</a>
+                    </div>
+
+                  </div>
+                  <hr>
+                  <div class="content">
+                    <div class="img">
+                      <img src="assets/img/news/yduoc.png" alt="Ảnh chi nhánh">
+                    </div>
+
+                    <div class="title">
+                      <a href="#"><span>Cty Cổ phần y dược TPHCM</span></a>
+                    </div>
+
+                    <div class="address">
+                        <span>
+                          <i class="ti ti-location-pin"></i>
+                        </span>
+                      <a href="#">273 Đ. Nguyễn Văn Trỗi, Phường 10, Phú Nhuận, Thành phố Hồ Chí Minh 70000</a>
+                    </div>
+
+                  </div>
+                  <hr>
+                </div>
+            </div>
+            <!-- Right side columns -->
+
+          <div class="update js-update">
+            <div class="update-container">
+              <div class="update-close js-update-close">
+                <i class="ti-close"></i>
+              </div>
+
+              <header class="update-header">
+                <i class="update-heading-icon ti-upload"></i>
+                Cập Nhật thông tin
+              </header>
+
+              <div class="update-body">
+                <label  class="update-label">
+                  <i class="bi bi-image-alt"></i>
+                  <i class="ti-comment-alt"></i>
+                  Thông tin cần thiết
+                </label>
+                <input id="update-quantity" type="text" class="update-input" placeholder="Nội dung">
+
+                <label class="update-label">
+                  <i class="bi bi-image-alt"></i>
+                  <i class="ti ti-notepad"></i>
+                  Tên chi nhánh
+                </label>
+                <input id="update-email" type="email" class="update-input" placeholder="Tên">
+
+                <label class="update-label">
+                  <i class="bi bi-image-alt"></i>
+
+                  <i class="ti ti-location-pin"></i>
+
+                  Địa chỉ
+                </label>
+                <input id="update-url" type="email" class="update-input" placeholder="Address">
+
+                <button id="update-tickets">
+                  Cập nhật
+                  <i class="ti-upload"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="gpkd js-update-gpkd">
+            <div class="gpkd-container">
+              <div class="gpkd-close js-gpkd-close">
+                <i class="ti-close"></i>
+              </div>
+
+              <header class="gpkd-header">
+                <i class="gpkd-heading-icon ti-upload"></i>
+                Thêm chi nhánh
+              </header>
+
+              <div class="gpkd-body">
+                <label  class="gpkd-label">
+                  <i class="bi bi-image-alt"></i>
+                  Ảnh logo chi nhánh
+                </label>
+                <input id="gpkd-quantity" type="text" class="gpkd-input" placeholder="Đường dẫn img">
+
+                <label class="gpkd-label">
+                  <i class="bi bi-command"></i>
+                  Tên chi nhánh
+                </label>
+                <input id="gpkd-email" type="email" class="gpkd-input" placeholder="Tên">
+
+                <label class="gpkd-label">
+                  <i class="ti ti-location-pin"></i>
+                  Địa chỉ chi nhánh
+                </label>
+                <input id="gpkd-url" type="email" class="gpkd-input" placeholder="Address">
+
+                <button id="gpkd-tickets">
+                  Thêm chi nhánh
+                  <i class="ti-upload"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="kh js-kh">
+            <div class="kh-container">
+              <div class="kh-close js-kh-close">
+                <i class="ti-close"></i>
+              </div>
+
+              <header class="kh-header">
+                <i class="kh-heading-icon ti-upload"></i>
+                Xóa chi nhánh
+              </header>
+
+              <div class="kh-body">
+                <label  class="kh-label">
+                  <i class="ti ti-comment"></i>
+                  Tên chi nhánh
+                </label>
+                <input id="kh-quantity" type="text" class="kh-input" placeholder="Tên chi nhánh">
+
+                <label class="gpkd-label">
+                  <i class="ti ti-location-pin"></i>
+                  Địa chỉ
+                </label>
+                <input id="kh-email" type="email" class="kh-input" placeholder="nhập địa chỉ">
+
+                <button id="kh-tickets">
+                  Xóa
+                  <i class="ri-delete-back-line"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/chart.js/chart.umd.js"></script>
+<script src="assets/vendor/echarts/echarts.min.js"></script>
+<script src="assets/vendor/quill/quill.min.js"></script>
+<script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/updateUrl.js"></script>
+<script src="assets/js/updateGPKD.js"></script>
+<script src="assets/js/updateImageKH.js"></script>
+</body>
+
+</html>
