@@ -1,0 +1,146 @@
+.img{
+  width: 231px;
+  height: 142px;
+  float: left;
+}
+.col{
+  height: 100%;
+}
+hr{
+  margin: 1.5rem 0;
+  padding: 5px;
+}
+
+
+.col .content .title, .address{
+  margin-top: 20px;
+}
+.col .content .img img{
+  min-width: 100%;
+  line-height: 0;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+}
+
+.col .content{
+  float: left;
+  width: 100%;
+  margin-top: 15px;
+  background-color: #fff;
+}
+
+.btn-row-col .btns{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px
+}
+
+.btn-row-col .btns .button{
+
+  margin-right: 10px;
+  /*margin: 10px;*/
+  border-radius: 30px;
+  background-color: #fff;
+  color: #4154f1;
+}
+
+
+/* Modal khi nhấn nút Buy Tickets */
+.gpkd, .kh , .update{
+  position: fixed;
+  left: 200px;
+  right: 0;
+  top: 50px;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.gpkd.open , .kh.open, .update.open{
+  display: flex;
+}
+
+.gpkd .gpkd-container , .kh .kh-container,
+.update .update-container{
+  background-color: #fff;
+  width: 500px;
+  min-height: 200px;
+  max-width: calc(100% - 32px);
+  position: relative;
+  animation: updateFadeIn ease .65s;
+}
+
+.gpkd .gpkd-header, .kh .kh-header,
+.update .update-header{
+  background: #4154f1;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #fff;
+}
+
+.gpkd-heading-icon, .kh-heading-icon, .update-heading-icon {
+  margin-right: 15px;
+}
+
+.gpkd-close , .kh-close, .update-close{
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #fff;
+  padding: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.gpkd-close:hover , .kh-close:hover, .update-close:hover{
+  background-color: #fff;
+  color: #000;
+}
+
+.gpkd-body , .kh-body, .update-body{
+  padding: 16px;
+}
+
+.gpkd-label , .kh-label, .update-label{
+  display: block;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.gpkd-input , .kh-input, .update-input{
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+#gpkd-tickets, #kh-tickets, #update-tickets{
+  background: #4154f1;
+  border: none;
+  color: #fff;
+  width: 100%;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 12px;
+  cursor: pointer;
+}
+
+@keyframes updateFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-140px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
