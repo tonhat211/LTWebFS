@@ -1,4 +1,3 @@
-
 * {
   padding: 0;
   margin: 0;
@@ -53,9 +52,22 @@ html{
   padding: 10px;
   display: flex;
   align-items: center;
+  height: 60px;
+}
+
+.logo img {
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
 }
 
 .web-name {
+  margin-left: 10px;
   font-size: 20px;
   font-style: oblique;
 }
@@ -213,7 +225,8 @@ html{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: #0FA187;
+  background-color: rgba(15, 161, 135, 0.79);
+
   color: #f6f6f6;
   font-size: 15px;
   height: 250px;
