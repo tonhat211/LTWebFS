@@ -14,11 +14,11 @@
     <form action="login" method="post">
         <div class="mb-3">
             <label for="email" class="form-label">Email <span style="color: #ED1212">*</span></label>
-            <input type="email" name="email" class="form-control form-control-lg" id="email" placeholder="Nhập email">
+            <input type="email" class="form-control form-control-lg" id="email" placeholder="Nhập email">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Mật khẩu <span style="color: #ED1212">*</span></label>
-            <input type="password" name="password" class="form-control form-control-lg" id="password" aria-describedby="passwordHelp"
+            <input type="password" class="form-control form-control-lg" id="password" aria-describedby="passwordHelp"
                    placeholder="Nhập mật khẩu">
             <div id="passwordHelp" class="form-text"><a href="">Quên mật khẩu ?</a></div>
         </div>
