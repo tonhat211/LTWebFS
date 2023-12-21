@@ -16,7 +16,7 @@
     <div id="header">
         <div class="head col rol">
             <div class="logo">
-                <a href="index.html">
+                <a href="index.jsp">
                     <img src="assets/img/Logo/favicon_icon.png" alt="Logo"
                          style="width: 40px; height: 40px; border-radius: 5px">
                 </a>
@@ -36,7 +36,7 @@
             </div>
             <div class="user">
                 <i class="ti-user"></i>
-                <a href="login.html">Đăng nhập</a>
+                <a href="login.jsp">Đăng nhập</a>
                 <i style="color: #f6f6f6">/</i>
                 <a href="logup.html">Đăng ký</a>
             </div>
