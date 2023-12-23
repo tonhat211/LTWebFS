@@ -12,30 +12,29 @@ public class JDBCUtil {
         Connection c = null;
 
         try {
-//            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-
-            String url = "jdbc:mySQL://localhost:8080/ltweb";
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            String url = "jdbc:mySQL://localhost:3306/ltweb";
             String user = "root";
-            String pwd ="";
+            String pwd = "";
 
-            c = DriverManager.getConnection(url,user,pwd);
-        } catch (SQLException e){
+            c = DriverManager.getConnection(url, user, pwd);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return c;
     }
 
-    public static void closeConnection(Connection c){
+    public static void closeConnection(Connection c) {
         try {
-            if(c!=null){
+            if (c != null) {
                 c.close();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void printInfo(Connection c){
+    public static void printInfo(Connection c) {
         try {
 
             if (c != null) {
@@ -43,7 +42,7 @@ public class JDBCUtil {
                 System.out.println(mtdt.getDatabaseProductName());
                 System.out.println(mtdt.getDatabaseProductVersion());
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

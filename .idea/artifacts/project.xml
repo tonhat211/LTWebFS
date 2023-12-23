@@ -1,11 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="project">
+  <artifact type="exploded-ear" build-on-make="true" name="project">
     <output-path>$PROJECT_DIR$</output-path>
-    <root id="archive" name="project.war">
+    <root id="root">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
-      <element id="module-source" name="project_LTWeb-main" />
     </root>
   </artifact>
 </component>
