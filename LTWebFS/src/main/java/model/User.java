@@ -15,8 +15,11 @@ public class User {
 	private Date dateIn;
 	private Date dateOut;
 	private int available;
-	
+
 	public User() {
+	}
+
+	public User(String string, String rsString) {
 		super();
 	}
 
@@ -35,6 +38,13 @@ public class User {
 		this.dateIn = dateIn;
 		this.dateOut = dateOut;
 		this.available = available;
+	}
+
+	public User(String email, String pwd, int level) {
+		super();
+		this.email = email;
+		this.pwd = pwd;
+		this.level = level;
 	}
 
 	public int getId() {

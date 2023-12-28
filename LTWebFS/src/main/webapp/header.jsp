@@ -22,7 +22,7 @@
         <div class="logo">
             <a href="index.html">
                 <img src="assets/img/Logo/favicon_icon.png" alt="Logo">
-                     style="width: 40px; height: 40px; border-radius: 5px">
+<%--                     style="width: 40px; height: 40px; border-radius: 5px">--%>
                 <span class="web-name">Thiết bị y tế 63</span>
             </a>
         </div>

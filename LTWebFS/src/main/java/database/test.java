@@ -1,34 +1,20 @@
 package database;
 
-import model.Brand;
+import model.User;
 
-import java.sql.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) throws SQLException {
-        Connection c = null;
-
-        try {
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            String url = "jdbc:mySQL://localhost:3306/ltweb";
-            String user = "root";
-            String pwd ="";
-            c = DriverManager.getConnection(url,user,pwd);
-            // end connection
-
-            String sql = "select * from brands;";
-            PreparedStatement pst = c.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                int available = rs.getInt("available");
-                System.out.println(new Brand(id, name, available));
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-
+        String email = "18130244@st.hcmuaf.edu.vn";
+        UserDAO userDAO = new UserDAO();
+//        ArrayList<User> users = userDAO.findAdmin();
+//        for (User user : users) {
+//            System.out.println(user.getEmail() + " " + user.getLevel());
+//        }
+        User user = userDAO.getUserByEmail(email);
+        System.out.println(user.getLevel());
     }
 
 }
