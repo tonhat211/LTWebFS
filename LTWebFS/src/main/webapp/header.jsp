@@ -20,7 +20,7 @@
 <div id="header">
     <div class="head col rol">
         <div class="logo">
-            <a href="index.html">
+            <a href="index.jsp">
                 <img src="assets/img/Logo/favicon_icon.png" alt="Logo">
 <%--                     style="width: 40px; height: 40px; border-radius: 5px">--%>
                 <span class="web-name">Thiết bị y tế 63</span>
@@ -50,9 +50,9 @@
     </div>
     <div id="nav" class="nav rol col">
         <ul class="nav">
-            <li><a href="index.html" class="color-f6 menuitem active">Trang chủ</a></li>
+            <li><a href="index.jsp" class="color-f6 menuitem active">Trang chủ</a></li>
             <li>
-                <a href="product.html" class="color-f6 menuitem ">Sản Phẩm
+                <a href="product.jsp" class="color-f6 menuitem ">Sản Phẩm
                     <!--            <i class="nav-arrow-down ti-angle-down"></i>-->
                 </a>
                 <!--          <ul class="subnav">-->
@@ -61,8 +61,8 @@
                 <!--                            <li><a href="#" class="color-f6">Sản Phẩm cũ</a></li>-->
                 <!--          </ul>-->
             </li>
-            <li><a href="news.html" class="color-f6 menuitem ">Tin Tức</a></li>
-            <li><a href="aboutUs.html" class="color-f6 menuitem">Nhà Phân Phối</a></li>
+            <li><a href="news.jsp" class="color-f6 menuitem ">Tin Tức</a></li>
+            <li><a href="aboutUs.jsp" class="color-f6 menuitem">Nhà Phân Phối</a></li>
         </ul>
     </div>
 
