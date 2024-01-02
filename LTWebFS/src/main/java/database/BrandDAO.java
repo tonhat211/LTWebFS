@@ -91,7 +91,7 @@ public class BrandDAO implements IDAO<Brand>{
 	@Override
 	public ArrayList<Brand> selectAll() {
 		// TODO Auto-generated method stub
-		ArrayList<Brand> res = new ArrayList<Brand>();
+		ArrayList<Brand> res = new ArrayList<>();
 		try {
 			Connection conn = JDBCUtil.getConnection();
 

@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="database.BrandDAO" %>
+<%@ page import="model.Brand" %><%--
   Created by IntelliJ IDEA.
   User: TO NHAT
   Date: 04/12/2023
@@ -128,69 +130,23 @@
                                 <p class="brand-name">Tất cả</p>
                             </div>
                         </div>
-                        <div class="grid-col-1">
-                            <div class="brand-item">
-                                <!--                            Mỹ-->
-                                <p class="brand-name">Cardinal Health</p>
+
+                        <% ArrayList<Brand> brandList = new ArrayList<Brand>();
+                        brandList = BrandDAO.getInstance().selectAll();
+                        String brandName="";
+                        for(Brand br : brandList){
+                            brandName = br.getName();
+                            %>
+                            <div class="grid-col-1">
+                                <div class="brand-item">
+                                    <p class="brand-name"> <%=brandName%> </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="grid-col-1">
-                            <div class="brand-item">
-                                <!--                            Mỹ-->
-
-                                <p class="brand-name">Stryker</p>
-                            </div>
-                        </div>
-                        <div class="grid-col-1">
-                            <div class="brand-item">
-                                <!--                            Duc-->
-
-                                <p class="brand-name">Siemens </p>
-                            </div>
-                        </div>
-                        <div class="grid-col-1">
-                            <div class="brand-item">
-                                <!--                            Mỹ-->
-
-                                <p class="brand-name">Beckton Dickinson</p>
-                            </div>
-                        </div>              <div class="grid-col-1">
-                        <div class="brand-item">
-
-                            <p class="brand-name">GE Healthcare</p>
-                        </div>
-                    </div>
-                        <div class="grid-col-1">
-                            <div class="brand-item">
-
-                                <p class="brand-name">Fresenius</p>
-                            </div>
-                        </div>
-                        <div class="grid-col-1">
-                            <div class="brand-item">
-
-                                <p class="brand-name">Philips </p>
-                            </div>
-                        </div>
-                        <div class="grid-col-1">
-                            <div class="brand-item">
-
-                                <p class="brand-name">Abbott </p>
-                            </div>
-                        </div>              <div class="grid-col-1">
-                        <div class="brand-item">
-
-                            <p class="brand-name">Johnson </p>
-                        </div>
-                    </div>
-                        <div class="grid-col-1">
-                            <div class="brand-item">
-
-                                <p class="brand-name">Medtronic </p>
-                            </div>
-                        </div>
 
 
+                           <%
+                        }
+                        %>
                     </div>
                 </div>
             </div>
