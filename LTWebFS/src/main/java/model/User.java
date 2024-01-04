@@ -37,6 +37,7 @@ public class User {
 		this.available = available;
 	}
 
+<<<<<<< HEAD
 	public User(String email, String pwd) {
 		this.email = email;
 		this.pwd = pwd;
@@ -57,6 +58,8 @@ public class User {
 		this.info = info;
 	}
 
+=======
+>>>>>>> 73791a162573caca59402aecb658afd4910c4e02
 	public int getId() {
 		return id;
 	}

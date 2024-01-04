@@ -22,6 +22,10 @@
         <div class="logo">
             <a href="index.jsp">
                 <img src="assets/img/Logo/favicon_icon.png" alt="Logo">
+<<<<<<< HEAD
+=======
+<%--                     style="width: 40px; height: 40px; border-radius: 5px">--%>
+>>>>>>> 73791a162573caca59402aecb658afd4910c4e02
                 <span class="web-name">Thiết bị y tế 63</span>
             </a>
         </div>
@@ -40,9 +44,15 @@
             </div>
             <div class="user-item">
                 <i class="ti-user"></i>
+<<<<<<< HEAD
                 <a href="login.jsp">Đăng nhập</a>
                 <i style="color: #f6f6f6">/</i>
                 <a href="logup.jsp">Đăng ký</a>
+=======
+                <a href="login.html">Đăng nhập</a>
+                <i style="color: #f6f6f6">/</i>
+                <a href="logup.html">Đăng ký</a>
+>>>>>>> 73791a162573caca59402aecb658afd4910c4e02
             </div>
 
         </div>

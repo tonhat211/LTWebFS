@@ -12,9 +12,15 @@
     <title>Trang chủ</title>
 </head>
 <body>
+<<<<<<< HEAD
 
 <div id="main">
     <%@ include file="header.jsp" %>
+=======
+<%@ include file="header.jsp" %>
+<div id="main">
+
+>>>>>>> 73791a162573caca59402aecb658afd4910c4e02
     <div id="slider" style="background-color: #dddddd">
         <div class="slideshow-container">
             <div class="mySlides fade">

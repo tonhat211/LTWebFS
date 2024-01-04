@@ -1,6 +1,7 @@
 package database;
 
 import model.Brand;
+<<<<<<< HEAD
 import model.User;
 
 public class test {
@@ -18,6 +19,14 @@ public class test {
 //        } else {
 //            System.out.println("Unsuccessfully registered");
 //        }
+=======
+
+public class test {
+    public static void main(String[] args) {
+        Brand br = new Brand("nokia");
+        BrandDAO.getInstance().insert(br);
+        System.out.println(BrandDAO.getInstance().selectAll());
+>>>>>>> 73791a162573caca59402aecb658afd4910c4e02
     }
 
 }
