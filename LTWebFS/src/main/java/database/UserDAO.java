@@ -10,8 +10,28 @@ public class UserDAO {
         return new UserDAO();
     }
 
-    public int insert(User user) {
-        return 0;
+    public static void register(String name, String email, String pwd, String phone, String address, String info) {
+        User user = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement pst = null;
+        try {
+            conn = JDBCUtil.getConnection();
+
+            String sql = "INSERT INTO users ( `name`, email, pwd, phone, address, info ) VALUES (?, ?, ?, ? , ?, ?);";
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, name);
+            pst.setString(2, email);
+            pst.setString(3, pwd);
+            pst.setString(4, phone);
+            pst.setString(5, address);
+            pst.setString(6, info);
+            pst.execute(sql);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        JDBCUtil.closeConnection(conn);
     }
 
     public int update(User user) {
@@ -85,6 +105,7 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        JDBCUtil.closeConnection(conn);
         return users;
     }
 
@@ -101,11 +122,12 @@ public class UserDAO {
             rs = pst.executeQuery();
 
             while (rs.next()) {
-               return new User(rs.getString("email"), rs.getString(2), rs.getInt(3));
+                return new User(rs.getString("email"), rs.getString(2), rs.getInt(3));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        JDBCUtil.closeConnection(conn);
         return null;
     }
 }

@@ -22,10 +22,10 @@
                    placeholder="Nhập mật khẩu">
             <div id="passwordHelp" class="form-text"><a href="">Quên mật khẩu ?</a></div>
         </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="rememberLogin">
-            <label class="form-check-label" for="rememberLogin">Ghi nhớ đăng nhập</label>
-        </div>
+<%--        <div class="mb-3 form-check">--%>
+<%--            <input type="checkbox" class="form-check-input" id="rememberLogin">--%>
+<%--            <label class="form-check-label" for="rememberLogin">Ghi nhớ đăng nhập</label>--%>
+<%--        </div>--%>
         <div class="d-grid gap-2">
             <button id="submitLogin" class="btn" type="submit"><b>Đăng nhập</b></button>
         </div>

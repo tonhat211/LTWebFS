@@ -37,6 +37,26 @@ public class User {
 		this.available = available;
 	}
 
+	public User(String email, String pwd) {
+		this.email = email;
+		this.pwd = pwd;
+	}
+
+	public User(String email, String pwd, int level) {
+		this.email = email;
+		this.pwd = pwd;
+		this.level = level;
+	}
+
+	public User(String name, String email, String pwd, String phone, String address, String info) {
+		this.name = name;
+		this.email = email;
+		this.pwd = pwd;
+		this.phone = phone;
+		this.address = address;
+		this.info = info;
+	}
+
 	public int getId() {
 		return id;
 	}
