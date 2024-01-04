@@ -1,7 +1,5 @@
 package database;
 
-import org.hsqldb.DatabaseURL;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;

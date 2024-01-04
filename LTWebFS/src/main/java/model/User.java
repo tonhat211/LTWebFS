@@ -3,137 +3,155 @@ package model;
 import java.sql.Date;
 
 public class User {
-	private int id;
-	private String name;
-	private String email;
-	private String pwd;
-	private int level;
-	private String phone;
-	private String address;
-	private int branchID;
-	private String info;
-	private Date dateIn;
-	private Date dateOut;
-	private int available;
-	
-	public User() {
-		super();
-	}
+    private int id;
+    private String name;
+    private String email;
+    private String pwd;
+    private int level;
+    private String phone;
+    private String address;
+    private int branchID;
+    private String info;
+    private Date dateIn;
+    private Date dateOut;
+    private int available;
 
-	public User(int id, String name, String email, String pwd, int level, String phone, String address, int branchID,
-			String info, Date dateIn, Date dateOut, int available) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.pwd = pwd;
-		this.level = level;
-		this.phone = phone;
-		this.address = address;
-		this.branchID = branchID;
-		this.info = info;
-		this.dateIn = dateIn;
-		this.dateOut = dateOut;
-		this.available = available;
-	}
+    public User() {
+        super();
+    }
 
-	public int getId() {
-		return id;
-	}
+    public User(int id, String name, String email, String pwd, int level, String phone, String address, int branchID,
+                String info, Date dateIn, Date dateOut, int available) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.pwd = pwd;
+        this.level = level;
+        this.phone = phone;
+        this.address = address;
+        this.branchID = branchID;
+        this.info = info;
+        this.dateIn = dateIn;
+        this.dateOut = dateOut;
+        this.available = available;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public User(String email, String pwd) {
+        this.email = email;
+        this.pwd = pwd;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public User(String email, String pwd, int level) {
+        this.email = email;
+        this.pwd = pwd;
+        this.level = level;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public User(String name, String email, String pwd, String phone, String address, String info) {
+        this.name = name;
+        this.email = email;
+        this.pwd = pwd;
+        this.phone = phone;
+        this.address = address;
+        this.info = info;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getPwd() {
-		return pwd;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public int getLevel() {
-		return level;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setLevel(int level) {
-		this.level = level;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getPwd() {
+        return pwd;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public int getLevel() {
+        return level;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
-	public int getBranchID() {
-		return branchID;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setBranchID(int branchID) {
-		this.branchID = branchID;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public String getInfo() {
-		return info;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setInfo(String info) {
-		this.info = info;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public Date getDateIn() {
-		return dateIn;
-	}
+    public int getBranchID() {
+        return branchID;
+    }
 
-	public void setDateIn(Date dateIn) {
-		this.dateIn = dateIn;
-	}
+    public void setBranchID(int branchID) {
+        this.branchID = branchID;
+    }
 
-	public Date getDateOut() {
-		return dateOut;
-	}
+    public String getInfo() {
+        return info;
+    }
 
-	public void setDateOut(Date dateOut) {
-		this.dateOut = dateOut;
-	}
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
-	public int getAvailable() {
-		return available;
-	}
+    public Date getDateIn() {
+        return dateIn;
+    }
 
-	public void setAvailable(int available) {
-		this.available = available;
-	}
-	
-	
-	
-	
+    public void setDateIn(Date dateIn) {
+        this.dateIn = dateIn;
+    }
+
+    public Date getDateOut() {
+        return dateOut;
+    }
+
+    public void setDateOut(Date dateOut) {
+        this.dateOut = dateOut;
+    }
+
+    public int getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(int available) {
+        this.available = available;
+    }
+
+
 }

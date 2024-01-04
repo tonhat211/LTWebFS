@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" build-on-make="true" name="project">
+    <output-path>$PROJECT_DIR$</output-path>
+    <root id="root">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
