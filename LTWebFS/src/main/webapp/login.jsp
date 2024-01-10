@@ -14,7 +14,7 @@
     <form action="login" method="POST">
         <div class="mb-3">
             <label for="email" class="form-label">Email <span style="color: #ED1212">*</span></label>
-            <input type="email" name="email" class="form-control form-control-lg" id="email" placeholder="Nhập email">
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" class="form-control form-control-lg" id="email" placeholder="Nhập email">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Mật khẩu <span style="color: #ED1212">*</span></label>
