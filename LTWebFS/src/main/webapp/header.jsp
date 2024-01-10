@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: TO NHAT
-  Date: 12/12/2023
-  Time: 9:20 CH
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="database.UserDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -35,7 +29,7 @@
 
         <div class="user">
             <div class="shopping-cart">
-                <a href="cart.html">
+                <a href="cart.jsp">
                     <i class="ti-shopping-cart-full"></i>
                 </a>
             </div>
@@ -44,11 +38,41 @@
                 <a href="login.jsp">Đăng nhập</a>
                 <i style="color: #f6f6f6">/</i>
                 <a href="logup.jsp">Đăng ký</a>
-                <a href="login.html">Đăng nhập</a>
-                <i style="color: #f6f6f6">/</i>
-                <a href="logup.html">Đăng ký</a>
             </div>
+            <li class="nav-item dropdown pe-3">
 
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                    <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                </a><!-- End Profile Iamge Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li class="dropdown-header">
+                        <h6>Kevin Anderson</h6>
+                        <span>Web Designer</span>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="profile.html">
+                            <i class="bi bi-person"></i>
+                            <span>Quản lý tài khoản</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Đăng xuất</span>
+                        </a>
+                    </li>
+
+                </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
         </div>
     </div>
     <div id="nav" class="nav rol col">

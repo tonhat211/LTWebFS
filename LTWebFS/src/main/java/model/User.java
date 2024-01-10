@@ -42,16 +42,18 @@ public class User {
         this.pwd = pwd;
     }
 
-    public User(String email, String pwd, int level) {
+    public User(String name,String email, String pwd, int level) {
+        this.name = name;
         this.email = email;
         this.pwd = pwd;
         this.level = level;
     }
 
-    public User(String name, String email, String pwd, String phone, String address, String info) {
+    public User(String name, String email, String pwd, int level, String phone, String address, String info) {
         this.name = name;
         this.email = email;
         this.pwd = pwd;
+        this.level = level;
         this.phone = phone;
         this.address = address;
         this.info = info;

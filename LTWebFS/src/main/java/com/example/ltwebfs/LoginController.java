@@ -29,9 +29,11 @@ public class LoginController extends HttpServlet {
         User user2 = userDAO.getUserByEmail(email);
         if (user != null) {
             if (user2.getLevel() == 2) {
-                response.sendRedirect("admin.html");
+                request.setAttribute("admin_name", user2.getName());
+                request.getRequestDispatcher("admin_dashboard.jsp").forward(request, response);
             } else {
-                response.sendRedirect("index.jsp");
+                request.setAttribute("user_name", user2.getName());
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
             response.sendRedirect("login.jsp");

@@ -15,9 +15,7 @@
 
 <div id="main">
     <%@ include file="header.jsp" %>
-    <%@ include file="header.jsp" %>
     <div id="main">
-
         <div id="slider" style="background-color: #dddddd">
             <div class="slideshow-container">
                 <div class="mySlides fade">
