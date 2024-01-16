@@ -1,3 +1,4 @@
+
 package database;
 
 import controller.ControllerProduct;
@@ -6,14 +7,28 @@ import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) {
-    	ControllerProduct qly1 = new ControllerProduct("a");
-    	ControllerProduct qly2 = new ControllerProduct("b");
-    	ControllerProduct qly3 = new ControllerProduct("c");
-    	System.out.println(qly1.getUnitList().size() + qly2.getUnitList().size() + qly3.getUnitList().size() );
 
-    	ArrayList<Integer> testt= new ArrayList<>();
-    	System.out.println(testt.equals(new ArrayList<Integer>()));
-    }
 
 }
+
+//package database;
+//
+//import model.User;
+//
+//public class test {
+//    public static void main(String[] args) {
+//        String name = "Tran Thi Thuy";
+//        String email = "trongtin3152@gmail.com";
+//        String password = "123";
+//        String phone = "123";
+//        String address = "265";
+//        String info = "nam - 2000";
+//
+//        User user = new User(name, email, password, phone, address, info);
+//        user.setLevel(0);
+//        UserDAO userDAO = UserDAO.getInstance();
+//        userDAO.insert(user);
+//    }
+//}
+//
 
