@@ -12,6 +12,22 @@ const sliders = $$(".prd__sliderbar-item");
 const slideLeft = $(".move-left");
 const slideRight = $(".move-right");
 
+const kindbtns = $$(".kindBtn");
+for(let i of kindbtns){
+    // i.addEventListener('click', chooseKind());
+    i.onclick = function (){
+        chooseKind();
+    }
+}
+
+function chooseKind(){
+    var kind = this.innerText;
+    console.log("truoc");
+    console.log(kind);
+    // window.location = 'product?'  +kind;
+    console.log("sau");
+}
+
 
 slideLeft.onclick = function () {
     changeSliderToLeft(sliders, showSliders);
@@ -95,8 +111,8 @@ function changeSliderToLeft(sliders, showSliders) {
 
 showProInKind("A");
 
-const kindProducts = $$(".subnav__kind-item");
-radioCusActive(kindProducts);
+// const kindProducts = $$(".subnav__kind-item");
+// radioCusActive(kindProducts);
 
 function radioCusActive(items) {
     for(let i=0; i< items.length;i++) {

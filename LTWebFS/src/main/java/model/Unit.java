@@ -1,8 +1,11 @@
 package model;
 
 import java.sql.Date;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Objects;
 
-public class Unit {
+public class Unit{
 	public Unit() {
 		super();
 	}
@@ -10,15 +13,14 @@ public class Unit {
 	private int productID;
 	private String color;
 	private String size;
-	private float wattage;
-	private int price;
+	private double wattage;
+	private double price;
 	private int amount;
 	private int yearMade;
-	private String madeIn;
-	private Date dateImport;
+	private Datee dateImport;
 	private int available;
-	public Unit(int imei, int productID, String color, String size, float wattage, int price, int amount, int yearMade,
-			String madeIn, Date dateImport, int available) {
+	public Unit(int imei, int productID, String color, String size, double wattage, double price, int amount, int yearMade,
+			Datee dateImport, int available) {
 		super();
 		this.imei = imei;
 		this.productID = productID;
@@ -28,10 +30,38 @@ public class Unit {
 		this.price = price;
 		this.amount = amount;
 		this.yearMade = yearMade;
-		this.madeIn = madeIn;
 		this.dateImport = dateImport;
 		this.available = available;
 	}
+	
+	
+	public Unit(int productID) {
+		super();
+		this.productID = productID;
+	}
+	
+	
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(productID);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Unit other = (Unit) obj;
+		return productID == other.productID;
+	}
+
+
 	public int getImei() {
 		return imei;
 	}
@@ -56,16 +86,16 @@ public class Unit {
 	public void setSize(String size) {
 		this.size = size;
 	}
-	public float getWattage() {
+	public double getWattage() {
 		return wattage;
 	}
-	public void setWattage(float wattage) {
+	public void setWattage(double wattage) {
 		this.wattage = wattage;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public int getAmount() {
@@ -80,16 +110,11 @@ public class Unit {
 	public void setYearMade(int yearMade) {
 		this.yearMade = yearMade;
 	}
-	public String getMadeIn() {
-		return madeIn;
-	}
-	public void setMadeIn(String madeIn) {
-		this.madeIn = madeIn;
-	}
-	public Date getDateImport() {
+
+	public Datee getDateImport() {
 		return dateImport;
 	}
-	public void setDateImport(Date dateImport) {
+	public void setDateImport(Datee dateImport) {
 		this.dateImport = dateImport;
 	}
 	public int getAvailable() {
@@ -97,6 +122,11 @@ public class Unit {
 	}
 	public void setAvailable(int available) {
 		this.available = available;
+	}
+	
+	public String  toString() {
+		return this.imei + "\t" + this.productID + "\t" + this.color + "\t" + this.size + "\t"
+				+ this.wattage + "\t" + this.price + "\t" + this.amount + "\t"  + this.yearMade + "\t"+ this.dateImport + "\t" + this.available;
 	}
 	
 }

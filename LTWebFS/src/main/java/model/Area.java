@@ -1,29 +1,23 @@
 package model;
 
-public class Brand {
+public class Area {
 	private int id;
 	private String name;
-	private String country;
 	private int available;
-	public Brand(int id, String name,String country, int available) {
+	public Area(int id, String name, int available) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.country = country;
 		this.available = available;
 	}
-	public Brand() {
-		super();
-	}
 	
-	public Brand(String country) {
-		super();
-		this.country = country;
-	}
-	public Brand(String name, String country) {
+	public Area(String name) {
 		super();
 		this.name = name;
-		this.country = country;
+	}
+
+	public Area() {
+		super();
 	}
 	public int getId() {
 		return id;
@@ -37,21 +31,19 @@ public class Brand {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
 	public int getAvailable() {
 		return available;
 	}
 	public void setAvailable(int available) {
 		this.available = available;
 	}
-
-	public String toString() {
-		return this.id + "\t" + this.name + " (" + this.country + ")" + "\t" + this.available;
-	}
 	
+	public String toString() {
+		String avai="";
+		if(this.available<1) {
+			avai = "NGUNG hoat dong";
+		} else 
+			avai = "DANG hoat dong";
+		return this.name + "\t" + this.id + "\t" + avai;
+	}
 }

@@ -75,13 +75,24 @@ html{
 #header {
   height: 117px;
   background-color: rgba(15, 161, 135, 0.79);
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 4;
 }
+
+/*#header:after {*/
+/*  position: absolute;*/
+/*  content: "";*/
+/*  height: 117px;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  background-color: white;*/
+/*  z-index: 0;*/
+/*}*/
 
 .head {
   display: flex;

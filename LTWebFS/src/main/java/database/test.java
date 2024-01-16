@@ -1,12 +1,18 @@
 package database;
 
-import model.Brand;
+import controller.ControllerProduct;
+
+import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) {
-        Brand br = new Brand("nokia");
-        BrandDAO.getInstance().insert(br);
-        System.out.println(BrandDAO.getInstance().selectAll());
+    	ControllerProduct qly1 = new ControllerProduct("a");
+    	ControllerProduct qly2 = new ControllerProduct("b");
+    	ControllerProduct qly3 = new ControllerProduct("c");
+    	System.out.println(qly1.getUnitList().size() + qly2.getUnitList().size() + qly3.getUnitList().size() );
+
+    	ArrayList<Integer> testt= new ArrayList<>();
+    	System.out.println(testt.equals(new ArrayList<Integer>()));
     }
 
 }

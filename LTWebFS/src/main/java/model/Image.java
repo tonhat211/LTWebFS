@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Image {
 	private int id;
 	private String url;
@@ -12,6 +14,29 @@ public class Image {
 		this.id = id;
 		this.url = url;
 		this.parentID = parentID;
+	}
+	
+	
+	public Image(int parentID) {
+		super();
+		this.parentID = parentID;
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(parentID);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Image other = (Image) obj;
+		return parentID == other.parentID;
 	}
 	public int getId() {
 		return id;
@@ -30,6 +55,10 @@ public class Image {
 	}
 	public void setParentID(int parentID) {
 		this.parentID = parentID;
+	}
+	
+	public String toString() {
+		return this.id  + "\t" + this.url  + "\t" + this.parentID;
 	}
 	
 }

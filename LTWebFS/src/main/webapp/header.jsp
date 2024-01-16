@@ -18,6 +18,10 @@
 </head>
 <body>
 <div id="header">
+    <%
+        String currentMenu = (String) request.getAttribute("currentMenu");
+    %>
+
     <div class="head col rol">
         <div class="logo">
             <a href="index.jsp">
@@ -50,9 +54,10 @@
     </div>
     <div id="nav" class="nav rol col">
         <ul class="nav">
-            <li><a href="index.jsp" class="color-f6 menuitem active">Trang chủ</a></li>
+<%--            <li><a href="menucontrol?menu=index" class="color-f6 menuitem <%= currentMenu.equalsIgnoreCase("index") ? "active" : ""%>">Trang chủ</a></li>--%>
+            <li><a href="menucontrol?menu=index" class="color-f6 menuitem">Trang chủ</a></li>
             <li>
-                <a href="product.jsp" class="color-f6 menuitem ">Sản Phẩm
+                <a href="menucontrol?menu=product&kind=A" class="color-f6 menuitem">Sản Phẩm
                     <!--            <i class="nav-arrow-down ti-angle-down"></i>-->
                 </a>
                 <!--          <ul class="subnav">-->
@@ -61,8 +66,8 @@
                 <!--                            <li><a href="#" class="color-f6">Sản Phẩm cũ</a></li>-->
                 <!--          </ul>-->
             </li>
-            <li><a href="news.jsp" class="color-f6 menuitem ">Tin Tức</a></li>
-            <li><a href="aboutUs.jsp" class="color-f6 menuitem">Nhà Phân Phối</a></li>
+            <li><a href="menucontrol?menu=news" class="color-f6 menuitem">Tin Tức</a></li>
+            <li><a href="menucontrol?menu=aboutus" class="color-f6 menuitem ">Nhà Phân Phối</a></li>
         </ul>
     </div>
 
