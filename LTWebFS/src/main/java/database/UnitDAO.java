@@ -138,7 +138,7 @@ public class UnitDAO implements IDAO<Unit>{
 		
 			while(rs.next()) {
 				int imei = rs.getInt("imei");
-				int proID = rs.getInt("productID");
+		 		int proID = rs.getInt("productID");
 				String color = rs.getString("color");
 				String size = rs.getString("size");
 				double wattage = rs.getDouble("wattage");

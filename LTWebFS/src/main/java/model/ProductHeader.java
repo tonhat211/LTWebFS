@@ -1,5 +1,10 @@
 package model;
 
+import database.ImageDAO;
+import database.UnitDAO;
+
+import java.util.ArrayList;
+
 public class ProductHeader {
 	private int ID;
 	private int brandID;
@@ -17,6 +22,38 @@ public class ProductHeader {
 		this.price = u.getPrice();
 		this.imageUrl = i.getUrl();
 	}
+
+	public ProductHeader(Product p) {
+		this.ID = p.getId();
+		this.brandID = p.getBrandID();
+		this.name = p.getName();
+		this.price = this.getPriceFromUnit(this.ID);
+		this.imageUrl  = this.getAImageUrlByParrentID(this.ID);
+	}
+
+	public String getAImageUrlByParrentID(int id){
+		ArrayList<Image> imgs = ImageDAO.getInstance().selectByParentID(id);
+		String res="";
+		for(Image   i : imgs ){
+			res = i.getUrl();
+			break;
+		}
+		return res;
+	}
+
+
+
+	public double getPriceFromUnit(int id) {
+		ArrayList<Unit> units = UnitDAO.getInstance().selectByProId(id);
+		double res = 0.0;
+		for(Unit  u : units) {
+			res   = u.getPrice();
+			break;
+		}
+		return res;
+
+	}
+
 
 	public int getBrandID() {
 		return brandID;

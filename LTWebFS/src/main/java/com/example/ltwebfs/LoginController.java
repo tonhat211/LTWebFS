@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "login", urlPatterns = {"/login"})
@@ -27,6 +28,10 @@ public class LoginController extends HttpServlet {
         UserDAO userDAO = new UserDAO();
         User user = loginDAO.checkLogin(email, password);
         User user2 = userDAO.getUserByEmail(email);
+
+//        HttpSession session = request.getSession();
+
+
         if (user != null) {
             if (user2.getLevel() == 2) {
                 request.setAttribute("admin_name", user2.getName());

@@ -208,6 +208,35 @@ public class ProductDAO implements IDAO<Product>{
 			throw new RuntimeException(e);
 		}
 	}
+
+	public ArrayList<Product> selectProsByNameAndKind(String kindin, String namein){
+		ArrayList<Product> ps = new ArrayList<>();
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select * from products where kind = ? and name like ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1,kindin);
+			pst.setString(2,"%" + namein + "%");
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				int brandID = rs.getInt("brandID");
+				int areaID = rs.getInt("areaID");
+				String kind = rs.getString("kind");
+				String des = rs.getString("description");
+				ps.add(new Product(id,name, brandID, areaID, kind, des));
+
+			}
+			JDBCUtil.closeConnection(conn);
+			return ps;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
+	}
 	public static void main(String[] args) {
 //		insertData(); hàm này chỉ chạy 1 lần duy nhất để tải dữ liệu lên db
 		
@@ -223,6 +252,7 @@ public class ProductDAO implements IDAO<Product>{
 //		
 //		}
 //		System.out.println("so luot update: " + count);
+		System.out.println(ProductDAO.getInstance().selectProsByNameAndKind("A","dao"));
 	}
 
 }
