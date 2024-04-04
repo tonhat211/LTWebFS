@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
 </head>
 <body>
-<%@include file="header.jsp" %>
+<%--<%@include file="header.jsp" %>--%>
 <div id="main-container">
     <h2>Giỏ hàng (2 sản phẩm)</h2>
     <div class="left">

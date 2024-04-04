@@ -77,6 +77,68 @@ public class UnitDAO implements IDAO<Unit>{
 		
 	}
 
+	public int selectTheMaxID(){
+		int res=-1;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select max(imei) from units;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				res = rs.getInt("max(imei)");
+			}
+			JDBCUtil.closeConnection(conn);
+			return res;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+	}
+
+	public int availableToTrue(int idin){
+		// TODO Auto-generated method stub
+		int re  = 0;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql =  "update units set available=1 where productID =?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1,idin );
+
+
+			re= pst.executeUpdate();
+			JDBCUtil.closeConnection(conn);
+			return re;
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	public int availableToFalse(int idin){
+		// TODO Auto-generated method stub
+		int re  = 0;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql =  "update units set available=0 where productID =?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1,idin );
+
+
+			re= pst.executeUpdate();
+			JDBCUtil.closeConnection(conn);
+			return re;
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
+	}
+
 	@Override
 	public int update(Unit t) {
 		// TODO Auto-generated method stub
@@ -86,7 +148,23 @@ public class UnitDAO implements IDAO<Unit>{
 	@Override
 	public int delete(Unit t) {
 		// TODO Auto-generated method stub
-		return 0;
+		// TODO Auto-generated method stub
+		int re=0;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "delete from units where productID=?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, t.getProductID());
+
+
+			re = pst.executeUpdate();
+			System.out.println(re + " dong da duoc xoa");
+			JDBCUtil.closeConnection(conn);
+			return re;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
@@ -150,7 +228,7 @@ public class UnitDAO implements IDAO<Unit>{
 				int available = rs.getInt("available");
 				
 				res =  new Unit(imei, proID, color, size, wattage, price, amount, yearMade, dateImport, available);
-				
+				break;
 			
 			}
 			JDBCUtil.closeConnection(conn);
@@ -160,6 +238,42 @@ public class UnitDAO implements IDAO<Unit>{
 			throw new RuntimeException(e);
 		}
 	
+	}
+
+	public Unit selectOneByProId(int id) {
+		// TODO Auto-generated method stub
+		Unit res = null;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select * from units where productID = ?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int imei = rs.getInt("imei");
+				int proID = rs.getInt("productID");
+				String color = rs.getString("color");
+				String size = rs.getString("size");
+				double wattage = rs.getDouble("wattage");
+				double price = rs.getDouble("price");
+				int amount = rs.getInt("amount");
+				int yearMade = rs.getInt("yearMade");
+				Date dateSql = rs.getDate("dateImport");
+				Datee dateImport = new Datee(dateSql);
+				int available = rs.getInt("available");
+
+				res =  new Unit(imei, proID, color, size, wattage, price, amount, yearMade, dateImport, available);
+				break;
+
+			}
+			JDBCUtil.closeConnection(conn);
+			return res;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
 	}
 
 	public ArrayList<Unit> selectByProId(int id) {

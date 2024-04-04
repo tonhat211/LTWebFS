@@ -28,11 +28,14 @@ public class LoginController extends HttpServlet {
         UserDAO userDAO = new UserDAO();
         User user = loginDAO.checkLogin(email, password);
         User user2 = userDAO.getUserByEmail(email);
+        HttpSession session  =request.getSession();
+
 
 //        HttpSession session = request.getSession();
 
 
         if (user != null) {
+            session.setAttribute("userName",user2.getName());
             if (user2.getLevel() == 2) {
                 request.setAttribute("admin_name", user2.getName());
                 request.getRequestDispatcher("admin_dashboard.jsp").forward(request, response);
@@ -40,6 +43,7 @@ public class LoginController extends HttpServlet {
                 request.setAttribute("user_name", user2.getName());
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
+
         } else {
             response.sendRedirect("login.jsp");
         }

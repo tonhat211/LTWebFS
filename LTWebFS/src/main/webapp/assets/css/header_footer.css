@@ -1,3 +1,21 @@
+:root {
+  --primary-color: #00A6CF;
+  /*--primary-color: rgba(21, 159, 135, 0.71);*/
+  --secondary-color: #C6CBFB;
+  --white-color: #fff;
+  --black-color: #000;
+  --text-color: #333;
+  --primary-color-ad: #4154F1;    --white-color: #fff;
+  --black-color: #000;
+  --text-color: #333;
+  --primary-background : linear-gradient(to right,#00b4db, #0083b0);
+
+  /*--header-height: 120px;*/
+  /*--navbar-height: 34px;*/
+  /*--header-with-search-height: calc(var(--header-height) - var(--navbar-height));*/
+}
+
+
 * {
   padding: 0;
   margin: 0;
@@ -74,7 +92,8 @@ html{
 
 #header {
   height: 117px;
-  background-color: rgba(15, 161, 135, 0.79);
+  /*background-color: rgba(55, 72, 243,0.79);*/
+  background-image: var(--primary-background);
   position: absolute;
   top: 0;
   right: 0;
@@ -210,13 +229,13 @@ html{
 
 /*.nav .subnav li:hover a,*/
 .nav > li:hover > a {
-  color: #0FA187;
+  color: var(--primary-color);
   background-color: white;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 /*#0FA187*/
 .menuitem.active {
-  color: #0FA187;
+  color: var(--primary-color);
   background-color: white;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
@@ -237,7 +256,8 @@ html{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background-color: rgba(15, 161, 135, 0.79);
+  background-image: var(--primary-background);
+
 
   color: #f6f6f6;
   font-size: 15px;

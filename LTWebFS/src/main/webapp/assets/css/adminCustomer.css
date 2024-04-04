@@ -46,6 +46,7 @@
     border-radius: 10px;
     background-color: var(--primary-color-ad);
     color: var(--white-color);
+    border: none;
 }
 
 .ad_find-btn:hover {

@@ -2,10 +2,12 @@ package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.Area;
+import model.Brand;
 
 public class AreaDAO implements IDAO<Area>{
 	public static AreaDAO getInstance() {
@@ -19,10 +21,10 @@ public class AreaDAO implements IDAO<Area>{
 		try {
 			Connection conn = JDBCUtil.getConnection();
 			
-			String sql = "insert into areas (name) values (?);";
+			String sql = "insert into areas (id, name) values (?,?);";
 			PreparedStatement pst = conn.prepareStatement(sql);
-			
-			pst.setString(1, t.getName());
+			pst.setInt(1, t.getId());
+			pst.setString(2, t.getName());
 			
 			re = pst.executeUpdate();
 			
@@ -35,6 +37,51 @@ public class AreaDAO implements IDAO<Area>{
 			throw new RuntimeException(e);
 		}
 		
+
+	}
+
+	public int selectTheMaxID(){
+		int res=-1;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select max(id) from areas;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				res = rs.getInt("max(id)");
+			}
+			JDBCUtil.closeConnection(conn);
+			return res;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+	}
+
+	public Area selectByName(String namein) {
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select * from areas where name = ?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, namein);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				int available =  rs.getInt("available");
+				return new Area(id,name,available);
+
+			}
+			JDBCUtil.closeConnection(conn);
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+		return null;
 
 	}
 
@@ -59,7 +106,30 @@ public class AreaDAO implements IDAO<Area>{
 	@Override
 	public Area selectById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub
+		Area res = null;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+
+			String sql = "select * from areas where id=?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()){
+				int idd = rs.getInt("id");
+				String name = rs.getString("name");
+				int available = rs.getInt("available");
+				res = new Area(idd, name, available);
+			}
+
+//			System.out.println(re + " dong da duoc them vao");
+			JDBCUtil.closeConnection(conn);
+			return res;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override

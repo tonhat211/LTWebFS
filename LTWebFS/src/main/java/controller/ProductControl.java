@@ -2,9 +2,11 @@ package controller;
 
 import database.BrandDAO;
 import database.ProductDAO;
+import database.ProductUnitDAO;
 import model.Brand;
 import model.Product;
 import model.ProductHeader;
+import model.ProductUnit;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -28,11 +30,24 @@ public class ProductControl extends HttpServlet {
         String kind = request.getParameter("kind");
         String input = (String) session.getAttribute("currentSearch");
         if(input==null) {
-            ControllerProduct qly = new ControllerProduct(kind);
-            ArrayList<ProductHeader> productHeaderList = qly.getProductHeaderList();
-            ArrayList<Brand> brandList = qly.getBrandList();
-            ArrayList<String> countryList = qly.getCountries();
-            request.setAttribute("productHeaderList", productHeaderList);
+//            ControllerProduct qly = new ControllerProduct(kind);
+//            ArrayList<ProductHeader> productHeaderList = qly.getProductHeaderList();
+            ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectByKind(kind);
+            ArrayList<Integer> idBrandAdded = new ArrayList<>();
+            ArrayList<Brand> brandList = new ArrayList<>();
+            ArrayList<String> countryList = new ArrayList<>();
+            for(ProductUnit pu : pus ){
+                if(!idBrandAdded.contains(pu.getBrandID())){
+                    brandList.add(new Brand(pu.getBrandID(), pu.getBrand(),pu.getMadeIn(),1));
+                    countryList.add(pu.getMadeIn());
+                    idBrandAdded.add(pu.getBrandID());
+
+                }
+            }
+
+//            ArrayList<Brand> brandList = qly.getBrandList();
+//            ArrayList<String> countryList = qly.getCountries();
+            request.setAttribute("productUnitList", pus);
             request.setAttribute("brandList", brandList);
             request.setAttribute("countryList", countryList);
             request.setAttribute("currentKind", kind);
@@ -41,7 +56,7 @@ public class ProductControl extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/product.jsp");
             rd.forward(request, response);
         } else {
-            ArrayList<Product> productArrayList = new ArrayList<>();
+            ArrayList<ProductUnit> pus = new ArrayList<>();
             ArrayList<ProductHeader> productHeaderArrayList = new ArrayList<>();
             ArrayList<Brand> brandArrayList = new ArrayList<>();
             ArrayList<String> countryArrayList = new ArrayList<>();
@@ -49,18 +64,24 @@ public class ProductControl extends HttpServlet {
             session.setAttribute("currentSearch", input);
 
             RequestDispatcher rd;
-            productArrayList = ProductDAO.getInstance().selectProsByNameAndKind(kind,input);
-            for(Product p : productArrayList){
-                productHeaderArrayList.add((new ProductHeader(p)));
-                Brand b = BrandDAO.getInstance().selectById(p.getBrandID());
-                if(!brandArrayList.contains(b)) {
-                    brandArrayList.add(b);
-                    countryArrayList.add(b.getCountry());
+            pus = ProductUnitDAO.getInstance().selectByKindAndName(kind,input);
+            ArrayList<Integer> idBrandAdded = new ArrayList<>();
+            ArrayList<Brand> brandList = new ArrayList<>();
+            ArrayList<String> countryList = new ArrayList<>();
+            for(ProductUnit pu : pus ){
+                if(!idBrandAdded.contains(pu.getBrandID())){
+                    brandList.add(new Brand(pu.getBrandID(), pu.getBrand(),pu.getMadeIn(),1));
+                    countryList.add(pu.getMadeIn());
+                    idBrandAdded.add(pu.getBrandID());
+
                 }
             }
-            request.setAttribute("brandList", brandArrayList);
-            request.setAttribute("countryList", countryArrayList);
-            request.setAttribute("productHeaderList", productHeaderArrayList);
+
+//            ArrayList<Brand> brandList = qly.getBrandList();
+//            ArrayList<String> countryList = qly.getCountries();
+            request.setAttribute("productUnitList", pus);
+            request.setAttribute("brandList", brandList);
+            request.setAttribute("countryList", countryList);
             request.setAttribute("currentKind", kind);
             rd = getServletContext().getRequestDispatcher("/product.jsp");
             rd.forward(request, response);

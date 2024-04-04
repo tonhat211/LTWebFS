@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import com.mysql.cj.protocol.PacketReceivedTimeHolder;
+//import com.mysql.cj.protocol.PacketReceivedTimeHolder;
 
 import database.BrandDAO;
 import database.ImageDAO;

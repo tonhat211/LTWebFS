@@ -2,8 +2,13 @@
     padding: 10px;
 }
 
+
 .ad-content {
     position: relative;
+}
+
+.ad_header{
+    margin: auto;
 }
 
 .pro-img-cont {
@@ -19,6 +24,10 @@
 
 .pro-img-item:hover {
     cursor: pointer;
+}
+
+.ad_func-btn {
+    margin: auto;
 }
 
 .btn-add-pro-img {
@@ -38,7 +47,16 @@
 }
 
 .ad_func-add-btn {
-    display: none;
+
+
+}
+
+.ad_func-save-btn {
+
+}
+
+.ad_func-save-btn.active {
+    display: block;
 }
 
 .ad_func-add-btn.active {
@@ -57,6 +75,17 @@
     left: 140px;
 }
 
+.btn-resale-pro,
+.btn-stop-pro {
+
+
+}
+
+.btn-resale-pro.active,
+.btn-stop-pro.active {
+    display: block;
+}
+
 
 .add-img-box.active,
 .confirm-resale.active,
@@ -68,4 +97,26 @@
 .yes-resale-confirm {
     background-color: var(--primary-color-ad);
     color: white;
+}
+
+.btn-update-product {
+    background-color: var(--primary-color-ad);
+    color: white;
+    text-decoration: none;
+    background-color: #f6651f;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid #f6651f;
+    color: white;
+
+}
+
+.btn-update-product:hover {
+    opacity: 0.6;
+}
+
+.roww th,
+.roww td {
+    background-color: #e5e5e5;
+    padding: 6px;
 }

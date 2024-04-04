@@ -1,0 +1,52 @@
+* {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* font-size 100% = 16px */
+
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.formm {
+    max-resolution: auto;
+    border: 1px solid #4154F1;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.show-flex-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.code-input {
+    size: 20px;
+    padding: 10px;
+}
+
+.btn {
+    padding: 4px;
+    border-radius: 4px;
+    background-color: #4154F1;
+    border: none;
+    color: white;
+    margin: auto;
+}
+
+.btn:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}

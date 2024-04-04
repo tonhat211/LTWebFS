@@ -37,7 +37,7 @@
         <!--        <div class="facebook">-->
         <!--            <i class="fa-brands fa-facebook"></i> Facebook-->
         <!--        </div>-->
-        <p class="already">Chưa có tài khoản ? <a class="log" href="logup.html">Đăng ký</a>
+        <p class="already">Chưa có tài khoản ? <a class="log" href="html/logup.html">Đăng ký</a>
     </form>
 </div>
 </body>

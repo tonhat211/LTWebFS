@@ -14,9 +14,12 @@
 <body>
 <div id="header">
     <%
+
         String currentMenu = ((String) session.getAttribute("currentMenu"))==null ? "index" : ((String) session.getAttribute("currentMenu"));
         String recentSearch = (String) session.getAttribute("currentSearch");
-
+        String user = (String) session.getAttribute("userName");
+        if(user== null || user.equalsIgnoreCase(""))
+            user = "";
     %>
 
     <div class="head col rol">
@@ -41,10 +44,20 @@
                 </a>
             </div>
             <div class="user-item">
-                <i class="ti-user"></i>
-                <a href="login.jsp">Đăng nhập</a>
-                <i style="color: #f6f6f6">/</i>
-                <a href="logup.jsp">Đăng ký</a>
+                <%
+                    if(user!=""){
+                %>
+                    <a href="login.jsp"><%=user%></a>
+                <%
+                    }  else  {
+                %>
+                    <i class="ti-user"></i>
+                    <a href="login.jsp">Đăng nhập</a>
+                    <i style="color: #f6f6f6">/</i>
+                    <a href="logup.jsp">Đăng ký</a>
+                <%
+                    }
+                %>
             </div>
 <%--            <li class="nav-item dropdown pe-3">--%>
 

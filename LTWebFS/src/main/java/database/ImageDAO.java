@@ -125,6 +125,26 @@ public class ImageDAO implements IDAO<Image>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public int selectTheMaxID(){
+		int res=-1;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select max(id) from images;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				res = rs.getInt("max(id)");
+			}
+			JDBCUtil.closeConnection(conn);
+			return res;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+	}
 	
 	
 	

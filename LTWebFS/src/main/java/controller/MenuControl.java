@@ -1,7 +1,9 @@
 package controller;
 
+import database.ProductUnitDAO;
 import model.Brand;
 import model.ProductHeader;
+import model.ProductUnit;
 import org.hsqldb.Session;
 
 import javax.servlet.RequestDispatcher;
@@ -39,12 +41,20 @@ public class MenuControl extends HttpServlet {
                 currentMenu = "product";
                 session.setAttribute("currentMenu",currentMenu);
                 String kind = request.getParameter("kind");
-                ControllerProduct qly = new ControllerProduct(kind);
+//                ControllerProduct qly = new ControllerProduct(kind);
+                ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectByKind(kind);
+                ArrayList<Integer> idBrandAdded = new ArrayList<>();
+                ArrayList<Brand> brandList = new ArrayList<>();
+                ArrayList<String> countryList = new ArrayList<>();
+                for(ProductUnit pu : pus ){
+                    if(!idBrandAdded.contains(pu.getBrandID())){
+                        brandList.add(new Brand(pu.getBrandID(), pu.getBrand(),pu.getMadeIn(),1));
+                        countryList.add(pu.getMadeIn());
+                        idBrandAdded.add(pu.getBrandID());
 
-                ArrayList<ProductHeader> productHeaderList = qly.getProductHeaderList();
-                ArrayList<Brand> brandList = qly.getBrandList();
-                ArrayList<String> countryList = qly.getCountries();
-                request.setAttribute("productHeaderList", productHeaderList);
+                    }
+                }
+                request.setAttribute("productUnitList", pus);
                 request.setAttribute("brandList", brandList);
                 request.setAttribute("countryList", countryList);
                 request.setAttribute("currentKind",kind);

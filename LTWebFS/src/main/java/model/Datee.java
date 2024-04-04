@@ -12,6 +12,10 @@ public class Datee {
 		this.month = month;
 		this.day = day;
 	}
+
+	public  String getDateInString(){
+		return this.year  +"-" + this.month + "-" +this.day;
+ 	}
 	
 	public Datee(Date date) {
 		super();
@@ -39,6 +43,6 @@ public class Datee {
 		this.day = day;
 	}
 	public String toString() {
-		return this.year + "-" + this.month + "-" + this.day;
+		return this.year + "/" + this.month + "/" + this.day;
 	}
 }

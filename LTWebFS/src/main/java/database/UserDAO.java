@@ -35,20 +35,16 @@ public class UserDAO implements IDAO<User> {
         }
     }
 
-    @Override
-    public int update(User user) {
+    public int trueTheUser(String email){
         int re = 0;
         try {
             Connection conn = JDBCUtil.getConnection();
 
-            String sql = "update users " +
-                    "set name=?" +
-                    "where id=?;";
+            String sql = "update users set available =1 where email = ?;";
             PreparedStatement pst = conn.prepareStatement(sql);
 
-            pst.setString(1, user.getName());
-            pst.setInt(2, user.getAvailable());
-            pst.setInt(3, user.getId());
+            pst.setString(1, email);
+
 
             re = pst.executeUpdate();
 
@@ -59,6 +55,37 @@ public class UserDAO implements IDAO<User> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public boolean isExist(String email){
+        return false;
+    }
+
+    @Override
+    public int update(User user) {
+//        int re = 0;
+//        try {
+//            Connection conn = JDBCUtil.getConnection();
+//
+//            String sql = "update users " +
+//                    "set name=?" +
+//                    "where id=?;";
+//            PreparedStatement pst = conn.prepareStatement(sql);
+//
+//            pst.setString(1, user.getName());
+//            pst.setInt(2, user.getAvailable());
+//            pst.setInt(3, user.getId());
+//
+//            re = pst.executeUpdate();
+//
+//            System.out.println(re + " dong da duoc cap nhat");
+//            JDBCUtil.closeConnection(conn);
+//            return re;
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+        return 0;
 
     }
 

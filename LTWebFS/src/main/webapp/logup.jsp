@@ -11,23 +11,26 @@
 <body>
 <div id="main-container">
     <h1>Đăng ký</h1>
-    <form action="logup" method="post">
+    <form action="signup" method="post">
         <div class="mb-3">
             <label for="name" class="form-label">Họ và tên <span style="color: #ED1212">*</span></label>
-            <input type="text" pattern="[A-Za-z]" class="form-control form-control-lg" id="name" name="name"
-                   placeholder="Nhập đầy đủ họ và tên">
+            <input type="text"  class="form-control form-control-lg" id="name" name="name"
+                   placeholder="Nhập đầy đủ họ và tên"  required>
+<%--            pattern="[A-Za-z]"--%>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email <span style="color: #ED1212">*</span></label>
-            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control form-control-lg" id="email" name="email" placeholder="Nhập email">
+            <input type="email"  class="form-control form-control-lg" id="email" name="email" placeholder="Nhập email" required>
+<%--            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"--%>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Mật khẩu <span style="color: #ED1212">*</span></label>
-            <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Nhập mật khẩu">
+            <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Nhập mật khẩu" required>
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Số điện thoại <span style="color: #ED1212">*</span></label>
-            <input type="tel" pattern="[0-9]{10}" class="form-control form-control-lg" id="phone" name="phone" placeholder="Nhập số điện thoại">
+            <input type="tel" class="form-control form-control-lg" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+<%--            pattern="[0-9]{10}"--%>
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">Địa chỉ <span style="color: #ED1212">*</span></label>
@@ -36,10 +39,10 @@
         </div>
         <div class="mb-3">
             <label for="info" class="form-label">Thông tin <span style="color: #ED1212">*</span></label>
-            <input type="text" class="form-control form-control-lg" id="info" name="info" placeholder="Vd: nam - 2000">
+            <input type="text" class="form-control form-control-lg" id="info" name="info" required placeholder="Vd: nam - 2000">
         </div>
         <div class="d-grid gap-2">
-            <button id="submitLogin" class="btn my-3" type="submit"><b>Đăng ký</b></button>
+            <button id="submitLogin" class="btn my-3" type="submit" >Đăng ký</button>
         </div>
         <p class="already">Đã có tài khoản ? <a class="log" href="login.jsp">Đăng nhập</a>
         </p>

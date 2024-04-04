@@ -7,9 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-
+//
 import com.mysql.cj.protocol.PacketReceivedTimeHolder;
 import com.mysql.cj.protocol.Resultset;
 
@@ -27,13 +28,14 @@ public class ProductDAO implements IDAO<Product>{
 		int re=0;
 		try {
 			Connection conn = JDBCUtil.getConnection();
-			String sql = "insert into products (name, brandID, areaID, kind, description) values (?,?,?,?,?);";
+			String sql = "insert into products (id, name, brandID, areaID, kind, description) values (?,?,?,?,?,?);";
 			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setString(1, t.getName());
-			pst.setInt(2, t.getBrandID());
-			pst.setInt(3, t.getAreaID());
-			pst.setString(4, t.getKind());
-			pst.setString(5, t.getDescription());
+			pst.setInt(1, t.getId());
+			pst.setString(2, t.getName());
+			pst.setInt(3, t.getBrandID());
+			pst.setInt(4, t.getAreaID());
+			pst.setString(5, t.getKind());
+			pst.setString(6, t.getDescription());
 			
 			re = pst.executeUpdate();
 			System.out.println(re + " dong da duoc them");
@@ -51,13 +53,64 @@ public class ProductDAO implements IDAO<Product>{
 	@Override
 	public int update(Product t) {
 		// TODO Auto-generated method stub
+//		int re=0;
+//		try {
+//			Connection conn = JDBCUtil.getConnection();
+//			String sql = "update products set amount = ? where id =?;";
+//			PreparedStatement pst = conn.prepareStatement(sql);
+//			Random rand = new Random();
+//			int ranNum = rand.nextInt(300)+1;
+//
+//			pst.setInt(1, ranNum);
+//			pst.setInt(2, currentID);
+//			re = pst.executeUpdate();
+//			return re;
+//
+//		} catch (SQLException e) {
+//			// TODO: handle exception
+//			throw new RuntimeException(e);
+//		}
 		return 0;
 	}
 
+	public int update(String kind, int amount) {
+		// TODO Auto-generated method stub
+		int re=0;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "update products set amount = ? where kind =?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, amount);
+			pst.setString(2, kind);
+			re = pst.executeUpdate();
+			return re;
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
+	}
 	@Override
 	public int delete(Product t) {
 		// TODO Auto-generated method stub
-		return 0;
+		// TODO Auto-generated method stub
+		int re=0;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "delete from products where id=?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, t.getId());
+
+
+			re = pst.executeUpdate();
+			System.out.println(re + " dong da duoc xoa");
+			JDBCUtil.closeConnection(conn);
+			return re;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
@@ -88,6 +141,90 @@ public class ProductDAO implements IDAO<Product>{
 		}
 		
 	}
+
+	public ArrayList<Product> selectByKind(String kindin) {
+		// TODO Auto-generated method stub
+		ArrayList<Product> ps = new ArrayList<>();
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select * from products where kind = ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1,kindin);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				int brandID = rs.getInt("brandID");
+				int areaID = rs.getInt("areaID");
+				String kind = rs.getString("kind");
+				int amount = rs.getInt("amount");
+				String des = rs.getString("description");
+				ps.add(new Product(id,name, brandID, areaID, kind, amount, des));
+
+			}
+			JDBCUtil.closeConnection(conn);
+			return ps;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	public ArrayList<Product> selectByName(String input) {
+		// TODO Auto-generated method stub
+		ArrayList<Product> ps = new ArrayList<>();
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select * from products where name like ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1,"%"  + input + "%");
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				int brandID = rs.getInt("brandID");
+				int areaID = rs.getInt("areaID");
+				String kind = rs.getString("kind");
+				String des = rs.getString("description");
+				ps.add(new Product(id,name, brandID, areaID, kind, des));
+
+			}
+			JDBCUtil.closeConnection(conn);
+			return ps;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	public ArrayList<Integer> selectIDsByKind(String kindin) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> re = new ArrayList<>();
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select id from products where kind like ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1,kindin);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				re.add(id);
+
+			}
+			JDBCUtil.closeConnection(conn);
+			return re;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
+	}
+
 
 	@Override
 	public Product selectById(int idin) {
@@ -237,22 +374,58 @@ public class ProductDAO implements IDAO<Product>{
 		}
 
 	}
+	public int insert2(int idin, Product t) {
+		// TODO Auto-generated method stub
+		int re=0;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "insert into products (id, name, brandID, areaID, kind, description) values (?,?,?,?,?,?);";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1, idin);
+			pst.setString(2, t.getName());
+			pst.setInt(3, t.getBrandID());
+			pst.setInt(4, t.getAreaID());
+			pst.setString(5, t.getKind());
+			pst.setString(6, t.getDescription());
+
+			re = pst.executeUpdate();
+			System.out.println(re + " dong da duoc them");
+			JDBCUtil.closeConnection(conn);
+
+
+
+			return re;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+	}
+
+
+
+	public int selectTheMaxID(){
+		int res=-1;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select max(id) from products;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				res = rs.getInt("max(id)");
+			}
+			JDBCUtil.closeConnection(conn);
+			return res;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+	}
 	public static void main(String[] args) {
-//		insertData(); hàm này chỉ chạy 1 lần duy nhất để tải dữ liệu lên db
-		
-//		ArrayList<Product> temps = getProByKind("c");
-//		for(Product p : temps) {
-//			System.out.println(p);
-//		}
-//		int count=0;
-//		for(int i=4;i<=203;i++) {
-//			int newID = Integer.parseInt("101" + i);
-//			
-//			count += ProductDAO.getInstance().updateID(i, newID);
-//		
-//		}
-//		System.out.println("so luot update: " + count);
-		System.out.println(ProductDAO.getInstance().selectProsByNameAndKind("A","dao"));
+
+		System.out.println(ProductDAO.getInstance().update("D", 100));
+
 	}
 
 }

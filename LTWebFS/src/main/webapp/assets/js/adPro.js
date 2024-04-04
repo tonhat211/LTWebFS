@@ -18,8 +18,8 @@ const noAddImgBtn =$('.cancel-add-img-btn');
 
 
 
-updateBtn.addEventListener('click',getInfo);
-saveChangedBtn.addEventListener('click',saveChanged);
+// updateBtn.addEventListener('click',getInfo);
+// saveChangedBtn.addEventListener('click',saveChanged);
 stopBtn.addEventListener('click',confirmStop);
 yesStopBtn.addEventListener('click',yesStop);
 for(let i of modalOverlays){
@@ -31,47 +31,44 @@ resaleBtn.addEventListener('click',confirmResale);
 yesResaleBtn.addEventListener('click',yesResale);
 noResaleBtn.addEventListener('click',noResale);
 
-addProBtn.addEventListener('click',addProduct);
-addImgBtn.addEventListener('click',showAddImg);
-yesAddImgBtn.addEventListener('click',addImg);
-noAddImgBtn.addEventListener('click',cancelAddImg);
+// addProBtn.addEventListener('click',addProduct);
+// addImgBtn.addEventListener('click',showAddImg);
+// yesAddImgBtn.addEventListener('click',addImg);
+// noAddImgBtn.addEventListener('click',cancelAddImg);
 
 
 
 function getInfo() {
-    const nameInput = $('#pro-name').value = $('.pro_name').innerText;
-    const pricelInput = $('#pro-price').value = $('.pro_price').innerText;
-    const numberInput = $('#pro-number').value = $('.pro_number').innerText;
-    const kindInput = $('#pro-kind').value = $('.pro_kind').innerText;
-    const yearInput = $('#pro-year').value = $('.pro_year').innerText;
-    const dateInInput = $('#pro-date-in').value = $('.pro_date-in').innerText;
-    const fromInput = $('#pro-from').value = $('.pro_from').innerText;
-    const brandInput = $('#pro-brand').value = $('.pro_brand').innerText;
-    const desInput = $('#pro-des').value = $('.pro_des').innerText;
 
 
     $('.ad_func-save-btn').classList.add('active');
     $('.ad_func-add-btn').classList.remove('active');
+
+    const imgs = $$('.pro-img-item');
+    var imgUrls="";
+    for(let i of imgs) {
+        var  temp  = i.src.split('/');
+        imgUrls+= temp[temp.length - 1]+ '==';
+
+    }
+
+
+    const nameInput = $('#pro-name').value = $('.pro_name').innerText;
+    const imgInput = $('#pro-imgs').value = imgUrls;
+    const countryInput = $('#pro-country').value = $('.pro_country').innerText;
+    const brandInput = $('#pro-brand').value = $('.pro_brand').innerText;
+    const kindInput = $('#pro-kind').value = $('.pro_kind').innerText;
+    const typeInput = $('#pro-type').value = $('.pro_type').innerText;
+    const areaInput = $('#pro-area').value = $('.pro_area').innerText;
+    const priceInput = $('#pro-price').value = parseFloat($('.pro_price').innerText);
+    const amountInput = $('#pro-amount').value = parseInt($('.pro_amount').innerText);
+    const yearMadeInput = $('#pro-yearMade').value = parseInt($('.pro_yearMade').innerText);
+    const dateImportInput = $('#pro-dateImport').value = new  Date($('.pro_dateImport').innerText);
+    const desInput = $('#pro-des').value = $('.pro_des').innerText;
+
 }
 
 function saveChanged() {
-    const name = $('.pro_name').innerText =$('#pro-name').value;
-    const price = $('.pro_price').innerText = $('#pro-price').value;
-    const number = $('.pro_number').innerText = $('#pro-number').value;
-    const kind = $('.pro_kind').innerText = $('#pro-kind').value;
-    const year = $('.pro_year').innerText = $('#pro-year').value;
-    const dateIn = $('.pro_date-in').innerText = $('#pro-date-in').value;
-    const from = $('.pro_from').innerText = $('#pro-from').value;
-    const brand = $('.pro_brand').innerText = $('#pro-brand').value;
-    const des = $('.pro_des').innerText = $('#pro-des').value;
-
-
-    const inputs = $$('.form-container input');
-    for(let i of inputs) {
-        i.value = "";
-    }
-    $('#pro-des').value="";
-
 
     $('.ad_func-save-btn').classList.remove('active');
     $('.ad_func-add-btn').classList.add('active');
@@ -81,7 +78,7 @@ function addProduct(){
     const proInputs = $$('.form-container input');
     for(let i of proInputs){
         if(i.value ==""){
-            alert("Vui lòng nhập tối thiểu một thông tin.");
+            alert("Vui lòng nhập đầy đủ thông tin.");
             break;
         }
         else {
@@ -92,14 +89,19 @@ function addProduct(){
 
 
             const name = $('.pro_name').innerText =$('#pro-name').value;
-            const price = $('.pro_price').innerText = $('#pro-price').value;
-            const number = $('.pro_number').innerText = $('#pro-number').value;
-            const kind = $('.pro_kind').innerText = $('#pro-kind').value;
-            const year = $('.pro_year').innerText = $('#pro-year').value;
-            const dateIn = $('.pro_date-in').innerText = $('#pro-date-in').value;
-            const from = $('.pro_from').innerText = $('#pro-from').value;
-            const brand = $('.pro_brand').innerText = $('#pro-brand').value;
-            const des = $('.pro_des').innerText = $('#pro-des').value;
+            console.log($('#pro-name').value);
+            // console.log($('#pro_dateImport').value);
+            // const price = $('.pro_price').innerText = $('#pro-price').value;
+            // const number = $('.pro_amount').innerText = $('#pro-amount').value;
+            // const kind = $('.pro_kind').innerText = $('#pro-kind').value;
+            // const year = $('.pro_year').innerText = $('#pro-year').value;
+            // const dateIn = $('.pro_dateImport').innerText = $('#pro-dateImport').value;
+            console.log($('#pro-dateImport').value);
+            // const from = $('.pro_country').innerText = $('#pro-country').value;
+            //
+            // const brand = $('.pro_brand').innerText = $('#pro-brand').value;
+            // const des = $('.pro_des').innerText = $('#pro-des').value;
+
         }
 
     }
@@ -154,16 +156,20 @@ function yesResale() {
 
 function showAddImg() {
     $('.add-img-box').classList.add('active');
+    console.log("hi");
 }
 
 function addImg() {
     // const imgInput = $("#em-img");
     // $('.employee-img').src = imgInput.value;
+    const imgsInput = $("#pro-imgs");
+    imgsInput.value  += $("#pro-img").value +"==";
     cancelAddImg();
 }
 
 function cancelAddImg() {
     $('.add-img-box').classList.remove('active');
+    $("#pro-img").value = "";
 }
 
 

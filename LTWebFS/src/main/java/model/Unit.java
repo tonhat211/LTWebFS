@@ -19,8 +19,21 @@ public class Unit{
 	private int yearMade;
 	private Datee dateImport;
 	private int available;
+
+	public Unit(int imei, int productID, String color, String size, double wattage, double price, int yearMade, Datee dateImport, int available) {
+		this.imei = imei;
+		this.productID = productID;
+		this.color = color;
+		this.size = size;
+		this.wattage = wattage;
+		this.price = price;
+		this.yearMade = yearMade;
+		this.dateImport = dateImport;
+		this.available = available;
+	}
+
 	public Unit(int imei, int productID, String color, String size, double wattage, double price, int amount, int yearMade,
-			Datee dateImport, int available) {
+				Datee dateImport, int available) {
 		super();
 		this.imei = imei;
 		this.productID = productID;
@@ -33,6 +46,28 @@ public class Unit{
 		this.dateImport = dateImport;
 		this.available = available;
 	}
+
+	public Unit(int imei, int productID, String color, String size, double wattage, double price, int amount, int yearMade,
+				String dateImport, int available) {
+		super();
+		this.imei = imei;
+		this.productID = productID;
+		this.color = color;
+		this.size = size;
+		this.wattage = wattage;
+		this.price = price;
+		this.amount = amount;
+		this.yearMade = yearMade;
+		String[] dateImportTokns = dateImport.split("-");
+		int year = Integer.parseInt(dateImportTokns[0]);
+		int month = Integer.parseInt(dateImportTokns[1]);
+		int day = Integer.parseInt(dateImportTokns[2]);
+		Datee d = new Datee(day,month,year);
+		this.dateImport = d;
+		this.available = available;
+	}
+
+
 	
 	
 	public Unit(int productID) {

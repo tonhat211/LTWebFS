@@ -19,11 +19,12 @@ public class BrandDAO implements IDAO<Brand>{
 		try {
 			Connection conn = JDBCUtil.getConnection();
 
-			String sql = "insert into brands (name, country) values (?,?);";
+			String sql = "insert into brands (id,  name, country) values (?,?,?);";
 			PreparedStatement pst = conn.prepareStatement(sql);
-			
-			pst.setString(1, t.getName());
-			pst.setString(2, t.getCountry());
+			pst.setInt(1,t.getId());
+			pst.setString(2, t.getName());
+			pst.setString(3, t.getCountry());
+
 //			pst.setString(1, "nhat");
 		
 			re = pst.executeUpdate();
@@ -199,6 +200,51 @@ public class BrandDAO implements IDAO<Brand>{
 			throw new RuntimeException(e);
 		}
 	}
+	public int selectTheMaxID(){
+		int res=-1;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select max(id) from brands;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				res = rs.getInt("max(id)");
+			}
+			JDBCUtil.closeConnection(conn);
+			return res;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+	}
+	public Brand selectByName(String namein) {
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select * from brands where name = ?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, namein);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				String country =  rs.getString("country");
+				int available =  rs.getInt("available");
+				return new Brand(id,name, country,available);
+
+			}
+			JDBCUtil.closeConnection(conn);
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+		return null;
+
+	}
+
 
 	public static ArrayList<String> selectAllContries(){
 		ArrayList<String> res= new ArrayList<>();

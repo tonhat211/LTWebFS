@@ -8,6 +8,7 @@ public class Product {
 	private int brandID;
 	private int areaID;
 	private String kind;
+	private int amount;
 	private String description;
 	public Product(int id, String name, int brandID,int areaID, String kind, String description) {
 		super();
@@ -18,9 +19,17 @@ public class Product {
 		this.kind = kind;
 		this.description = description;
 	}
-	
-	
-	
+
+	public Product(int id, String name, int brandID, int areaID, String kind, int amount, String description) {
+		this.id = id;
+		this.name = name;
+		this.brandID = brandID;
+		this.areaID = areaID;
+		this.kind = kind;
+		this.amount = amount;
+		this.description = description;
+	}
+
 	public Product(int id) {
 		super();
 		this.id = id;
@@ -35,6 +44,10 @@ public class Product {
 		this.areaID = areaID;
 		this.kind = kind;
 		this.description = description;
+	}
+
+	public int getAmount() {
+		return amount;
 	}
 
 	public Product() {

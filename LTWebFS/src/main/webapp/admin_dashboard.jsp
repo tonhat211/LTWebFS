@@ -33,13 +33,19 @@
 </head>
 
 <body>
+<%
+    String user = (String) session.getAttribute("userName");
+    if(user== null || user.equalsIgnoreCase("")){
+        user = "";
+    }
 
+%>
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
         <div class="logo">
-            <a href="index.html">
+            <a href="index.jsp">
                 <img src="assets/img/Logo/favicon_icon.png" alt="Logo"
                      style="width: 40px; height: 40px; border-radius: 5px">
             </a>
@@ -205,18 +211,18 @@
 
             <li class="nav-item dropdown pe-3">
                 <%
-                    String admin_name = (String) request.getAttribute("admin_name");
-                    request.setAttribute("admin_name", admin_name);
-                    request.getRequestDispatcher("profile.jsp").forward(request, response);
+//                    String admin_name = (String) request.getAttribute("admin_name");
+//                    request.setAttribute("admin_name", admin_name);
+//                    request.getRequestDispatcher("profile.jsp").forward(request, response);
                 %>
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=admin_name%></span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=user%></span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6><%=admin_name%>
+                        <h6><%=user%>
                         </h6>
 <%--                        <span>Web Designer</span>--%>
                     </li>
@@ -312,9 +318,8 @@
         <h1>Thống kê doanh thu</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.jsp>Trang chủ</a></li>
-                <li class=" breadcrumb-item active">Thống kê doanh thu
-                </li>
+                <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Thống kê doanh thu</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->

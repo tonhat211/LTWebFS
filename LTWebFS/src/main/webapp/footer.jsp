@@ -19,7 +19,7 @@
 <body>
 <div id="footer">
     <div class="nameCty pad-10 dis-flex" style="width: 40%;">
-        <a href="index.html">
+        <a href="html/index.html">
             <img src="assets/img/Logo/favicon_icon.png" alt="" style="height: 60px; width: 60px; margin-bottom: -15px">
             <span style="font-size: 16px; font-weight: 700; position: absolute; margin-left: 12px"> Công ty TMCP TBYT TPHCM </span>
         </a>
@@ -29,10 +29,10 @@
         </a>
     </div>
     <div class="list-menu pad-10 dis-flex" style="width: 15%">
-        <a href="index.html"> <i class="ti-home"> </i>Trang chủ</a>
-        <a href="product.html"><i class="ti-layout-grid2"> </i>Sản Phẩm</a>
-        <a href="news.html"><i class="ti-notepad"> </i>Tin Tức</a>
-        <a href="aboutUs.html"><i class="ti-bar-chart-alt"> </i>Nhà Phân Phối</a>
+        <a href="html/index.html"> <i class="ti-home"> </i>Trang chủ</a>
+        <a href="html/product.html"><i class="ti-layout-grid2"> </i>Sản Phẩm</a>
+        <a href="html/news.html"><i class="ti-notepad"> </i>Tin Tức</a>
+        <a href="html/aboutUs.html"><i class="ti-bar-chart-alt"> </i>Nhà Phân Phối</a>
     </div>
     <div class="emailCty" style="width: 20%;">
         <div class="email pad-10">

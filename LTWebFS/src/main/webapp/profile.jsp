@@ -32,7 +32,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="html/index.html" class="logo d-flex align-items-center">
             <!--            <img src="assets/img/logo.png" alt="">-->
             <span class="d-none d-lg-block">Nhóm 63</span>
         </a>
@@ -213,7 +213,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="html/profile.html">
                             <i class="bi bi-person"></i>
                             <span>Quản lý tài khoản</span>
                         </a>
@@ -261,49 +261,49 @@
     <ul class="sidebar-nav" id="sidebar-nav">
         <h3 style="text-align: center">[Admin]</h3>
         <li class="nav-item ">
-            <a class="nav-link collapsed" href="admin_dashboard.html">
+            <a class="nav-link collapsed" href="html/admin_dashboard.html">
                 <!--                <i class="bi bi-grid"></i>-->
                 <span>Thống kê doanh thu</span>
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item ">
-            <a class="nav-link collapsed" href="adminCustomer.html">
+            <a class="nav-link collapsed" href="html/adminCustomer.html">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý khách hàng</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminEmployee.html">
+            <a class="nav-link collapsed" href="html/adminEmployee.html">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý nhân viên</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminProduct.html">
+            <a class="nav-link collapsed" href="html/adminProduct.html">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý sản phẩm</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminOrder.html">
+            <a class="nav-link collapsed" href="html/adminOrder.html">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý đơn hàng</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminNews.html">
+            <a class="nav-link collapsed" href="html/adminNews.html">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý tin tức</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminHomes.html">
+            <a class="nav-link collapsed" href="html/adminHomes.html">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý trang chủ</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminAboutUs.html">
+            <a class="nav-link collapsed" href="html/adminAboutUs.html">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Nhà phân phối</span>
             </a>
@@ -318,7 +318,7 @@
         <h1>Cài đặt</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="html/index.html">Trang chủ</a></li>
                 <li class="breadcrumb-item">Người dùng</li>
                 <li class="breadcrumb-item active">Quản lý tài khoản</li>
             </ol>

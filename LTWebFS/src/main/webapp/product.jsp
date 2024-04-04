@@ -3,7 +3,8 @@
 <%@ page import="model.Brand" %>
 <%@ page import="model.Product" %>
 <%@ page import="controller.ControllerProduct" %>
-<%@ page import="model.ProductHeader" %><%--
+<%@ page import="model.ProductHeader" %>
+<%@ page import="model.ProductUnit" %><%--
   Created by IntelliJ IDEA.
   User: TO NHAT
   Date: 04/12/2023
@@ -43,7 +44,7 @@
 
     <%
         String currentKind = (String) request.getAttribute("currentKind");
-        ArrayList<ProductHeader>  productHeaders = (ArrayList<ProductHeader>) request.getAttribute("productHeaderList");
+        ArrayList<ProductUnit>  pus = (ArrayList<ProductUnit>) request.getAttribute("productUnitList");
         ArrayList<Brand>  brands = (ArrayList<Brand>) request.getAttribute("brandList");
         ArrayList<String>  countries = (ArrayList<String>) request.getAttribute("countryList");
 
@@ -195,12 +196,12 @@
 
                     <!--                    1sp-->
                     <%
-                        for(ProductHeader p : productHeaders){%>
+                        for(ProductUnit p : pus){%>
                     <div class="grid-col-2 mt20 oneProduct proA">
                         <div class="product-item">
-                            <a href="productDetail?id=<%=p.getID()%>" class="product-item-link">
+                            <a href="productDetail?id=<%=p.getId()%>" class="product-item-link">
                                 <div class="product-img">
-                                    <%String imgurl  =  "./assets/img/products/" + p.getImageUrl();%>
+                                    <%String imgurl  =  "./assets/img/products/" + p.getImg();%>
                                     <img src= <%=imgurl%>  alt="">
                                 </div>
 

@@ -44,12 +44,19 @@
     <link rel="stylesheet" href="assets/css/adminN.css">
 </head>
 <body>
+<%
+    String user = (String) session.getAttribute("userName");
+    if(user== null || user.equalsIgnoreCase("")){
+        user = "";
+    }
+
+%>
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
         <div class="logo">
-            <a href="index.html">
+            <a href="index.jsp">
                 <img src="assets/img/Logo/favicon_icon.png" alt="Logo"
                      style="width: 40px; height: 40px; border-radius: 5px">
             </a>
@@ -75,12 +82,12 @@
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="assets/img/profile/profile-img.jpg" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=user%></span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>Kevin Anderson</h6>
+                        <h6><%=user%></h6>
                         <span>Web Designer</span>
                     </li>
                     <li>
@@ -88,7 +95,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="html/profile.html">
                             <i class="bi bi-person"></i>
                             <span>Cài đặt</span>
                         </a>
@@ -117,49 +124,49 @@
     <ul class="sidebar-nav" id="sidebar-nav">
         <h3 id="role" style="text-align: center">[Admin]</h3>
         <li class="nav-item ">
-            <a class="nav-link collapsed" href="admin_dashboard.html">
+            <a class="nav-link collapsed" href="admin_dashboard.jsp">
                 <!--                <i class="bi bi-grid"></i>-->
                 <span>Thống kê doanh thu</span>
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item ">
-            <a class="nav-link " href="adminCustomer.html">
+            <a class="nav-link " href="adminCustomer.jsp">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý khách hàng</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminEmployee.html">
+            <a class="nav-link collapsed" href="adminEmployee.jsp">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý nhân viên</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminProduct.html">
+            <a class="nav-link collapsed" href="adminProduct.jsp">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý sản phẩm</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminOrder.html">
+            <a class="nav-link collapsed" href="adminOrder.jsp">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý đơn hàng</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminNews.html">
+            <a class="nav-link collapsed" href="adminNews.jsp">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý tin tức</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminHomes.html">
+            <a class="nav-link collapsed" href="adminHomes.jsp">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý trang chủ</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="adminAboutUs.html">
+            <a class="nav-link collapsed" href="adminAboutUs.jsp">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Nhà phân phối</span>
             </a>
@@ -174,7 +181,7 @@
         <h1>Quản lí khách hàng</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
                 <li class="breadcrumb-item active">Quản lí khách hàng</li>
             </ol>
         </nav>
