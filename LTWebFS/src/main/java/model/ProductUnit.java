@@ -47,6 +47,31 @@ public class ProductUnit {
         this.img = img;
     }
 
+    public ProductUnit(int id, int unitid) {
+        this.id = id;
+        this.name = "";
+        this.brandID = 0;
+        this.areaID = 0;
+        this.kind = "";
+        this.amount = 0;
+        this.des = "";
+        this.imei = unitid;
+        this.color = "";
+        this.size = "";
+        this.wattage = 0;
+        this.phanloai = "";
+        this.price = 0;
+        this.yearMade = 0;
+        this.madeIn = "";
+        this.dateImport = "";
+        this.available = 1;
+        this.imgrls = new ArrayList<>();
+        this.brand = "";
+        this.img = "";
+    }
+
+
+
     public ProductUnit(int id, String name, int brandID, String kind, int amount, String phanloai, double price, String madeIn, int available, String brand, String img) {
         this.id = id;
         this.name = name;
@@ -140,6 +165,20 @@ public class ProductUnit {
         return imgrls;
     }
 
+    public String getImgStrings() {
+        String re = "";
+        for (String s : imgrls) {
+            re += s + "--";
+        }
+        int length = imgrls.size();
+
+        if (length > 1) {
+            re = re.substring(0, re.length() - 2);
+
+        }
+        return re;
+    }
+
     public String getBrand() {
         return brand;
     }
@@ -168,5 +207,9 @@ public class ProductUnit {
                 ", brand='" + brand + '\'' +
                 ", img='" + img + '\'' +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new ProductUnit().getName());
     }
 }

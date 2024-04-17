@@ -53,132 +53,16 @@
     if(currentSearch== null || currentSearch.equalsIgnoreCase("")){
         currentSearch = "";
     }
-    String user = (String) session.getAttribute("userName");
-    if(user== null || user.equalsIgnoreCase("")){
-        user = "";
-    }
+
+    String adminCurrentSearchProduct = ((String) session.getAttribute("adminCurrentSearchProduct"))==null ? "" : ((String) session.getAttribute("adminCurrentSearchProduct"));
+
+
     ArrayList<ProductUnit> pus = (ArrayList<ProductUnit>) request.getAttribute("productUnitList");
 
 %>
 <!-- ======= Header ======= -->
-<header id="header" class="header fixed-top d-flex align-items-center">
+<%@ include file="adminMenu.jsp" %>
 
-    <div class="d-flex align-items-center justify-content-between">
-        <!--        <i class="bi bi-list toggle-sidebar-btn"></i>-->
-        <div class="logo">
-            <a href="index.jsp">
-                <img src="assets/img/Logo/favicon_icon.png" alt="Logo"
-                     style="width: 40px; height: 40px; border-radius: 5px">
-            </a>
-        </div>
-
-    </div><!-- End Logo -->
-
-    <nav class="header-nav ms-auto">
-        <ul class="d-flex align-items-center">
-
-            <li class="nav-item d-block d-lg-none">
-                <a class="nav-link nav-icon search-bar-toggle " href="#">
-                    <i class="bi bi-search"></i>
-                </a>
-            </li><!-- End Search Icon-->
-            <li class="nav-item dropdown pe-3">
-
-                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="assets/img/profile/profile-img.jpg" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=user%></span>
-                </a><!-- End Profile Iamge Icon -->
-
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                    <li class="dropdown-header">
-                        <h6><%=user%></h6>
-                        <span>Web Designer</span>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="html/profile.html">
-                            <i class="bi bi-person"></i>
-                            <span>Cài đặt</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Đăng xuất</span>
-                        </a>
-                    </li>
-
-                </ul><!-- End Profile Dropdown Items -->
-            </li><!-- End Profile Nav -->
-
-        </ul>
-    </nav><!-- End Icons Navigation -->
-
-</header>
-<!-- End Header -->
-
-<!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar">
-    <ul class="sidebar-nav" id="sidebar-nav">
-        <h3 style="text-align: center">[Admin]</h3>
-        <li class="nav-item ">
-            <a class="nav-link collapsed" href="admin_dashboard.jsp">
-                <!--                <i class="bi bi-grid"></i>-->
-                <span>Thống kê doanh thu</span>
-            </a>
-        </li><!-- End Dashboard Nav -->
-        <li class="nav-item ">
-            <a class="nav-link collapsed" href="adminCustomer.jsp">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý khách hàng</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="adminEmployee.jsp">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý nhân viên</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " href="get-all-product">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý sản phẩm</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="adminOrder.jsp">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý đơn hàng</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="adminNews.jsp">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý tin tức</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="adminHomes.jsp">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý trang chủ</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="adminAboutUs.jsp">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Nhà phân phối</span>
-            </a>
-        </li>
-
-    </ul>
-</aside><!-- End Sidebar-->
 
 <main id="main" class="main">
 
@@ -198,12 +82,12 @@
     <div class="ad-content">
         <div class="ad_header" style="width: 100%">
             <div class="show-flex-row" style="width: 100%; align-items: center">
-                <form class="ad_find-container" action="searchProductDetail" method="get">
-                    <input type="text" placeholder="Nhập id hoặc tên hoặc nhóm" class="ad_find-input" name="searchProInfo"  value="<%=currentSearch%>">
+                <form class="ad_find-container" action="admin-search-product" method="get">
+                    <input type="text" placeholder="Nhập tên hoặc nhóm" class="ad_find-input" name="search" value="<%=adminCurrentSearchProduct%>">
                     <button class="ad_find-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
                 <div>
-                    <a class="ad_btn-control btn-up-pro" href="addUpdate-product?action=add&id=0">Thêm</a>
+                    <a class="ad_btn-control btn-up-pro" href="goto-add-product?status=0">Thêm sản phẩm</a>
                 </div>
 
             </div>
@@ -218,62 +102,17 @@
 <%--    <%--%>
 <%--        for(ProductSuperDetail p : psds) {--%>
 <%--    %>--%>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Kind</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Price</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><a class="btn-update-product" href=""> Update</a></td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td><a class="btn-update-product" href=""> Update</a></td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td><a class="btn-update-product" href=""> Update</a></td>
-        </tr>
-        </tbody>
-    </table>
 
     <table class="table">
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Kind</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Price</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Action</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Lĩnh vực</th>
+            <th scope="col">Thương hiệu</th>
+            <th scope="col">Đơn giá</th>
+            <th scope="col">Tồn kho</th>
+            <th scope="col">Thao tác</th>
         </tr>
         </thead>
         <tbody>
@@ -287,7 +126,7 @@
             <td><%=pus.get(i).getBrand() %></td>
             <td><%=pus.get(i).getPrice() %></td>
             <td><%=pus.get(i).getAmount() %></td>
-            <td><a class="btn-update-product" href="go-to-update-product?id=<%=pus.get(i).getId()%>">Update</a></td>
+            <td><a class="btn-update-product" href="go-to-update-product?id=<%=pus.get(i).getId()%>">Cập nhật</a></td>
         </tr>
             <%
                 }

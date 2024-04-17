@@ -25,7 +25,7 @@ public class ProductSearchControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String input = request.getParameter("Search");
-        ArrayList<Product> productArrayList = new ArrayList<>();
+//        ArrayList<Product> productArrayList = new ArrayList<>();
         ArrayList<ProductUnit> pus = new ArrayList<>();
         ArrayList<Brand> brandList = new ArrayList<>();
         ArrayList<String> countryList = new ArrayList<>();

@@ -28,11 +28,12 @@
     <link rel="stylesheet" href="./assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/addUpdate.css">
-<!--    <link rel="stylesheet" href="assets/css/adminCustomer.css">-->
 <!--    <link rel="stylesheet" href="assets/css/baseN.css">-->
-<!--    <link rel="stylesheet" href="assets/css/adminN.css">-->
-<!--    <link rel="stylesheet" href="assets/css/adminProduct.css">-->
+    <link rel="stylesheet" href="assets/css/addUpdate.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+
+
+
 </head>
 <body>
 <!--<%-->
@@ -43,214 +44,126 @@
 
 <!--%>-->
 <div class="ad-content mt10">
-    <div class="confirm-popup add-img-box">
+    <div class="modal confirm-stop">
         <div class="modal__overlay">
             <div class="modal__confirm-content" onclick="event.stopPropagation()">
                 <div class="confirm__message">
-                    <div class="input-wrap">
-                        <label for="pro-img" class="input-title">Nhập đường dẫn tới hình ảnh.</label>
-                        <input type="text" class="input-item" name="pro-img" id="pro-img">
-                    </div>
+                    <p>Bạn chắc chắn muốn dừng bán sản phẩm này?</p>
                 </div>
-                <div class="confirm__control">
-                    <div class="confirm-btn add-img-btn">Thêm</div>
-                    <div class="confirm-btn cancel-add-img-btn">Hủy</div>
+                <div class="show-flex-row">
+                    <a class="btn btn-primary confirm-btn yes-confirm">Dừng</a>
+                    <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                 </div>
             </div>
         </div>
     </div>
     <div class="ad-content-item">
-        <!--            <div class="ad_header">-->
-        <!--                <div class="ad_func-container">-->
-        <!--                    <div class="ad_func-add-btn ad_func-btn active">Thêm</div>-->
-        <!--                    <div class="ad_func-save-btn ad_func-btn">Lưu</div>-->
-        <!--                </div>-->
 
-        <!--            </div>-->
         <div class="ad_container">
+            <a href="/goto-product-admin" class="backto-AdminProduct">Quay lai trang quan li san pham</a>
             <div class="form-container">
-                <form>
+                <form action="update-product" method="get">
                     <div class="show-flex-row">
+                        <div class="grid__row img-showing">
+                            <div class="grid-col-2 mtb-5px">
+                                <img src="./assets/img/product-img/A/may-tro-thinh.jpg" alt="" class="pro-img-item">
+                            </div>
+                            <div class="grid-col-2 mtb-5px">
+                                <img src="./assets/img/product-img/A/may-tro-thinh.jpg" alt="" class="pro-img-item">
+                            </div>
+                            <div class="grid-col-2 mtb-5px">
+                                <img src="./assets/img/product-img/A/may-tro-thinh.jpg" alt="" class="pro-img-item">
+                            </div>
+                            <div class="grid-col-2 mtb-5px">
+                                <img src="./assets/img/product-img/A/may-tro-thinh.jpg" alt="" class="pro-img-item">
+                            </div>
+                            <div class="disabled-showing">
+                                <div class="disabled-showing-content">
+                                    NGƯNG BÁN
+                                </div> </div>
+                        </div>
+                        <div class="stop_reSale" >
+                            <div class="btn btn-stop-pro ">Dừng bán</div>
+                            <div class="btn btn-resale-pro active">Bán lại</div>
+
+                        </div>
+                    </div>
+                    <div class="show-flex-row">
+
                         <div class="form-group w-50">
                             <label class="w-20" for="id">ID</label>
-                            <input type="text" size="10" class="form-control w-80" id="id" aria-describedby="emailHelp" placeholder="Enter email" value="101" disabled>
+                            <input type="text" size="10" class="form-control w-80" id="id" aria-describedby="emailHelp" placeholder="Enter email" value="101" disabled name="pid">
                             <!--                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                         </div>
                         <div class="form-group w-50">
                             <label class="w-20" for="name">Name: </label>
-                            <input type="text" class="form-control w-80" id="name" aria-describedby="" placeholder="Enter name" value="May tro thinh">
+                            <input type="text" class="form-control w-80" id="name" name="pname" aria-describedby="" placeholder="Enter name" value="May tro thinh">
                             <!--                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                         </div>
                     </div>
                     <div class="show-flex-row">
                         <div class="form-group w-50">
                             <label class="w-20" for="brand">Brand</label>
-                            <input type="text" size="10" class="form-control w-80" id="brand" aria-describedby="" placeholder="Enter brand" value="Boso">
+                            <input type="text" size="10" class="form-control w-80" id="brand" name="pbrand" aria-describedby="" placeholder="Enter brand" value="Boso">
                         </div>
                         <div class="form-group w-50">
                             <label class="w-20" for="country">Country: </label>
-                            <input type="text" class="form-control w-80" id="country" aria-describedby="" placeholder="Enter country" value="Duc">
+                            <input type="text" class="form-control w-80" id="country" name="pcountry" aria-describedby="" placeholder="Enter country" value="Duc">
                         </div>
                     </div>
                     <div class="form-group w-50">
                         <label class="w-20" for="kind">Kind: </label>
-                        <input type="text" class="form-control w-80" id="kind" aria-describedby="" placeholder="Enter kind" value="A">
+                        <input type="text" class="form-control w-80" id="kind" name="pkind" paria-describedby="" placeholder="Enter kind" value="A">
                     </div>
                     <div class="show-flex-row">
                         <div class="form-group">
                             <label  for="color">Color: </label>
-                            <input type="text" size="10" class="form-control" id="color" aria-describedby="" placeholder="Enter color" value="null">
+                            <input type="text" size="10" class="form-control" id="color" name="pcolor" aria-describedby="" placeholder="Enter color" value="null">
                         </div>
                         <div class="form-group">
                             <label for="size">Size: </label>
-                            <input type="text" class="form-control" id="size" aria-describedby="" placeholder="Enter size" value="M">
+                            <input type="text" class="form-control" id="size" name="psize" aria-describedby="" placeholder="Enter size" value="M">
                         </div>
                         <div class="form-group">
                             <label for="wattage">Wattage (W): </label>
-                            <input type="text" class="form-control" id="wattage" aria-describedby="" placeholder="Enter wattage" value="10">
+                            <input type="text" class="form-control" id="wattage" name="pwattage" aria-describedby="" placeholder="Enter wattage" value="10">
                         </div>
                     </div>
                     <div class="form-group w-50">
                         <label  class="w-20" for="amount">Amount: </label>
-                        <input type="text" class="form-control w-80" id="amount" aria-describedby="" placeholder="Enter amount" value="200">
+                        <input type="text" class="form-control w-80" id="amount" name="pamount" aria-describedby="" placeholder="Enter amount" value="200">
                     </div>
                     <div class="show-flex-row">
                         <div class="form-group w-50">
                             <label  class="w-20" for="yearmade">Year made: </label>
-                            <input type="text" size="10" class="form-control w-80" id="yearmade" aria-describedby="" placeholder="Enter year made" value="2022">
+                            <input type="text" size="10" class="form-control w-80" id="yearmade" name="pyearmade"  aria-describedby="" placeholder="Enter year made" value="2022">
                         </div>
                         <div class="form-group w-50">
                             <label  class="w-20"  for="dateimport">Date import: </label>
-                            <input type="text" class="form-control w-80" id="dateimport" aria-describedby="" placeholder="Enter date import" value="20/10/2023">
+                            <input type="date" class="form-control w-80" id="dateimport" name="pdateimport"  aria-describedby="" placeholder="Enter date import" value="20/10/2023">
                         </div>
 
                     </div>
                     <div class="form-group">
                         <label class="w-20" for="img">Image url: </label>
-                        <input type="text" class="form-control" id="img" aria-describedby="" placeholder="Enter img url" value="afaidga.jpg">
+                        <input type="text" class="form-control" id="img" name="pimg" aria-describedby="" placeholder="Enter img url" value="afaidga.jpg">
                     </div>
                     <div class="form-group">
                         <label class="w-20" for="description" class="input-title">Description</label>
-                        <textarea  type="text" class="form-control" name="description" id="description" rows="6" >ayefuiogbshzdhsjkfbhgyatwevbdpf
+                        <textarea  type="text" class="form-control" name="description" name="pdescription" id="description" rows="6" >ayefuiogbshzdhsjkfbhgyatwevbdpf
                             </textarea>
                     </div>
-
-
-
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                <form action="addUpdate-product" method="get">
                     <div class="show-flex-row">
                         <div class="ad_func-container">
-                            <button class="ad_func-save-btn ad_func-btn active" type="submit">Lưu</button>
+                            <div><a class="btn btn-third" href="adminProduct.jsp">Hủy</a></div>
                         </div>
                         <div class="ad_func-container">
-                            <div><a class="ad_func-btn active" href="adminProduct.jsp">Hủy</a></div>
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="show-flex-row">
-                        <div class="input-wrap" style="display: none">
-                            <label for="pro-id" class="input-title">ID</label>
-                            <input type="text" class="input-item" name="pro-id" id="pro-id" value="<%=pu.getId()%>">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="pro-name" class="input-title">Tên sản phẩm</label>
-                            <input type="text" class="input-item" name="pro-name" id="pro-name" value="<%=pu.getName()%>">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label class="input-title">Ảnh</label>
-
-                            <i class="fa-solid fa-plus ad_btn-control btn-add-em-img"></i>
-                        </div>
-
-                    </div>
-                    <div class="input-wrap">
-                        <label for="pro-imgs" class="input-title">Đường dẫn của ảnh</label>
-                        <input type="text" class="input-item" name="pro-imgs" id="pro-imgs"  value="<%=pu.getImg()%>">
-                        <span class="input-error"></span>
-                    </div>
-                    <div class="show-flex-row">
-
-                        <div class="input-wrap">
-                            <label for="pro-country" class="input-title">Xuất xứ</label>
-                            <input type="text" class="input-item" name="pro-country" id="pro-country"  value="<%=pu.getMadeIn()%>">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="pro-brand" class="input-title">Hãng sản xuất</label>
-                            <input type="text" class="input-item" name="pro-brand" id="pro-brand"  value="<%=pu.getBrand()%>">
-                            <span class="input-error"></span>
-                        </div>
-
-                    </div>
-                    <div class="show-flex-row">
-                        <div class="input-wrap">
-                            <label for="pro-kind" class="input-title">Nhóm</label>
-                            <input type="text" class="input-item" name="pro-kind" id="pro-kind" value="<%=pu.getKind()%>">
-                            <span class="input-error"></span>
-                        </div>
-<%--                        <div class="input-wrap">--%>
-<%--                            <label for="pro-area" class="input-title">Lĩnh vực</label>--%>
-<%--                            <input type="text" class="input-item" name="pro-area" id="pro-area" value="<%=pu.getArea()%>">--%>
-<%--                            <span class="input-error"></span>--%>
-<%--                        </div>--%>
-
-                    </div>
-                    <div class="input-wrap">
-                        <label for="pro-type" class="input-title">Phân loại</label>
-                        <input type="text" class="input-item" name="pro-type" id="pro-type" value="<%=pu.getPhanloai()%>">
-                        <span class="input-error"></span>
-                    </div>
-                    <div class="show-flex-row">
-                        <div class="input-wrap">
-                            <label for="pro-price" class="input-title">Giá (VND)</label>
-                            <input type="number" class="input-item" name="pro-price" id="pro-price"  value="<%=pu.getPrice()%>">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="pro-amount" class="input-title">Số lượng hiện có</label>
-                            <input type="number" class="input-item" name="pro-amount" id="pro-amount" value="<%=pu.getAmount()%>">
-                            <span class="input-error"></span>
+                            <button class="btn btn-primary" type="submit">Lưu</button>
                         </div>
                     </div>
-
-
-
-                    <div class="show-flex-row">
-                        <div class="input-wrap">
-                            <label for="pro-yearMade" class="input-title">Năm sản xuất</label>
-                            <input type="number" class="input-item" name="pro-yearMade" min="1" max="10000000" id="pro-yearMade" value="<%=pu.getYearMade()%>">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="pro-dateImport" class="input-title">Ngày nhập </label>
-                            <input type="date" class="input-item" name="pro-dateImport" id="pro-dateImport" value="<%=pu.getDateImport()%>">
-                            <span class="input-error"></span>
-                        </div>
-
-                    </div>
-                    <div class="input-wrap">
-                        <label for="pro-des" class="input-title">Mô tả</label>
-                        <textarea  type="text" class="input-item" name="pro-des" id="pro-des" rows="6" ><%=pu.getDes()%>
-                            </textarea>
-
-                    </div>
+<!--                    <button type="submit" class="btn btn-primary">Submit</button>-->
                 </form>
+
             </div>
         </div>
     </div>

@@ -100,14 +100,14 @@
 }
 
 .btn-update-product {
-    background-color: var(--primary-color-ad);
-    color: white;
     text-decoration: none;
     background-color: #f6651f;
     padding: 4px;
     border-radius: 4px;
     border: 1px solid #f6651f;
     color: white;
+    display: block;
+    min-width: max-content;
 
 }
 

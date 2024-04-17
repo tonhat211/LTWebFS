@@ -21,8 +21,12 @@ public class Image {
 		super();
 		this.parentID = parentID;
 	}
-	
-	
+
+	public Image(String url, int parentID) {
+		this.url = url;
+		this.parentID = parentID;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(parentID);

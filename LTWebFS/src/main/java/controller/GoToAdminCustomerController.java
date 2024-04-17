@@ -1,7 +1,9 @@
 package controller;
 
-import database.*;
-import model.*;
+import database.CustomerDAO;
+import database.ProductUnitDAO;
+import model.Customer;
+import model.ProductUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,13 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/go-to-update-product")
-public class GoToUpdateProductController extends HttpServlet {
-
+@WebServlet("/goto-customer-admin")
+public class GoToAdminCustomerController extends HttpServlet {
     public void destroy() {
     }
 
@@ -23,14 +23,12 @@ public class GoToUpdateProductController extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+//        HttpSession session  =request.getSession();
+        ArrayList<Customer> cuss = CustomerDAO.getInstance().selectAll();
 
-        String idString = (String) request.getParameter("id");
-//        String idString = "1015";
-        int id = Integer.parseInt(idString);
-        ProductUnit pu = ProductUnitDAO.getInstance().selectOneByID(id);
-        request.setAttribute("productUnit", pu);
+        request.setAttribute("customerList", cuss);
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminCustomer.jsp");
         rd.forward(request, response);
 
     }

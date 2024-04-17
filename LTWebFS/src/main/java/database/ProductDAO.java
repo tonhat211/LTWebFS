@@ -28,14 +28,15 @@ public class ProductDAO implements IDAO<Product>{
 		int re=0;
 		try {
 			Connection conn = JDBCUtil.getConnection();
-			String sql = "insert into products (id, name, brandID, areaID, kind, description) values (?,?,?,?,?,?);";
+			String sql = "insert into products (id, name, brandID, areaID, kind, amount, description) values (?,?,?,?,?,?,?);";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, t.getId());
 			pst.setString(2, t.getName());
 			pst.setInt(3, t.getBrandID());
 			pst.setInt(4, t.getAreaID());
 			pst.setString(5, t.getKind());
-			pst.setString(6, t.getDescription());
+			pst.setInt(6, t.getAmount());
+			pst.setString(7, t.getDescription());
 			
 			re = pst.executeUpdate();
 			System.out.println(re + " dong da duoc them");

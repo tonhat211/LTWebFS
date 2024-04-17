@@ -1,7 +1,7 @@
 package controller;
 
-import database.*;
-import model.*;
+import database.ProductUnitDAO;
+import model.ProductUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,9 +13,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/go-to-update-product")
-public class GoToUpdateProductController extends HttpServlet {
-
+@WebServlet("/goto-product-admin")
+public class GoToProductAdminCotroller extends HttpServlet {
     public void destroy() {
     }
 
@@ -23,14 +22,12 @@ public class GoToUpdateProductController extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+//        HttpSession session  =request.getSession();
+        ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectAll();
 
-        String idString = (String) request.getParameter("id");
-//        String idString = "1015";
-        int id = Integer.parseInt(idString);
-        ProductUnit pu = ProductUnitDAO.getInstance().selectOneByID(id);
-        request.setAttribute("productUnit", pu);
+        request.setAttribute("productUnitList", pus);
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminProduct.jsp");
         rd.forward(request, response);
 
     }

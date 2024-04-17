@@ -25,28 +25,38 @@
 .ad_find-container {
     display: flex;
     align-items: center;
+    border: 1px solid #4154F1;
+    border-radius: 20px;
+    padding: 2px 6px;
+    width: 32%;
 }
 
 .ad_find-input {
-    border: 1px solid var(--primary-color-ad);
+
     border-radius: 14px;
     padding: 4px 10px;
     outline: none;
     margin: 0 7px;
+    border: none;
+    /* border-radius: 14px; */
+    width: 100%;
+    display: block;
 }
 
-.ad_find-input:focus {
-    box-shadow: 0 1px 5px var(--primary-color-ad);
+.ad_find-container:focus {
+    box-shadow: 0 1px 5px #4154F1;
 }
 
 .ad_find-btn {
     margin: 0 7px;
-    font-size: 10px;
-    padding: 4px 7px;
     border-radius: 10px;
-    background-color: var(--primary-color-ad);
-    color: var(--white-color);
+    color: #4154F1;
+    padding: 4px;
+    font-size: 15px;
     border: none;
+    background-color: white;
+
+
 }
 
 .ad_find-btn:hover {
@@ -136,7 +146,7 @@
 .ad_btn-control {
     padding: 4px 7px;
     border-radius: 4px;
-    background-color: var(--primary-color-ad);
+    background-color: #4154F1;
     font-size: 14px;
     color: var(--white-color);
 }
@@ -148,6 +158,11 @@
 
 .ad_func-save-btn {
     display: none;
+}
+
+.table {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .ad_func-save-btn.active {

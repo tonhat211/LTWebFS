@@ -32,6 +32,16 @@ public class Unit{
 		this.available = available;
 	}
 
+	public Unit(String color, String size, double wattage, double price, int amount, int yearMade, Datee dateImport) {
+		this.color = color;
+		this.size = size;
+		this.wattage = wattage;
+		this.price = price;
+		this.amount = amount;
+		this.yearMade = yearMade;
+		this.dateImport = dateImport;
+	}
+
 	public Unit(int imei, int productID, String color, String size, double wattage, double price, int amount, int yearMade,
 				Datee dateImport, int available) {
 		super();
