@@ -15,15 +15,17 @@ public class BrandDAO implements IDAO<Brand>{
 	@Override
 	public int insert(Brand t) {
 		// TODO Auto-generated method stub
+		int idin = selectTheMaxID()  + 1;
 		int re=0;
 		try {
 			Connection conn = JDBCUtil.getConnection();
 
-			String sql = "insert into brands (id,  name, country) values (?,?,?);";
+			String sql = "insert into brands (id,  name, country,available) values (?,?,?,?);";
 			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setInt(1,t.getId());
+			pst.setInt(1, idin);
 			pst.setString(2, t.getName());
 			pst.setString(3, t.getCountry());
+			pst.setInt(4,1);
 
 //			pst.setString(1, "nhat");
 		
@@ -31,7 +33,7 @@ public class BrandDAO implements IDAO<Brand>{
 
 			System.out.println(re + " dong da duoc them vao");
 			JDBCUtil.closeConnection(conn);
-			return re;
+			return idin;
 
 		} catch (SQLException e) {
             throw new RuntimeException(e);
@@ -177,6 +179,50 @@ public class BrandDAO implements IDAO<Brand>{
 				
 			}
 			return brands;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	public int selectByConditionn(Brand t) {
+		// TODO Auto-generated method stub
+
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select id from brands where name = ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1,t.getName());
+			ResultSet rs  = pst.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				return id;
+
+			}
+			return 0;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	public boolean checkBrand(Brand t) {
+		// TODO Auto-generated method stub
+		Brand b = new Brand();
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "select * from brands where name = ? and country = ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, t.getName());
+			pst.setString(2, t.getCountry());
+			ResultSet rs  = pst.executeQuery();
+			while(rs.next()) {
+				return true;
+
+			}
+			return false;
 		} catch (SQLException e) {
 			// TODO: handle exception
 			throw new RuntimeException(e);
@@ -349,6 +395,8 @@ public class BrandDAO implements IDAO<Brand>{
 //			int newID = Integer.parseInt("505" + i);
 //			BrandDAO.getInstance().updateID(i, newID);
 //		}
+
+		System.out.println(BrandDAO.getInstance().checkBrand(new Brand(1,"Bosos", "Đứcs",1)));
 		
 	}
 

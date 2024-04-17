@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Datee {
 	private int year;
@@ -12,6 +13,29 @@ public class Datee {
 		this.month = month;
 		this.day = day;
 	}
+
+	public String getDateInMonthDayYear(){
+		String  monthh="", dayy="";
+		if(this.month<10){
+			monthh = "0" + this.month;
+		} else monthh = month +"";
+		if(this.day<10){
+			dayy = "0"+ this.day;
+		}  else dayy = day +"";
+		return this.year  +"-" + monthh + "-" +dayy;
+	}
+
+	public String getDateInMonthDayYearSql(){
+		String  monthh="", dayy="";
+		if(this.month<10){
+			monthh = "0" + this.month;
+		} else monthh = month +"";
+		if(this.day<10){
+			dayy = "0"+ this.day;
+		}  else dayy = day +"";
+		return this.year  +"-" + monthh + "-" +dayy;
+	}
+//	'16-2022-4'
 
 	public  String getDateInString(){
 		return this.year  +"-" + this.month + "-" +this.day;
@@ -44,5 +68,21 @@ public class Datee {
 	}
 	public String toString() {
 		return this.year + "/" + this.month + "/" + this.day;
+	}
+
+	public static Datee getToday(){
+		LocalDate today = LocalDate.now();
+		return new Datee(today.getYear(),today.getMonthValue(),today.getDayOfMonth());
+	}
+
+
+	public static void main(String[] args) {
+//		LocalDate today = LocalDate.now();
+//		System.out.println(today.getYear());
+//		System.out.println(today.getMonthValue());
+//		System.out.println(today.getDayOfMonth());
+
+		Datee d = Datee.getToday();
+		System.out.println(d.getDateInMonthDayYearSql());
 	}
 }

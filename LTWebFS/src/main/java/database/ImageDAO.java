@@ -24,12 +24,12 @@ public class ImageDAO implements IDAO<Image>{
 		try {
 			Connection conn = JDBCUtil.getConnection();
 
-			String sql = "insert into images values (?,?,?);";
+			String sql = "insert into images (url, parentID) values (?,?);";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			
-			pst.setInt(1, t.getId());
-			pst.setString(2, t.getUrl());
-			pst.setInt(3, t.getParentID());
+//			pst.setInt(1, t.getId());
+			pst.setString(1, t.getUrl());
+			pst.setInt(2, t.getParentID());
 
 		
 			re = pst.executeUpdate();
@@ -202,9 +202,38 @@ public class ImageDAO implements IDAO<Image>{
 		System.out.println(re + " dong da duoc them vao");
 		
 	}
+
+	public int deleteImageByParent(int idin){
+		int re=-1;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "delete from images where parentID = ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1,idin);
+
+			re = pst.executeUpdate();
+
+			System.out.println(re + " dong da duoc xoa");
+			JDBCUtil.closeConnection(conn);
+			return re;
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+	}
+
+	public int updateImage(Product p, ArrayList<Image> imgs){
+		deleteImageByParent(p.getId());
+		int count=0;
+		for(Image i : imgs) {
+			insert(i);
+			count++;
+		}
+		return count;
+	}
 	
 	public static void main(String[] args) {
-
+		System.out.println(ImageDAO.getInstance().insert(new Image("fehaoif",134)));
 	}
 	
 

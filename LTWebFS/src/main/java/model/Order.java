@@ -5,12 +5,12 @@ import java.sql.Time;
 
 public class Order {
 	private int id;
-	private Date dateSet;
+	private Datee dateSet;
 	private Time timeSet;
-	private int totalPrice;
+	private float totalPrice;
 	private int cusID;
 	private int isCompleted;
-	public Order(int id, Date dateSet, Time timeSet, int totalPrice, int cusID, int isCompleted) {
+	public Order(int id, Datee dateSet, Time timeSet, float totalPrice, int cusID, int isCompleted) {
 		super();
 		this.id = id;
 		this.dateSet = dateSet;
@@ -19,6 +19,25 @@ public class Order {
 		this.cusID = cusID;
 		this.isCompleted = isCompleted;
 	}
+
+	public Order(int id, Datee dateSet, int totalPrice) {
+		this.id = id;
+		this.dateSet = dateSet;
+		this.totalPrice = totalPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "Order{" +
+				"id=" + id +
+				", dateSet=" + dateSet +
+				", timeSet=" + timeSet +
+				", totalPrice=" + totalPrice +
+				", cusID=" + cusID +
+				", isCompleted=" + isCompleted +
+				'}';
+	}
+
 	public Order() {
 		super();
 	}
@@ -28,10 +47,10 @@ public class Order {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getDateSet() {
+	public Datee getDateSet() {
 		return dateSet;
 	}
-	public void setDateSet(Date dateSet) {
+	public void setDateSet(Datee dateSet) {
 		this.dateSet = dateSet;
 	}
 	public Time getTimeSet() {
@@ -40,10 +59,10 @@ public class Order {
 	public void setTimeSet(Time timeSet) {
 		this.timeSet = timeSet;
 	}
-	public int getTotalPrice() {
+	public float getTotalPrice() {
 		return totalPrice;
 	}
-	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 	public int getCusID() {

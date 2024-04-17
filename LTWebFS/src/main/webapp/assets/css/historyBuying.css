@@ -1,0 +1,19 @@
+.customer-info {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(246, 249, 255);
+    border-radius: 10px;
+    padding: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(187, 215, 254);
+    border-image: initial;
+}
+
+.customer-info th,
+.customer-info  td {
+    background-color: rgb(246, 249, 255);
+    padding: 6px;
+}
+
+

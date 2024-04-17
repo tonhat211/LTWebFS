@@ -36,6 +36,14 @@ public class Product {
 	}
 
 
+	public Product(int id, String name, int brandID, String kind, int amount, String description) {
+		this.id = id;
+		this.name = name;
+		this.brandID = brandID;
+		this.kind = kind;
+		this.amount = amount;
+		this.description = description;
+	}
 
 	public Product(String name, int brandID, int areaID, String kind, String description) {
 		super();

@@ -1,8 +1,8 @@
 package model;
 
-import java.sql.Date;
+import java.util.ArrayList;
 
-public class User {
+public class Customer {
     private int id;
     private String name;
     private String email;
@@ -16,73 +16,26 @@ public class User {
     private Datee dateOut;
     private int available;
 
-    public User(int id) {
-        this.id = id;
-        this.name = "";
-        this.email = "";
-        this.pwd = "1234";
-        this.level = 0;
-        this.phone = "";
-        this.address = "";
-        this.branchID = 0;
-        this.info = "";
-        this.dateIn = Datee.getToday();
-        this.dateOut = null;
-        this.available = 0;
+    private ArrayList<Order> olsit = new ArrayList<>();
 
+    private double totalSpend;
+
+    public Customer(User u, double totalSpend) {
+        this.id = u.getId();
+        this.name = u.getName();
+        this.email = u.getEmail();
+        this.pwd = u.getPwd();
+        this.level = u.getLevel();
+        this.phone = u.getPhone();
+        this.address = u.getAddress();
+        this.info = u.getInfo();
+        this.dateIn = u.getDateIn();
+        this.available = u.getAvailable();
+//        this.olsit = new ArrayList<>();
+        this.totalSpend = totalSpend;
     }
 
-    public User() {
-        super();
-    }
-
-    public User(int id, String name, String email, String pwd, int level, String phone, String address, int branchID,
-                String info, Datee dateIn, Datee dateOut, int available) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.pwd = pwd;
-        this.level = level;
-        this.phone = phone;
-        this.address = address;
-        this.branchID = branchID;
-        this.info = info;
-        this.dateIn = dateIn;
-        this.dateOut = dateOut;
-        this.available = available;
-    }
-
-    public User(String email, String pwd) {
-        this.email = email;
-        this.pwd = pwd;
-    }
-
-    public User(int id, String name, String email, String phone, String info, Datee dateIn) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.info = info;
-        this.dateIn = dateIn;
-    }
-
-
-    public User(String name,String email, String pwd, int level) {
-        this.name = name;
-        this.email = email;
-        this.pwd = pwd;
-        this.level = level;
-    }
-
-    public User(String name, String email, String pwd, int level, String phone, String address, String info) {
-        this.name = name;
-        this.email = email;
-        this.pwd = pwd;
-        this.level = level;
-        this.phone = phone;
-        this.address = address;
-        this.info = info;
+    public Customer() {
     }
 
     public int getId() {
@@ -181,9 +134,25 @@ public class User {
         this.available = available;
     }
 
+    public ArrayList<Order> getOlsit() {
+        return olsit;
+    }
+
+    public void setOlsit(ArrayList<Order> olsit) {
+        this.olsit = olsit;
+    }
+
+    public double getTotalSpend() {
+        return totalSpend;
+    }
+
+    public void setTotalSpend(double totalSpend) {
+        this.totalSpend = totalSpend;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
+        return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
@@ -196,15 +165,12 @@ public class User {
                 ", dateIn=" + dateIn +
                 ", dateOut=" + dateOut +
                 ", available=" + available +
-                '}';
+                ", olsit=" + olsit +
+                ", totalSpend=" + totalSpend +
+                "}\n";
     }
 
     public static void main(String[] args) {
-        User u = new User();
-        String in = u.getInfo();
-        if(in != null) {
-            System.out.println("la null");
-        } else System.out.println("ko la null");
-//        System.out.println(u.getInfo().split("="));
+
     }
 }

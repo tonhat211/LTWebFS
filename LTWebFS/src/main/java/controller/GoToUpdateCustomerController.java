@@ -1,7 +1,9 @@
 package controller;
 
-import database.*;
-import model.*;
+import database.ProductUnitDAO;
+import database.UserDAO;
+import model.ProductUnit;
+import model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,12 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 
-@WebServlet("/go-to-update-product")
-public class GoToUpdateProductController extends HttpServlet {
+@WebServlet("/goto-update-customer")
+public class GoToUpdateCustomerController extends HttpServlet {
 
     public void destroy() {
     }
@@ -27,10 +27,10 @@ public class GoToUpdateProductController extends HttpServlet {
         String idString = (String) request.getParameter("id");
 //        String idString = "1015";
         int id = Integer.parseInt(idString);
-        ProductUnit pu = ProductUnitDAO.getInstance().selectOneByID(id);
-        request.setAttribute("productUnit", pu);
+        User u = UserDAO.getInstance().selectById(id);
+        request.setAttribute("customer", u);
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateCustomer.jsp");
         rd.forward(request, response);
 
     }

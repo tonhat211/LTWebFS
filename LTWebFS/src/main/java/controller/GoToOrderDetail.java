@@ -1,7 +1,11 @@
 package controller;
 
-import database.*;
-import model.*;
+import database.CustomerDAO;
+import database.DeOrderDAO;
+import database.OrderDAO;
+import model.Customer;
+import model.DeOrder;
+import model.Order;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,12 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/go-to-update-product")
-public class GoToUpdateProductController extends HttpServlet {
+@WebServlet("/goto-order-detail")
+public class GoToOrderDetail extends HttpServlet {
 
     public void destroy() {
     }
@@ -24,13 +27,16 @@ public class GoToUpdateProductController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String idString = (String) request.getParameter("id");
-//        String idString = "1015";
-        int id = Integer.parseInt(idString);
-        ProductUnit pu = ProductUnitDAO.getInstance().selectOneByID(id);
-        request.setAttribute("productUnit", pu);
+        int ordID = Integer.parseInt(request.getParameter("ordID"));
+        ArrayList<DeOrder> dos = DeOrderDAO.getInstance().selectByOID(ordID);
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp");
+        Order o = OrderDAO.getInstance().selectById(ordID);
+
+
+        request.setAttribute("order", o);
+        request.setAttribute("dos",dos);
+
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/orderDetail.jsp");
         rd.forward(request, response);
 
     }

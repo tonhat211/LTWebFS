@@ -43,25 +43,26 @@ public class UnitDAO implements IDAO<Unit>{
 			pst.setInt(7, t.getAmount());
 			pst.setInt(8, t.getYearMade());
 	        // Chuỗi đại diện cho ngày
-	        String dateString = t.getDateImport().toString();
+	        String dateString = t.getDateImport().getDateInMonthDayYearSql();
+			pst.setString(9, dateString);
 
 	        // Định dạng của chuỗi ngày
-	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-	        try {
-	            // Phân tích chuỗi ngày thành đối tượng Date
-	            java.util.Date utilDate = dateFormat.parse(dateString);
-
-	            // Lấy giá trị thời gian từ đối tượng Date
-	            long timeInMillis = utilDate.getTime();
-
-	            // Tạo đối tượng java.sql.Date từ giá trị thời gian
-	            java.sql.Date sqlDate = new java.sql.Date(timeInMillis);
-	            pst.setDate(9, sqlDate);
-	        }catch (Exception e) {
-				// TODO: handle exception
-	        	e.printStackTrace();
-			}
+//	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//
+//	        try {
+//	            // Phân tích chuỗi ngày thành đối tượng Date
+//	            java.util.Date utilDate = dateFormat.parse(dateString);
+//
+//	            // Lấy giá trị thời gian từ đối tượng Date
+//	            long timeInMillis = utilDate.getTime();
+//
+//	            // Tạo đối tượng java.sql.Date từ giá trị thời gian
+//	            java.sql.Date sqlDate = new java.sql.Date(timeInMillis);
+//	            pst.setDate(9, sqlDate);
+//	        }catch (Exception e) {
+//				// TODO: handle exception
+//	        	e.printStackTrace();
+//			}
 
 			
 			pst.setInt(10, t.getAvailable());
