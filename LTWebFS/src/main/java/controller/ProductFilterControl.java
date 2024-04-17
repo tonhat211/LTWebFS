@@ -1,4 +1,4 @@
-//package controller;
+package controller;//package controller;
 //
 //import model.Brand;
 //import model.Product;
