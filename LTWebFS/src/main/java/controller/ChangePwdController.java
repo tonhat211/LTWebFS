@@ -28,7 +28,10 @@ public class ChangePwdController extends HttpServlet {
         String currentPwd = request.getParameter("currentPwd");
         String newPwd = request.getParameter("newPwd");
         String renewPwd = request.getParameter("renewPwd");
-
+        String object = request.getParameter("object");
+        if(object==null) {
+            object= "customer";
+        }
         currentPwd = User.encodePwd(currentPwd);
         User u2 = UserDAO.getInstance().selectByEmailAndPwd(u.getEmail(),currentPwd);
        if(u2!=null) {
@@ -37,9 +40,15 @@ public class ChangePwdController extends HttpServlet {
                    newPwd = User.encodePwd(newPwd);
                    UserDAO.getInstance().updatePassword(u.getId(),newPwd);
                    request.setAttribute("status", "changePwdSuccessful");
-                   request.setAttribute("id",u.getId());
-                   RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-update-customer-info");
-                   rd.forward(request, response);
+//                   request.setAttribute("id",u.getId());
+                   if(object.equalsIgnoreCase("customer")){
+                       RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-update-customer-info");
+                       rd.forward(request, response);
+                   } else if(object.equalsIgnoreCase("employee")){
+                       RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-update-employee-info");
+                       rd.forward(request, response);
+                   }
+
                } else {
                    request.setAttribute("status", "notTheSamePwd");
 //

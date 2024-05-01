@@ -85,7 +85,7 @@
 
                     </div>
                     <div class="stop_reSale" style="display: flex; justify-content: right">
-                        <a class="btn btn-change-pwd" style="color: #0d6efd; text-decoration: underline" href="goto-changePwd">Đổi mật khẩu</a>
+                        <a class="btn btn-change-pwd" style="color: #0d6efd; text-decoration: underline" href="goto-changePwd?object=customer">Đổi mật khẩu</a>
                     </div>
                     <div class="form-group w-50" style="display:none;">
                         <label class="w-20" for="id">ID</label>

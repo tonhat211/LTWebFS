@@ -82,18 +82,20 @@ public class AddUpdateEmployeeControl extends HttpServlet {
                     String address = request.getParameter("address");
                     String imgurl = request.getParameter("imgurl");
 
-                    String employee = request.getParameter("employee");
+                    String dashboard = request.getParameter("dashboard");
                     String customer = request.getParameter("customer");
+                    String employee = request.getParameter("employee");
                     String product = request.getParameter("product");
                     String order = request.getParameter("order");
-                    String dashboard = request.getParameter("dashboard");
+
 
                     ArrayList<String> roles = new ArrayList<>();
-                    roles.add(employee);
+                    roles.add(dashboard);
                     roles.add(customer);
+                    roles.add(employee);
                     roles.add(product);
                     roles.add(order);
-                    roles.add(dashboard);
+
                     String role="";
                     for (String s : roles) {
                         if(s!=null) {

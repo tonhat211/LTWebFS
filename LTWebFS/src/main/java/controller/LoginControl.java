@@ -1,8 +1,10 @@
 package controller;
 
 import database.DecartDAO;
+import database.EmployeeDAO;
 import database.UserDAO;
 import database.VerifyCodeDAO;
+import model.Employee;
 import model.JavaMail.EmailService;
 import model.JavaMail.IJavaMail;
 import model.User;
@@ -117,9 +119,45 @@ public class LoginControl extends HttpServlet {
                     session.setAttribute("userloging",u);
 
                     if(u.getLevel() > 0) {
+                        Employee e = EmployeeDAO.getInstance().selectById(u.getId());
+                        String roles = e.getRole();
+                        String url = "/goto-dashboard-admin";
+                        String currentMenu = "dashboard";
+                        if(roles!=null) {
+                            String firstRole = roles.split("=")[0];
+                            switch (firstRole) {
+                                case "employee" :{
+                                   url = "/goto-employee-admin";
+                                   currentMenu = "employee";
+                                   break;
+                                }
+                                case "customer" :{
+                                   url = "/goto-customer-admin";
+                                   currentMenu = "customer";
+                                   break;
+                                }
+                                case "dashboard" :{
+                                   url = "/goto-dashboard-admin";
+                                   currentMenu = "dashboard";
+                                   break;
+                                }
+                                case "product" :{
+                                   url = "/goto-product-admin";
+                                   currentMenu = "product";
+                                   break;
+                                }
+                                case "order" :{
+                                   url = "/goto-product-admin";
+                                   currentMenu = "product";
+                                   break;
+                                }
+                            }
+                        }
 
 
-                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-dashboard-admin");
+                        session.setAttribute("adminloging",e);
+                        session.setAttribute("currentAdminMenu", currentMenu);
+                        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
                         rd.forward(request, response);
                     } else {
                         RequestDispatcher rd = getServletContext().getRequestDispatcher("/menucontrol?menu=product&kind=A");
@@ -147,4 +185,6 @@ public class LoginControl extends HttpServlet {
             rd.forward(request, response);
         }
     }
+
+
 }

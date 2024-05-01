@@ -29,7 +29,8 @@ public class GoToChangePwd extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession();
-
+        String object = request.getParameter("object");
+        request.setAttribute("object",object);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/changePwd.jsp");
         rd.forward(request, response);
 

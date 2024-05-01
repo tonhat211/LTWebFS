@@ -1,5 +1,8 @@
 <%@ page import="database.UserDAO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="model.User" %>
+<%@ page import="database.EmployeeDAO" %>
+<%@ page import="model.Employee" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -39,7 +42,11 @@
 </head>
 <body>
 <header id="header" class="header fixed-top d-flex align-items-center">
-    <% String currentUser = (String) session.getAttribute("currentUser")!= null ? (String) session.getAttribute("currentUser") : "";
+    <%
+        Employee e = (Employee) session.getAttribute("adminloging");
+    if(e== null) {
+        e= new Employee();
+    }
 
     %>
 
@@ -65,14 +72,13 @@
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="assets/img/profile/profile-img.jpg" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                    <img src="assets/img/employee/<%=e.getImgurl()%>" alt="Profile" class="rounded-circle">
+                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=e.getName()%></span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>Kevin Anderson</h6>
-                        <span>Web Designer</span>
+                        <h6><%=e.getName()%></h6>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
@@ -81,7 +87,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="html/profile.html">
                             <i class="bi bi-person"></i>
-                            <span>Cài đặt</span>
+                            <span>Cập nhật thông tin</span>
                         </a>
                     </li>
                     <li>
