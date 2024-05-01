@@ -7,6 +7,13 @@ public class DeOrder {
 	private float priceUnit;
 	private int qty;
 
+	public DeOrder(int ordID, int proID, float priceUnit, int qty) {
+		this.ordID = ordID;
+		this.proID = proID;
+		this.priceUnit = priceUnit;
+		this.qty = qty;
+	}
+
 	public DeOrder() {
 	}
 

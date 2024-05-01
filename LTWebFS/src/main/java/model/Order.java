@@ -9,6 +9,8 @@ public class Order {
 	private Time timeSet;
 	private float totalPrice;
 	private int cusID;
+
+	private float deliveryFee;
 	private int isCompleted;
 	public Order(int id, Datee dateSet, Time timeSet, float totalPrice, int cusID, int isCompleted) {
 		super();
@@ -18,6 +20,22 @@ public class Order {
 		this.totalPrice = totalPrice;
 		this.cusID = cusID;
 		this.isCompleted = isCompleted;
+	}
+
+	public Order(int id, float totalPrice, int cusID, float deliveryFee,int isCompleted) {
+		this.id = id;
+		this.totalPrice = totalPrice;
+		this.cusID = cusID;
+		this.deliveryFee = deliveryFee;
+		this.isCompleted = isCompleted;
+	}
+
+	public float getDeliveryFee() {
+		return deliveryFee;
+	}
+
+	public void setDeliveryFee(float deliveryFee) {
+		this.deliveryFee = deliveryFee;
 	}
 
 	public Order(int id, Datee dateSet, int totalPrice) {

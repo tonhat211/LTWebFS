@@ -1,10 +1,10 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+const p$ = document.querySelector.bind(document);
+const p$$ = document.querySelectorAll.bind(document);
 
-const showSliders = $$(".prd__slidebar-indicator-item");
-const sliders = $$(".prd__sliderbar-item");
-const slideLeft = $(".move-left");
-const slideRight = $(".move-right");
+const showSliders = p$$(".prd__slidebar-indicator-item");
+const sliders = p$$(".prd__sliderbar-item");
+const slideLeft = p$(".move-left");
+const slideRight = p$(".move-right");
 
 
 slideLeft.onclick = function () {
@@ -82,11 +82,11 @@ function minusQty() {
     const qty = document.querySelector('.product-qty-input');
     let num = parseInt(qty.value);
     num--;
-    if(num>=0) {
+    if(num>=1) {
         qty.value = num;
     }
     else {
-        qty.value = 0;
+        qty.value = 1;
     }
 }
 

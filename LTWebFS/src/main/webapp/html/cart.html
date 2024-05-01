@@ -78,6 +78,42 @@
     </div>
     <div class="clearfix"></div>
 </div>
+<script>
+    $(document).ready(function() {
+        $(".increaseBtn").click(function() {
+            var cartId = $(this).siblings(".idcart").val();
+            var productId = $(this).siblings(".idproduct").val(); // Lấy ID sản phẩm
+            var quantityInput = $(this).siblings(".product-qty-input.qty");
+            var currentQuantity = parseInt(quantityInput.val());
+            quantityInput.val(currentQuantity + 1); // Tăng số lượng lên 1
+            updateQuantity(cartId, productId, quantityInput.val()); // Gọi hàm cập nhật số lượng
+        });
+
+        $(".decreaseBtn").click(function() {
+            var cartId = $(this).siblings(".idcart").val();
+            var productId = $(this).siblings(".idproduct").val(); // Lấy ID sản phẩm
+            var quantityInput = $(this).siblings(".product-qty-input.qty");
+            var currentQuantity = parseInt(quantityInput.val());
+            if (currentQuantity > 1) {
+                quantityInput.val(currentQuantity - 1); // Giảm số lượng đi 1
+                updateQuantity(cartId, productId, quantityInput.val()); // Gọi hàm cập nhật số lượng
+            }
+        });
+
+        // Hàm cập nhật số lượng
+        function updateQuantity(cartId, productId, quantity) {
+            $.ajax({
+                url: "update-cart", // Đường dẫn đến Servlet
+                method: "POST",
+                data: { cartId:cartId, productId: productId, quantity: quantity },
+                success: function(data) {
+                    console.log("Số lượng đã được cập nhật thành công!"); // Log thông báo thành công
+                }
+            });
+        }
+    });
+
+</script>
 <script src="../assets/js/jquery.js"></script>
 <script src="../assets/js/cart.js"></script>
 </body>

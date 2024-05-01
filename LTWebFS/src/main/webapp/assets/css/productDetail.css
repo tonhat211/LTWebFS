@@ -116,6 +116,8 @@
     background-color: var(--primary-color);
     text-align: center;
     border-radius: 4px;
+    border: none;
+    display: block;
 }
 
 .add-to-cart-btn p {

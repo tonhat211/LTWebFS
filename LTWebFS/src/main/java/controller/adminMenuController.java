@@ -48,7 +48,7 @@ public class adminMenuController extends HttpServlet {
                 currentMenu = "employee";
 //                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
-                rd = getServletContext().getRequestDispatcher("/adminEmployee.jsp");
+                rd = getServletContext().getRequestDispatcher("/goto-employee-admin");
                 rd.forward(request, response);
                 break;
             }

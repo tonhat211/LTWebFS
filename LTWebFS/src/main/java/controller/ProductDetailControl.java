@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/productDetail")
+//@WebServlet("/productDetail")
 public class ProductDetailControl extends HttpServlet {
 
     public void destroy() {

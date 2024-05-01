@@ -56,6 +56,7 @@ public class AddUpdateCustomerControl extends HttpServlet {
                     String name = request.getParameter("name");
                     String email = request.getParameter("email");
                     String phone = request.getParameter("phone");
+                    String address = request.getParameter("address");
                     String sex = request.getParameter("sex");
                     String birthday = request.getParameter("birthday");
                     String info = sex + "=" + birthday;
@@ -68,7 +69,7 @@ public class AddUpdateCustomerControl extends HttpServlet {
 //                    Datee dateimportDatee = new Datee(01,01,2022);
 
 
-                    User u = new User(idin,name,email,phone,info,dateinDatee);
+                    User u = new User(idin,name,email,phone,address,info,dateinDatee);
 
                     UserDAO.getInstance().updateCustomer(u);
 
@@ -94,7 +95,7 @@ public class AddUpdateCustomerControl extends HttpServlet {
                             Integer.parseInt(dateInTokens[1]),
                             Integer.parseInt(dateInTokens[2]));
 
-                    User u = new User(idin,name,email,"1234",0,phone,address,0,info,dateinDatee,null,0);
+                    User u = new User(idin,name,email,"1234",0,phone,address,0,info,dateinDatee,null,0,null);
                     UserDAO.getInstance().insert(u);
 
                     int status= Integer.parseInt(request.getParameter("status"));

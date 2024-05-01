@@ -27,8 +27,11 @@ public class GoToUpdateProductController extends HttpServlet {
         String idString = (String) request.getParameter("id");
 //        String idString = "1015";
         int id = Integer.parseInt(idString);
+        ArrayList<Brand> brandList = BrandDAO.getInstance().selectAll();
         ProductUnit pu = ProductUnitDAO.getInstance().selectOneByID(id);
         request.setAttribute("productUnit", pu);
+        request.setAttribute("brandList", brandList);
+
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp");
         rd.forward(request, response);

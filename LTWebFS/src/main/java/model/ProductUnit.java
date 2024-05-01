@@ -87,7 +87,8 @@ public class ProductUnit {
     }
 
     public String getImg() {
-        return img;
+
+        return this.img;
     }
 
     public ProductUnit() {

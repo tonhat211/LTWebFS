@@ -43,6 +43,8 @@
         u = new User();
     }
 %>
+
+
 <div class="ad-content mt10">
     <div class="modal confirm-stop">
         <div class="modal__overlay">
@@ -93,7 +95,7 @@
 
 
                     <div class="form-group w-80">
-                        <label class="w-20" for="name">Name: </label>
+                        <label class="w-20" for="name">Họ và tên: </label>
                         <input type="text" class="form-control w-80" id="name" name="name" aria-describedby="" placeholder="Nhập tên" value="<%=u.getName() %>">
                         <!--                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                     </div>

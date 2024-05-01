@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.Employee" %>
+<%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %><%--
   Created by IntelliJ IDEA.
   User: TO NHAT
   Date: 08/12/2023
@@ -42,8 +43,41 @@
     <link rel="stylesheet" href="assets/css/baseN.css">
     <link rel="stylesheet" href="assets/css/adminN.css">
     <link rel="stylesheet" href="assets/css/adminEmployee.css">
+<%--    <script src="https://cdn.tiny.cloud/1/<your-api-key>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>--%>
+<%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>--%>
+<%--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>--%>
+<%--    <script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>--%>
 </head>
 <body>
+<%
+
+    String adminCurrentSearch= (String) request.getAttribute("currentSearch");
+    if(adminCurrentSearch== null || adminCurrentSearch.equalsIgnoreCase("")){
+        adminCurrentSearch = "";
+    }
+    ArrayList<Employee> employeeList = (ArrayList<Employee>) request.getAttribute("employeeList");
+    ObjectMapper mapper = new ObjectMapper();
+    String json = mapper.writeValueAsString(employeeList);
+
+    String status = (String) request.getAttribute("status");
+
+
+%>
+<%
+    if(status!=null)
+        if(status.equalsIgnoreCase("addSuccessful")) {
+%>
+<script>
+    alert("Đã thêm thành công nhân viên mới với ID: " + <%=adminCurrentSearch%>);
+</script>
+<%
+
+    }
+%>
+<script>
+    var ems = <%= json %>;
+    // console.log(ems);
+</script>
 <%@ include file="adminMenu.jsp" %>
 
 
@@ -59,174 +93,189 @@
         </nav>
     </div><!-- End Page Title -->
 
-    <!--    <section class="section dashboard">-->
-    <!--        <h1>Content</h1>-->
-    <!--    </section>-->
     <div class="ad-content">
-        <!--                        <div class="temp"> <p>noi dung</p></div> &lt;!&ndash;Xoa dong nay truoc khi code&ndash;&gt;-->
-
-        <div class="ad-content-item">
-            <div class="ad_header">
-                <div class="ad_find-container">
-                    <input type="text" placeholder="Nhập id hoặc tên" class="ad_find-input">
-                    <div class="ad_find-btn"><i class="fa-solid fa-magnifying-glass"></i></div>
-                </div>
-                <!--                            <div class="ad_func-container">-->
-                <!--                                <div class="ad_func-add-btn ad_func-btn">Thêm</div>-->
-                <!--                            </div>-->
-            </div>
             <div class="ad_container">
-                <div class="employee-showing">
-                    <div class="flexboxx">
-                        <div class="employee-showing-item em-img-cont">
-                            <!--                                        <div class="employee-img-cont"></div>-->
-                            <img src="assets/img/profile/profile-img.jpg" alt="" class="employee-img">
-                        </div>
-                        <div class="employee-showing-item">
-                            <div class="employee_info">
-                                <p>ID: <span class="em_id">#emm24</span></p>
-                                <p>Họ tên: <span class="em_name">To Minh Nhat</span></p>
-                                <p>Cấp độ tài khoản: <span class="em_account-level">2</span></p>
+                <div class="ad-content-item">
+                    <div class="ad_header">
 
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="employee-showing-item">
-                        <div class="employee_info">
-                            <div class="seperate-horizontal-ad mtb-5px"></div>
-                            <p>Bộ phận: <span class="em_part">Kĩ thuật IT</span></p>
-                            <p>Chức vụ: <span class="em_position">Trưởng phòng A</span></p>
-                            <p>Chi nhánh:  <span class="em_branch">TP.HCM</span></p>
-                            <div class="seperate-horizontal-ad mtb-5px"></div>
-
-                            <p>Ngày sinh: <span class="em_birthday">10/04/2003</span></p>
-                            <p>Số điện thoại: <span class="em_phone">0385147962</span></p>
-                            <p>Email: <span class="em_email">21130463@st.hcmuaf.edu.vn</span></p>
-                            <p>Địa chỉ thường trú: <span class="em_address">q2 - tp.HCM</span></p>
-                            <div class="seperate-horizontal-ad mtb-5px"></div>
-
-                            <p>Ngày vào làm: <span class="em_dateIn">22.10.2023</span></p>
-                        </div>
-
-                    </div>
-
-
-                    <div class="disabled-showing t70">ĐÃ NGHỈ</div>
-                </div>
-
-            </div>
-        </div>
-        <div class="separate-vertical-ad"></div>
-
-        <div class="ad-content-item">
-            <div class="ad_header">
-                <div class="ad_func-container">
-                    <div class="ad_func-save-btn ad_func-btn">Lưu</div>
-                </div>
-            </div>
-            <div class="ad_container">
-                <div class="form-container">
-                    <form action="">
-                        <div class="em-name-img">
-                            <div class="input-wrap">
-                                <label for="em-name" class="input-title">Họ và tên</label>
-                                <input type="text" class="input-item" name="em-name" id="em-name">
-                                <span class="input-error"></span>
-                            </div>
-                            <div class="input-wrap">
-                                <label class="input-title">Ảnh</label>
-
-                                <i class="fa-solid fa-plus ad_btn-control btn-add-em-img"></i>
+                        <div class="show-flex-row" style="width: 100%; align-items: center">
+                            <form class="ad_find-container" action="admin-search" method="get">
+                                <input type="text" placeholder="Nhập tên hoặc thông tin liên quan" class="ad_find-input" name="search" value="<%=adminCurrentSearch%>">
+                                <input type="text" style="display: none" placeholder="Nhập tên hoặc nhóm" class="ad_find-input" name="object" value="employee" readonly>
+                                <button class="ad_find-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+                            <div>
+                                <a class="ad_btn-control btn-up-pro" href="goto-add-employee?status=0">Thêm nhân viên</a>
                             </div>
 
                         </div>
 
-                        <div class="input-wrap">
-                            <label for="em-account-level" class="input-title">Cấp độ tài khoản</label>
-                            <input type="text" class="input-item" name="em-account-level" id="em-account-level">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="em-part" class="input-title">Bộ phận</label>
-                            <input type="text" class="input-item" name="em-part" id="em-part">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="em-position" class="input-title">Chức vụ</label>
-                            <input type="text" class="input-item" name="em-position" id="em-position">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="em-branch" class="input-title">Chi nhánh</label>
-                            <input type="text" class="input-item" name="em-branch" id="em-branch">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="em-birthday" class="input-title">Ngày sinh</label>
-                            <input type="text" class="input-item" name="em-birthday" id="em-birthday">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="em-phone" class="input-title">Số điện thoại</label>
-                            <input type="text" class="input-item" name="em-phone" id="em-phone">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="em-email" class="input-title">Email</label>
-                            <input type="text" class="input-item" name="em-email" id="em-email">
-                            <span class="input-error"></span>
-                        </div>
-                        <div class="input-wrap">
-                            <label for="em-address" class="input-title">Địa chỉ thường trú</label>
-                            <input type="text" class="input-item" name="em-address" id="em-address">
-                            <span class="input-error"></span>
-                        </div>
-                    </form>
+                    </div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Ảnh đại diện</th>
+                            <th scope="col">Họ và tên</th>
+                            <th scope="col">Liên hệ</th>
+                            <th scope="col">Chức vụ</th>
+                            <th scope="col">Chi nhánh</th>
+                            <th scope="col">Cập nhật</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <%
+                            for(int i=0; i<employeeList.size();i++) {
+                        %>
+                        <tr class="<%= i%2==0 ? "roww" : ""%>"  onclick="showDetail(ems[<%=i%>])">
+                            <%--                    <th scope="row"><%=pus.get(i).getId()%></th>--%>
+                            <td style="height: 100px" ><img src="./assets/img/employee/<%=employeeList.get(i).getImgurl()%>" alt="" style="height: 100%"></td>
+                            <td><%=employeeList.get(i).getName() %></td>
+                            <td><%=employeeList.get(i).getEmail() %> <br> <%=employeeList.get(i).getPhone()%> <br> <%=employeeList.get(i).getAddress() %> </br></td>
+
+                            <%--                    <td><%=cuss.get(i).getAddress() %></td>--%>
+                            <td><%=employeeList.get(i).getPosition() %><br> <%=employeeList.get(i).getArea()%></td>
+                            <td><%=employeeList.get(i).getBranch() %></td>
+                            <td><a href="goto-update-employee?id=<%=employeeList.get(i).getId()%>">Cập nhật</a></td>
+
+
+<%--                            <td><a class="btn-update-product" href="goto-update-customer?id=<%=customerList.get(i).getId()%>">Cập nhật</a></td>--%>
+                        </tr>
+                        <%
+                            }
+                        %>
+
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
-            <div class="employee-control">
-                <div class="ad_btn-control btn-up-em">Cập nhật thông tin</div>
-                <div class="ad_btn-control btn-stop-em">Nghỉ</div>
-                <!--                                    Bấm thì hiện ra thông báo gửi mật khẩu đến email đã đăng kí	-->
-                <div class="ad_btn-control btn-pwd-em">Cấp lại mật khẩu</div>
-            </div>
-        </div>
-        <div class="confirm-popup confirm-stop">
-            <div class="modal__overlay">
-                <div class="modal__confirm-content" onclick="event.stopPropagation()">
-                    <div class="confirm__message">
-                        <p>Bạn chắc chắn nhân viên này đã nghỉ việc?<br/>
-                            Lưu ý sau khi xác nhận nghỉ không thể mở lại tài khoản này,  <br/>
-                            tài khoản này sẽ vẫn tồn tại trong cơ sơ dữ liệu, nhưng không thể mở lại.</p>
-                    </div>
-                    <div class="confirm__control">
-                        <div class="confirm-btn yes-confirm">Cấm</div>
-                        <div class="confirm-btn no-confirm">Hủy</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="confirm-popup add-img-box">
-            <div class="modal__overlay">
-                <div class="modal__confirm-content" onclick="event.stopPropagation()">
-                    <div class="confirm__message">
-                        <div class="input-wrap">
-                            <label for="em-img" class="input-title">Nhập đường dẫn tới hình ảnh.</label>
-                            <input type="text" class="input-item" name="em-img" id="em-img">
-                        </div>
-                    </div>
-                    <div class="confirm__control">
-                        <div class="confirm-btn add-img-btn">Thêm</div>
-                        <div class="confirm-btn cancel-add-img-btn">Hủy</div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
     </div>
+    <div class="confirm-popup confirm-stop">
+        <div class="modal__overlay" onclick="unshowDetail()">
+            <div class="modal__emplpoyee-detail" onclick="event.stopPropagation()">
+<%--                <div class="confirm__message">--%>
+<%--                    <div class="info-container">--%>
+<%--                        <div class="info-container__title">--%>
+<%--                            <img class="w-50" src="./assets/img/employee/3035.jpg" alt="">--%>
+<%--                        </div>--%>
+<%--                        <div class="info-container__content">--%>
+<%--                            <h6 style="font-size: 30px">To minh nhat</h6>--%>
+<%--                            <p>Chuc vu: <span>Truong phong</span></p>--%>
+<%--                            <p>Bo phan: <span>phong it</span></p>--%>
+
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="info-container">--%>
+<%--                        <div class="info-container__title">--%>
+<%--                            <p>Thong tin lien he:</p>--%>
+<%--                        </div>--%>
+
+<%--                        <div class="info-container__content">--%>
+<%--                            <p>email: <span>3614861@gmail.com</span></p>--%>
+<%--                            <p>sdt: <span>109253718</span></p>--%>
+<%--                            <p>Chi nhan laafm viec: <span>isdfviuwqhfl waefgiuerhwg</span></p>--%>
+
+<%--                        </div>--%>
+<%--                    </div>--%>
+
+<%--                    <div class="info-container">--%>
+<%--                        <div class="info-container__title">--%>
+<%--                            <p>Thong tin lam viec:</p>--%>
+<%--                        </div>--%>
+<%--                        <div class="info-container__content">--%>
+<%--                            <p>ngayf vao lam: <span>1/1/2022</span></p>--%>
+<%--                            <p>ngayf ra: <span>null</span></p>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+
+<%--                    <div class="info-container">--%>
+<%--                        <div class="info-container__title">--%>
+<%--                            <p>Thong tin ca nhan:</p>--%>
+<%--                        </div>--%>
+<%--                        <div class="info-container__content">--%>
+<%--                            <p>gioi tinh: <span>nam</span></p>--%>
+<%--                            <p>ngay sinh: <span>04-10-2003</span></p>--%>
+<%--                            <p>dia chi thuong chu: <span>isdfviuwqhfl waefgiuerhwg</span></p>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // showDetail(e);
+
+        function showDetail(e){
+            const $ = document.querySelector.bind(document);
+            const $$ = document.querySelectorAll.bind(document);
+            $('.confirm-stop').classList.add('active');
+            // console.log("truco json");
+            // console.log(employeeJSON);
+
+            // console.log(e);
+            console.log(e);
+
+
+            var html = '<div class="confirm__message">'
+                + '<div class="info-container">'
+
+                 + '<div class="info-container__title">'
+                + '<img class="w-50" src="./assets/img/employee/' + e.imgurl + '" alt="">'
+                + '</div>'
+                + '<div class="info-container__content">'
+                + '<h6 style="font-size: 30px">' + e.name + '</h6>'
+                + '<p>Chức vụ: <span>' + e.position + '</span></p>'
+                + '<p>Phòng ban: <span>' + e.area + '</span></p>'
+
+                + '</div>'
+                + '</div>'
+                + '<div class="info-container">'
+                + '<div class="info-container__title">'
+                +   '<p>Thông tin liên hệ:</p>'
+                + '</div>'
+
+                + '<div class="info-container__content">'
+                +   '<p>Email: <span>' + e.email + '</span></p>'
+                +   '<p>Số điện thoại: <span>' + e.phone + '</span></p>'
+                +   '<p>Chi nhánh công tác: <span>' + e.branch + '</span></p>'
+
+                + '</div>'
+                + '</div>'
+
+                + '<div class="info-container">'
+                + '<div class="info-container__title">'
+                + '<p>Thông tin công tác:</p>'
+                + '</div>'
+                + '<div class="info-container__content">'
+                + '<p>Ngày vào làm: <span>' + e.datein.dateInMonthDayYear + '</span></p>'
+                + '</div>'
+                + '</div>'
+
+                + '<div class="info-container">'
+                + '<div class="info-container__title">'
+                + '<p>Thông tin cá nhân:</p>'
+                + '</div>'
+                + '<div class="info-container__content">'
+                + '<p>Giới tính: <span>' + e.sex + '</span></p>'
+                + '<p>Ngày sinh: <span>' + e.birthday + '</span></p>'
+                + '<p>Địa chỉ nơi ở hiện tại: <span>' + e.address + '</span></p>'
+                + '</div>'
+                + '</div>'
+                + '</div>';
+            // let html1 = '<h1>html1 hoat dong</h1>'
+            $('.modal__emplpoyee-detail').innerHTML = html;
+        }
+
+        function unshowDetail(){
+            const $ = document.querySelector.bind(document);
+            const $$ = document.querySelectorAll.bind(document);
+            $('.confirm-stop').classList.remove('active');
+        }
+    </script>
 
 
 
@@ -242,7 +291,7 @@
 
 <!-- Template Main JS File -->
 <!--<script src="assets/js/main.js"></script>-->
-<script src="assets/js/adEm.js"></script>
+<%--<script src="assets/js/adEm.js"></script>--%>
 <script>
     // getInfo();
     // saveChanged();

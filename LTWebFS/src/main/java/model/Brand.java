@@ -20,6 +20,11 @@ public class Brand {
 		super();
 		this.country = country;
 	}
+
+	public Brand(int id) {
+		this.id = id;
+	}
+
 	public Brand(String name, String country) {
 		super();
 		this.name = name;

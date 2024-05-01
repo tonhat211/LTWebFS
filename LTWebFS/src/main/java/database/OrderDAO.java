@@ -14,7 +14,29 @@ public class OrderDAO implements IDAO<Order> {
     }
     @Override
     public int insert(Order order) {
-        return 0;
+//        insert into orders (id,totalPrice,cusID,isCompleted) VALUES  (70716,1000,3031,0);
+        int re=0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+
+            String sql = "insert into orders (id, totalPrice, cusID ,deliveryfee, isCompleted) VALUES  (?,?,?,?,?);";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, order.getId());
+            pst.setFloat(2, order.getTotalPrice());
+            pst.setInt(3, order.getCusID());
+            pst.setFloat(4, order.getDeliveryFee());
+            pst.setInt(5,order.getIsCompleted());
+
+
+            re = pst.executeUpdate();
+
+            System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return order.getId();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -160,6 +182,27 @@ public class OrderDAO implements IDAO<Order> {
             throw new RuntimeException(e);
         }
     }
+
+    public int getMaxID() {
+        int res=-1;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select max(id) from orders;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                res = rs.getInt("max(id)");
+            }
+            JDBCUtil.closeConnection(conn);
+            return res;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @Override
     public ArrayList<Order> selectByCondition(Order order) {
