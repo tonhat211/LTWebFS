@@ -32,7 +32,7 @@ public class adminMenuController extends HttpServlet {
                 currentMenu = "dashboard";
 //                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
-                rd = getServletContext().getRequestDispatcher("/admin_dashboard.jsp");
+                rd = getServletContext().getRequestDispatcher("/goto-dashboard-admin");
                 rd.forward(request, response);
                 break;
             }

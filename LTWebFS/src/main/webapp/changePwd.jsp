@@ -46,6 +46,10 @@
         u = new User();
     }
 
+    String object = (String) request.getAttribute("object");
+    if(object== null){
+        object="customer";
+    }
     String status = (String) request.getAttribute("status");
 %>
 
@@ -71,6 +75,7 @@
                     <div class="show-flex-row w-100">
                         <label class="w-50" for="currentPwd">Mật khẩu hiện tại</label>
                         <input type="password" size="10" class="form-control w-50" id="currentPwd" name="currentPwd" aria-describedby="" placeholder="Nhập mật khẩu hiện tại" required>
+                        <input type="text" size="10" class="form-control w-50" id="object" name="object" aria-describedby="" placeholder="Nhập mật khẩu hiện tại" value="<%=object%>" hidden>
                     </div>
                     <div class="error active" <%=status.equalsIgnoreCase("incorrectPwd") ? "" : "hidden"%>>Sai mật khẩu</div>
 

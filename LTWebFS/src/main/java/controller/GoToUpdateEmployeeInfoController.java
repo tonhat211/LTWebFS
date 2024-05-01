@@ -1,8 +1,9 @@
 package controller;
 
-import database.UserDAO;
-import model.User;
-import org.hsqldb.Session;
+import database.BranchDAO;
+import database.EmployeeDAO;
+import model.Branch;
+import model.Employee;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,9 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 
-@WebServlet("/goto-update-customer-info")
-public class GoToUpdateCustomerInfoController extends HttpServlet {
+@WebServlet("/goto-update-employee-info")
+public class GoToUpdateEmployeeInfoController extends HttpServlet {
 
     public void destroy() {
     }
@@ -25,7 +27,12 @@ public class GoToUpdateCustomerInfoController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("userloging");
+
+        String idString = (String) request.getParameter("id");
+        String currentMenu = request.getParameter("currentMenu");
+        ArrayList<Branch> branches = BranchDAO.getInstance().selectAll();
+        request.setAttribute("branchList", branches);
+
 
         String status = (String) request.getAttribute("status");
         if(status != null) {
@@ -34,9 +41,7 @@ public class GoToUpdateCustomerInfoController extends HttpServlet {
             request.setAttribute("status",null);
         }
 
-        request.setAttribute("customer", u);
-
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/updateCustomerInfo.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/updateEmployeeInfo.jsp");
         rd.forward(request, response);
 
     }
@@ -48,5 +53,6 @@ public class GoToUpdateCustomerInfoController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         doGet(request,response);
+
     }
 }

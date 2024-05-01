@@ -32,4 +32,14 @@ public class GoToAdminCustomerController extends HttpServlet {
         rd.forward(request, response);
 
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        doGet(request,response);
+
+    }
 }
