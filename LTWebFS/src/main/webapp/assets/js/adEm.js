@@ -1,17 +1,15 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-const updateBtn = $('.btn-up-em');
-const saveChangedBtn =$('.ad_func-save-btn');
-const stopBtn =$('.btn-stop-em');
-const modalOverlays =$$('.modal__overlay');
-const yesStopBtn =$('.yes-confirm');
-const cancelStopBtn =$('.no-confirm');
-const sendPwdBtn =$('.btn-pwd-em');
-const addImgBtn =$('.btn-add-em-img');
-const yesAddImgBtn =$('.add-img-btn');
-const noAddImgBtn =$('.cancel-add-img-btn');
+function showDetail(employee){
+    $('.confirm-stop').classList.add('active');
+    // var employee = JSON.parse(employeeJSON)
+    $('.confirm__message').innerText = employee.id + " " + employee.name;
+}
 
+
+
+// xoa tu day xuong
 updateBtn.addEventListener('click',getInfo);
 saveChangedBtn.addEventListener('click',saveChanged);
 stopBtn.addEventListener('click',confirmStop);

@@ -48,10 +48,6 @@
         dos = new ArrayList<>();
     }
 
-
-
-
-
 %>
 <div class="ad-content mt10">
     <div class="ad-content-item">

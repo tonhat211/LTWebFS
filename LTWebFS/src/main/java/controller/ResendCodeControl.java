@@ -37,24 +37,25 @@ public class ResendCodeControl extends HttpServlet {
         IJavaMail emailService = new EmailService();
         //  q       guwir code toi email khach hang
         emailService.send(to,subject,message);
+        VerifyCodeDAO.getInstance().insertNewCode(code, email);
         request.setAttribute("email", email);
-        VerifyCodeDAO.getInstance().insertNewCode(code);
+
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/VerifyCode.jsp");
         rd.forward(request, response);
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Random rand = new Random();
-        int ranNum = rand.nextInt(9)+1;
-        String code ="";
-        for(int i=0;i<6; i++) {
-            code+= String.valueOf(rand.nextInt(9)+1);
-        }
-        VerifyCodeDAO.getInstance().insertNewCode(code);
+//        Random rand = new Random();
+//        int ranNum = rand.nextInt(9)+1;
+//        String code ="";
+//        for(int i=0;i<6; i++) {
+//            code+= String.valueOf(rand.nextInt(9)+1);
+//        }
+//        VerifyCodeDAO.getInstance().insertNewCode(code,);
 //  q       guwir code toi email khach hang
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/VerifyCode.jsp");
-        rd.forward(request, response);
+//        RequestDispatcher rd = getServletContext().getRequestDispatcher("/VerifyCode.jsp");
+//        rd.forward(request, response);
     }
 }

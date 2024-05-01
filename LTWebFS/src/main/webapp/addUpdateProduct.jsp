@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.ProductSuperDetail" %>
 <%@ page import="model.ProductUnit" %>
+<%@ page import="model.Brand" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -40,6 +41,11 @@
     ProductUnit pu = (ProductUnit) request.getAttribute("productUnit");
     if(pu==null) {
         pu = new ProductUnit();
+    }
+
+    ArrayList<Brand> brandList = (ArrayList<Brand>) request.getAttribute("brandList");
+    if(brandList==null){
+        brandList = new ArrayList<>();
     }
 %>
 <div class="ad-content mt10">
@@ -110,15 +116,27 @@
                             <!--                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                         </div>
                     </div>
-                    <div class="show-flex-row">
-                        <div class="form-group w-50">
-                            <label class="w-20" for="brand">Thương hiệu:</label>
-                            <input type="text" size="10" class="form-control w-80" id="brand" name="brand" aria-describedby="" placeholder="Enter brand" value="<%=pu.getBrand() %>">
-                        </div>
-                        <div class="form-group w-50">
-                            <label class="w-20" for="country">Xuất xứ:</label>
-                            <input type="text" class="form-control w-80" id="country" name="country" aria-describedby="" placeholder="Enter country" value="<%=pu.getMadeIn() %>">
-                        </div>
+<%--                    <div class="show-flex-row">--%>
+<%--                        <div class="form-group w-50">--%>
+<%--                            <label class="w-20" for="brand">Thương hiệu:</label>--%>
+<%--                            <input type="text" size="10" class="form-control w-80" id="brand" name="brand" aria-describedby="" placeholder="Enter brand" value="<%=pu.getBrand() %>">--%>
+<%--                        </div>--%>
+<%--                        <div class="form-group w-50">--%>
+<%--                            <label class="w-20" for="country">Xuất xứ:</label>--%>
+<%--                            <input type="text" class="form-control w-80" id="country" name="country" aria-describedby="" placeholder="Enter country" value="<%=pu.getMadeIn() %>">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+                    <div class="form-group w-80">
+                        <label class="w-20" for="brand">Thương hiệu: </label>
+                        <select class="form-select" aria-label="Default select example" id="brand" name="brand">
+                            <% for(Brand b : brandList) {
+                            %>
+                            <option <%=b.getId()==pu.getBrandID() ? "selected" : "" %> value="<%=b.getId()+"="+b.getName()%>"><%=b.getName()+" - " + b.getCountry() %></option>
+                            <%
+                                }
+                            %>
+
+                        </select>
                     </div>
                     <div class="show-flex-row">
                         <div class="form-group w-50">

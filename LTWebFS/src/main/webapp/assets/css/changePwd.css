@@ -1,0 +1,15 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 100vh;
+}
+
+.form-container form {
+    background-color: #F6F9FF;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid #BBD7FE;
+    width: 50%;
+}

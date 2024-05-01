@@ -1,0 +1,51 @@
+.show-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.show-flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.error {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.22);
+    padding: 7px 20px;
+    margin: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+    width: fit-content;
+    display: none;
+}
+
+.errorWrongPwd {
+    color: red;
+    background-color: rgba(255, 0,0, 0.22);
+    padding: 7px 20px;
+    margin: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+    width: fit-content;
+    display: none;
+}
+
+.errorWrongPwd.active,
+.successful.active,
+.error.active {
+    display: block;
+}
+
+.successful {
+    color: green;
+    background-color: rgba(57, 203, 85, 0.22);
+    padding: 7px 20px;
+    margin: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+    width: fit-content;
+    display: none;
+
+}

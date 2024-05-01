@@ -47,6 +47,15 @@ public class Branch {
 	public void setAvailable(int available) {
 		this.available = available;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Branch{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", address='" + address + '\'' +
+				", phone='" + phone + '\'' +
+				", available=" + available +
+				'}';
+	}
 }

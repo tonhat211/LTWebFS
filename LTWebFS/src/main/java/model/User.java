@@ -1,6 +1,8 @@
 package model;
 
+import javax.sound.midi.Soundbank;
 import java.sql.Date;
+import java.sql.SQLOutput;
 
 public class User {
     private int id;
@@ -15,6 +17,31 @@ public class User {
     private Datee dateIn;
     private Datee dateOut;
     private int available;
+    private String role;
+
+    public User(int id, String name, String email, String pwd, int level, String phone, String address, int branchID, String info, Datee dateIn, Datee dateOut, int available, String role) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.pwd = pwd;
+        this.level = level;
+        this.phone = phone;
+        this.address = address;
+        this.branchID = branchID;
+        this.info = info;
+        this.dateIn = dateIn;
+        this.dateOut = dateOut;
+        this.available = available;
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public User(int id) {
         this.id = id;
@@ -63,6 +90,16 @@ public class User {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.info = info;
+        this.dateIn = dateIn;
+    }
+
+    public User(int id, String name, String email, String phone, String address, String info, Datee dateIn) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
         this.info = info;
         this.dateIn = dateIn;
     }
@@ -199,12 +236,34 @@ public class User {
                 '}';
     }
 
+    public boolean checkLogin(String emailin, String pwdin) {
+        if(this.email.equals(emailin) && this.pwd.equals(pwdin))
+            return true;
+        return false;
+    }
+
+    public boolean isAdmin() {
+        if(this.level>0) {
+            return true;
+        }
+        return false;
+    }
+
+    public void encodePwd() {
+        this.pwd = encodePwd(this.pwd);
+    }
+
+    public static String encodePwd(String pwd) {
+        String code ="";
+        String temp = "";
+        for(int i=pwd.length() - 1 ; i>=0;i--){
+            code+= (int) pwd.charAt(i);
+        }
+
+        return code;
+    }
+
     public static void main(String[] args) {
-        User u = new User();
-        String in = u.getInfo();
-        if(in != null) {
-            System.out.println("la null");
-        } else System.out.println("ko la null");
-//        System.out.println(u.getInfo().split("="));
+        System.out.println(User.encodePwd("123456"));
     }
 }

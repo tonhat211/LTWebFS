@@ -195,3 +195,49 @@
     background-color: var(--primary-color-ad);
     color: white;
 }
+
+.show-flex-row {
+    display: flex;
+    /*justify-content: space-between;*/
+    align-items: center;
+}
+
+
+
+.img-container img {
+    width: 100%;
+}
+
+.info-container {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.info-container__title {
+    width: 40%;
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.info-container__content {
+    width:60%;
+}
+
+.modal__emplpoyee-detail {
+    position: absolute;
+    top: 75px;
+    left: 30%;
+    background-color: var(--white-color);
+    border-radius: 4px;
+    border: none;
+    width: 50%;
+    padding: 20px;
+}
+
+table tbody tr:hover {
+    cursor: pointer;
+    border: 2px solid #C6CBFB;
+    box-shadow: 0 2px 5px #C6CBFB;
+}

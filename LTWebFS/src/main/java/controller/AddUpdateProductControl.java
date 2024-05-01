@@ -52,8 +52,11 @@ public class AddUpdateProductControl extends HttpServlet {
                     int idin = Integer.parseInt(request.getParameter("id"));
 //                  xu ly cap nhat
                     String name = request.getParameter("name");
-                    String country = request.getParameter("country");
+//                    String country = request.getParameter("country");
                     String brand = request.getParameter("brand");
+                    String[] brandTokens = brand.split("=");
+                    int brandID = Integer.parseInt(brandTokens[0]);
+
                     String kind = request.getParameter("kind");
                     String color = request.getParameter("color");
                     String size = request.getParameter("size");
@@ -74,7 +77,7 @@ public class AddUpdateProductControl extends HttpServlet {
 //                    Datee dateimportDatee = new Datee(01,01,2022);
                     Product p = new Product(idin,name,0,0,kind,amount,description);
                     Unit u = new Unit(0,idin,color,size,wattage,price,yearMade,dateimportDatee,1);
-                    Brand b =  new Brand(brand, country);
+                    Brand b =  new Brand(brandID);
 
                     ArrayList<Image> imgs = new ArrayList<>();
                     String[] imgTokens = img.split("--");

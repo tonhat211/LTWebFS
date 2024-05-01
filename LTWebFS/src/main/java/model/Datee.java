@@ -75,6 +75,19 @@ public class Datee {
 		return new Datee(today.getYear(),today.getMonthValue(),today.getDayOfMonth());
 	}
 
+	public String getDateInMMDDYYYY(){
+		String  monthh="", dayy="";
+		if(this.month<10){
+			monthh = "0" + this.month;
+		} else monthh = month +"";
+		if(this.day<10){
+			dayy = "0"+ this.day;
+		}  else dayy = day +"";
+		return "-" + monthh + "-" +dayy + "-"+ this.year;
+	}
+
+	public Datee() {
+	}
 
 	public static void main(String[] args) {
 //		LocalDate today = LocalDate.now();

@@ -82,4 +82,12 @@ public class MenuControl extends HttpServlet {
         // Hello
 
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        doGet(request,response);
+    }
 }

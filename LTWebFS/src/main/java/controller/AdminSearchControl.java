@@ -1,9 +1,11 @@
 package controller;
 
 import database.CustomerDAO;
+import database.EmployeeDAO;
 import database.ProductUnitDAO;
 import model.Brand;
 import model.Customer;
+import model.Employee;
 import model.ProductUnit;
 
 import javax.servlet.RequestDispatcher;
@@ -24,6 +26,7 @@ public class AdminSearchControl extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String object = request.getParameter("object");
         String input = request.getParameter("search");
+        String status = request.getParameter("status");
         HttpSession session = request.getSession();
 //        session.setAttribute("currentSearch", input);
         RequestDispatcher rd;
@@ -35,6 +38,17 @@ public class AdminSearchControl extends HttpServlet {
                 request.setAttribute("currentSearch",input);
                 rd = getServletContext().getRequestDispatcher("/adminCustomer.jsp");
                 rd.forward(request, response);
+                break;
+
+            }
+            case "employee": {
+                ArrayList<Employee> employeeList = EmployeeDAO.getInstance().selectByNameOrEmailOrPhone(input);
+                request.setAttribute("employeeList", employeeList);
+                request.setAttribute("currentSearch",input);
+                request.setAttribute("status",status);
+                rd = getServletContext().getRequestDispatcher("/adminEmployee.jsp");
+                rd.forward(request, response);
+                break;
 
             }
         }

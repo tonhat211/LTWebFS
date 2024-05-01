@@ -1,5 +1,6 @@
 <%@ page import="database.UserDAO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -17,9 +18,8 @@
 
         String currentMenu = ((String) session.getAttribute("currentMenu"))==null ? "index" : ((String) session.getAttribute("currentMenu"));
         String recentSearch = (String) session.getAttribute("currentSearch");
-        String user = (String) session.getAttribute("userName");
-        if(user== null || user.equalsIgnoreCase(""))
-            user = "";
+        User user = (User) session.getAttribute("userloging");
+
     %>
 
     <div class="head col rol">
@@ -39,22 +39,24 @@
 
         <div class="user">
             <div class="shopping-cart">
-                <a href="cart.jsp">
+                <a href="goto-cart">
                     <i class="ti-shopping-cart-full"></i>
                 </a>
             </div>
             <div class="user-item">
                 <%
-                    if(user!=""){
+                    if(user!=null){
                 %>
-                    <a href="login.jsp"><%=user%></a>
+                    <a href="goto-update-customer-info"><%=user.getName()%></a>
+                    <i style="color: #f6f6f6; margin-right: 20px; margin-left: 20px;">|</i>
+                    <a href="log-out">Đăng xuất</a>
                 <%
                     }  else  {
                 %>
                     <i class="ti-user"></i>
-                    <a href="login.jsp">Đăng nhập</a>
+                    <a href="login.jsp?status=0">Đăng nhập</a>
                     <i style="color: #f6f6f6">/</i>
-                    <a href="logup.jsp">Đăng ký</a>
+                    <a href="signup.jsp">Đăng ký</a>
                 <%
                     }
                 %>

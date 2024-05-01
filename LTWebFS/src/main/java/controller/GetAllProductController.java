@@ -34,4 +34,6 @@ public class GetAllProductController extends HttpServlet {
         rd.forward(request, response);
 
     }
+
+
 }

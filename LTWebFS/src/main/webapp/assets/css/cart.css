@@ -1,114 +1,133 @@
 body {
-    font-family: "Montserrat", sans-serif;
-    padding: 0;
-    margin: 0;
-    font-size: 24px;
-    background-color: #0FA187;
-    color: #fff;
+    /*background-color: #e5e8ff;*/
 }
 
-.clearfix {
-    clear: both;
-}
-
-p {
-    margin: 0;
-    padding: 0;
-}
-
-#main-container {
-    margin: 50px auto;
-    width: 1200px;
-}
-
-.image {
-    text-align: center;
-    width: 180px;
-}
-
-.left {
-    width: 65%;
-    float: left;
-}
-
-.right {
-    width: 30%;
-    float: right;
-}
-
-.items {
-    margin: 48px 0;
-    padding-bottom: 50px;
-    border-bottom: 1px solid #F6F6F6;
-}
-
-.khuyenMai {
+.cart__container {
+    /*width: 90%;*/
     padding: 20px;
-    border: 1px solid #F6F6F6;
-}
-
-#thanhTien {
-    padding: 20px;
-    border: 1px solid #F6F6F6;
-    border-radius: 16px;
-}
-
-.part1 {
-    border-bottom: 1px solid #F6F6F6;
-    padding-bottom: 20px;
-}
-
-.part2 {
-    padding-top: 20px;
-}
-
-.total {
-    font-size: 48px;
-    font-weight: bold;
-}
-
-.vat {
-    font-size: 12px;
-    font-style: italic;
-}
-.note {
-    font-size: 12px;
-    font-style: italic;
-    text-align: right;
-}
-
-.checkBox {
-    margin-top: 70px;
+    margin: auto;
+    /*background-color: #e5e8ff;*/
 }
 
 .title {
+    text-align: center;
+}
+
+.product-qty-buying {
+    width: 50%;
+    padding: 10px;
+
+}
+
+.product-qty-control {
+    display: flex;
+    justify-content: center;
+}
+
+.product-qty-control i {
+    padding: 4px;
+    margin: 0 4px;
+    font-size: 17px;
+    /*border: 1px solid #bebebe;*/
+    background-color: #C6CBFB;
+    border-radius: 4px;
+    border: none;
+}
+
+.asking-btn:hover,
+.add-to-cart-btn:hover,
+.product-qty-control i:hover {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.product-qty-input {
+    font-size: 17px;
+    margin: 0 7px;
+    text-align: center;
+    background-color: white;
+    border-radius: 4px;
+    border: none;
+
+}
+
+.table {
+    width: 100%;
+    margin-top: 40px;
+}
+
+table, th, td{
+    /*border-top:1px solid #ccc;*/
+    border-bottom:1px solid #e5e8ff;
+    padding: 10px;
+
+}
+
+table{
+    border-collapse:collapse;
+}
+
+.table tr {
+    margin: 10px 10px;
+    box-shadow: 0px 0px 14px 0px #e5e8ff;
+}
+
+.table td {
+    text-align: center;
+}
+
+
+
+.roww th,
+.roww td {
+    background-color: #fcf7f7;
+    padding: 6px;
+    border: none;
+}
+
+.money {
+    background-color: white;
+    box-shadow: 0px 0px 14px 0px #e5e8ff;
+    padding: 0 20px;
+
+
+}
+
+.money h2 {
+    margin-bottom: 80px;
+}
+
+.totalMoney {
     font-size: 20px;
 }
 
-.discount {
-    text-decoration: line-through;
-    font-size: 12px;
-    float: left;
+.btn-buy {
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    margin-top: 40px;
+    border-radius: 6px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
 }
 
-.percent {
-    font-size: 12px;
-    float: left;
-    margin-left: 8px;
+.btn-buy:hover {
+    opacity: 0.3;
+    cursor: pointer;
 }
 
-.volume {
-    font-size: 16px;
-    margin-top: 8px;
+.money p {
+    margin-top: 20px;
 }
 
-.quantity {
-    width: 30px;
-    margin: 0 3px;
+.delete {
+    padding: 10px;
+
 }
 
-#pay {
-    margin-top: 16px;
-    background-color: #ED1212;
-    color: #F6F6F6;
+.delete:hover {
+    background-color: #C6CBFB;
+    opacity: 0.3;
+    border-radius: 6px;
 }
