@@ -11,8 +11,8 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 //
-import com.mysql.cj.protocol.PacketReceivedTimeHolder;
-import com.mysql.cj.protocol.Resultset;
+//import com.mysql.cj.protocol.PacketReceivedTimeHolder;
+//import com.mysql.cj.protocol.Resultset;
 
 import model.Brand;
 import model.Product;

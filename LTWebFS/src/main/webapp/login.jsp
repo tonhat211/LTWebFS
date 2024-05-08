@@ -20,7 +20,7 @@
             <label for="password" class="form-label">Mật khẩu <span style="color: #ED1212">*</span></label>
             <input type="password" name="password" class="form-control form-control-lg" id="password" aria-describedby="passwordHelp"
                    placeholder="Nhập mật khẩu">
-            <div id="passwordHelp" class="form-text"><a href="">Quên mật khẩu ?</a></div>
+            <div id="passwordHelp" class="form-text"><a href="ForgotPassword.jsp">Quên mật khẩu ?</a></div>
         </div>
 <%--        <div class="mb-3 form-check">--%>
 <%--            <input type="checkbox" class="form-check-input" id="rememberLogin">--%>

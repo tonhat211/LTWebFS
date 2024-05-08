@@ -12,7 +12,7 @@ public class JDBCUtil {
 
         try {
 //            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+     //       DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
             String url = "jdbc:mySQL://localhost:3306/thietbiyte";
             String user = "root";
