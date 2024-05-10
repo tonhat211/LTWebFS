@@ -89,15 +89,15 @@
                     </div>
                     <div class="show-flex-row">
                         <div class="grid__row img-showing">
-                            <div class="disabled-showing <%= (e.getAvailable()==0?"active":"") %>" style="<%= (e.getName()==""?"position: relative;  left: 0":"") %>" >
+                            <div class="disabled-showing <%= (e.getAvailable()<1?"active":"") %>" style="<%= (e.getName()==""?"position: relative;  left: 0":"") %>" >
                                 <div class="disabled-showing-content">
-                                    <%= (e.getName()==""?"CHƯA KÍCH HOẠT":"ĐÃ KHÓA") %>
+                                    <%= (e.getAvailable()==0?"CHƯA KÍCH HOẠT":"ĐÃ KHÓA/TẠM KHÓA") %>
                                 </div>
                             </div>
                         </div>
                         <div class="stop_reSale <%= (e.getName()==""?"hide":"") %>" >
-                            <div class="btn btn-stop-pro <%= (e.getAvailable()==1?"active":"") %>">Khóa tài khoản</div>
-                            <div class="btn btn-resale-pro <%= (e.getAvailable()==0?"active":"") %>"><a class="no-a"
+                            <div class="btn btn-stop-pro <%= (e.getAvailable()>=0?"active":"") %>">Khóa tài khoản</div>
+                            <div class="btn btn-resale-pro <%= (e.getAvailable()<0?"active":"") %>"><a class="no-a"
                                     href="addUpdate-employee?action=unlock&id=<%=e.getId()%>">Mở khóa tài khoản</a></div>
 
                         </div>
@@ -230,10 +230,29 @@
 
                     <div class="show-flex-row">
 
-                        <div class="form-group w-50">
-                            <label class="w-20" for="sex">Giới tính: </label>
-                            <input type="text" class="form-control w-80" id="sex" name="sex" paria-describedby="" placeholder="Nhập giới tính" value="<%=e.getSex()%>">
+                        <div id="sex" class="info-container">
+                            <div class="info-container__title">
+                                <label for="sex">Giới tính
+                                </label>
+                            </div>
+
+                            <div class="info-container__content">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sex" id="flexRadioDefault1" value="nam" <%=sex.equalsIgnoreCase("nam") ? "checked" : ""%>>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Nam
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sex" id="flexRadioDefault2" value="nu"  <%=sex.equalsIgnoreCase("nu") ? "checked" : ""%>>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Nữ
+                                    </label>
+                                </div>
+                            </div>
+
                         </div>
+
                         <div class="form-group w-50">
                             <label  class="w-20"  for="birthday">Ngày sinh: </label>
                             <input type="date" class="form-control w-80" id="birthday" name="birthday"  aria-describedby="" placeholder="Nhập ngày sinh" value="<%=e.getBirthday()%>">

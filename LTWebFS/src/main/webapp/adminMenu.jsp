@@ -126,7 +126,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="log-out">
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Đăng xuất</span>
                         </a>
@@ -175,24 +175,13 @@
                 <span>Quản lý đơn hàng</span>
             </a>
         </li>
-<%--        <li class="nav-item <%=roles.contains("news") ? "" : "hide" %>">--%>
-<%--            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("news") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=news">--%>
-<%--                <!--        <i class="bi bi-person"></i>-->--%>
-<%--                <span>Quản lý tin tức</span>--%>
-<%--            </a>--%>
-<%--        </li>--%>
-<%--        <li class="nav-item <%=roles.contains("home") ? "" : "hide" %>">--%>
-<%--            <a class="nav-link collapsed" href="#">--%>
-<%--                <!--        <i class="bi bi-person"></i>-->--%>
-<%--                <span>Quản lý trang chủ</span>--%>
-<%--            </a>--%>
-<%--        </li>--%>
-<%--        <li class="nav-item <%=roles.contains("dashboard") ? "" : "hide" %>">--%>
-<%--            <a class="nav-link collapsed" href="#">--%>
-<%--                <!--        <i class="bi bi-person"></i>-->--%>
-<%--                <span>Nhà phân phối</span>--%>
-<%--            </a>--%>
-<%--        </li>--%>
+        <li class="nav-item <%=roles.contains("log") ? "" : "hide" %>">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("log") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=log&index=1">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Log</span>
+            </a>
+        </li>
+
 
     </ul>
 </aside><!-- End Sidebar-->

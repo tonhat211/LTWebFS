@@ -122,6 +122,7 @@ $(document).ready(function() {
                 productElement.remove(); // Xóa phần tử khỏi DOM
             }
         }
+        // console.log($(".totalProduct").innerText);
 
         updateQuantity(cartId, productId, quantityInput.val()); // Gọi hàm cập nhật số lượng
         // }
@@ -139,7 +140,12 @@ $(document).ready(function() {
             productElement.remove(); // Xóa phần tử khỏi DOM
         }
 
+
+        // $(".totalProduct").innerText = parseInt($(".totalProduct").innerText) -1;
         updateQuantity(cartId, productId, 0);
+
+
+
 
 
     });
@@ -153,7 +159,7 @@ $(document).ready(function() {
             data: { cartId:cartId, productId: productId, quantity: quantity },
             success: function(data) {
                 updatePrice();
-                console.log("Số lượng đã được cập nhật thành công!"); // Log thông báo thành công
+                alert(data);
             }
         });
     }

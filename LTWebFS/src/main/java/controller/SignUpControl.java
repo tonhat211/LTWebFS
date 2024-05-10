@@ -85,6 +85,11 @@ public class SignUpControl extends HttpServlet {
 
                 DecartDAO.getInstance().insertCart(idin);
 
+//                ghi log
+                String ipAddress = request.getRemoteAddr();
+                Log t = new Log(ipAddress,email + " | signup ","Thêm tài khoản mới vào hệ thống","trống",u.toString(),1 );
+                LogDAO.getInstance().insert(t);
+
                 VerifyCodeDAO.getInstance().insertNewCode(code,email);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/VerifyCode.jsp");
                 rd.forward(request, response);

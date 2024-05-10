@@ -9,29 +9,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="da sua dang dang nhap, dang ky,chuc nang sua thong tin tai khoan cho khach hang">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateEmployeeInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateEmployeeInfoControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/adminMenu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/updateEmployeeInfo.jsp" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="chuc nang tu sua thong tin cho nhan vien">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/IPHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/gotoLogManagement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/LogDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Log.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminLog.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/adminLog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddToCartControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddToCartControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ChangePwdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ChangePwdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAdminCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToChangePwd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToChangePwd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToProductAdminCotroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToProductAdminCotroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerifyCodeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerifyCodeControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminHeader.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminHeader.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/JDBCUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/JDBCUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/VerifyCodeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/VerifyCodeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/cartitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/cartitem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/VerifyCode.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/VerifyCode.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/changePwd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/changePwd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/updateCustomerInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateCustomerInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/addUpdate.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/addUpdate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +55,9 @@
         <option value="JavaScript File" />
         <option value="Jsp File" />
         <option value="AnnotationType" />
-        <option value="HTML File" />
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -102,10 +113,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp" />
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\WEB-INF\lib" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java\model" />
-      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java\database" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
@@ -227,8 +238,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="smart tomcat" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="catalinaBase" value="C:\Users\TO NHAT\.SmartTomcat\LTWebFS\LTWebFS" />
+      <option name="contextPath" value="/LTWebFS" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="extraClassPath" value="" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.80" />
+          <option name="path" value="$USER_HOME$/tomcat9" />
+          <option name="version" value="9.0.80.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <module name="LTWebFS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JAR Application.mysql-connector-j-8.2.0.jar" />
+      <item itemvalue="Smart Tomcat.smart tomcat" />
       <item itemvalue="Smart Tomcat.Tomcat: LTWebFS" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.801" />
     </list>
@@ -288,7 +323,12 @@
       <workItem from="1714300414077" duration="588000" />
       <workItem from="1714312401487" duration="25600000" />
       <workItem from="1714458055674" duration="17199000" />
-      <workItem from="1714548152763" duration="9815000" />
+      <workItem from="1714548152763" duration="10122000" />
+      <workItem from="1714710822446" duration="38960000" />
+      <workItem from="1714896472991" duration="58000" />
+      <workItem from="1714897048496" duration="8362000" />
+      <workItem from="1715230867419" duration="3856000" />
+      <workItem from="1715245244966" duration="10740000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -362,7 +402,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714548231768</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="chuc nang tu sua thong tin cho nhan vien">
+      <option name="closed" value="true" />
+      <created>1714583136362</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714583136362</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,6 +435,7 @@
     <MESSAGE value="base" />
     <MESSAGE value="da sua admin customer va product" />
     <MESSAGE value="da sua dang dang nhap, dang ky,chuc nang sua thong tin tai khoan cho khach hang" />
-    <option name="LAST_COMMIT_MESSAGE" value="da sua dang dang nhap, dang ky,chuc nang sua thong tin tai khoan cho khach hang" />
+    <MESSAGE value="chuc nang tu sua thong tin cho nhan vien" />
+    <option name="LAST_COMMIT_MESSAGE" value="chuc nang tu sua thong tin cho nhan vien" />
   </component>
 </project>

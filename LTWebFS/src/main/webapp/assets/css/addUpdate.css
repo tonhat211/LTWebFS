@@ -195,6 +195,23 @@
     background-color: white;
 }
 
+.error {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.22);
+    padding: 7px;
+    margin: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+.required {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.22);
+    padding: 7px;
+    margin: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+}
 
 
 

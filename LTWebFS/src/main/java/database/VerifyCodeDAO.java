@@ -190,7 +190,7 @@ public class VerifyCodeDAO implements IDAO<VerifyCode>{
 		long currentTimestamp = System.currentTimeMillis();
 		long timeDifferenceMillis = currentTimestamp - codeTime;
 
-		// Chuyển đổi chênh lệch thời gian từ millisecs sang giây, phút, giờ, etc.
+
 		long seconds = timeDifferenceMillis / 1000;
 		if(seconds > 0 && seconds < 300 ) {
 			VerifyCodeDAO.getInstance().disableCode(codein);

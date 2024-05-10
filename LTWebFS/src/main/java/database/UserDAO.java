@@ -324,18 +324,12 @@ public class UserDAO implements IDAO<User> {
         int re=0;
         try {
             Connection conn = JDBCUtil.getConnection();
-
             String sql = "select id from users where email=?;";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, emailin);
-
-
             ResultSet rs = pst.executeQuery();
-
             while(rs.next()){
-
                 re = rs.getInt("id");
-
             }
 
 //			System.out.println(re + " dong da duoc them vao");
@@ -345,9 +339,31 @@ public class UserDAO implements IDAO<User> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
+    public int checkAvailable(String emailin){
+        User res = null;
+        int re=-99;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select available from users where email=?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, emailin);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                re = rs.getInt("available");
+            }
+
+//			System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return re;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
     public User selectByEmailAndPwd(String emailin, String pwdin){
         User res = null;
@@ -564,7 +580,8 @@ public class UserDAO implements IDAO<User> {
 //        System.out.println(UserDAO.getInstance().insert(u));
 //        int u =  UserDAO.getInstance().availableUser("no665ok@gmail.com");
 //        System.out.println(u);
-        System.out.println(UserDAO.getInstance().selectByEmailAndPwd("21130464@st.hcmuf.edu.vn","currentPwd")
-        );
+        System.out.println(UserDAO.getInstance().checkExistUser("2113463@st.hcmuaf.edu.vn"));
+//        System.out.println(UserDAO.getInstance().selectByEmailAndPwd("21130464@st.hcmuf.edu.vn","currentPwd")
+//        );
     }
 }

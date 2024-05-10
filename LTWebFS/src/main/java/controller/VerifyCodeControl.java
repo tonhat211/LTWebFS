@@ -1,7 +1,9 @@
 package controller;
 
+import database.LogDAO;
 import database.UserDAO;
 import database.VerifyCodeDAO;
+import model.Log;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,8 +26,13 @@ public class VerifyCodeControl extends HttpServlet {
 
         boolean isOK =  VerifyCodeDAO.getInstance().isVerifyOk(code,email);
         if(isOK == true){
+            int status = UserDAO.getInstance().checkAvailable(email);
             UserDAO.getInstance().availableUser(email);
             request.setAttribute("status", "verifySuccessful");
+
+            Log log = new Log(request.getRemoteAddr(),email + " | verify_code ","Xác minh tài khoản thành công." ,email + " | " + status,email + " | 1",1 );
+            LogDAO.getInstance().insert(log);
+
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
 

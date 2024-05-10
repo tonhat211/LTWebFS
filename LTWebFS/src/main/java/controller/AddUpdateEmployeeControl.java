@@ -1,11 +1,9 @@
 package controller;
 
 import database.EmployeeDAO;
+import database.LogDAO;
 import database.UserDAO;
-import model.Datee;
-import model.Employee;
-import model.Image;
-import model.User;
+import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,6 +26,7 @@ public class AddUpdateEmployeeControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         HttpSession session  =request.getSession();
+        Employee adminloging = (Employee) session.getAttribute("adminloging");
 
         String action = request.getParameter("action");
         if(action  !=  null){
@@ -35,9 +34,19 @@ public class AddUpdateEmployeeControl extends HttpServlet {
             switch(action){
                 case  "LOCK":{
                     int idin = Integer.parseInt(request.getParameter("id"));
-                    EmployeeDAO.getInstance().updateAvailableByEmployID(idin,0);
+                    Employee eTemp = EmployeeDAO.getInstance().selectById(idin);
+
+                    EmployeeDAO.getInstance().updateAvailableByEmployID(idin,-2);
                     request.setAttribute("status","updateSuccessful");
                     request.setAttribute("id",idin);
+
+                    String actionHelper = "";
+                    if(adminloging.getId() == eTemp.getId()) {
+                        actionHelper = " của chính mình";
+                    }
+
+                    Log log = new Log(request.getRemoteAddr(),adminloging.getEmail() + " | update_employee","Đã khóa tài khoản admin" + actionHelper + "." ,eTemp.getEmail() + "|" + eTemp.getAvailable(),eTemp.getEmail() + " | -2",1 );
+                    LogDAO.getInstance().insert(log);
 
                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-update-employee");
                     rd.forward(request, response);
@@ -46,10 +55,16 @@ public class AddUpdateEmployeeControl extends HttpServlet {
                 }
                 case  "UNLOCK":{
                     int idin = Integer.parseInt(request.getParameter("id"));
+                    Employee eTemp = EmployeeDAO.getInstance().selectById(idin);
+
                     EmployeeDAO.getInstance().updateAvailableByEmployID(idin,1);
 //                    request.setAttribute("id", idin);
                     request.setAttribute("status","updateSuccessful");
                     request.setAttribute("id",idin);
+
+
+                    Log log = new Log(request.getRemoteAddr(),adminloging.getEmail() + " | update_employee","Đã mở khóa tài khoản admin." ,eTemp.getEmail() + "|" + eTemp.getAvailable(),eTemp.getEmail() + " | 1",1 );
+                    LogDAO.getInstance().insert(log);
 
                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-update-employee");
                     rd.forward(request, response);
@@ -105,7 +120,17 @@ public class AddUpdateEmployeeControl extends HttpServlet {
 
                     Image i = new Image(imgurl,idin);
 
+                    Employee eTemp = EmployeeDAO.getInstance().selectById(idin);
+
                     Employee e = new Employee(idin,name,email,birthday,1,phone,address,branchID,branch,info,dateinDatee,null,0,0,imgurl,role);
+
+
+                    String actionHelper = "";
+                    if(adminloging.getId() == e.getId()) {
+                        actionHelper = " của chính mình";
+                    }
+                    Log log = new Log(request.getRemoteAddr(),adminloging.getEmail() + " | update_employee","Đã cập nhật thông tin tài khoản admin" + actionHelper + "." ,eTemp.toString(),e.toString(),1 );
+                    LogDAO.getInstance().insert(log);
 
                     EmployeeDAO.getInstance().updateEmployee(e,i);
 
@@ -167,6 +192,10 @@ public class AddUpdateEmployeeControl extends HttpServlet {
                     Employee e = new Employee(idin,name,email,birthday,1,phone,address,branchID,branch,info,dateinDatee,null,0,0,imgurl,role);
 
                     EmployeeDAO.getInstance().insertEmployee(e,i);
+
+
+                    Log log = new Log(request.getRemoteAddr(),adminloging.getEmail() + " | update_employee","Đã thêm một tài khoản admin mới." ,"trống",e.toString(),1 );
+                    LogDAO.getInstance().insert(log);
 
                     int status= Integer.parseInt(request.getParameter("status"));
 

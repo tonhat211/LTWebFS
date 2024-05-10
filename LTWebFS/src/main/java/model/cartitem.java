@@ -34,6 +34,11 @@ public class cartitem {
         this.qty = qty;
     }
 
+    public cartitem(int proID, int qty) {
+        this.proID = proID;
+        this.qty = qty;
+    }
+
     public int getId() {
         return id;
     }

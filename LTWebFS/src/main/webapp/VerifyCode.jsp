@@ -28,6 +28,7 @@
 
         <form action="verifyEmail" method="get" class="formm">
             <div class="error" <%=status.equalsIgnoreCase("unavailableAccount") ? "" : "hidden"%>>Tài khoản chưa được xác minh</div>
+            <div class="error" <%=status.equalsIgnoreCase("lockedTemporarilyAccount") ? "" : "hidden"%>>Tài khoản đã bị tạm khóa do đăng nhập sai 5 lần liên tiếp, vui lòng xác minh để có thể đăng nhập</div>
             <h4 class="title">Mã xác minh đã được gửi tới email: <%=email%></h4>
             <p style="text-align: center">Mã xác minh sẽ hết hạn trong vòng 5 phút</p>
             <div class="show-flex-row">

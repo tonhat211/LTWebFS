@@ -69,6 +69,13 @@ public class adminMenuController extends HttpServlet {
                 rd.forward(request, response);
                 break;
             }
+            case "log": {
+                currentMenu = "log";
+                session.setAttribute("currentAdminMenu", currentMenu);
+                rd = getServletContext().getRequestDispatcher("/goto-logManagement");
+                rd.forward(request, response);
+                break;
+            }
             case "news": {
                 currentMenu = "news";
 //                request.setAttribute("currentMenu",currentMenu);

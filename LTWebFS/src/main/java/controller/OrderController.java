@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import database.DeOrderDAO;
 import database.DecartDAO;
+import database.LogDAO;
 import database.OrderDAO;
 import model.*;
 
@@ -37,8 +38,6 @@ public class OrderController extends HttpServlet {
         float totalMoney = Float.parseFloat(request.getParameter("orderMoney"));
         float deliveryFee = Float.parseFloat(request.getParameter("deliveryFee"));
 
-
-
         Order o = new Order(id,totalMoney,userId,deliveryFee,0);
         OrderDAO.getInstance().insert(o);
 
@@ -65,6 +64,10 @@ public class OrderController extends HttpServlet {
         request.setAttribute("status","orderSuccessful");
 
 
+        Log log = new Log(request.getRemoteAddr(),u.getEmail() + " | payment ","Đã đặt thành công một đơn hàng." ,"trống","Mã đơn hàng: " + o.getId(),1 );
+        LogDAO.getInstance().insert(log);
+
+
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-cart");
         rd.forward(request, response);
 
@@ -76,42 +79,6 @@ public class OrderController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         doGet(request,response);
-
-    }
-
-    public void doPost1(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html; charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
-        HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("userloging");
-
-        String cartJSON = request.getParameter("selectedProducts");
-
-        Gson gson = new Gson();
-        DeCart[] selectedProducts = gson.fromJson(cartJSON, DeCart[].class);
-
-        ArrayList<Integer> idpros = new ArrayList<>();
-            for (int i = 0; i < selectedProducts.length; i++) {
-                idpros.add(selectedProducts[i].getIdProduct());
-            }
-            int idcart = selectedProducts[0].getIdCart();
-
-            ArrayList<cartitem> cartTemp = DecartDAO.getInstance().getCartItemsByCaP(idcart, idpros);
-
-//            request.setAttribute("cartTemp", cartTemp);
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        cartitem[] cart = new cartitem[cartTemp.size()];
-        for(int i=0; i >cartTemp.size();i++) {
-            cart[i] = cartTemp.get(i);
-        }
-
-        String json = mapper.writeValueAsString(cart);
-
-        response.getWriter().write(json);
 
     }
 

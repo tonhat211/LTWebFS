@@ -123,7 +123,7 @@
           </div>
 
           <%--          test them san pham vao gio hang bang servlet--%>
-          <form class="product-qty-buying" method="post" action="add-to-cart">
+          <form class="product-qty-buying" method="post" action="add-to-cart" id="addToCartForm">
             <div class="product-qty-control">
 
               <i class="fa-solid fa-plus qty-control btn-plus-qty"></i>
@@ -146,7 +146,7 @@
 <%--              <input type="text" class="product-qty-input qtyClass" name="qty" value="1" maxlength="2" size="2">--%>
 <%--              <i class="fa-solid fa-minus qty-control btn-minus-qty"></i>--%>
 
-<%--              <input type="text" hidden class="product-qty-input productIDClass" name="productID" value="<%=productDetail.getProductID()%>" maxlength="2" size="2">--%>
+<%--              <input type="text" hidden class="product-productID-input productIDClass" name="productID" value="<%=pu.getId()%>" maxlength="2" size="2">--%>
 
 <%--            </div>--%>
 <%--            <div class="add-to-cart-btn"><p>Thêm vào giỏ hàng</p></div>--%>
@@ -179,32 +179,94 @@
   <%@ include file="footer.jsp" %>
 </div>
 
-<script src="assets/js/productDetail.js"></script>
+<script type="module"  src="assets/js/productDetail.js"></script>
 <script>
-  // $(document).ready(function() {
-  //   $(".add-to-cart-btn").click(function() {
-  //     var productId = $(".productIDClass").val();
-  //     var qty = $(".qtyClass").val();
-  //     // console.log(productId);
-  //     // console.log(qty);
-  //     addToCart(productId, qty);
-  //   });
+
+  // var xhr = XMLHttpRequest();
+  // xhr.open("POST",url,true);
+  // xhr.responseType= text;
+  // xhr.onLoad = function (){
+  //   if(xhr.status >=200 & <300){
   //
-  //   function addToCart(productId, qty) {
-  //     console.log(productId);
-  //     console.log(qty);
-  //     $.ajax({
-  //       url: "/LTWebFS_war_exploded/add-to-cart",
-  //       method: "POST",
-  //       data: {productId: productId, qty: qty },
-  //       success: function(data) {
+  //   } else {
   //
-  //         alert("da them thanh cong san pham vao gio hang") // Log thông báo thành công
-  //       }
-  //     });
   //   }
+  // }
+  // xhr.onerror= function () {
   //
+  // }
+  //
+  // xhr.send();
+
+
+  // document.querySelector('#addToCartForm').addEventListener('submit',function (event) {
+  //   event.preventDefault();
+  //   console.log("hi2")
+  //
+  //   var formData = new FormData(this);
+  //   console.log(formData);
+  //   var item = {
+  //     productID : formData.get("productID"),
+  //     qty : formData.get("qty")
+  //   };
+  //   console.log(item);
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.open("POST","/LTWebFS_war_exploded/add-to-cart",true);
+  //   xhr.responseType="text";
+  //   xhr.onload = function () {
+  //     if(xhr.status >=200 && xhr.status < 300) {
+  //       console.log(xhr.responseText);
+  //     } else {
+  //       alert("co loi, chua them duoc vao gio hang");
+  //     }
+  //   }
+  //   xhr.onerror = function() {
+  //     alert('Có lỗi xảy ra khi gửi yêu cầu.');
+  //   };
+  //   xhr.send(JSON.stringify(item));
   // });
+
+  // JSOn.stringify(item);
+
+//   ajax jquery
+
+  $(document).ready(function () {
+    document.querySelector('#addToCartForm').addEventListener('submit',function (event){
+      event.preventDefault();
+
+      var data = new FormData(this);
+      console.log(data);
+      var productID = data.get("productID");
+      var qty = data.get("qty");
+      addToCart(productID,qty);
+    });
+
+    function addToCart(productID, qty) {
+
+      $.ajax({
+        url: "/LTWebFS_war_exploded/add-to-cart",
+        method: "POST",
+        data: {productID: productID, qty: qty},
+        success: function (message) {
+          alert(message);
+        }
+      });
+    }
+
+  });
+
+  // $.ajax({
+  //   url,
+  //   method
+  //   data: {},
+  //   success: function (message) {
+  //
+  //   }
+  // });
+
+
+
+
 
 </script>
 </body>

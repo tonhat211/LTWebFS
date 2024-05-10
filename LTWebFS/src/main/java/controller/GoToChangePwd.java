@@ -78,6 +78,9 @@ public class GoToChangePwd extends HttpServlet {
         String json = mapper.writeValueAsString(cart);
 
         response.getWriter().write(json);
+//
+//        ObjectMapper mapper = new ObjectMapper();
+//        String json = mapper.writeValueAsString(cart);
 
     }
 

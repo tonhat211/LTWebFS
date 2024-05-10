@@ -13,8 +13,7 @@
     <!-- Favicons -->
     <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
-    <!--  <link href="assets/img/favicon.png" rel="icon">-->
-    <!--  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -65,22 +64,22 @@
             <a href="goto-customer-admin" class="backto-AdminProduct">Quay lại trang quản lí khách hàng</a>
 
             <div class="form-container">
-                <form action="addUpdate-customer" method="get">
+                <form action="addUpdate-customer" method="post" id="customerInfoForm">
                     <div class="show-flex-row">
                         <h4><%= (u.getName()==""?"Thêm khách hàng mới":"Cập nhật thông tin khách hàng") %></h4>
 
                     </div>
                     <div class="show-flex-row">
                         <div class="grid__row img-showing">
-                            <div class="disabled-showing <%= (u.getAvailable()==0?"active":"") %>" style="<%= (u.getName()==""?"position: relative;  left: 0":"") %>" >
+                            <div class="disabled-showing <%= (u.getAvailable()<1?"active":"") %>" style="<%= (u.getName()==""?"position: relative;  left: 0":"") %>" >
                                 <div class="disabled-showing-content">
-                                    <%= (u.getName()==""?"CHƯA KÍCH HOẠT":"ĐÃ KHÓA") %>
+                                    <%= (u.getAvailable()==0?"CHƯA KÍCH HOẠT":"ĐÃ KHÓA/TẠM KHÓA") %>
                                 </div>
                             </div>
                         </div>
                         <div class="stop_reSale <%= (u.getName()==""?"hide":"") %>" >
-                            <div class="btn btn-stop-pro <%= (u.getAvailable()==1?"active":"") %>">Khóa tài khoản</div>
-                            <div class="btn btn-resale-pro <%= (u.getAvailable()==0?"active":"") %>"><a class="no-a"
+                            <div class="btn btn-stop-pro <%= (u.getAvailable()>=0?"active":"") %>">Khóa tài khoản</div>
+                            <div class="btn btn-resale-pro <%= (u.getAvailable()<0?"active":"") %>"><a class="no-a"
                                     href="addUpdate-customer?action=unlock&id=<%=u.getId()%>">Mở khóa tài khoản</a></div>
 
                         </div>
@@ -90,27 +89,34 @@
                     <div class="form-group w-50">
                         <label class="w-20" for="id">ID</label>
                         <input type="text" size="10" class="form-control w-80" id="id" name="id" aria-describedby="emailHelp" placeholder="ID" value="<%=u.getId()%>" readonly>
-                        <!--                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                     </div>
 
 
                     <div class="form-group w-80">
                         <label class="w-20" for="name">Họ và tên: </label>
                         <input type="text" class="form-control w-80" id="name" name="name" aria-describedby="" placeholder="Nhập tên" value="<%=u.getName() %>">
-                        <!--                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                        <div class="required" hidden>Khong duoc de trong muc nay</div>
                     </div>
 
                     <div class="form-group w-80">
                         <label class="w-20" for="email">Email</label>
                         <input type="text" size="10" class="form-control w-80" id="email" name="email" aria-describedby="" placeholder="Nhập email" value="<%=u.getEmail() %>">
+                        <div class="error" hidden>Muc nay phai la email</div>
+                        <div class="required" hidden>Khong duoc de trong muc nay</div>
+
                     </div>
                     <div class="form-group w-80">
                         <label class="w-20" for="phone">Số điện thoại: </label>
                         <input type="text" class="form-control w-80" id="phone" name="phone" aria-describedby="" placeholder="Nhập số điện thoại" value="<%=u.getPhone() %>">
+                        <div class="required" hidden>Khong duoc de trong muc nay</div>
+                        <div class="error" hidden>So dien thoai khong hop le</div>
+
                     </div>
                     <div class="form-group w-100">
                         <label class="w-20" for="address">Địa chỉ: </label>
                         <input type="text" class="form-control w-80" id="address" name="address" aria-describedby="" placeholder="Nhập Địa chỉ" value="<%=u.getAddress() %>">
+                        <div class="required" hidden>Khong duoc de trong muc nay</div>
+
                     </div>
 
                     <div class="show-flex-row">
@@ -140,13 +146,38 @@
 
 
                         %>
-                        <div class="form-group w-50">
-                            <label class="w-20" for="sex">Giới tính: </label>
-                            <input type="text" class="form-control w-80" id="sex" name="sex" paria-describedby="" placeholder="Enter kind" value="<%=sex%>">
+<%--                        <div class="form-group w-50">--%>
+<%--                            <label class="w-20" for="sex">Giới tính: </label>--%>
+<%--                            <input type="text" class="form-control w-80" id="sex" name="sex" paria-describedby="" placeholder="Enter kind" value="<%=sex%>">--%>
+<%--                        </div>--%>
+
+                        <div id="sex" class="info-container">
+                            <div class="info-container__title">
+                                <label for="sex">Giới tính
+                                </label>
+                            </div>
+
+                            <div class="info-container__content">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sex" id="flexRadioDefault1" value="nam" <%=sex.equalsIgnoreCase("nam") ? "checked" : ""%>>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Nam
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sex" id="flexRadioDefault2" value="nu"  <%=sex.equalsIgnoreCase("nu") ? "checked" : ""%>>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Nữ
+                                    </label>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="form-group w-50">
                             <label  class="w-20"  for="birthday">Ngày sinh: </label>
                             <input type="date" class="form-control w-80" id="birthday" name="birthday"  aria-describedby="" placeholder="Enter date import" value="<%=birthday%>">
+                            <div class="error" hidden>Chua du 18 tuoi</div>
+
                         </div>
                     </div>
                     <div class="form-group w-50">
@@ -179,5 +210,115 @@
     </div>
 </div>
 <script src="assets/js/addUpdate.js"></script>
+<script>
+
+    $(document).ready(function() {
+        document.querySelector("#customerInfoForm").addEventListener('submit', function (event){
+            event.preventDefault();
+
+            var formData = new FormData(this);
+            var name = formData.get("name");
+            var email = formData.get("email");
+            var phone = formData.get("phone");
+            var address = formData.get("address");
+            var birthday = formData.get("birthday");
+
+            var isOk = true;
+
+            if(name.trim() === "") {
+                switchMessage("#name",'.required',1);
+                isOk = false;
+            } else {
+                switchMessage("#name",'.required',0);
+
+            }
+
+            if(email.trim() === "") {
+                switchMessage("#email",'.required',1);
+                isOk = false;
+            } else {
+                switchMessage("#email",'.required',0);
+                var regex= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(regex.test(email)) {
+                    switchMessage("#email",'.error',0);
+                } else {
+                    switchMessage("#email",'.error',1);
+                    isOk=false;
+                }
+            }
+
+            if(phone.trim() ===""){
+                switchMessage("#phone",'.required',1);
+                isOk = false;
+            } else {
+                switchMessage("#name",'.required',0);
+                var test;
+                for(var i = 0; i<phone.length; i++) {
+                    test = parseInt(phone.charAt(i));
+                    if(isNaN(test)) {
+                        switchMessage("#name",'.error',1);
+                        isOk=false;
+                        break;
+                    }
+                }
+            }
+
+            if(address.trim() === "") {
+                switchMessage("#address",'.required',1);
+                isOk = false;
+            } else {
+                switchMessage("#address",'.required',0);
+
+            }
+
+            var birth = new Date(birthday);
+            var year = birth.getFullYear();
+            var currentYear = new Date().getFullYear();
+
+            if((currentYear - year) < 18) {
+                switchMessage("#birthday",'.error',1);
+                isOk = false;
+            } else {
+                switchMessage("#birthday",'.error',0);
+            }
+
+            if(isOk=== false) {
+                return;
+            }
+
+            updateCustomer(formData);
+
+
+            function updateCustomer(formData) {
+                $.ajax({
+                    url: "/LTWebFS_war_exploded/addUpdate-customer", // Đường dẫn đến Servlet
+                    method: "POST",
+                    data: { formData: formData },
+                    dataType: 'html',
+                    success: function(data) {
+                        document.querySelector(".form-container").innerHTML = data;
+
+                    }
+                });
+            }
+
+            function switchMessage(parentSelector,selector, status) {
+                var e = document.querySelector(parentSelector).parentElement.querySelector(selector);
+                if(status === 1) {
+                    e.hidden = false;
+                } else {
+                    e.hidden = true;
+                }
+            }
+
+
+        });
+
+    });
+    // console.log(document.querySelector(".form-container").innerHTML);
+
+
+
+</script>
 </body>
 </html>

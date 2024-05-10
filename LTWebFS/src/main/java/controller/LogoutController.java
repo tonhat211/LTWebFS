@@ -1,9 +1,8 @@
 package controller;
 
 import database.DecartDAO;
-import model.DeCart;
-import model.User;
-import model.cartitem;
+import database.LogDAO;
+import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,8 +24,33 @@ public class LogoutController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         HttpSession session  =request.getSession();
+        String email="";
+        String ipAddress = request.getRemoteAddr();
+        Log log= new Log();
+
+
+
+
+
+        User u = (User) session.getAttribute("userloging");
+         if(u!=null) {
+             email = u.getEmail();
+             String currentMenu = ((String) session.getAttribute("currentMenu"));
+             log = new Log(ipAddress,email + " | " + currentMenu,"Đã đăng xuất khỏi website." ,email ,"trống",1 );
+
+         } else {
+             Employee e = (Employee) session.getAttribute("adminloging");
+             email = e.getEmail();
+             String currentAdminMenu = (String) session.getAttribute("currentAdminMenu");
+             log = new Log(ipAddress,email + " | " + currentAdminMenu,"Đã đăng xuất khỏi hệ thống admin." ,email,"trống",1 );
+
+         }
 
         session.removeAttribute("userloging");
+        session.removeAttribute("adminloging");
+
+//        xu ly ghi log
+        LogDAO.getInstance().insert(log);
 
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/menucontrol?menu=product&kind=A");
             rd.forward(request,response);
