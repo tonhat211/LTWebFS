@@ -98,30 +98,22 @@ public class LogDAO implements IDAO<Log>{
 		}
 	}
 
-	public Area selectByName(String namein) {
+	public int deleteAlert() {
+		int re=-1;
 		try {
 			Connection conn = JDBCUtil.getConnection();
-			String sql = "select * from areas where name = ?";
+			String sql = "delete from logs where level = 1";
 			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setString(1, namein);
-			ResultSet rs = pst.executeQuery();
+			re= pst.executeUpdate();
 
-			while(rs.next()) {
-				int id = rs.getInt("id");
-				String name = rs.getString("name");
-				int available =  rs.getInt("available");
-				return new Area(id,name,available);
-
-			}
 			JDBCUtil.closeConnection(conn);
-
+			return re;
 		} catch (SQLException e) {
 			// TODO: handle exception
 			throw new RuntimeException(e);
 		}
-		return null;
-
 	}
+
 
 	@Override
 	public int update(Log t) {

@@ -86,6 +86,8 @@
                     </form>
                     <div>
                         <a class="ad_btn-control btn-up-pro" href="goto-add-customer?status=0">Thêm khách hàng</a>
+<%--                        <a class="ad_btn-control btn-up-pro" href="addUpdate-customer?action=add">Thêm khách hàng</a>--%>
+
                     </div>
 
                 </div>

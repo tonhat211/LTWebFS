@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+
 }
 
 .show-flex-row {
@@ -10,15 +10,16 @@
     align-items: center;
 }
 
-.ALERT {
+tbody td.ALERT {
     text-align: center;
     background-color: white;
+    border: 4px solid white;
 }
 
-.WARNING {
+tbody td.WARNING {
     color: orange;
     background-color: rgba(255, 165, 0, 0.29);
-    margin: 4px 0;
+    border: 4px solid white;
     text-align: center;
 }
 
@@ -32,9 +33,9 @@
 
 
 
-.DANGER {
+tbody td.DANGER {
     color: red;
     background-color: #ff00004a;
-    margin: 4px 0;
+    border: 4px solid white;
     text-align: center;
 }

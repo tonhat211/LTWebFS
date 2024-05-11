@@ -34,6 +34,9 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/addUpdate.css">
     <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/toast.css">
+
+    <script src="assets/js/toast.js"></script>
 </head>
 <body>
 <%
@@ -44,7 +47,13 @@
 %>
 
 
+
+
 <div class="ad-content mt10">
+    <%--thong bao--%>
+    <div id="toast">
+
+    </div>
     <div class="modal confirm-stop">
         <div class="modal__overlay">
             <div class="modal__confirm-content" onclick="event.stopPropagation()">
@@ -52,15 +61,35 @@
                     <p>Bạn chắc chắn muốn khóa tài khoản này?</p>
                 </div>
                 <div class="show-flex-row">
+<%--                                        <a class="btn btn-primary confirm-btn yes-confirm" href="#">Khóa</a>--%>
                     <a class="btn btn-primary confirm-btn yes-confirm" href="addUpdate-customer?action=lock&id=<%=u.getId()%>">Khóa</a>
                     <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                 </div>
             </div>
+
         </div>
     </div>
+    <div class="modal confirm-unlock">
+        <div class="modal__overlay">
+            <div class="modal__confirm-content" onclick="event.stopPropagation()">
+                <div class="confirm__message">
+                    <p><%= (u.getAvailable()==0?"Kích hoạt tài khoản?":"Mở khóa tài khoản này?") %></p>
+                </div>
+                <div class="show-flex-row">
+<%--                    <a class="no-a unlock-user"--%>
+<%--                       href="addUpdate-customer?action=unlock&id=<%=u.getId()%>" >--%>
+                    <%--                                        <a class="btn btn-primary confirm-btn yes-confirm" href="#">Khóa</a>--%>
+                    <a class="btn btn-primary confirm-btn unlock-user" href="addUpdate-customer?action=unlock&id=<%=u.getId()%>"><%= (u.getAvailable()==0?"Kích hoạt":"Mở khóa") %></a>
+                    <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <div class="ad-content-item">
 
-        <div class="ad_container">
+        <div class="ad_container" style="width: 70%;">
             <a href="goto-customer-admin" class="backto-AdminProduct">Quay lại trang quản lí khách hàng</a>
 
             <div class="form-container">
@@ -78,9 +107,9 @@
                             </div>
                         </div>
                         <div class="stop_reSale <%= (u.getName()==""?"hide":"") %>" >
-                            <div class="btn btn-stop-pro <%= (u.getAvailable()>=0?"active":"") %>">Khóa tài khoản</div>
-                            <div class="btn btn-resale-pro <%= (u.getAvailable()<0?"active":"") %>"><a class="no-a"
-                                    href="addUpdate-customer?action=unlock&id=<%=u.getId()%>">Mở khóa tài khoản</a></div>
+                            <div class="btn btn-stop-pro <%= (u.getAvailable()>0?"active":"") %>" onclick="showModal()">Khóa tài khoản</div>
+                            <div class="btn btn-stop-pro <%= (u.getAvailable()==0?"active":"") %>" onclick="showModalUnlock()">Kích hoạt tài khoản</div>
+                            <div class="btn btn-resale-pro <%= (u.getAvailable()<0?"active":"") %>" onclick="showModalUnlock()">Mở khóa tài khoản</div>
 
                         </div>
                     </div>
@@ -95,27 +124,27 @@
                     <div class="form-group w-80">
                         <label class="w-20" for="name">Họ và tên: </label>
                         <input type="text" class="form-control w-80" id="name" name="name" aria-describedby="" placeholder="Nhập tên" value="<%=u.getName() %>">
-                        <div class="required" hidden>Khong duoc de trong muc nay</div>
+                        <div class="required" hidden>Không được để trống mục này</div>
                     </div>
 
                     <div class="form-group w-80">
                         <label class="w-20" for="email">Email</label>
                         <input type="text" size="10" class="form-control w-80" id="email" name="email" aria-describedby="" placeholder="Nhập email" value="<%=u.getEmail() %>">
-                        <div class="error" hidden>Muc nay phai la email</div>
-                        <div class="required" hidden>Khong duoc de trong muc nay</div>
+                        <div class="error" hidden>Email không hợp lệ</div>
+                        <div class="required" hidden>Không được để trống mục này</div>
 
                     </div>
                     <div class="form-group w-80">
                         <label class="w-20" for="phone">Số điện thoại: </label>
                         <input type="text" class="form-control w-80" id="phone" name="phone" aria-describedby="" placeholder="Nhập số điện thoại" value="<%=u.getPhone() %>">
-                        <div class="required" hidden>Khong duoc de trong muc nay</div>
-                        <div class="error" hidden>So dien thoai khong hop le</div>
+                        <div class="required" hidden>Không được để trống mục này</div>
+                        <div class="error" hidden>Số điện thoại không hợp lệ</div>
 
                     </div>
                     <div class="form-group w-100">
                         <label class="w-20" for="address">Địa chỉ: </label>
                         <input type="text" class="form-control w-80" id="address" name="address" aria-describedby="" placeholder="Nhập Địa chỉ" value="<%=u.getAddress() %>">
-                        <div class="required" hidden>Khong duoc de trong muc nay</div>
+                        <div class="required" hidden>Không được để trống mục này</div>
 
                     </div>
 
@@ -146,10 +175,6 @@
 
 
                         %>
-<%--                        <div class="form-group w-50">--%>
-<%--                            <label class="w-20" for="sex">Giới tính: </label>--%>
-<%--                            <input type="text" class="form-control w-80" id="sex" name="sex" paria-describedby="" placeholder="Enter kind" value="<%=sex%>">--%>
-<%--                        </div>--%>
 
                         <div id="sex" class="info-container">
                             <div class="info-container__title">
@@ -174,15 +199,16 @@
 
                         </div>
                         <div class="form-group w-50">
-                            <label  class="w-20"  for="birthday">Ngày sinh: </label>
+                            <label  class="w-40"  for="birthday">Ngày sinh: </label>
                             <input type="date" class="form-control w-80" id="birthday" name="birthday"  aria-describedby="" placeholder="Enter date import" value="<%=birthday%>">
-                            <div class="error" hidden>Chua du 18 tuoi</div>
+                            <div class="error" hidden>Chưa đủ 16 tuổi</div>
 
                         </div>
                     </div>
                     <div class="form-group w-50">
-                        <label  class="w-20"  for="datein">Ngày tham gia: </label>
+                        <label  class="w-40"  for="datein">Ngày tham gia: </label>
                         <input type="date" class="form-control w-80" id="datein" name="datein"  aria-describedby="" placeholder="Nhập ngày tham gia" value="<%= u.getDateIn().getDateInMonthDayYearSql() %>">
+                        <div class="error" hidden>Ngày tham gia không hợp lệ</div>
                     </div>
 
                     <div class="form-group" style="display: none">
@@ -209,10 +235,13 @@
         </div>
     </div>
 </div>
+<%--<script> showSuccessToast("thanh cong script");</script>--%>
 <script src="assets/js/addUpdate.js"></script>
+<script src="assets/js/toast.js"></script>
 <script>
 
     $(document).ready(function() {
+        // showSuccessToast("thanh cong tai");
         document.querySelector("#customerInfoForm").addEventListener('submit', function (event){
             event.preventDefault();
 
@@ -222,6 +251,7 @@
             var phone = formData.get("phone");
             var address = formData.get("address");
             var birthday = formData.get("birthday");
+            var datein = formData.get("datein");
 
             var isOk = true;
 
@@ -251,17 +281,25 @@
                 switchMessage("#phone",'.required',1);
                 isOk = false;
             } else {
-                switchMessage("#name",'.required',0);
-                var test;
-                for(var i = 0; i<phone.length; i++) {
-                    test = parseInt(phone.charAt(i));
-                    if(isNaN(test)) {
-                        switchMessage("#name",'.error',1);
-                        isOk=false;
-                        break;
+                switchMessage("#phone",'.required',0);
+                if(phone.length > 11) {
+                    switchMessage("#phone",'.error',1);
+                    isOk=false;
+
+                } else {
+                    var test;
+                    for(var i = 0; i<phone.length; i++) {
+                        test = parseInt(phone.charAt(i));
+                        if(isNaN(test)) {
+                            switchMessage("#phone",'.error',1);
+                            isOk=false;
+                            break;
+                        }
                     }
                 }
             }
+
+
 
             if(address.trim() === "") {
                 switchMessage("#address",'.required',1);
@@ -274,6 +312,8 @@
             var birth = new Date(birthday);
             var year = birth.getFullYear();
             var currentYear = new Date().getFullYear();
+            var curretnMonth = new Date().getMonth()+1;
+            var currentDay = new Date().getDate();
 
             if((currentYear - year) < 18) {
                 switchMessage("#birthday",'.error',1);
@@ -282,43 +322,127 @@
                 switchMessage("#birthday",'.error',0);
             }
 
+            var date_in = new Date(datein);
+            var year = date_in.getFullYear();
+            var month = date_in.getMonth()+1;
+            var day = date_in.getDate();
+            console.log(year);
+            console.log(month);
+            console.log(day);
+
+            if((year <= currentYear && month <= curretnMonth && day <= currentDay)){
+                switchMessage("#datein",'.error',0);
+
+            } else {
+                switchMessage("#datein",'.error',1);
+                isOk = false;
+            }
+
+
             if(isOk=== false) {
                 return;
             }
 
-            updateCustomer(formData);
+            var id = formData.get("id");
+            var sex = formData.get("sex");
+            var action = formData.get("action");
 
 
-            function updateCustomer(formData) {
-                $.ajax({
-                    url: "/LTWebFS_war_exploded/addUpdate-customer", // Đường dẫn đến Servlet
-                    method: "POST",
-                    data: { formData: formData },
-                    dataType: 'html',
-                    success: function(data) {
-                        document.querySelector(".form-container").innerHTML = data;
-
-                    }
-                });
-            }
-
-            function switchMessage(parentSelector,selector, status) {
-                var e = document.querySelector(parentSelector).parentElement.querySelector(selector);
-                if(status === 1) {
-                    e.hidden = false;
-                } else {
-                    e.hidden = true;
-                }
-            }
-
+            updateCustomer(id,name, email, phone, address, birthday, datein, action, sex);
 
         });
 
+
+        function updateCustomer(id, name, email, phone, address, birthday, datein, action, sex) {
+            $.ajax({
+                url: "/LTWebFS/addUpdate-customer",
+                method: "POST",
+                data: { id: id, name: name, email: email, phone: phone, address: address, birthday: birthday, datein: datein, action: action, sex: sex },
+                success: function(data) {
+                    $("#customerInfoForm").html(data);
+
+                }
+            });
+        }
+
+        function switchMessage(parentSelector,selector, status) {
+            var e = document.querySelector(parentSelector).parentElement.querySelector(selector);
+            if(status === 1) {
+                e.hidden = false;
+            } else {
+                e.hidden = true;
+            }
+        }
+
+    //     gan xu kien cho cac element
+        const confirmStopModalOverlay =$('.modal__overlay');
+        const confirmStopModal =$('.confirm-stop');
+
+        const yesConfirmBtn = $('.yes-confirm');
+        const noConfirmBtn = $('.no-confirm');
+
+
+
+        confirmStopModalOverlay.click(hideModal);
+        noConfirmBtn.click(hideModal);
+
+        confirmStopModalOverlay.click(hideModalUnlock);
+        noConfirmBtn.click(hideModalUnlock);
+
+
+
+
     });
-    // console.log(document.querySelector(".form-container").innerHTML);
+    document.querySelector('.yes-confirm').addEventListener('click', function (event) {
+        event.preventDefault();
+        var urlin = event.target.href;
+        availableUser(urlin);
+        hideModal();
+
+    });
+
+    document.querySelector('.unlock-user').addEventListener('click', function (event) {
+        event.preventDefault();
+        var urlin = event.target.href;
+        availableUser(urlin);
+        hideModalUnlock();
+        // showSuccessToast("thanh cong r nef");
+
+    });
+
+    function showModal() {
+        $('.confirm-stop').addClass('active');
+    }
+
+    function hideModal(){
+        $('.confirm-stop').removeClass('active');
+    }
+
+    function showModalUnlock() {
+        $('.confirm-unlock').addClass('active');
+    }
+
+    function hideModalUnlock(){
+        $('.confirm-unlock').removeClass('active');
+    }
+
+    function availableUser(urlin) {
+
+        $.ajax({
+            // url: "/LTWebFS_war_exploded/addUpdate-customer", // Đường dẫn đến Servlet
+            url: urlin, // Đường dẫn đến Servlet
+            method: "POST",
+            // data: { action: action, id : id },
+            success: function(data) {
+                $("#customerInfoForm").html(data);
+            }
+        });
+    }
+
 
 
 
 </script>
+
 </body>
 </html>

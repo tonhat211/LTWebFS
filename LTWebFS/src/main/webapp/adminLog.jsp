@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="assets/css/adminN.css">
     <link rel="stylesheet" href="assets/css/adminLog.css">
 
+
 </head>
 <body>
 <%
@@ -84,20 +85,19 @@
     <!--    <section class="section dashboard">-->
     <!--        <h1>Content</h1>-->
     <!--    </section>-->
-    <div class="ad-content">
+    <div class="ad-content" style="padding: 10px 4px">
 
-        <div class="ad-content-item">
+        <div class="ad-content-item" style="padding: 0">
             <div class="container">
+                <a href="log-control?action=alert">Dọn dẹp log alert</a>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Mức độ</th>
-                        <th scope="col">Địa chỉ IP</th>
-                        <th scope="col">Thông tin</th>
-                        <th scope="col">Hành động</th>
-                        <th scope="col">Giá trị trước</th>
-                        <th scope="col">Giá trị sau</th>
-                        <th scope="col">Thời gian</th>
+                        <th scope="col" style="width: 10%;">Mức độ</th>
+                        <th scope="col" style="width: 20%;">Địa chỉ IP </br> Thông tin </br> Thời gian</th>
+                        <th scope="col" style="width: 20%;">Hành động</th>
+                        <th scope="col" style="width: 25%;">Giá trị trước</th>
+                        <th scope="col" style="width: 25%;">Giá trị sau</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -124,13 +124,11 @@
                             }
                         %>
 
-                        <td class="temp <%=levelString%>"><%=levelString%></td>
-                        <td><%=t.getIp()%></td>
-                        <td><%=t.getInfo()%></td>
+                        <td class="<%=levelString%>"><%=levelString%></td>
+                        <td><%=t.getIp()%> </br> <%=t.getInfo()%> </br> <%=t.getTime()%></td>
                         <td><%=t.getAction()%></td>
                         <td><%=t.getPreValue()%></td>
                         <td><%=t.getAfterValue()%></td>
-                        <td><%=t.getTime()%></td>
                     </tr>
 
                     <%
@@ -139,18 +137,20 @@
 
                     </tbody>
                 </table>
-                <div class="show-flex-row">
+                <div class="show-flex-row" style="justify-content: center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-
-                            <%
-                                for(int i =0; i<numofPage;i++) {
-                            %>
-                            <li class="page-item"><a class="page-link <%=index%> <%=i%> <%=(i+1) == index ? "active" : ""%>" href="goto-logManagement?index=<%=i+1%>"><%=i+1%></a></li>
-                            <%
-                                }
-                            %>
-
+                            <div class="grid__row">
+                                <%
+                                    for(int i =0; i<numofPage;i++) {
+                                %>
+                                <div class="grid-col-1-padding-0"  style="width: 40px; height: 40px;">
+                                    <li class="page-item"><a class="page-link <%=index%> <%=i%> <%=(i+1) == index ? "active" : ""%>" href="goto-logManagement?index=<%=i+1%>"><%=i+1%></a></li>
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </div>
                         </ul>
                     </nav>
                 </div>
@@ -170,8 +170,6 @@
 
 <!-- Template Main JS File -->
 <script src="assets/js/jquery.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/adCus.js"></script>
 <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/chart.js/chart.umd.js"></script>

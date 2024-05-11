@@ -54,8 +54,6 @@ public class AddUpdateCustomerControl extends HttpServlet {
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
-
-
                     break;
 
 
@@ -73,13 +71,7 @@ public class AddUpdateCustomerControl extends HttpServlet {
                     Log log = new Log(request.getRemoteAddr(),e.getEmail() + " | update_customer ","Đã mở khóa tài khoản." ,u.getEmail() + "|" + u.getAvailable(),u.getEmail() + " | " + afterU.getAvailable(),1 );
                     LogDAO.getInstance().insert(log);
 
-
-//                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-update-customer");
-//                    rd.forward(request, response);
-//
-//                    break;
-
-                    String html = renderHtml(afterU,"Đã mở khóa tài khoản " + afterU.getEmail());
+                    String html= renderHtml(afterU,"Đã mở khóa tài khoản " + afterU.getEmail());
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
@@ -122,15 +114,15 @@ public class AddUpdateCustomerControl extends HttpServlet {
 //                    rd.forward(request, response);
 //                    break;
 
-                    String html = renderHtml(afterU,"cập nhật thành công tài khoản " + afterU.getEmail());
-                    response.setContentType("text/plain");
+                    String html = renderHtml(afterU,"Cập nhật thành công tài khoản " + afterU.getEmail());
+                    response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
-                    response.getWriter().write("<script>alert(\"hello1111\");</script>");
+                    response.getWriter().write(html);
                     break;
                 }
                 case "ADD":{
                     int idin = Integer.parseInt(request.getParameter("id"));
-//                  xu ly cap nhat
+//                  xu ly them
                     String name = request.getParameter("name");
                     String email = request.getParameter("email");
                     String phone = request.getParameter("phone");
@@ -144,10 +136,12 @@ public class AddUpdateCustomerControl extends HttpServlet {
                             Integer.parseInt(dateInTokens[1]),
                             Integer.parseInt(dateInTokens[2]));
 
-                    User u = new User(idin,name,email,"1234",0,phone,address,0,info,dateinDatee,null,0,null);
+                    String pwd = User.encodePwd(birthday);
+
+                    User u = new User(idin,name,email,pwd,0,phone,address,0,info,dateinDatee,null,0,null);
                     UserDAO.getInstance().insert(u);
 
-                    int status= Integer.parseInt(request.getParameter("status"));
+//                    int status= Integer.parseInt(request.getParameter("status"));
 
                     User afterU = UserDAO.getInstance().selectById(idin);
 
@@ -159,8 +153,9 @@ public class AddUpdateCustomerControl extends HttpServlet {
 //                    request.setAttribute("status",status);
 //                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-add-customer");
 //                    rd.forward(request, response);
-                    String html = renderHtml(afterU,"cập nhật thành công tài khoản " + afterU.getEmail());
-                    response.setContentType("text/plain");
+
+                    String html = renderHtml(afterU,"Thêm thành công tài khoản " + afterU.getEmail());
+                    response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
 
@@ -205,10 +200,10 @@ public class AddUpdateCustomerControl extends HttpServlet {
 
 
 
-
+//
         String html ="";
-        html = "<script> alert(\""+ message +"\"); </script> "+
-                "<form action=\"addUpdate-customer\" method=\"post\" id=\"customerInfoForm\">" +
+        html =   "<script> showSuccessToast(\"" + message + "\"); </script> " +
+//                "<form action=\"addUpdate-customer\" method=\"post\" id=\"customerInfoForm\">" +
                 "                    <div class=\"show-flex-row\">" +
                 "                        <h4>"+ (afterU.getName()==""?"Thêm khách hàng mới":"Cập nhật thông tin khách hàng") + "</h4>" +
 
@@ -222,10 +217,9 @@ public class AddUpdateCustomerControl extends HttpServlet {
                 "                            </div>" +
                 "                        </div>" +
                 "                        <div class=\"stop_reSale " + (afterU.getName()==""?"hide":"") +" \" >" +
-                "                            <div class=\"btn btn-stop-pro " + (afterU.getAvailable()>=0?"active":"") + " \">Khóa tài khoản</div>" +
-                "                            <div class=\"btn btn-resale-pro " +  (afterU.getAvailable()<0?"active":"") +" \"><a class=\"no-a\"" +
-                "                                    href=\"addUpdate-customer?action=unlock&id="+afterU.getId()+"\">Mở khóa tài khoản</a></div>" +
-
+                "                            <div class=\"btn btn-stop-pro " + (afterU.getAvailable()>0?"active":"") + " \"  onclick=\"showModal()\">Khóa tài khoản</div>" +
+                "                            <div class=\"btn btn-resale-pro " +  (afterU.getAvailable()<0?"active":"") +" \"  onclick=\"showModalUnlock()\">Mở khóa tài khoản</div>" +
+                "                            <div class=\"btn btn-resale-pro " +  (afterU.getAvailable()==0?"active":"") +" \"  onclick=\"showModalUnlock()\">Kích hoạt tài khoản</div>" +
                 "                        </div>" +
                 "                    </div>" +
 
@@ -237,27 +231,27 @@ public class AddUpdateCustomerControl extends HttpServlet {
                 "                    <div class=\"form-group w-80\">" +
                 "                        <label class=\"w-20\" for=\"name\">Họ và tên: </label>" +
                 "                        <input type=\"text\" class=\"form-control w-80\" id=\"name\" name=\"name\" aria-describedby=\"\" placeholder=\"Nhập tên\" value=\""+afterU.getName()+"\">" +
-                "                        <div class=\"required\" hidden>Khong duoc de trong muc nay</div>" +
+                "                        <div class=\"required\" hidden>Không được để trống mục này</div>" +
                 "                    </div>" +
 
                 "                    <div class=\"form-group w-80\">" +
                 "                        <label class=\"w-20\" for=\"email\">Email</label>" +
                 "                        <input type=\"text\" size=\"10\" class=\"form-control w-80\" id=\"email\" name=\"email\" aria-describedby=\"\" placeholder=\"Nhập email\" value=\""+afterU.getEmail()+"\">" +
-                "                        <div class=\"error\" hidden>Muc nay phai la email</div>" +
-                "                        <div class=\"required\" hidden>Khong duoc de trong muc nay</div>" +
+                "                        <div class=\"error\" hidden>Email không hợp lệ</div>" +
+                "                        <div class=\"required\" hidden>Không được để trống mục này</div>" +
 
                 "                    </div>" +
                 "                    <div class=\"form-group w-80\">" +
                 "                        <label class=\"w-20\" for=\"phone\">Số điện thoại: </label>" +
                 "                        <input type=\"text\" class=\"form-control w-80\" id=\"phone\" name=\"phone\" aria-describedby=\"\" placeholder=\"Nhập số điện thoại\" value=\""+afterU.getPhone()+"\">" +
-                "                        <div class=\"required\" hidden>Khong duoc de trong muc nay</div>" +
-                "                        <div class=\"error\" hidden>So dien thoai khong hop le</div>" +
+                "                        <div class=\"required\" hidden>Không được để trống mục này</div>" +
+                "                        <div class=\"error\" hidden>Số điện thoại không hợp lệ</div>" +
 
                 "                    </div>" +
                 "                    <div class=\"form-group w-100\">" +
                 "                        <label class=\"w-20\" for=\"address\">Địa chỉ: </label>" +
                 "                        <input type=\"text\" class=\"form-control w-80\" id=\"address\" name=\"address\" aria-describedby=\"\" placeholder=\"Nhập Địa chỉ\" value=\""+afterU.getAddress()+"\">" +
-                "                        <div class=\"required\" hidden>Khong duoc de trong muc nay</div>" +
+                "                        <div class=\"required\" hidden>Không được để trống mục này</div>" +
 
                 "                    </div>" +
 
@@ -288,21 +282,23 @@ public class AddUpdateCustomerControl extends HttpServlet {
                 "                        <div class=\"form-group w-50\">" +
                 "                            <label  class=\"w-20\"  for=\"birthday\">Ngày sinh: </label>" +
                 "                            <input type=\"date\" class=\"form-control w-80\" id=\"birthday\" name=\"birthday\"  aria-describedby=\"\" placeholder=\"Enter date import\" value=\""+birthday+"\">" +
-                "                            <div class=\"error\" hidden>Chua du 18 tuoi</div>" +
+                "                            <div class=\"error\" hidden>Chưa đủ 16 tuổi</div>" +
 
                 "                        </div>" +
                 "                    </div>" +
                 "                    <div class=\"form-group w-50\">" +
                 "                        <label  class=\"w-20\"  for=\"datein\">Ngày tham gia: </label>" +
                 "                        <input type=\"date\" class=\"form-control w-80\" id=\"datein\" name=\"datein\"  aria-describedby=\"\" placeholder=\"Nhập ngày tham gia\" value=\""+afterU.getDateIn().getDateInMonthDayYearSql() +"\">" +
+                "                        <div class=\"error\" hidden>Ngày tham gia không hợp lệ</div> " +
+
                 "                    </div>" +
 
                 "                    <div class=\"form-group\" style=\"display: none\">" +
-                "                        <label class=\"w-20\" for=\"action\" class=\"input-title\">action</label>" +
+                "                        <label class=\"w-40\" for=\"action\" class=\"input-title\">action</label>" +
                 "                        <input type=\"text\" class=\"form-control\" id=\"action\" name=\"action\" aria-describedby=\"\" placeholder=\"Enter img url\" value=\""+(afterU.getName()==""?"add":"update") +"\">" +
                 "                    </div>" +
                 "                    <div class=\"form-group\" style=\"display: none\">" +
-                "                        <label class=\"w-20\" for=\"status\" class=\"input-title\">status</label>" +
+                "                        <label class=\"w-40\" for=\"status\" class=\"input-title\">status</label>" +
                 "                        <input type=\"text\" class=\"form-control\" id=\"status\" name=\"status\" aria-describedby=\"\" placeholder=\"Enter img url\" value=\"1\">" +
                 "                    </div>" +
 
@@ -314,149 +310,11 @@ public class AddUpdateCustomerControl extends HttpServlet {
                 "                            <button class=\"btn btn-primary\" type=\"submit\">"+(afterU.getName()==""?"Thêm":"Lưu") +"</button>" +
                 "                        </div>" +
                 "                    </div>" +
-                "                    <!--                    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>-->" +
-                "                </form>";
+                "                    <!--                    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>-->"
+//                "                </form>"
+                ;
         return html;
     }
 
-    public String renderHtml1(User afterU, String message) {
-        String info = afterU.getInfo();
-        String sex = "";
-        String birthday="";
-        if(info!=null){
-            String infoTokens[] = info.split("=");
 
-            if(infoTokens.length <2){
-                sex = "trống";
-                birthday="trống";
-            }
-            else {
-                sex = infoTokens[0];
-                birthday = infoTokens[1];
-                String[] bdTokens = birthday.split("-");
-                if((bdTokens[1].length()<2))
-                    bdTokens[1]="0" + bdTokens[1];
-                if((bdTokens[2]).length()<2)
-                    bdTokens[2]="0" + bdTokens[2];
-
-                birthday = bdTokens[0] + "-" + bdTokens[1] + "-" + bdTokens[2];
-
-            }
-        }
-
-
-
-
-        String html ="";
-        html = "<script> alert(\""+ message +"\"); </script> "+
-                "<form action=\"addUpdate-customer\" method=\"post\" id=\"customerInfoForm\">" +
-                "                    <div class=\"show-flex-row\">" +
-                "                        <h4>Cập nhật thông tin khách hàng</h4>" +
-
-                "                    </div>" +
-                "                    <div class=\"show-flex-row\">" +
-                "                        <div class=\"grid__row img-showing\">" +
-                "                            <div class=\"disabled-showing" + (afterU.getAvailable()<1?"active":"") + " \" style=\" "+ (afterU.getName()==""?"position: relative;  left: 0":"")  + " \" >" +
-                "                                <div class=\"disabled-showing-content\">" +
-                "                                    " + (afterU.getAvailable()==0?"CHƯA KÍCH HOẠT":"ĐÃ KHÓA/TẠM KHÓA") +
-                "                                </div>" +
-                "                            </div>" +
-                "                        </div>" +
-                "                        <div class=\"stop_reSale " + (afterU.getName()==""?"hide":"") +" \" >" +
-                "                            <div class=\"btn btn-stop-pro " + (afterU.getAvailable()>=0?"active":"") + " \">Khóa tài khoản</div>" +
-                "                            <div class=\"btn btn-resale-pro " +  (afterU.getAvailable()<0?"active":"") +" \"><a class=\"no-a\"" +
-                "                                    href=\"addUpdate-customer?action=unlock&id="+afterU.getId()+"\">Mở khóa tài khoản</a></div>" +
-
-                "                        </div>" +
-                "                    </div>" +
-
-                "                    <div class=\"form-group w-50\">" +
-                "                        <label class=\"w-20\" for=\"id\">ID</label>" +
-                "                        <input type=\"text\" size=\"10\" class=\"form-control w-80\" id=\"id\" name=\"id\" aria-describedby=\"emailHelp\" placeholder=\"ID\" value=\""+afterU.getId()+"\" readonly>" +
-                "                    </div>" +
-
-                "                    <div class=\"form-group w-80\">" +
-                "                        <label class=\"w-20\" for=\"name\">Họ và tên: </label>" +
-                "                        <input type=\"text\" class=\"form-control w-80\" id=\"name\" name=\"name\" aria-describedby=\"\" placeholder=\"Nhập tên\" value=\""+afterU.getName()+"\">" +
-                "                        <div class=\"required\" hidden>Khong duoc de trong muc nay</div>" +
-                "                    </div>" +
-
-                "                    <div class=\"form-group w-80\">" +
-                "                        <label class=\"w-20\" for=\"email\">Email</label>" +
-                "                        <input type=\"text\" size=\"10\" class=\"form-control w-80\" id=\"email\" name=\"email\" aria-describedby=\"\" placeholder=\"Nhập email\" value=\""+afterU.getEmail()+"\">" +
-                "                        <div class=\"error\" hidden>Muc nay phai la email</div>" +
-                "                        <div class=\"required\" hidden>Khong duoc de trong muc nay</div>" +
-
-                "                    </div>" +
-                "                    <div class=\"form-group w-80\">" +
-                "                        <label class=\"w-20\" for=\"phone\">Số điện thoại: </label>" +
-                "                        <input type=\"text\" class=\"form-control w-80\" id=\"phone\" name=\"phone\" aria-describedby=\"\" placeholder=\"Nhập số điện thoại\" value=\""+afterU.getPhone()+"\">" +
-                "                        <div class=\"required\" hidden>Khong duoc de trong muc nay</div>" +
-                "                        <div class=\"error\" hidden>So dien thoai khong hop le</div>" +
-
-                "                    </div>" +
-                "                    <div class=\"form-group w-100\">" +
-                "                        <label class=\"w-20\" for=\"address\">Địa chỉ: </label>" +
-                "                        <input type=\"text\" class=\"form-control w-80\" id=\"address\" name=\"address\" aria-describedby=\"\" placeholder=\"Nhập Địa chỉ\" value=\""+afterU.getAddress()+"\">" +
-                "                        <div class=\"required\" hidden>Khong duoc de trong muc nay</div>" +
-
-                "                    </div>" +
-
-                "                    <div class=\"show-flex-row\">" +
-
-                "                        <div id=\"sex\" class=\"info-container\">" +
-                "                            <div class=\"info-container__title\">" +
-                "                                <label for=\"sex\">Giới tính" +
-                "                                </label>" +
-                "                            </div>" +
-
-                "                            <div class=\"info-container__content\">" +
-                "                                <div class=\"form-check\">" +
-                "                                    <input class=\"form-check-input\" type=\"radio\" name=\"sex\" id=\"flexRadioDefault1\" value=\"nam\" "+ (sex.equalsIgnoreCase("nam")?"checked":"") +">" +
-                "                                    <label class=\"form-check-label\" for=\"flexRadioDefault1\">" +
-                "                                        Nam" +
-                "                                    </label>" +
-                "                                </div>" +
-                "                                <div class=\"form-check\">" +
-                "                                    <input class=\"form-check-input\" type=\"radio\" name=\"sex\" id=\"flexRadioDefault2\" value=\"nu\" "+ (sex.equalsIgnoreCase("nu") ?"checked" : "")+">" +
-                "                                    <label class=\"form-check-label\" for=\"flexRadioDefault2\">" +
-                "                                        Nữ" +
-                "                                    </label>" +
-                "                                </div>" +
-                "                            </div>" +
-
-                "                        </div>" +
-                "                        <div class=\"form-group w-50\">" +
-                "                            <label  class=\"w-20\"  for=\"birthday\">Ngày sinh: </label>" +
-                "                            <input type=\"date\" class=\"form-control w-80\" id=\"birthday\" name=\"birthday\"  aria-describedby=\"\" placeholder=\"Enter date import\" value=\""+birthday+"\">" +
-                "                            <div class=\"error\" hidden>Chua du 18 tuoi</div>" +
-
-                "                        </div>" +
-                "                    </div>" +
-                "                    <div class=\"form-group w-50\">" +
-                "                        <label  class=\"w-20\"  for=\"datein\">Ngày tham gia: </label>" +
-                "                        <input type=\"date\" class=\"form-control w-80\" id=\"datein\" name=\"datein\"  aria-describedby=\"\" placeholder=\"Nhập ngày tham gia\" value=\""+afterU.getDateIn().getDateInMonthDayYearSql() +"\">" +
-                "                    </div>" +
-
-                "                    <div class=\"form-group\" style=\"display: none\">" +
-                "                        <label class=\"w-20\" for=\"action\" class=\"input-title\">action</label>" +
-                "                        <input type=\"text\" class=\"form-control\" id=\"action\" name=\"action\" aria-describedby=\"\" placeholder=\"Enter img url\" value=\""+(afterU.getName()==""?"add":"update") +"\">" +
-                "                    </div>" +
-                "                    <div class=\"form-group\" style=\"display: none\">" +
-                "                        <label class=\"w-20\" for=\"status\" class=\"input-title\">status</label>" +
-                "                        <input type=\"text\" class=\"form-control\" id=\"status\" name=\"status\" aria-describedby=\"\" placeholder=\"Enter img url\" value=\"1\">" +
-                "                    </div>" +
-
-                "                    <div class=\"show-flex-row\">" +
-                "                        <div class=\"ad_func-container\">" +
-                "                            <div><a class=\"btn btn-third\" href=\"goto-customer-admin\">Hủy</a></div>" +
-                "                        </div>" +
-                "                        <div class=\"ad_func-container\">" +
-                "                            <button class=\"btn btn-primary\" type=\"submit\">"+(afterU.getName()==""?"Thêm":"Lưu") +"</button>" +
-                "                        </div>" +
-                "                    </div>" +
-                "                    <!--                    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>-->" +
-                "                </form>";
-        return html;
-    }
 }
