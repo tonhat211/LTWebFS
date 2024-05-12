@@ -3,6 +3,7 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/EnterOTP.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/ForgotPassword.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/assets/common/taglib.jsp" value="file://$PROJECT_DIR$/src/main/webapp/assets/common" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/productDetail.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />

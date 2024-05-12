@@ -10,6 +10,34 @@ public class UserDAO implements IDAO<User> {
         return new UserDAO();
     }
 
+    // change password
+    public boolean changePassword(String newPassword, String userEmail) {
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String updateQuery = "UPDATE users SET pwd = ? WHERE email = ?";
+
+            try (PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {
+                preparedStatement.setString(1, newPassword);
+                preparedStatement.setString(2, userEmail);
+
+                int rowCount = preparedStatement.executeUpdate();
+
+                // Kiểm tra số dòng đã được cập nhật
+                if (rowCount > 0) {
+                    // Mật khẩu đã được thay đổi thành công
+                    return true;
+                } else {
+                    // Không có dòng nào được cập nhật, có thể do email không tồn tại
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
     public int insert(User u){
         int re=0;
         try {
@@ -397,5 +425,21 @@ public class UserDAO implements IDAO<User> {
 //        System.out.println(UserDAO.getInstance().insert(u));
         System.out.println(UserDAO.getInstance().selectTheMaxID());
 
+        // Tạo một đối tượng UserDAO
+//        UserDAO userDAO = UserDAO.getInstance();
+//
+//        // Email và mật khẩu mới để thay đổi
+//        String userEmail = "21130331@st.hcmuaf.edu.vn";
+//        String newPassword = "111";
+//
+//        // Thực hiện thay đổi mật khẩu
+//        boolean passwordChanged = userDAO.changePassword(newPassword, userEmail);
+//
+//        // Kiểm tra kết quả
+//        if (passwordChanged) {
+//            System.out.println("Mật khẩu đã được thay đổi thành công cho email: " + userEmail);
+//        } else {
+//            System.out.println("Đã xảy ra lỗi khi thay đổi mật khẩu cho email: " + userEmail);
+//        }
     }
-}
+    }
