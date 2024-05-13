@@ -7,7 +7,8 @@
 --%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.ProductSuperDetail" %>
-<%@ page import="model.ProductUnit" %><%--
+<%@ page import="model.ProductUnit" %>
+<%@ page import="model.Employee" %><%--
   Created by IntelliJ IDEA.
   User: TO NHAT
   Date: 08/12/2023
@@ -53,6 +54,8 @@
     <link rel="stylesheet" href="assets/css/baseN.css">
     <link rel="stylesheet" href="assets/css/adminN.css">
     <link rel="stylesheet" href="assets/css/adminProduct.css">
+    <link rel="stylesheet" href="assets/css/adminMenu.css">
+
 </head>
 <body>
 <%
@@ -61,10 +64,16 @@
 //        currentSearch = "";
 //    }
     String currentAdminMenu = ((String) session.getAttribute("currentAdminMenu"))==null ? "dashboard" : ((String) session.getAttribute("currentAdminMenu"));
-    String user = (String) session.getAttribute("userName");
-    if(user== null || user.equalsIgnoreCase("")){
-        user = "";
+    Employee e = (Employee) session.getAttribute("adminloging");
+    if(e== null) {
+        e= new Employee();
     }
+
+    String roles = e.getRole();
+    if(roles == null) {
+        roles ="";
+    }
+
 //    ArrayList<ProductUnit> pus = (ArrayList<ProductUnit>) request.getAttribute("productUnitList");
 
 %>
@@ -94,12 +103,12 @@
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="assets/img/profile/profile-img.jpg" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=user%></span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=e.getName()%></span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6><%=user%></h6>
+                        <h6><%=e.getName()%></h6>
                         <span>Web Designer</span>
                     </li>
                     <li>
@@ -107,9 +116,9 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="html/profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="goto-update-employee-info">
                             <i class="bi bi-person"></i>
-                            <span>Cài đặt</span>
+                            <span>Cập nhật thông tin</span>
                         </a>
                     </li>
                     <li>
@@ -117,7 +126,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="log-out">
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Đăng xuất</span>
                         </a>
@@ -136,54 +145,43 @@
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         <h3 style="text-align: center">[Admin]</h3>
-        <li class="nav-item ">
+        <li class="nav-item <%=roles.contains("dashboard") ? "" : "hide" %>">
             <a class="nav-link  <%= currentAdminMenu.equalsIgnoreCase("dashboard") ? "" :"collapsed" %> " href="admin-menu-controller?adminMenu=dashboard">
                 <!--                <i class="bi bi-grid"></i>-->
                 <span>Thống kê doanh thu</span>
             </a>
         </li><!-- End Dashboard Nav -->
-        <li class="nav-item ">
+        <li class="nav-item <%=roles.contains("customer") ? "" : "hide" %>">
             <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("customer") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=customer">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý khách hàng</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%=roles.contains("employee") ? "" : "hide" %>">
             <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("employee") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=employee">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý nhân viên</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%=roles.contains("product") ? "" : "hide" %>">
             <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("product") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=product">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý sản phẩm</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item <%=roles.contains("order") ? "" : "hide" %>">
             <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("order") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=order">
                 <!--        <i class="bi bi-person"></i>-->
                 <span>Quản lý đơn hàng</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("news") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=news">
+        <li class="nav-item <%=roles.contains("log") ? "" : "hide" %>">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("log") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=log&index=1">
                 <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý tin tức</span>
+                <span>Log</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý trang chủ</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
-                <!--        <i class="bi bi-person"></i>-->
-                <span>Nhà phân phối</span>
-            </a>
-        </li>
+
 
     </ul>
 </aside><!-- End Sidebar-->
@@ -198,7 +196,6 @@
 
 <!-- Template Main JS File -->
 <!--<script src="assets/js/main.js"></script>-->
-<script src="assets/js/adPro.js"></script>
 <script>
     // getInfo();
     // saveChanged();

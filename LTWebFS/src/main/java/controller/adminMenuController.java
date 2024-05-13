@@ -32,7 +32,7 @@ public class adminMenuController extends HttpServlet {
                 currentMenu = "dashboard";
 //                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
-                rd = getServletContext().getRequestDispatcher("/admin_dashboard.jsp");
+                rd = getServletContext().getRequestDispatcher("/goto-dashboard-admin");
                 rd.forward(request, response);
                 break;
             }
@@ -48,7 +48,7 @@ public class adminMenuController extends HttpServlet {
                 currentMenu = "employee";
 //                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
-                rd = getServletContext().getRequestDispatcher("/adminEmployee.jsp");
+                rd = getServletContext().getRequestDispatcher("/goto-employee-admin");
                 rd.forward(request, response);
                 break;
             }
@@ -66,6 +66,13 @@ public class adminMenuController extends HttpServlet {
 //                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
                 rd = getServletContext().getRequestDispatcher("/adminOrder.jsp");
+                rd.forward(request, response);
+                break;
+            }
+            case "log": {
+                currentMenu = "log";
+                session.setAttribute("currentAdminMenu", currentMenu);
+                rd = getServletContext().getRequestDispatcher("/goto-logManagement");
                 rd.forward(request, response);
                 break;
             }

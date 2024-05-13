@@ -1,7 +1,9 @@
 package controller;
 
+import database.BrandDAO;
 import database.ProductUnitDAO;
 import database.UnitDAO;
+import model.Brand;
 import model.ProductUnit;
 import sun.management.counter.Units;
 
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/goto-add-product")
 public class GoToAddProduct extends HttpServlet {
@@ -36,10 +39,13 @@ public class GoToAddProduct extends HttpServlet {
 
 
         ProductUnit pu = new ProductUnit(id,idUnit);
+        ArrayList<Brand> brandList = BrandDAO.getInstance().selectAll();
 
         request.setAttribute("productUnit", pu);
         request.setAttribute("action","add");
         request.setAttribute("status",status);
+        request.setAttribute("brandList", brandList);
+
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp");
         rd.forward(request, response);

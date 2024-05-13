@@ -52,17 +52,18 @@ public class VerifyCodeDAO implements IDAO<VerifyCode>{
 		return null;
 	}
 
-	public int insertNewCode(String codee){
+	public int insertNewCode(String codee, String email){
 		int re=0;
 		try {
 			Connection conn = JDBCUtil.getConnection();
 			Random rs =new Random();
 
 
-			String sql = "insert into verifycode (code) values (?);";
+			String sql = "insert into verifycode (code,email,isVerify) values (?,?,0);";
 			PreparedStatement pst = conn.prepareStatement(sql);
 
 			pst.setString(1, codee);
+			pst.setString(2, email);
 
 			re = pst.executeUpdate();
 
@@ -99,7 +100,24 @@ public class VerifyCodeDAO implements IDAO<VerifyCode>{
 			throw new RuntimeException(e);
 		}
 	}
-	
+
+	public int disableCode(String code) {
+		int re=0;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "update verifycode set isVerify = 1 where code = ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, code);
+			re = pst.executeUpdate();
+			return re;
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new RuntimeException(e);
+		}
+	}
+
+
 	public Timestamp selectTheLast(String codee) {
 		Timestamp res = null;
 		try {
@@ -125,32 +143,68 @@ public class VerifyCodeDAO implements IDAO<VerifyCode>{
 		}
 	}
 
-	public boolean isVerifyOk(String codee){
-		boolean res = false;
-		Timestamp ts1 = VerifyCodeDAO.getInstance().selectTheFirst(codee);
-		Timestamp ts2 = VerifyCodeDAO.getInstance().selectTheLast(codee);
-		long timeDifferenceMillis = ts2.getTime() - ts1.getTime();
+	public VerifyCode selectTheLastCode(String emailin) {
+		VerifyCode res = null;
+		try {
+			Connection conn = JDBCUtil.getConnection();
 
-		// Chuyển đổi chênh lệch thời gian từ millisecs sang giây, phút, giờ, etc.
-		long seconds = timeDifferenceMillis / 1000;
-		long minutes = seconds / 60;
-		if(minutes <=5){
-			res=true;
+			String sql = "select * from verifycode where email = ? ORDER by id desc LIMIT 1;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, emailin);
+
+
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()){
+				String code = rs.getString("code");
+				String email = rs.getString("email");
+				Timestamp time = rs.getTimestamp("time");
+				int isVerify = rs.getInt("isVerify");
+
+				res = new VerifyCode(code,email,time,isVerify);
+			}
+
+//			System.out.println(re + " dong da duoc them vao");
+			JDBCUtil.closeConnection(conn);
+			return res;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
-		return res;
+	}
+
+
+	public boolean isVerifyOk(String codein, String emailin){
+		boolean res = false;
+		VerifyCode code = VerifyCodeDAO.getInstance().selectTheLastCode(emailin);
+		if(code == null) {
+			return false;
+		}
+		if(!codein.equals(code.getCode())){
+			return false;
+		}
+		if (code.getIsVerify() > 0) {
+			return false;
+		}
+		long codeTime = code.getTime().getTime();
+		long currentTimestamp = System.currentTimeMillis();
+		long timeDifferenceMillis = currentTimestamp - codeTime;
+
+
+		long seconds = timeDifferenceMillis / 1000;
+		if(seconds > 0 && seconds < 300 ) {
+			VerifyCodeDAO.getInstance().disableCode(codein);
+			return true;
+		}
+
+		return false;
 	}
 	
 	public static void main(String[] args) {
-		System.out.println();
-		Timestamp ts1 = VerifyCodeDAO.getInstance().selectTheFirst("4466");
-		Timestamp ts2 = VerifyCodeDAO.getInstance().selectTheLast("4466");
 
-		   long timeDifferenceMillis = ts2.getTime() - ts1.getTime();
-
-	        // Chuyển đổi chênh lệch thời gian từ millisecs sang giây, phút, giờ, etc.
-	        long seconds = timeDifferenceMillis / 1000;
-	        long minutes = seconds / 60;
-	        System.out.println(minutes);
+		System.out.println(VerifyCodeDAO.getInstance().isVerifyOk("1111","no665ok@gmail.com"));
+//		System.out.println(ts1);
+//		ts1 = ts1.getTime();
 		
 	}
 	

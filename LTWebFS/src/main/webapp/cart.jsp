@@ -1,86 +1,169 @@
+<%@ page import="model.cartitem" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Giỏ hàng</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--fontawesome-->
+    <link rel="stylesheet" href="assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--    google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/baseN.css">
+
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
 </head>
 <body>
-<%--<%@include file="header.jsp" %>--%>
-<div id="main-container">
-    <h2>Giỏ hàng (2 sản phẩm)</h2>
-    <div class="left">
-        <div class="items row">
-            <div class="col-4">
-                <input class="form-check-input checkBox" type="checkbox" value="">
-                <img class="image img-fluid ps-3" src="https://thietbiytevp.com/products/OMRON%20HEM%207156T.jpg">
-            </div>
-            <div class="col-8">
-                <p class="title">Máy đo huyết áp tự động OMRON HEM-7156T</p>
-                <p class="price">1,349,000đ</p>
-                <p class="discount">1,550,000đ</p><span class="percent"> | -23%</span>
-                <div class="clearfix"></div>
-                <div class="volume">
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-outline-light sub">-</button>
-                        <input class="quantity" type="text" value="1">
-                        <button type="button" class="btn btn-outline-light add">+</button>
+<%
+    ArrayList<cartitem> cart = (ArrayList<cartitem>) request.getAttribute("cart");
+//    if(cart == null) {
+//        cart = new ArrayList<>();
+//    }
+
+    String status = (String) request.getAttribute("status");
+
+%>
+
+<%
+    if(status != null) {
+        if(status.equalsIgnoreCase("noProductChosen")) {
+
+%>
+            <script>
+                alert("Chưa có sản phẩm nào được chọn!");
+            </script>
+<%
+        }
+        else if(status.equalsIgnoreCase("orderSuccessful")){
+            %>
+            <script>
+                alert("Dat hang thanh cong");
+            </script>
+            <%
+
+        }
+    }
+%>
+
+<main id="main" class="main">
+    <%@ include file="header.jsp" %>
+    <div class="ad_content" style="margin-top: 110px">
+        <div class="cart__container">
+            <form action="goto-payment" method="post" id="myForm">
+                <div class="grid">
+                    <div class="grid__row">
+                        <div class="grid-col-9">
+                            <h2 class="title">Giỏ hàng</h2>
+                            <p class="title">Bạn có <%=cart == null ? "0" : cart.size()%> sản phẩm trong giỏ hàng</p>
+                            <table class="table">
+                                <thead>
+                                <tr>
+
+                                    <th scope="col">Chọn  <input class="chooseAll" type="checkbox" name="price" value=""></th>
+                                    <th scope="col">Hình ảnh</th>
+                                    <th scope="col">Tên sản phẩm</th>
+                                    <th scope="col">Đơn giá</th>
+                                    <th scope="col">Số lượng </th>
+                                    <th scope="col">Xóa</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <%
+                                    if(cart != null) {
+                                        for(int i=0; i<cart.size();i++) {
+                                %>
+                                <tr class="<%= i % 2 == 0 ? "roww" : ""%>>" id="<%="item" + cart.get(i).getId() + "=" + cart.get(i).getP().getId()%>">
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="check" value="<%=cart.get(i).getP().getId()%>">
+
+                                        </div>
+                                    </th>
+                                    <td style="height: 100px" ><img src="./assets/img/products/<%=cart.get(i).getP().getImg()%>" alt="" style="height: 100%"></td>
+
+                                    <td><%= cart.get(i).getP().getName() %></td>
+                                    <td class="price" ><%= cart.get(i).getP().getPrice() %></td>
+                                    <td>
+                                        <div class="product-qty-control">
+
+                                            <i class="fa-solid fa-plus qty-control btn-plus-qty increaseBtn"></i>
+                                            <input type="number" class="idproduct" name="idproduct" hidden value="<%= cart.get(i).getP().getId() %>" maxlength="2" size="2">
+                                            <input class="idcart" type="number" hidden name="idcart" value="<%= cart.get(i).getId()%>">
+
+                                            <input type="text" class="product-qty-input qty" name="qty" style="width: 40px;" readonly value="<%= cart.get(i).getQty() %>" maxlength="2" size="2">
+                                            <i class="fa-solid fa-minus qty-control btn-minus-qty decreaseBtn" ></i>
+
+                                        </div>
+                                    </td>
+                                    <td style="text-align: center"><i class="fa-solid fa-x deleteProductBtn"></i></td>
+                                </tr>
+                                <%
+                                        }
+                                    } else {
+
+                                        %>
+                                <div class="successful" style="font-size: 14px;">Chưa có sản phẩm nào trong giỏ hàng</div>
+
+                                <%
+
+                                        }
+                                %>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="grid-col-3 money">
+                            <h2 class="title">Tổng tiền</h2>
+                            <!--                            <h2>Tong tien</h2>-->
+                            <p style="font-size: 14px"><span class="totalMoney">0</span> (VND) </p>
+                            <p style="font-size: 14px">Tổng sản phẩm: <span class="totalProduct">0</span> (sản phẩm) </p>
+                            <div class="ad_func-container">
+                                <button class="btn btn-primary btn-buy" type="submit">Mua hàng</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="items row">
-            <div class="col-4">
-                <input class="form-check-input checkBox" type="checkbox" value="">
-                <img class="image img-fluid ps-3"
-                     src="https://thietbiytevp.com/products/May-do-duong-huyet-Accu-Chek-Guide-va-que-thu-400x400.jpg">
-            </div>
-            <div class="col-8">
-                <p class="title">Máy đo đường huyết Accu Chek Guide</p>
-                <p class="price">1,499,000đ</p>
-                <p class="discount">1,900,000đ</p><span class="percent"> | -53%</span>
-                <div class="clearfix"></div>
-                <div class="volume">
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-outline-light sub">-</button>
-                        <input class="quantity" type="text" value="1">
-                        <button type="button" class="btn btn-outline-light add">+</button>
-                    </div>
-                </div>
-            </div>
+            </form>
+
+
+
+
         </div>
     </div>
-    <div class="right">
-        <!--        <div class="khuyenMai">-->
-        <!--            <p>Khuyến mãi</p>-->
-        <!--            <select class="form-select" aria-label="Default select example">-->
-        <!--                <option selected>Open this select menu</option>-->
-        <!--                <option value="1">One</option>-->
-        <!--                <option value="2">Two</option>-->
-        <!--                <option value="3">Three</option>-->
-        <!--            </select>-->
-        <!--        </div>-->
-        <div id="thanhTien" class="mt-3">
-            <div class="part1">
-                <p>Tạm tính</p>
-                <p class="totalTemp">1,848,000đ</p>
-            </div>
-            <div class="part2">
-                <p>Thành tiền</p>
-                <p class="total">1,848,000đ</p>
-                <p class="vat">(Đã bao gồm VAT nếu có)</p>
-            </div>
-        </div>
-        <div class="d-grid gap-2">
-            <button id="pay" class="btn" type="submit"><b>Tiến hành đặt cọc</b></button>
-        </div>
-        <p class="note">Quý khách vui lòng đặt cọc trước</p>
-    </div>
-    <div class="clearfix"></div>
-</div>
-<script src="assets/js/jquery.js"></script>
+
+    <%@ include file="footer.jsp" %>
+</main>
+
+
+
+
+<script>
+
+
+</script>
+
+<!--
+- #BACK TO TOP
+-->
+<a href="#top" class="back-top-btn" aria-label="Back to top"
+   data-back-top-btn> <ion-icon name="chevron-up"></ion-icon>
+</a>
+
 <script src="assets/js/cart.js"></script>
+
+
+
 </body>
 </html>

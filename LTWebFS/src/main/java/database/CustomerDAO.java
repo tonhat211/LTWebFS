@@ -29,7 +29,7 @@ public class CustomerDAO implements IDAO<Customer> {
     @Override
     public ArrayList<Customer> selectAll() {
         ArrayList<Customer>res =  new ArrayList<>();
-        ArrayList<User> us = UserDAO.getInstance().selectAll();
+        ArrayList<User> us = UserDAO.getInstance().selectAllCus();
         Map<Integer,Double> totalSpend = OrderDAO.getInstance().totalSpendAll();
         for(User u : us ){
             Double money = totalSpend.get(u.getId());
@@ -40,6 +40,9 @@ public class CustomerDAO implements IDAO<Customer> {
         return res;
     }
 
+
+
+
     @Override
     public Customer selectById(int idin) {
         Customer cus = new Customer();
@@ -49,8 +52,6 @@ public class CustomerDAO implements IDAO<Customer> {
         Double money = totalSpend.get(u.getId());
         if(money==null) money = 0.0;
         cus = new Customer(u, money);
-
-
         return cus;
     }
 

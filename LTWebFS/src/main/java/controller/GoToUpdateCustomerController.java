@@ -27,6 +27,7 @@ public class GoToUpdateCustomerController extends HttpServlet {
         String idString = (String) request.getParameter("id");
 //        String idString = "1015";
         int id = Integer.parseInt(idString);
+
         User u = UserDAO.getInstance().selectById(id);
         request.setAttribute("customer", u);
 

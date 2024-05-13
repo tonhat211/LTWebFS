@@ -1,6 +1,5 @@
 package database;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -19,6 +18,7 @@ public class JDBCUtil {
             String pwd ="";
 
             c = DriverManager.getConnection(url,user,pwd);
+
         } catch (SQLException e){
             e.printStackTrace();
         }

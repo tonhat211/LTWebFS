@@ -129,8 +129,7 @@
                             <%
                                 }
                             %>
-<%--                            <li class="filter-item" filter-value="usa">Mỹ</li>--%>
-<%--                            <li class="filter-item" filter-value="rusia">Nga</li>--%>
+
                         </ul>
                         <span class="filter-chosen">Tất cả</span>
                     </div>
@@ -147,8 +146,9 @@
                     </div>
                     <div class="seperate" style="display: none"></div>
                     <div class="subnav__filter-item">
-                        <p class="subnav__filter-title pdr20 ">Giá <i class="fa-solid fa-caret-down"></i></p>
+                        <p class="subnav__filter-title pdr20 ">Giá<i class="fa-solid fa-caret-down"></i></p>
                         <ul class="subnav__filter-option w100">
+                            <li class="filter-item" filter-value="high">Mặc định</li>
                             <li class="filter-item" filter-value="high">Cao dần</li>
                             <li class="filter-item" filter-value="low">Thấp dần</li>
                         </ul>

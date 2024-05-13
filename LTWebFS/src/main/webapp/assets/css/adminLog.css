@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+.show-flex-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+tbody td.ALERT {
+    text-align: center;
+    background-color: white;
+    border: 4px solid white;
+}
+
+tbody td.WARNING {
+    color: orange;
+    background-color: rgba(255, 165, 0, 0.29);
+    border: 4px solid white;
+    text-align: center;
+}
+
+.page-link.active {
+    color: #0056b3;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+
+
+
+tbody td.DANGER {
+    color: red;
+    background-color: #ff00004a;
+    border: 4px solid white;
+    text-align: center;
+}

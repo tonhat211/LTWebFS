@@ -25,40 +25,77 @@ public class SignUpControl extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+
+        int idin = UserDAO.getInstance().selectTheMaxID() +1;
+//                  xu ly cap nhat
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        int level = 0;
+        String repassword = request.getParameter("repassword");
+
+
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
-        String info = request.getParameter("info");
+        String sex = request.getParameter("sex");
+        String birthday = request.getParameter("birthday");
+        String info = sex + "=" + birthday;
 
-        User user = new User(name, email, password, level, phone, address, info);
-        UserDAO userDAO = UserDAO.getInstance();
-        UserService userService = new UserService();
-        request.setAttribute("email", email);
-//        if (userService.validate(name, email, password, phone, address, info)) {
-        userDAO.insert(user);
-        Random rand = new Random();
-        int ranNum = rand.nextInt(9)+1;
-        String code ="";
-        for(int i=0;i<6; i++) {
-            code+= String.valueOf(rand.nextInt(9)+1);
+
+        Datee dateinDatee = Datee.getToday();
+
+        User u = new User(idin,name,email,"1234",0,phone,address,0,info,dateinDatee,null,0,null);
+
+
+//        kiem tra mat khau co da khop chua
+        if(!password.equals(repassword)) { //mat khau chua khop
+            request.setAttribute("status","differentpwd");
+            request.setAttribute("userTemp",u);
+
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/signup.jsp");
+            rd.forward(request, response);
+        } else { //mat khau da khop
+//            kiem tra email da duoc dang ki tu truoc chua
+            int id = UserDAO.getInstance().checkExistUser(email);
+            if(id != 0) {
+                request.setAttribute("status","existeduser");
+                request.setAttribute("userTemp",u);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/signup.jsp");
+                rd.forward(request, response);
+            } else {
+//                mat khau va email da dat yeu cau
+//                tien hanh them tai khoan
+                u.encodePwd();
+                UserDAO.getInstance().insert(u);
+
+                request.setAttribute("email", email);
+                //        xu ly tao code gui ve email de xac thuc
+                Random rand = new Random();
+                int ranNum = rand.nextInt(9)+1;
+                String code ="";
+                for(int i=0;i<6; i++) {
+                    code+= String.valueOf(rand.nextInt(9)+1);
+                }
+
+                String to =email;
+                String subject="Mã xác minh email web thietbiyte";
+                String message = "Mã xác minh email của  bạn là: " +code;
+                IJavaMail emailService = new EmailService();
+                //  q       guwir code toi email khach hang
+                emailService.send(to,subject,message);
+
+                DecartDAO.getInstance().insertCart(idin);
+
+//                ghi log
+                String ipAddress = request.getRemoteAddr();
+                Log t = new Log(ipAddress,email + " | signup ","Thêm tài khoản mới vào hệ thống","trống",u.toString(),1 );
+                LogDAO.getInstance().insert(t);
+
+                VerifyCodeDAO.getInstance().insertNewCode(code,email);
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/VerifyCode.jsp");
+                rd.forward(request, response);
+
+            }
         }
-
-        String to =email;
-        String subject="Mã xác minh email web thietbiyte63";
-        String message = "Mã xác minh email của  bạn là: " +code;
-        IJavaMail emailService = new EmailService();
-        //  q       guwir code toi email khach hang
-        emailService.send(to,subject,message);
-
-        VerifyCodeDAO.getInstance().insertNewCode(code);
-
-
-
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/VerifyCode.jsp");
-        rd.forward(request, response);
 //        } else {
 //            response.sendRedirect("logup.jsp");
 //        }
@@ -70,4 +107,6 @@ public class SignUpControl extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         doGet(request,response);
     }
+
+
 }

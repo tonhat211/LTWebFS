@@ -1,6 +1,7 @@
 <%@ page import="model.ProductDetail" %>
 <%@ page import="model.Image" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.ProductUnit" %><%--
   Created by IntelliJ IDEA.
   User: TO NHAT
   Date: 04/12/2023
@@ -20,6 +21,9 @@
 
   <!--fontawesome-->
   <link rel="stylesheet" href="./assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 
   <!--    google font-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +48,21 @@
   <%@ include file="header.jsp" %>
 
   <%
-    ProductDetail productDetail = (ProductDetail) request.getAttribute("productDetail");
+    ProductUnit pu = (ProductUnit) request.getAttribute("productDetail");
+    String status = (String) request.getAttribute("status");
+  %>
+
+  <%
+    if (status != null) {
+      if(status.equalsIgnoreCase("addToCartSuccessful")){
+
+  %>
+  <script>
+    alert("Da them thanh cong san pham vao gio hang");
+  </script>
+  <%
+      }
+    }
   %>
   <div class="product__container">
     <div class="product-item">
@@ -52,7 +70,11 @@
 
         <div class="product-img-list">
           <%
-            ArrayList<String>  urls = productDetail.getImageUrl();
+            ArrayList<String>  urls = pu.getImgrls();
+            if(urls == null) {
+              urls = new ArrayList<>();
+              urls.add(pu.getImg());
+            }
             for(int i  =  0;i< urls.size();i++){
           %>
                 <div class="prd__sliderbar-item <%=  i==0 ? "active"  : ""%> ">
@@ -62,15 +84,7 @@
           <%
             }
           %>
-<%--          <div class="prd__sliderbar-item active">--%>
-<%--            <img src="./assets/img/product-img/A/may-tro-thinh-geno-2-CIC-1.png" alt="">--%>
-<%--          </div>--%>
-<%--          <div class="prd__sliderbar-item ">--%>
-<%--            <img src="./assets/img/product-img/A/may-tro-thinh-beurer-ha50-1.jpg" alt="">--%>
-<%--          </div>--%>
-<%--          <div class="prd__sliderbar-item ">--%>
-<%--            <img src="./assets/img/product-img/A/may-tro-thinh.jpg" alt="">--%>
-<%--          </div>--%>
+
         </div>
         <div class="prd__slidebar-indicator">
           <ul class="prd__slidebar-indicator-list">
@@ -83,9 +97,6 @@
             <%
               }
             %>
-<%--            <li class="prd__slidebar-indicator-item active"><i class="fa-solid fa-circle"></i></li>--%>
-<%--            <li class="prd__slidebar-indicator-item"><i class="fa-solid fa-circle"></i></li>--%>
-<%--            <li class="prd__slidebar-indicator-item"><i class="fa-solid fa-circle"></i></li>--%>
           </ul>
 
 
@@ -100,32 +111,50 @@
 
       <div class="product-info">
         <div class="product-name">
-          <p> <%= productDetail.getName()%> </p>
+          <p> <%= pu.getName()%> </p>
         </div>
         <div class="product-price">
-          <p> <%= productDetail.getPrice()%> <span>VND</span></p>
+          <p> <%= pu.getPrice()%> <span>VND</span></p>
         </div>
         <div class="product-info-buying">
           <div class="product-info-short">
-            <p>Xuất xứ: <span class="product-country"><%= productDetail.getCountry()%></span></p>
-            <!--                            <p>Màu: <span class="product-build">xám, be, nâu</span></p>-->
-            <p>Hãng sản xuất: <span class="product-warranty"><%= productDetail.getBrand()%></span></p>
-            <p>Năm sản xuất: <span class="product-warranty"><%= productDetail.getYearMade()%></span></p>
-            <p>Phân loại: <span class="product-warranty"><%= productDetail.getTypes()%></span></p>
-            <p>Tình trạng: <span class="product-available"><%= productDetail.getAmount()>0 ? "Còn hàng" : "Hết hàng"%></span></p>
+            <p>Xuất xứ: <span class="product-country"><%= pu.getMadeIn()%></span></p>
+            <p>Hãng sản xuất: <span class="product-warranty"><%= pu.getBrand()%></span></p>
+            <p>Năm sản xuất: <span class="product-warranty"><%= pu.getYearMade()%></span></p>
+<%--            <p>Phân loại: <span class="product-warranty"><%= pu.get()%></span></p>--%>
+            <p>Tình trạng: <span class="product-available"><%=pu.getAmount()>0 ? "Còn hàng" : "Hết hàng"%></span></p>
           </div>
 
-          <div class="product-qty-buying">
+          <%--          test them san pham vao gio hang bang servlet--%>
+          <form class="product-qty-buying" method="post" action="add-to-cart" id="addToCartForm">
             <div class="product-qty-control">
 
               <i class="fa-solid fa-plus qty-control btn-plus-qty"></i>
-              <input type="text" class="product-qty-input" value="1" maxlength="2" size="2">
+              <input type="text" class="product-qty-input" name="qty" value="1" maxlength="2" size="2">
               <i class="fa-solid fa-minus qty-control btn-minus-qty"></i>
 
-            </div>
-            <div class="add-to-cart-btn"><p>Thêm vào giỏ hàng</p></div>
+                <input type="text" hidden class="product-qty-input" name="productID" value="<%=pu.getId()%>" maxlength="2" size="2">
 
-          </div>
+            </div>
+            <button type="submit" class="add-to-cart-btn"><p>Thêm vào giỏ hàng</p></button>
+
+          </form>
+
+
+<%--          test them san pham vao gio hang bang ajax--%>
+<%--          <div class="product-qty-buying" method="post" action="add-to-cart">--%>
+<%--            <div class="product-qty-control">--%>
+
+<%--              <i class="fa-solid fa-plus qty-control btn-plus-qty"></i>--%>
+<%--              <input type="text" class="product-qty-input qtyClass" name="qty" value="1" maxlength="2" size="2">--%>
+<%--              <i class="fa-solid fa-minus qty-control btn-minus-qty"></i>--%>
+
+<%--              <input type="text" hidden class="product-productID-input productIDClass" name="productID" value="<%=pu.getId()%>" maxlength="2" size="2">--%>
+
+<%--            </div>--%>
+<%--            <div class="add-to-cart-btn"><p>Thêm vào giỏ hàng</p></div>--%>
+
+<%--          </div>--%>
 
 
         </div>
@@ -141,8 +170,8 @@
     <div class="product-detail">
       <h2>Mô tả</h2>
       <div class="product-detail-content">
-        <p><%= productDetail.getName()%><br/>
-            <%= productDetail.getDescription()%>
+        <p><%= pu.getName()%><br/>
+            <%= pu.getDes()%>
       </div>
     </div>
     <!--        <div class="product-evaluate">-->
@@ -153,7 +182,95 @@
   <%@ include file="footer.jsp" %>
 </div>
 
-<script src="assets/js/productDetail.js"></script>
+<script type="module"  src="assets/js/productDetail.js"></script>
+<script>
 
+  // var xhr = XMLHttpRequest();
+  // xhr.open("POST",url,true);
+  // xhr.responseType= text;
+  // xhr.onLoad = function (){
+  //   if(xhr.status >=200 & <300){
+  //
+  //   } else {
+  //
+  //   }
+  // }
+  // xhr.onerror= function () {
+  //
+  // }
+  //
+  // xhr.send();
+
+
+  // document.querySelector('#addToCartForm').addEventListener('submit',function (event) {
+  //   event.preventDefault();
+  //   console.log("hi2")
+  //
+  //   var formData = new FormData(this);
+  //   console.log(formData);
+  //   var item = {
+  //     productID : formData.get("productID"),
+  //     qty : formData.get("qty")
+  //   };
+  //   console.log(item);
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.open("POST","/LTWebFS_war_exploded/add-to-cart",true);
+  //   xhr.responseType="text";
+  //   xhr.onload = function () {
+  //     if(xhr.status >=200 && xhr.status < 300) {
+  //       console.log(xhr.responseText);
+  //     } else {
+  //       alert("co loi, chua them duoc vao gio hang");
+  //     }
+  //   }
+  //   xhr.onerror = function() {
+  //     alert('Có lỗi xảy ra khi gửi yêu cầu.');
+  //   };
+  //   xhr.send(JSON.stringify(item));
+  // });
+
+  // JSOn.stringify(item);
+
+//   ajax jquery
+
+  $(document).ready(function () {
+    document.querySelector('#addToCartForm').addEventListener('submit',function (event){
+      event.preventDefault();
+
+      var data = new FormData(this);
+      console.log(data);
+      var productID = data.get("productID");
+      var qty = data.get("qty");
+      addToCart(productID,qty);
+    });
+
+    function addToCart(productID, qty) {
+
+      $.ajax({
+        url: "/LTWebFS_war_exploded/add-to-cart",
+        method: "POST",
+        data: {productID: productID, qty: qty},
+        success: function (message) {
+          alert(message);
+        }
+      });
+    }
+
+  });
+
+  // $.ajax({
+  //   url,
+  //   method
+  //   data: {},
+  //   success: function (message) {
+  //
+  //   }
+  // });
+
+
+
+
+
+</script>
 </body>
 <%--</html>--%>

@@ -352,17 +352,13 @@
 <!-- Template Main JS File -->
 <!--<script src="assets/js/main.js"></script>-->
 <script src="assets/js/adPro.js"></script>
-<script>
-    // getInfo();
-    // saveChanged();
-    // const inputs = $$('.form-container input');
-    // console.log(inputs);
-    // for(let i of inputs) {
-    //     i.value = "1";
-    // }
-    // document.querySelector('.btn-add-em-img').addEventListener('click',showAddImg);
-    // init();
-
-</script>
+<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/chart.js/chart.umd.js"></script>
+<script src="assets/vendor/echarts/echarts.min.js"></script>
+<script src="assets/vendor/quill/quill.min.js"></script>
+<script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
 </body>
 </html>

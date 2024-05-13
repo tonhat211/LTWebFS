@@ -18,11 +18,24 @@ html {
     height: 100vh;
 }
 
-.formm {
+.container {
     max-resolution: auto;
     border: 1px solid #4154F1;
     padding: 20px;
     border-radius: 4px;
+}
+
+.formm {
+
+}
+
+.error {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.22);
+    padding: 7px;
+    margin: 4px;
+    border-radius: 4px;
+    font-size: 10px;
 }
 
 .show-flex-row {

@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import model.Brand;
+import model.Employee;
 import model.Image;
 import model.Product;
 
@@ -45,9 +46,24 @@ public class ImageDAO implements IDAO<Image>{
 
 	@Override
 	public int update(Image t) {
-		// TODO Auto-generated method stub
-		return 0;
+		int re=0;
+		try {
+
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "update images set url = ? where parentID =?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1,t.getUrl());
+			pst.setInt(2,t.getParentID());
+			re = pst.executeUpdate();
+			return re;
+
+		} catch (SQLException ex) {
+			// TODO: handle exception
+			throw new RuntimeException(ex);
+		}
 	}
+
+
 
 	@Override
 	public int delete(Image t) {
