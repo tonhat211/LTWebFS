@@ -102,7 +102,7 @@ public class VerifyCodeDAO implements IDAO<VerifyCode>{
 	}
 
 	public int disableCode(String code) {
-		int re=0;
+		int re = 0;
 		try {
 			Connection conn = JDBCUtil.getConnection();
 			String sql = "update verifycode set isVerify = 1 where code = ?;";
@@ -130,8 +130,8 @@ public class VerifyCodeDAO implements IDAO<VerifyCode>{
 
 			ResultSet rs = pst.executeQuery();
 
-			while(rs.next()){
-				res= rs.getTimestamp("time");
+			while (rs.next()) {
+				res = rs.getTimestamp("time");
 			}
 
 //			System.out.println(re + " dong da duoc them vao");
@@ -155,13 +155,13 @@ public class VerifyCodeDAO implements IDAO<VerifyCode>{
 
 			ResultSet rs = pst.executeQuery();
 
-			while(rs.next()){
+			while (rs.next()) {
 				String code = rs.getString("code");
 				String email = rs.getString("email");
 				Timestamp time = rs.getTimestamp("time");
 				int isVerify = rs.getInt("isVerify");
 
-				res = new VerifyCode(code,email,time,isVerify);
+				res = new VerifyCode(code, email, time, isVerify);
 			}
 
 //			System.out.println(re + " dong da duoc them vao");
@@ -174,13 +174,13 @@ public class VerifyCodeDAO implements IDAO<VerifyCode>{
 	}
 
 
-	public boolean isVerifyOk(String codein, String emailin){
+	public boolean isVerifyOk(String codein, String emailin) {
 		boolean res = false;
 		VerifyCode code = VerifyCodeDAO.getInstance().selectTheLastCode(emailin);
-		if(code == null) {
+		if (code == null) {
 			return false;
 		}
-		if(!codein.equals(code.getCode())){
+		if (!codein.equals(code.getCode())) {
 			return false;
 		}
 		if (code.getIsVerify() > 0) {
@@ -192,7 +192,7 @@ public class VerifyCodeDAO implements IDAO<VerifyCode>{
 
 
 		long seconds = timeDifferenceMillis / 1000;
-		if(seconds > 0 && seconds < 300 ) {
+		if (seconds > 0 && seconds < 300) {
 			VerifyCodeDAO.getInstance().disableCode(codein);
 			return true;
 		}

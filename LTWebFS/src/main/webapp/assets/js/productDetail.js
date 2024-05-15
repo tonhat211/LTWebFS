@@ -100,4 +100,3 @@ plusBtn.addEventListener('click', plusQty);
 const minusBtn = document.querySelector('.btn-minus-qty');
 
 minusBtn.addEventListener('click', minusQty);
-

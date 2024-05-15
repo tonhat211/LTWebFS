@@ -41,7 +41,7 @@ public class ResetPassControl extends HttpServlet {
         if (passwordChanged) {
             // Nếu đổi mật khẩu thành công
             request.setAttribute("status", "resetSuccess");
-            request.getRequestDispatcher("/logup.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             // Nếu đổi mật khẩu không thành công
             request.setAttribute("status", "resetFailed");

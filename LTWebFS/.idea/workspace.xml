@@ -9,10 +9,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cd82fb0-5857-46ca-9247-34f0f8d1db62" name="Changes" comment="Add function forgot password">
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="add time and log for OTP">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_6_05_CH_[Changes]/products-info-detail.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_6_05_CH_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_6_05_CH__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/LogupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SendOTPControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/validOTPControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_13_2024_8_38_PM_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ForgotPasswordControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ForgotPasswordControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ValidOTPControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/JDBCUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/JDBCUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ProductDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/VerifyCodeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/VerifyCodeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/EnterOTP.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EnterOTP.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mail.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mssql-jdbc-12.4.2.jre11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/common/taglib.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/common/taglib.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/productDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/productDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/project_LTWeb-main/database/ltweb (1).sql" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/project_LTWeb-main/database/ltweb (1).sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projHTML/.idea/project_LTWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../projHTML/.idea/project_LTWeb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projHTML/HTML/.idea/project_LTWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../projHTML/HTML/.idea/project_LTWeb.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,22 +51,34 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTTP Request" />
+        <option value="AnnotationType" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "PhanTTDuong"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="f924ba09-d24b-449d-afaf-2548103d9fd9" />
+        <option name="url" value="https://github.com/tonhat211/LTWebFS.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="JspContextManager">
-    <jsp-to-context jsp-file="file://$PROJECT_DIR$/src/main/webapp/assets/common/taglib.jsp" context-file="file://$PROJECT_DIR$/src/main/webapp/EnterOTP.jsp" />
+    <jsp-to-context jsp-file="file://$PROJECT_DIR$/src/main/webapp/header.jsp" context-file="file://$PROJECT_DIR$/src/main/webapp/news.jsp" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -46,139 +87,71 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2fEHimL0A9o48NBNbqL4wkYVQnp" />
+  <component name="ProjectId" id="2a10VbFnYPeAS70hFiAnUK4DXw7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Product.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProductUnit.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UserDAO.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Smart Tomcat.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.ForgotPassword.jsp.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.681.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Duong&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/LTWebFS/LTWebFS/src/main/webapp/WEB-INF/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.62057877&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Smart Tomcat.smart tomcat.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Duong",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/LTWebFS/LTWebFS/src/main/webapp",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.27701148",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "configurable.group.build",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\LTWebFS\LTWebFS\src\main\webapp\WEB-INF\lib" />
-      <recent name="D:\LTWebFS\LTWebFS\src\main\java" />
-      <recent name="D:\LTWebFS\LTWebFS\src\main\webapp\WEB-INF" />
       <recent name="D:\LTWebFS\LTWebFS\src\main\webapp" />
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp" />
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\WEB-INF\lib" />
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\LTWebFS\LTWebFS\src\main\webapp" />
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\html" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controller" />
+      <recent name="database" />
     </key>
   </component>
-  <component name="RunManager" selected="Smart Tomcat.Unnamed">
-    <configuration name="Product" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.Product" />
-      <module name="LTWebFS" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="Smart Tomcat.smart tomcat">
+    <configuration name="mysql-connector-j-8.2.0.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/src/main/java/mysql-connector-j-8.2.0.jar" />
+      <method v="2" />
     </configuration>
-    <configuration name="ProductUnit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.ProductUnit" />
-      <module name="LTWebFS" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="database.UserDAO" />
-      <module name="LTWebFS" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="database.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ForgotPassword.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 9.0.804" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ForgotPassword.jsp" />
-      <deployment>
-        <artifact name="LTWebFS:war">
-          <settings>
-            <option name="CONTEXT_PATH" value="/LTWebFS_war" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings />
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="LTWebFS:war" />
-        </option>
-      </method>
-    </configuration>
-    <configuration name="Tomcat 9.0.681" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.681" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat 9.0.801" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.801" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$USER_HOME$/.jdks/corretto-20.0.2.1">
       <deployment>
         <artifact name="LTWebFS:war exploded">
           <settings>
@@ -187,7 +160,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="602c8197-4023-456d-b00e-3447bc6b45eb" />
+        <option name="BASE_DIRECTORY_NAME" value="a9816345-82cd-46d6-be19-2954fd1588a7" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -195,7 +168,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="52605" />
+        <option name="DEBUG_PORT" value="55806" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -264,7 +237,27 @@
         </option>
       </method>
     </configuration>
-    <configuration name="Unnamed" type="com.poratu.idea.plugins.tomcat" nameIsGenerated="true">
+    <configuration name="Tomcat: LTWebFS" type="com.poratu.idea.plugins.tomcat" temporary="true">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="contextPath" value="/LTWebFS" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.80" />
+          <option name="path" value="$USER_HOME$/tomcat9" />
+          <option name="version" value="9.0.80.0" />
+        </TomcatInfo>
+      </option>
+      <module name="LTWebFS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="smart tomcat" type="com.poratu.idea.plugins.tomcat">
       <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
       <predefined_log_file enabled="true" id="Tomcat Access Log" />
       <predefined_log_file id="Tomcat Catalina Log" />
@@ -276,7 +269,7 @@
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>
-          <option name="name" value="Apache Tomcat/9.0.80" />
+          <option name="name" value="Apache Tomcat/9.0.80 (2)" />
           <option name="path" value="C:/Tomcat/tomcat9" />
           <option name="version" value="9.0.80.0" />
         </TomcatInfo>
@@ -288,19 +281,15 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.UserDAO" />
-      <item itemvalue="Application.Product" />
-      <item itemvalue="Application.ProductUnit" />
-      <item itemvalue="Smart Tomcat.Unnamed" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.681" />
-      <item itemvalue="Tomcat Server.ForgotPassword.jsp" />
+      <item itemvalue="JAR Application.mysql-connector-j-8.2.0.jar" />
+      <item itemvalue="Smart Tomcat.smart tomcat" />
+      <item itemvalue="Smart Tomcat.Tomcat: LTWebFS" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.801" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UserDAO" />
-        <item itemvalue="Tomcat Server.ForgotPassword.jsp" />
-        <item itemvalue="Application.Product" />
-        <item itemvalue="Application.ProductUnit" />
+        <item itemvalue="Smart Tomcat.Tomcat: LTWebFS" />
+        <item itemvalue="JAR Application.mysql-connector-j-8.2.0.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -314,66 +303,203 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5cd82fb0-5857-46ca-9247-34f0f8d1db62" name="Changes" comment="" />
-      <created>1713359451515</created>
+      <changelist id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="" />
+      <created>1703470804742</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1713359451515</updated>
-      <workItem from="1713359452594" duration="718000" />
-      <workItem from="1713444929849" duration="5950000" />
-      <workItem from="1713791943883" duration="5296000" />
-      <workItem from="1713839251612" duration="3513000" />
-      <workItem from="1714378894782" duration="370000" />
-      <workItem from="1715158088766" duration="1848000" />
-      <workItem from="1715160170554" duration="6905000" />
-      <workItem from="1715256046560" duration="8540000" />
+      <updated>1703470804742</updated>
+      <workItem from="1703470805764" duration="206000" />
+      <workItem from="1703471123050" duration="266000" />
+      <workItem from="1704080880234" duration="418000" />
+      <workItem from="1705404892022" duration="307000" />
+      <workItem from="1705405214693" duration="124000" />
+      <workItem from="1705405353310" duration="1422000" />
+      <workItem from="1705408112249" duration="733000" />
+      <workItem from="1705542212702" duration="9621000" />
+      <workItem from="1705651972922" duration="13470000" />
+      <workItem from="1705675317578" duration="42931000" />
+      <workItem from="1710775607433" duration="1115000" />
+      <workItem from="1710776740718" duration="2944000" />
+      <workItem from="1711168303490" duration="688000" />
+      <workItem from="1711169745362" duration="39000" />
+      <workItem from="1711169798728" duration="175000" />
+      <workItem from="1711171431906" duration="2735000" />
+      <workItem from="1711289972305" duration="1631000" />
+      <workItem from="1711424014690" duration="913000" />
+      <workItem from="1711448845269" duration="699000" />
+      <workItem from="1711782002354" duration="665000" />
+      <workItem from="1712030824801" duration="2329000" />
+      <workItem from="1712040181434" duration="3844000" />
+      <workItem from="1712113083211" duration="44325000" />
+      <workItem from="1712631931848" duration="21380000" />
+      <workItem from="1712680393327" duration="2782000" />
+      <workItem from="1712718796290" duration="27670000" />
+      <workItem from="1713098255307" duration="619000" />
+      <workItem from="1713158752557" duration="1524000" />
+      <workItem from="1713236388532" duration="22359000" />
+      <workItem from="1713341117736" duration="12878000" />
+      <workItem from="1713355138785" duration="31210000" />
+      <workItem from="1713491329538" duration="20101000" />
+      <workItem from="1713840631203" duration="34023000" />
+      <workItem from="1713965108222" duration="13752000" />
+      <workItem from="1714016702550" duration="14574000" />
+      <workItem from="1714065051102" duration="90000" />
+      <workItem from="1714066032720" duration="1607000" />
+      <workItem from="1714186966310" duration="11000" />
+      <workItem from="1714300414077" duration="588000" />
+      <workItem from="1714312401487" duration="25600000" />
+      <workItem from="1714458055674" duration="17199000" />
+      <workItem from="1714548152763" duration="10122000" />
+      <workItem from="1714710822446" duration="38960000" />
+      <workItem from="1714896472991" duration="58000" />
+      <workItem from="1714897048496" duration="8362000" />
+      <workItem from="1715230867419" duration="3856000" />
+      <workItem from="1715245244966" duration="38659000" />
+      <workItem from="1715609475340" duration="1497000" />
+      <workItem from="1715762279627" duration="20133000" />
     </task>
-    <task id="LOCAL-00001" summary="Duong test ket noi voi git hub">
+    <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
-      <created>1713360154843</created>
+      <created>1705403192984</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1713360154844</updated>
+      <updated>1705403192984</updated>
     </task>
-    <task id="LOCAL-00002" summary="Add function forgot password">
+    <task id="LOCAL-00002" summary="xong chi tiet san pham  thu2">
       <option name="closed" value="true" />
-      <created>1715172367708</created>
+      <created>1705405483731</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1715172367708</updated>
+      <updated>1705405483731</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="xong chi tiet san pham  thu2">
+      <option name="closed" value="true" />
+      <created>1705405509327</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705405509327</updated>
+    </task>
+    <task id="LOCAL-00004" summary="xong chi tiet san pham  thu3">
+      <option name="closed" value="true" />
+      <created>1705406565870</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1705406565870</updated>
+    </task>
+    <task id="LOCAL-00005" summary="xong chi tiet san pham  thu3">
+      <option name="closed" value="true" />
+      <created>1705406569439</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1705406569439</updated>
+    </task>
+    <task id="LOCAL-00006" summary="xong xong tim kiem san pham">
+      <option name="closed" value="true" />
+      <created>1705650766642</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1705650766642</updated>
+    </task>
+    <task id="LOCAL-00007" summary="base">
+      <option name="closed" value="true" />
+      <created>1712192828987</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712192828987</updated>
+    </task>
+    <task id="LOCAL-00008" summary="da sua admin customer va product">
+      <option name="closed" value="true" />
+      <created>1713355179885</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1713355179885</updated>
+    </task>
+    <task id="LOCAL-00009" summary="da sua dang dang nhap, dang ky,chuc nang sua thong tin tai khoan cho khach hang">
+      <option name="closed" value="true" />
+      <created>1714548231768</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714548231768</updated>
+    </task>
+    <task id="LOCAL-00010" summary="chuc nang tu sua thong tin cho nhan vien">
+      <option name="closed" value="true" />
+      <created>1714583136362</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714583136362</updated>
+    </task>
+    <task id="LOCAL-00011" summary="chinh sua thuoc tinh log, them trang hien thi log">
+      <option name="closed" value="true" />
+      <created>1715318507501</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715318507501</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="710c8144-adf5-40d1-a10a-c3c4f89dbd9a" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
-        <entry key="MAIN">
+        <entry key="710c8144-adf5-40d1-a10a-c3c4f89dbd9a">
           <value>
             <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Duong" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Duong test ket noi voi git hub" />
-    <MESSAGE value="Add function forgot password" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add function forgot password" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/main/webapp/assets/js/cart.js</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="xong chi tiet san pham" />
+    <MESSAGE value="xong chi tiet san pham  thu2" />
+    <MESSAGE value="xong chi tiet san pham  thu3" />
+    <MESSAGE value="xong xong tim kiem san pham" />
+    <MESSAGE value="base" />
+    <MESSAGE value="da sua admin customer va product" />
+    <MESSAGE value="da sua dang dang nhap, dang ky,chuc nang sua thong tin tai khoan cho khach hang" />
+    <MESSAGE value="chuc nang tu sua thong tin cho nhan vien" />
+    <MESSAGE value="chinh sua thuoc tinh log, them trang hien thi log" />
+    <MESSAGE value="commit de pull code tu branch nhat" />
+    <MESSAGE value="add time for OTP" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/to-nhat' into Duong&#10;&#10;# Conflicts:&#10;#&#9;LTWebFS/.idea/webContexts.xml&#10;#&#9;LTWebFS/.idea/workspace.xml&#10;#&#9;LTWebFS/pom.xml&#10;#&#9;LTWebFS/src/main/java/com/example/ltwebfs/test.java&#10;#&#9;LTWebFS/src/main/java/controller/AddToCartControl.java&#10;#&#9;LTWebFS/src/main/java/database/UserDAO.java&#10;#&#9;LTWebFS/src/main/webapp/login.jsp" />
+    <MESSAGE value="add time and log for OTP" />
+    <option name="LAST_COMMIT_MESSAGE" value="add time and log for OTP" />
   </component>
 </project>

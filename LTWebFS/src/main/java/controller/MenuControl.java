@@ -4,7 +4,7 @@ import database.ProductUnitDAO;
 import model.Brand;
 import model.ProductHeader;
 import model.ProductUnit;
-//import org.hsqldb.Session;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

@@ -1,6 +1,9 @@
 package controller;
 
+
 import database.VerifyCodeDAO;
+import model.JavaMail.EmailService;
+import model.JavaMail.IJavaMail;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -16,11 +19,11 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
 
-@WebServlet("/ForgotPasswordControl")
-public class ForgotPasswordControl extends HttpServlet {
+@WebServlet("/sendOTP")
+public class SendOTPControl extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public ForgotPasswordControl() {
+    public SendOTPControl() {
         super();
 
     }
@@ -84,5 +87,5 @@ public class ForgotPasswordControl extends HttpServlet {
             dispatcher.forward(request, response);
         }
     }
+    }
 
-}

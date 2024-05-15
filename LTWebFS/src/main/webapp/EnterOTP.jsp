@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="assets/font/fontawesome-free-6.4.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/font/themify-icons/themify-icons.css">
 
-    <link rel="stylesheet" href="./assets/css/style.css.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
     <!--
          bootstrap link
@@ -68,6 +68,9 @@
 </head>
 
 <body>
+<%
+    String email = (String) session.getAttribute("email");
+%>
 <div id="main" style="margin-left: auto !important;">
     <%@ include file="header.jsp"%>
 
@@ -85,25 +88,33 @@
 
             <div class="panel-body">
 
-                <form id="register-form" action="ValidateOtp" role="form"
+                <form id="" action="ValidateOtp" role="form"
                       autocomplete="off" class="form" method="post">
-
                     <div class="form-group">
                         <div class="input-group">
 											<span class="input-group-addon"><i
-                                                    class="glyphicon glyphicon-envelope color-blue"></i></span> <input
+                                                    class="glyphicon glyphicon-envelope color-blue"></i></span>
+                            <input
                                 id="opt" name="otp" placeholder="Nhập mã OTP"
-                                class="form-control" type="text" required="required">
+                                class="form-control" type="text">
                         </div>
                     </div>
                     <div class="form-group">
+
                         <input name="recover-submit"
                                class="btn btn-lg btn-primary btn-block"
                                value="Đặt lại mật khẩu" type="submit">
                     </div>
 
-                    <input type="hidden" class="hide" name="token" id="token"
-                           value="">
+                </form>
+
+                <form class="form" action="sendOTP" method="post">
+                    <input type="text" placeholder="Nhập mã xác minh" class="code-input" name="email" value="<%=email%>" hidden>
+                    <div class="form-group">
+                        <input name="recover-submit"
+                               class="btn btn-lg btn-primary btn-block"
+                               value="Gửi lại mã OTP" type="submit">
+                    </div>
                 </form>
             </div>
         </div>
@@ -113,7 +124,6 @@
 <%@ include file="footer.jsp" %>
 <script src="assets/js/slidebar.js">
 </script>
-
 
 </body>
 </html>
