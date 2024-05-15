@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-    <title>Thêm/Cập nhật khách hàng</title>
+    <title>Thêm/Cập nhật nhân viên</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -33,6 +33,8 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/addUpdate.css">
     <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/toast.css">
+
 </head>
 <body>
 <%
@@ -63,6 +65,10 @@
 
 
 <div class="ad-content mt10">
+    <%--thong bao--%>
+    <div id="toast">
+
+    </div>
     <div class="modal confirm-stop">
         <div class="modal__overlay">
             <div class="modal__confirm-content" onclick="event.stopPropagation()">

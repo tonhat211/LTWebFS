@@ -144,7 +144,7 @@
                     <div class="form-group w-100">
                         <label class="w-20" for="address">Địa chỉ: </label>
                         <input type="text" class="form-control w-80" id="address" name="address" aria-describedby="" placeholder="Nhập Địa chỉ" value="<%=u.getAddress() %>">
-                        <div class="required" hidden>Không được để trống mục này</div>
+<%--                        <div class="required" hidden>Không được để trống mục này</div>--%>
 
                     </div>
 
@@ -157,7 +157,7 @@
 
                                 if(infoTokens.length <2){
                                     sex = "trống";
-                                    birthday="trống";
+                                    birthday=null;
                                 }
                                 else {
                                     sex = infoTokens[0];
@@ -302,14 +302,14 @@
 
 
             if(address.trim() === "") {
-                switchMessage("#address",'.required',1);
-                isOk = false;
+                address = "";
             } else {
-                switchMessage("#address",'.required',0);
+
 
             }
 
             var birth = new Date(birthday);
+
             var year = birth.getFullYear();
             var currentYear = new Date().getFullYear();
             var curretnMonth = new Date().getMonth()+1;

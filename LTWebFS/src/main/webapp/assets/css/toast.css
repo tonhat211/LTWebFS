@@ -1,7 +1,7 @@
 /* toast */
 #toast {
     position: fixed;
-    top: 32px;
+    bottom: 32px;
     right: 32px;
     z-index: 9999;
 }
@@ -114,8 +114,3 @@
     opacity: 0.6;
 }
 
-#toast {
-    position: fixed;
-    top: 32px;
-    right: 32px;
-}

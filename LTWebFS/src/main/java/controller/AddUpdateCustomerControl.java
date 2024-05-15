@@ -5,6 +5,8 @@ import database.ProductUnitDAO;
 import database.UnitDAO;
 import database.UserDAO;
 import model.*;
+import model.JavaMail.EmailService;
+import model.JavaMail.IJavaMail;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 @WebServlet("/addUpdate-customer")
 public class AddUpdateCustomerControl extends HttpServlet {
@@ -136,9 +139,15 @@ public class AddUpdateCustomerControl extends HttpServlet {
                             Integer.parseInt(dateInTokens[1]),
                             Integer.parseInt(dateInTokens[2]));
 
-                    String pwd = User.encodePwd(birthday);
+                    String[] birthdayTokens = birthday.split("-");
+                    String pwd;
+                    if(birthday.equalsIgnoreCase(""))
+                        pwd="01012000";
+                    else
+                        pwd = birthdayTokens[2] + birthdayTokens[1] + birthdayTokens[0];
+                    String pwdEncoded = User.encodePwd(pwd);
 
-                    User u = new User(idin,name,email,pwd,0,phone,address,0,info,dateinDatee,null,0,null);
+                    User u = new User(idin,name,email,pwdEncoded,0,phone,address,0,info,dateinDatee,null,0,null);
                     UserDAO.getInstance().insert(u);
 
 //                    int status= Integer.parseInt(request.getParameter("status"));
@@ -149,10 +158,19 @@ public class AddUpdateCustomerControl extends HttpServlet {
                     Log log = new Log(request.getRemoteAddr(),e.getEmail() + " | update_customer ","Đã thêm một tài khoản mới." ,"trống",afterU.toString(), 1 );
                     LogDAO.getInstance().insert(log);
 
-//                    request.setAttribute("id",idin);
-//                    request.setAttribute("status",status);
-//                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-add-customer");
-//                    rd.forward(request, response);
+//                    gui mail thong bao tao tai khoan thanh cong
+                    Random rand = new Random();
+                    int ranNum = rand.nextInt(9)+1;
+                    String code ="";
+                    for(int i=0;i<6; i++) {
+                        code+= String.valueOf(rand.nextInt(9)+1);
+                    }
+                    String to =email;
+                    String subject="Tạo tài khoản thành công";
+                    String message = "Email đã được dùng để đăng ký tài khoản website thiết bị y tế\nMật khẩu của bạn là: " + pwd +"\nMã xác minh tài khoản của bạn là " +code;
+                    IJavaMail emailService = new EmailService();
+                    //  q       gui code toi email khach hang
+                    emailService.send(to,subject,message);
 
                     String html = renderHtml(afterU,"Thêm thành công tài khoản " + afterU.getEmail());
                     response.setContentType("text/html");

@@ -9,22 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="chinh sua thuoc tinh log, them trang hien thi log">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LogControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/toast.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/toast.js" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/LogDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/LogDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/test1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminLog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminLog.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/addUpdate.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/addUpdate.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/adminLog.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/adminLog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/baseN.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/baseN.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/toast.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/toast.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,7 +301,9 @@
       <workItem from="1714896472991" duration="58000" />
       <workItem from="1714897048496" duration="8362000" />
       <workItem from="1715230867419" duration="3856000" />
-      <workItem from="1715245244966" duration="38659000" />
+      <workItem from="1715245244966" duration="38966000" />
+      <workItem from="1715514279960" duration="599000" />
+      <workItem from="1715786811858" duration="3607000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -400,7 +393,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715318507501</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax">
+      <option name="closed" value="true" />
+      <created>1715420994280</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715420994280</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,6 +428,7 @@
     <MESSAGE value="da sua dang dang nhap, dang ky,chuc nang sua thong tin tai khoan cho khach hang" />
     <MESSAGE value="chuc nang tu sua thong tin cho nhan vien" />
     <MESSAGE value="chinh sua thuoc tinh log, them trang hien thi log" />
-    <option name="LAST_COMMIT_MESSAGE" value="chinh sua thuoc tinh log, them trang hien thi log" />
+    <MESSAGE value="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax" />
+    <option name="LAST_COMMIT_MESSAGE" value="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax" />
   </component>
 </project>
