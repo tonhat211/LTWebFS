@@ -9,40 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="add time and log for OTP">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_6_05_CH_[Changes]/products-info-detail.xls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_6_05_CH_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_01_2024_6_05_CH__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/LogupController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SendOTPControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/validOTPControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_13_2024_8_38_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ForgotPasswordControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ForgotPasswordControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ValidOTPControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/JDBCUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/JDBCUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/VerifyCodeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/VerifyCodeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/EnterOTP.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/EnterOTP.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mail.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mssql-jdbc-12.4.2.jre11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/common/taglib.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/common/taglib.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/productDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/productDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/project_LTWeb-main/database/ltweb (1).sql" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/project_LTWeb-main/database/ltweb (1).sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projHTML/.idea/project_LTWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../projHTML/.idea/project_LTWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projHTML/HTML/.idea/project_LTWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../projHTML/HTML/.idea/project_LTWeb.iml" afterDir="false" />
-    </list>
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="add time and log for OTP" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,12 +30,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "PhanTTDuong"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PhanTTDuong&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -102,33 +69,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Smart Tomcat.smart tomcat.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Duong",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/LTWebFS/LTWebFS/src/main/webapp",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.27701148",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "configurable.group.build",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.smart tomcat.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Duong&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/LTWebFS/LTWebFS/src/main/webapp&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.27701148&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\LTWebFS\LTWebFS\src\main\webapp" />
@@ -356,7 +323,7 @@
       <workItem from="1715230867419" duration="3856000" />
       <workItem from="1715245244966" duration="38659000" />
       <workItem from="1715609475340" duration="1497000" />
-      <workItem from="1715762279627" duration="20133000" />
+      <workItem from="1715762279627" duration="20338000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -446,7 +413,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715318507501</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add time and log for OTP">
+      <option name="closed" value="true" />
+      <created>1715784230030</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715784230031</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
