@@ -9,13 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax">
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAddEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAddEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/test1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/toast.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/toast.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/adminEmployee.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/adminEmployee.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/adminN.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/adminN.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +309,8 @@
       <workItem from="1715230867419" duration="3856000" />
       <workItem from="1715245244966" duration="38966000" />
       <workItem from="1715514279960" duration="599000" />
-      <workItem from="1715786811858" duration="3607000" />
+      <workItem from="1715786811858" duration="13039000" />
+      <workItem from="1715831601819" duration="3346000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -401,7 +408,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715420994280</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao">
+      <option name="closed" value="true" />
+      <created>1715790483258</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715790483259</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,6 +444,7 @@
     <MESSAGE value="chuc nang tu sua thong tin cho nhan vien" />
     <MESSAGE value="chinh sua thuoc tinh log, them trang hien thi log" />
     <MESSAGE value="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax" />
-    <option name="LAST_COMMIT_MESSAGE" value="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax" />
+    <MESSAGE value="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao" />
+    <option name="LAST_COMMIT_MESSAGE" value="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao" />
   </component>
 </project>

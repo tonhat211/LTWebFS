@@ -138,7 +138,7 @@ public class Employee {
         this.name = u.getName();
         this.email = u.getEmail();
         this.pwd = u.getPwd();
-        this.level = u.getLevel();
+        this.level = 1;
         this.phone = u.getPhone();
         this.address = u.getAddress();
         this.branchID = u.getBranchID();

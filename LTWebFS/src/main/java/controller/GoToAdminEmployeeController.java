@@ -24,6 +24,10 @@ public class GoToAdminEmployeeController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 //        HttpSession session  =request.getSession();
+        String status = request.getParameter("status");
+        if(status != null) {
+            request.setAttribute("status", "addSuccessful");
+        }
         ArrayList<Employee> employeeList = EmployeeDAO.getInstance().selectAll();
 
         request.setAttribute("employeeList", employeeList);

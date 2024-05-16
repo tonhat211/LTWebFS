@@ -52,6 +52,7 @@ public class GoToAddEmployee extends HttpServlet {
 
 //        User u = new User(id);
         Employee e = new Employee(id);
+        e.setLevel(1);
 
 
         request.setAttribute("branchList", branches);

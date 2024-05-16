@@ -48,11 +48,6 @@ public class AddUpdateCustomerControl extends HttpServlet {
                     Log log = new Log(request.getRemoteAddr(),e.getEmail() + " | update_customer ","Đã khóa tài khoản." ,u.getEmail() + " | " + u.getAvailable(),afterU.getEmail() + " | " + afterU.getAvailable(),1 );
                     LogDAO.getInstance().insert(log);
 
-
-//                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-update-customer");
-//                    rd.forward(request, response);
-//                    break;
-
                     String html = renderHtml(afterU,"Đã khóa tài khoản " + afterU.getEmail());
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
@@ -111,12 +106,6 @@ public class AddUpdateCustomerControl extends HttpServlet {
                     Log log = new Log(request.getRemoteAddr(),e.getEmail() + " | update_customer ","Đã cập nhật thông tin tài khoản." ,preu.toString(),afterU.toString(), 1 );
                     LogDAO.getInstance().insert(log);
 
-
-//                    request.setAttribute("id",idin);
-//                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-update-customer");
-//                    rd.forward(request, response);
-//                    break;
-
                     String html = renderHtml(afterU,"Cập nhật thành công tài khoản " + afterU.getEmail());
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
@@ -150,10 +139,7 @@ public class AddUpdateCustomerControl extends HttpServlet {
                     User u = new User(idin,name,email,pwdEncoded,0,phone,address,0,info,dateinDatee,null,0,null);
                     UserDAO.getInstance().insert(u);
 
-//                    int status= Integer.parseInt(request.getParameter("status"));
-
                     User afterU = UserDAO.getInstance().selectById(idin);
-
 
                     Log log = new Log(request.getRemoteAddr(),e.getEmail() + " | update_customer ","Đã thêm một tài khoản mới." ,"trống",afterU.toString(), 1 );
                     LogDAO.getInstance().insert(log);
@@ -198,21 +184,30 @@ public class AddUpdateCustomerControl extends HttpServlet {
         if(info!=null){
             String infoTokens[] = info.split("=");
 
-            if(infoTokens.length <2){
-                sex = "trống";
-                birthday="trống";
+            switch (infoTokens.length) {
+                case 1: {
+                    sex = infoTokens[0];
+                    break;
+                }
+                case 2: {
+                    sex = infoTokens[0];
+                    birthday = infoTokens[1];
+                    break;
+                }
+                default: {
+                    sex = "";
+                    birthday ="";
+                    break;
+                }
             }
-            else {
-                sex = infoTokens[0];
-                birthday = infoTokens[1];
+
+            if(!birthday.equals("")) {
                 String[] bdTokens = birthday.split("-");
                 if((bdTokens[1].length()<2))
                     bdTokens[1]="0" + bdTokens[1];
                 if((bdTokens[2]).length()<2)
                     bdTokens[2]="0" + bdTokens[2];
-
                 birthday = bdTokens[0] + "-" + bdTokens[1] + "-" + bdTokens[2];
-
             }
         }
 
