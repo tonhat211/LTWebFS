@@ -73,3 +73,25 @@
     font-style: italic;
     color: #5d94ee;
 }
+
+.sub-nav {
+    position: absolute;
+    list-style-type: none;
+    background-color: rgba(167, 180, 232, 1);
+    padding: 10px;
+    left: 20px;
+    border-radius: 4px;
+    display: none;
+}
+
+.sub-nav.active {
+    display: block;
+}
+
+.sub-nav li a {
+    text-decoration: none;
+}
+
+.sub-nav li:hover {
+    opacity: 0.3;
+}

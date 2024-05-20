@@ -91,11 +91,6 @@
                 </div>
 
             </div>
-
-
-            <!--                            <div class="ad_func-container">-->
-            <!--                                <div class="ad_func-add-btn ad_func-btn">Thêm</div>-->
-            <!--                            </div>-->
         </div>
     </div>
 

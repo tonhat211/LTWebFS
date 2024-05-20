@@ -1,0 +1,113 @@
+.table {
+    width: 100%;
+}
+
+.w-5 {
+    width: 5%;
+}
+
+.table td {
+    vertical-align: top;
+}
+
+.btn_confirm_order {
+    text-decoration: none;
+    background-color: white;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid #4154f1;
+    color: #4154f1;
+    display: block;
+    text-align: center;
+    min-width: max-content;
+}
+
+.btn_confirm_order.confirm {
+    background-color: white;
+    border: 1px solid #4154f1;
+    color: #4154f1;
+}
+
+.btn_confirm_order.cancel {
+    background-color: #ff623d;
+    border: 1px solid #ff623d;
+    color: white;
+}
+
+.btn_confirm_order.delivery,
+.btn_confirm_order.package {
+    background-color: #ffc021;
+    border: 1px solid #ffc021;
+    color: white;
+}
+
+
+.btn_confirm_order.complete {
+    background-color: #47d864;
+    border: 1px solid #47d864;
+    color: white;
+}
+
+.btn_confirm_order.return,
+.btn_confirm_order.confirmReturn {
+    background-color: white;
+    border: 1px solid #ff623d;
+    color: #ff623d;
+}
+
+
+.btn_confirm_order.completedReturn {
+    background-color: #ff623d;
+    border: 1px solid #ff623d;
+    color: white;
+}
+
+
+
+.btn_confirm_order:hover {
+    opacity: 0.6;
+}
+
+.green-color {
+    color: #47d864;
+}
+
+.yellow-color {
+    color: #ffc021
+}
+
+.orange-color {
+    color: #ff623d;
+}
+
+.blue-color {
+    color: #4154f1;
+
+}
+
+.gray-color {
+    color: #cccccc;
+
+}
+
+.order-info-container .green-color {
+    color: #47d864;
+}
+
+.order-info-container .yellow-color {
+    color: #ffc021
+}
+
+.order-info-container .orange-color {
+    color: #ff623d;
+}
+
+.order-info-container .blue-color {
+    color: #4154f1;
+
+}
+
+.order-info-container .gray-color {
+    color: #cccccc;
+
+}

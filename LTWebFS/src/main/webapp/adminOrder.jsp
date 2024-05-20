@@ -1,4 +1,6 @@
-<%--
+<%@ page import="model.Order" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %><%--
   Created by IntelliJ IDEA.
   User: TO NHAT
   Date: 12/12/2023
@@ -18,6 +20,7 @@
     <!-- Favicons-->
     <link href="assets/img/Logo/favicon_icon.png" rel="icon">
     <!--        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -41,218 +44,177 @@
     <link rel="stylesheet" href="assets/css/qldh.css">
 </head>
 <body>
+<%
+    Map<Order,String> orders = (Map<Order, String>) request.getAttribute("orders");
+    if(orders == null) orders = new HashMap<>();
+%>
+
 <%@ include file="adminMenu.jsp" %>
 
+<main id="main" class="main">
+    <%--thong bao--%>
+    <div id="toast">
 
-<main id="main" class="main" style="">
-
-    <div class="pagetitle">
-        <h1>Đơn hàng</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
-                <li class="breadcrumb-item active">Quản lý đơn hàng</li>
-            </ol>
-        </nav>
     </div>
-    <!-- End Page Title -->
-    <div class="grid-col-10">
-        <div class="contents">
-            <div class="btn-search">
-                <div class="search-bar">
-                    <form class="search-form d-flex align-items-center" method="POST" action="#">
-                        <input type="text" name="query" placeholder="Tìm kiếm mã đơn hàng"
-                               title="Enter search keyword">
-                        <button type="submit" title="Search" style="position: absolute;
-                                                          left: 0;
-                                                          background-color: #fff;
-                                                          margin-left: -15px; padding: 5px; border-radius: 50%">
-                            <i class="bi bi-search" style="padding: 5px"></i></button>
-                    </form>
-                </div><!-- End Search -->
-            </div>
-            <div class="content-1 hei-300">
-                <div class="container hei-300">
-                    <div class="content">
-                        <div class="row-col">
-                            <div class="up">
-                                <span> Mã đơn hàng <a href="#">JS907H7G6FJJ</a> </span>
-                                <hr>
-                                <span><a href="#" style="color: red">Hoàn Thành</a></span>
-                                <hr>
-                                <span>Đơn vị vận chuyển: <a href="">J&T Express</a></span>
-                            </div>
 
-                            <div class="left">
-                                <div class="img">
-                                    <img src="assets/img/admin/tải%20xuống.jpg" alt="Máy tạo oxi gia đình">
-                                </div>
+        <div class="pagetitle">
+            <h1>Đơn hàng</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Quản lý đơn hàng</li>
+                </ol>
+            </nav>
+        </div>
+        <!-- End Page Title -->
 
-                                <div class="contention">
-                                    <div class="title">
-                                        <span>Kiện hàng có mã vận đơn <a href="#">SPVN67NND88D</a> đã được giao thành công</span>
-                                    </div>
+    <div class="ad-content" style="padding: 10px">
+        <div class="ad_container">
+            <div class="ad-content-item">
+                <div class="ad_header">
 
-                                    <div class="time">
-                                        <span>11:13 03-11-2023</span>
-                                    </div>
-                                </div>
-
-                            </div>
+                    <div class="show-flex-row" style="width: 100%; align-items: center">
+                        <form class="ad_find-container" action="update-order" method="get" id="searchOrderForm">
+                            <input type="text" placeholder="Nhập ID hoặc thời gian" class="ad_find-input" name="input" value="">
+                            <input type="text" placeholder="Nhập ID hoặc thời gian" class="ad_find-input" name="action" value="search" hidden readonly>
+                            <button class="ad_find-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
+                        <div>
+                            <a class="ad_btn-control btn-up-pro" href="ordermenu?adminMenu=all">Quản lý đơn hàng</a>
                         </div>
 
-                        <hr>
-
-                        <div class="row-col">
-                            <div class="up">
-                                <span> Mã đơn hàng <a href="#">JS907H7G6FJJ</a> </span>
-                                <hr>
-                                <span><a href="#" style="color: red">Hoàn Thành</a></span>
-                                <hr>
-                                <span>Đơn vị vận chuyển: <a href="">J&T Express</a></span>
-                            </div>
-
-                            <div class="left">
-                                <div class="img">
-                                    <img src="assets/img/admin/laser-dieu-tri.png" alt="Laser điều trị">
-                                </div>
-
-                                <div class="contention">
-                                    <div class="title">
-                                        <span>Kiện hàng có mã vận đơn <a href="#">SPVN67NND88D</a> đã được giao thành công</span>
-                                    </div>
-
-                                    <div class="time">
-                                        <span>11:13 03-11-2023</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row-col">
-                            <div class="up">
-                                <span> Mã đơn hàng <a href="#">JS907H7G6FJJ</a> </span>
-                                <hr>
-                                <span><a href="#" style="color: red">Hoàn Thành</a></span>
-                                <hr>
-                                <span>Đơn vị vận chuyển: <a href="">J&T Express</a></span>
-                            </div>
-
-                            <div class="left">
-                                <div class="img">
-                                    <img src="assets/img/admin/may-thuy-luc-dieu-tri.png" alt="Máy thủy lực điều trị">
-                                </div>
-
-                                <div class="contention">
-                                    <div class="title">
-                                        <span>Kiện hàng có mã vận đơn <a href="#">SPVN097HHD7DJ</a> đã được giao thành công</span>
-                                    </div>
-
-                                    <div class="time">
-                                        <span>11:13 03-11-2023</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row-col">
-                            <div class="up">
-                                <span> Mã đơn hàng <a href="#">JS907H7G6FJJ</a> </span>
-                                <hr>
-                                <span><a href="#" style="color: red">Hoàn Thành</a></span>
-                                <hr>
-                                <span>Đơn vị vận chuyển: <a href="">J&T Express</a></span>
-                            </div>
-
-                            <div class="left">
-                                <div class="img">
-                                    <img src="assets/img/admin/may-vi-song.png" alt="Máy vi sóng">
-                                </div>
-
-                                <div class="contention">
-                                    <div class="title">
-                                        <span>Kiện hàng có mã vận đơn <a href="#">SPVN89DN66DH8</a> đã được giao thành công</span>
-
-                                    </div>
-
-                                    <div class="time">
-                                        <span>11:13 03-11-2023</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row-col">
-                            <div class="up">
-                                <span> Mã đơn hàng <a href="#">JS907H7G6FJJ</a> </span>
-                                <hr>
-                                <span><a href="#" style="color: red">Hoàn Thành</a></span>
-                                <hr>
-                                <span>Đơn vị vận chuyển: <a href="">J&T Express</a></span>
-                            </div>
-
-                            <div class="left">
-                                <div class="img">
-                                    <img src="assets/img/admin/31_Thiet_bi_y_te_vat_ly_tri_lieu.png"
-                                         alt="Thiết bị cần thiết">
-                                </div>
-
-                                <div class="contention">
-                                    <div class="title">
-                                        <span>Kiện hàng có mã vận đơn <a href="#">SPVN67NND88D</a> đã được giao thành công</span>
-                                    </div>
-
-                                    <div class="time">
-                                        <span>11:13 03-11-2023</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row-col">
-                            <div class="up">
-                                <span> Mã đơn hàng <a href="#">JS907H7G6FJJ</a> </span>
-                                <hr>
-                                <span><a href="#" style="color: red">Hoàn Thành</a></span>
-                                <hr>
-                                <span>Đơn vị vận chuyển: <a href="">J&T Express</a></span>
-                            </div>
-
-                            <div class="left">
-                                <div class="img">
-                                    <img src="assets/img/admin/laser-dieu-tri.png" alt="Laser điều trị">
-                                </div>
-
-                                <div class="contention">
-                                    <div class="title">
-                                        <span>Kiện hàng có mã vận đơn <a href="#">SPVNI098DJD77DH</a> đã được giao thành công</span>
-                                    </div>
-
-                                    <div class="time">
-                                        <span>11:13 03-11-2023</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
+
                 </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="w-5" style="width: 5%;"> ID</th>
+                        <th scope="col" style="width: 10%;">Thời gian</th>
+                        <th scope="col" style="width: 45%;">Danh sách sản phẩm</th>
+                        <th scope="col" style="width: 15%;">Tổng tiền</th>
+                        <th scope="col" style="width: 15%;">Tình trạng</th>
+                    </tr>
+                    </thead>
+                    <tbody id="ordersTable" class="order-info-container">
+                    <%
+                        int i=0;
+                        for (Map.Entry<Order, String> item : orders.entrySet()) {
+                            i++;
+//                    System.out.println(item.getKey() + " - " + item.getValue());
+
+                    %>
+                        <tr class="<%= (i%2==0) ? "roww": ""%>">
+                            <td><%=item.getKey().getId()%></td>
+                            <td><%=item.getKey().getDateSet()%> <br/> <%=item.getKey().getTimeSet()%></td>
+                            <td><%=item.getValue()%></td>
+                            <td><%=item.getKey().getTotalPrice()%></td>
+                            <td class="<%=item.getKey().getColorByStatus()%>"><%=item.getKey().getStatusBefore()%></td>
+                        </tr>
+                    <%
+                        }
+                    %>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="confirm-popup confirm-stop">
+        <div class="modal__overlay" onclick="unshowDetail()">
+            <div class="modal__emplpoyee-detail" onclick="event.stopPropagation()">
+                <%--                <div class="confirm__message">--%>
+                <%--                    <div class="info-container">--%>
+                <%--                        <div class="info-container__title">--%>
+                <%--                            <img class="w-50" src="./assets/img/employee/3035.jpg" alt="">--%>
+                <%--                        </div>--%>
+                <%--                        <div class="info-container__content">--%>
+                <%--                            <h6 style="font-size: 30px">To minh nhat</h6>--%>
+                <%--                            <p>Chuc vu: <span>Truong phong</span></p>--%>
+                <%--                            <p>Bo phan: <span>phong it</span></p>--%>
+
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                    <div class="info-container">--%>
+                <%--                        <div class="info-container__title">--%>
+                <%--                            <p>Thong tin lien he:</p>--%>
+                <%--                        </div>--%>
+
+                <%--                        <div class="info-container__content">--%>
+                <%--                            <p>email: <span>3614861@gmail.com</span></p>--%>
+                <%--                            <p>sdt: <span>109253718</span></p>--%>
+                <%--                            <p>Chi nhan laafm viec: <span>isdfviuwqhfl waefgiuerhwg</span></p>--%>
+
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+
+                <%--                    <div class="info-container">--%>
+                <%--                        <div class="info-container__title">--%>
+                <%--                            <p>Thong tin lam viec:</p>--%>
+                <%--                        </div>--%>
+                <%--                        <div class="info-container__content">--%>
+                <%--                            <p>ngayf vao lam: <span>1/1/2022</span></p>--%>
+                <%--                            <p>ngayf ra: <span>null</span></p>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+
+                <%--                    <div class="info-container">--%>
+                <%--                        <div class="info-container__title">--%>
+                <%--                            <p>Thong tin ca nhan:</p>--%>
+                <%--                        </div>--%>
+                <%--                        <div class="info-container__content">--%>
+                <%--                            <p>gioi tinh: <span>nam</span></p>--%>
+                <%--                            <p>ngay sinh: <span>04-10-2003</span></p>--%>
+                <%--                            <p>dia chi thuong chu: <span>isdfviuwqhfl waefgiuerhwg</span></p>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+
             </div>
         </div>
     </div>
-</main>
+
+        <script>
+            function searchOrder(action, input) {
+                console.log('goi update order');
+                $.ajax({
+                    url: "/LTWebFS/update-order",
+                    method: "GET",
+                    data: {action: action, input: input},
+                    success: function(data) {
+                        $("#ordersTable").html(data);
+
+                    }
+                });
+            }
+
+
+
+            $(document).ready(function() {
+                document.querySelector("#searchOrderForm").addEventListener('submit',function (event) {
+                    event.preventDefault();
+                    var formData = new FormData(this);
+                    var action = formData.get("action");
+                    var  input = formData.get("input");
+                    if(input === "") {
+                        input = -1;
+                    }
+
+                    searchOrder(action, input);
+                })
+
+            });
+        </script>
+
+
+
+
+
+</main><!-- End #main -->
+
 
 <!-- Vendor JS Files -->
 <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>

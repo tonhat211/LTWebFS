@@ -114,3 +114,44 @@
     opacity: 0.6;
 }
 
+.toast-2 {
+    position: relative;
+    z-index: 9999;
+
+
+}
+
+.toastt-2 {
+    margin: auto 0;
+    background-color: white;
+    border-radius: 2px;
+    padding: 0 20px;
+    transition: all linear 0.7s;
+
+}
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+
+}
+
+.toast-2--success {
+    background-color: #47d864;
+}
+
+.toast-2--error {
+    background-color: #ff623d;
+}
+
+.toast-2--info {
+    background-color: #2f86eb;
+
+}
+
+.toast-2__msg {
+    font-size: 14px;
+    color: white;
+    margin-top: 4px;
+    line-height: 1.6;
+}

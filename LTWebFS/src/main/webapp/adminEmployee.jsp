@@ -217,10 +217,7 @@
             const $ = document.querySelector.bind(document);
             const $$ = document.querySelectorAll.bind(document);
             $('.confirm-stop').classList.add('active');
-            // console.log("truco json");
-            // console.log(employeeJSON);
 
-            // console.log(e);
             console.log(e);
 
 

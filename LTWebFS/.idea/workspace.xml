@@ -9,19 +9,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao">
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAdminOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/OrderMenuControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/AddressDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminOrderMenu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminOrderMenu.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/orderManagement.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/sound/complete.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/sound/error.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/sound/successful.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/orderCancel.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/orderComplete.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/orderCompletedReturn.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/orderConfirm.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/orderConfirmReturn.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/orderDelivery.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/orderManagement.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/orderPackage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/orderReturn.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAddEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAddEmployee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/DeOrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/DeOrderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/OrderDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/test1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/adminEmployee.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/adminEmployee.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/adminN.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/adminN.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminOrder.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/payment.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/toast.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/toast.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/toast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/payment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/payment.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/signup.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +62,9 @@
       <list>
         <option value="Jsp File" />
         <option value="AnnotationType" />
-        <option value="Class" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Class" />
         <option value="CSS File" />
       </list>
     </option>
@@ -74,7 +103,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;to-nhat&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/TO NHAT/IdeaProjects/LTWeb/project_LTWeb/LTWebFS/src/main/webapp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/TO NHAT/IdeaProjects/LTWeb/project_LTWeb/LTWebFS/src/main/webapp/assets/sound&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -91,11 +120,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\sound" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\WEB-INF\lib" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java" />
-      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
@@ -310,7 +339,8 @@
       <workItem from="1715245244966" duration="38966000" />
       <workItem from="1715514279960" duration="599000" />
       <workItem from="1715786811858" duration="13039000" />
-      <workItem from="1715831601819" duration="3346000" />
+      <workItem from="1715831601819" duration="68307000" />
+      <workItem from="1716137485307" duration="7016000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -416,7 +446,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715790483259</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user">
+      <option name="closed" value="true" />
+      <created>1715835310747</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715835310747</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,6 +483,7 @@
     <MESSAGE value="chinh sua thuoc tinh log, them trang hien thi log" />
     <MESSAGE value="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax" />
     <MESSAGE value="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao" />
-    <option name="LAST_COMMIT_MESSAGE" value="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao" />
+    <MESSAGE value="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user" />
+    <option name="LAST_COMMIT_MESSAGE" value="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user" />
   </component>
 </project>
