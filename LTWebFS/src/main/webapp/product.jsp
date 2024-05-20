@@ -12,6 +12,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="./assets/common/taglib.jsp"%>
 <html>
 <head>
 <%--    <% String title = request.getParameter("kind");%>--%>
@@ -207,7 +208,11 @@
 
                                 <div class="product-info">
                                     <div class="product-name"><p><%=p.getName()%></p></div>
-                                    <p class="product-price"><span><%=p.getPrice()%></span> VND</p>
+                                    <p class="product-price">
+                                        <fmt:formatNumber value="<%=p.getPrice()%>" pattern="#,##0.00"/>
+                                        VND
+                                    </p>
+
                                 </div>
                             </a>
 

@@ -11,6 +11,24 @@
     <link rel="stylesheet" href="assets/css/adminN.css">
     <link rel="stylesheet" href="assets/css/baseN.css">
     <link rel="stylesheet" href="assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
+    <style>
+        .password-container {
+            position: relative;
+        }
+
+        .password-container .form-control {
+            padding-right: 40px; /* Đảm bảo đủ chỗ cho icon */
+        }
+
+        .password-container .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
 <%
@@ -44,13 +62,19 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Mật khẩu</label>
+                <div class="password-container">
                 <input type="password" class="form-control" id="password" name="password" required placeholder="Nhập mật khẩu">
+                <i class="fa-solid fa-eye-slash toggle-password"></i>
+                </div>
                 <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>
 
             </div>
             <div class="mb-3">
                 <label for="repassword" class="form-label">Nhập lại mật khẩu</label>
+                <div class="password-container">
                 <input type="password" class="form-control" id="repassword" name="repassword" required placeholder="Nhập lại mật khẩu">
+                <i class="fa-solid fa-eye-slash toggle-password"></i>
+                </div>
                 <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>
 
             </div>
@@ -135,5 +159,23 @@
     </div>
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const togglePasswordElements = document.querySelectorAll('.toggle-password');
+
+        togglePasswordElements.forEach(togglePassword => {
+            togglePassword.addEventListener('click', function (e) {
+                const passwordInput = this.previousElementSibling;
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                this.classList.toggle('fa-eye-slash');
+                this.classList.toggle('fa-eye');
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

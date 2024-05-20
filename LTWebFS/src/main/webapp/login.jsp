@@ -9,6 +9,27 @@
     <link rel="stylesheet" href="assets/css/adminN.css">
     <link rel="stylesheet" href="assets/css/baseN.css">
     <link rel="stylesheet" href="assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
+
+    <style>
+        .password-container {
+            position: relative;
+        }
+
+        .password-container .form-control {
+            padding-right: 40px; /* Đảm bảo đủ chỗ cho icon */
+        }
+
+        .password-container .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 2;
+        }
+
+    </style>
+
 </head>
 <body>
 <%
@@ -39,10 +60,13 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Nhập mật khẩu">
-                <div class="error"<%=status.equalsIgnoreCase("loginFailed") ? "" : "hidden"%> >Sai mật khẩu</div>
-
+                <div class="password-container">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Nhập mật khẩu">
+                    <i class="fa-solid fa-eye-slash toggle-password"></i>
+                </div>
+                <div class="error" <%= status.equalsIgnoreCase("loginFailed") ? "" : "hidden" %> >Sai mật khẩu</div>
             </div>
+
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -59,5 +83,19 @@
     </div>
 
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const togglePassword = document.querySelector('.toggle-password');
+        const passwordInput = document.querySelector('#exampleInputPassword1');
+
+        togglePassword.addEventListener('click', function (e) {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            this.classList.toggle('fa-eye-slash');
+            this.classList.toggle('fa-eye');
+        });
+    });
+</script>
 </body>
 </html>

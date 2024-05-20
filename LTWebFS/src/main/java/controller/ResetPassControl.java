@@ -1,6 +1,7 @@
 package controller;
 
 import database.UserDAO;
+import model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +36,7 @@ public class ResetPassControl extends HttpServlet {
 
         // Thực hiện đổi mật khẩu
         UserDAO usersDAO = UserDAO.getInstance();
+        newPassword = User.encodePwd(newPassword);
         boolean passwordChanged = usersDAO.changePassword(newPassword, userEmail);
 
         // Xử lý kết quả và chuyển hướng
