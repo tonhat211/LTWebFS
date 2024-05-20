@@ -65,3 +65,68 @@ function showErrorToast() {
         duration: 4000
     })
 }
+
+//toast 2
+function toast2({title = '', message = '', type = 'info', duration = 3000}) {
+    const main = document.getElementById('toast-2');
+
+    if (main) {
+        if(main.firstChild) {
+            main.removeChild(main.firstChild);
+        }
+        const toast = document.createElement('div');
+
+        // auto remove toast
+
+        const autoRemoveId = setTimeout(function() {
+            main.removeChild(toast);
+        }, duration + 1000);
+        toast.classList.add('toastt-2', `toast-2--${type}`);
+        const delay = (duration / 1000).toFixed(2);
+        toast.style.animation = `fadeIn ease 0.3s, fadeOut linear 1s ${delay}s forwards`;
+        toast.innerHTML = `
+                <p class="toast__msg"  style="color: white">${message} </p>
+                `;
+
+        main.appendChild(toast);
+        // console.log(main.child);
+
+    }
+}
+
+
+function showSuccessToast2(messagein) {
+    console.log("toast-2");
+    playSound('assets/sound/successful.mp3');
+    toast2({
+        title: 'Successful',
+        message: messagein,
+        type: 'success',
+        duration: 500
+    })
+}
+
+function playSound(url) {
+    const audio = new Audio(url);
+    audio.play();
+}
+
+function showErrorToast2(messagein) {
+    playSound('assets/sound/error.mp3');
+    toast2({
+        title: 'error',
+        message: messagein,
+        type: 'error',
+        duration: 500
+    })
+}
+
+function showInfoToast2(messagein) {
+    playSound('assets/sound/complete.mp3');
+    toast2({
+        title: 'info',
+        message: messagein,
+        type: 'info',
+        duration: 500
+    })
+}

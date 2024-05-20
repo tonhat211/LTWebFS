@@ -43,10 +43,7 @@
     <link rel="stylesheet" href="assets/css/baseN.css">
     <link rel="stylesheet" href="assets/css/adminN.css">
     <link rel="stylesheet" href="assets/css/adminEmployee.css">
-<%--    <script src="https://cdn.tiny.cloud/1/<your-api-key>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>--%>
-<%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>--%>
-<%--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>--%>
-<%--    <script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>--%>
+    <link rel="stylesheet" href="assets/css/toast.css">
 </head>
 <body>
 <%
@@ -64,13 +61,14 @@
 
 %>
 <%
-    if(status!=null)
+    if(status!=null) {
         if(status.equalsIgnoreCase("addSuccessful")) {
 %>
-<script>
-    alert("Đã thêm thành công nhân viên mới với ID: " + <%=adminCurrentSearch%>);
-</script>
+
+        <script> showSuccessToast("Đã thêm thành công một tài khoản"); </script>
+
 <%
+        }
 
     }
 %>
@@ -78,10 +76,16 @@
     var ems = <%= json %>;
     // console.log(ems);
 </script>
+<script src="assets/js/toast.js"></script>
+
 <%@ include file="adminMenu.jsp" %>
 
 
 <main id="main" class="main">
+    <%--thong bao--%>
+    <div id="toast">
+
+    </div>
 
     <div class="pagetitle">
         <h1>Quản lí nhân viên</h1>
@@ -93,7 +97,7 @@
         </nav>
     </div><!-- End Page Title -->
 
-    <div class="ad-content">
+    <div class="ad-content" style="padding: 10px">
             <div class="ad_container">
                 <div class="ad-content-item">
                     <div class="ad_header">
@@ -213,10 +217,7 @@
             const $ = document.querySelector.bind(document);
             const $$ = document.querySelectorAll.bind(document);
             $('.confirm-stop').classList.add('active');
-            // console.log("truco json");
-            // console.log(employeeJSON);
 
-            // console.log(e);
             console.log(e);
 
 

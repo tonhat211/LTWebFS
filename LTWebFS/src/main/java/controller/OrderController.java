@@ -37,8 +37,12 @@ public class OrderController extends HttpServlet {
         int userId = u.getId();
         float totalMoney = Float.parseFloat(request.getParameter("orderMoney"));
         float deliveryFee = Float.parseFloat(request.getParameter("deliveryFee"));
+        String receiver = request.getParameter("receiver");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String receiverInfo = receiver + "=" + phone + "=" + address;
 
-        Order o = new Order(id,totalMoney,userId,deliveryFee,0);
+        Order o = new Order(id,totalMoney,userId,receiverInfo,deliveryFee,0);
         OrderDAO.getInstance().insert(o);
 
         String[] productIDs = request.getParameterValues("productID");

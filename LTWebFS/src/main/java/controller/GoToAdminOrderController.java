@@ -1,9 +1,9 @@
 package controller;
 
-import database.CustomerDAO;
 import database.EmployeeDAO;
-import model.Customer;
+import database.OrderDAO;
 import model.Employee;
+import model.Order;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
-@WebServlet("/goto-employee-admin")
-public class GoToAdminEmployeeController extends HttpServlet {
+@WebServlet("/goto-order-admin")
+public class GoToAdminOrderController extends HttpServlet {
     public void destroy() {
     }
 
@@ -24,15 +25,11 @@ public class GoToAdminEmployeeController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 //        HttpSession session  =request.getSession();
-        String status = request.getParameter("status");
-        if(status != null) {
-            request.setAttribute("status", "addSuccessful");
-        }
-        ArrayList<Employee> employeeList = EmployeeDAO.getInstance().selectAll();
+        Map<Order,String> orders = OrderDAO.getInstance().getAllOrderAndDatail();
 
-        request.setAttribute("employeeList", employeeList);
+        request.setAttribute("orders", orders);
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminEmployee.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminOrder.jsp");
         rd.forward(request, response);
 
     }

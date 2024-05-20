@@ -6,6 +6,8 @@
     <title>Đăng ký</title>
     <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/signup.css">
     <link rel="stylesheet" href="assets/css/adminN.css">
@@ -44,21 +46,27 @@
 <div class="ad-content mt10">
     <div class="form-container">
         <div class="title"><h1>Đăng ký</h1></div>
-        <form action="signup" method="post">
+        <form action="signup" method="post" id="myForm">
             <div class="mb-3">
                 <label for="name" class="form-label">Họ và tên</label>
-                <input type="text" class="form-control" id="name" name="name" required value="<%= utemp != null ? utemp.getName() : "" %>" placeholder="Nhập họ và tên">
-<%--                <div class="error" <%=status != null ? "" : "hidden"%>> <%=status%></div>--%>
+                <input type="text" class="form-control" id="name" name="name"  value="<%= utemp != null ? utemp.getName() : "" %>" placeholder="Nhập họ và tên">
+<%--                <div class="required" <%=status.equalsIgnoreCase("nameRequired") ? "" : "hidden"%>><%=status.equalsIgnoreCase("nameRequired") ? "Không được để trống mục này" : ""%></div>--%>
+                <div class="error" hidden></div>
+
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Số điện thoại</label>
-                <input type="number" class="form-control" id="phone" name="phone" required value="<%= utemp != null ? utemp.getPhone() : "" %>" placeholder="Nhập số điện thoại">
-<%--                <div class="error" <%=status != null ? "" : "hidden"%>> <%=status%></div>--%>
+                <input type="text" class="form-control" id="phone" name="phone"  value="<%= utemp != null ? utemp.getPhone() : "" %>" placeholder="Nhập số điện thoại">
+<%--                <div class="required" <%=status.equalsIgnoreCase("phoneRequired") ? "" : "hidden"%>><%=status.equalsIgnoreCase("phoneRequired") ? "Không được để trống mục này" : ""%></div>--%>
+<%--                <div class="error" <%=status.equalsIgnoreCase("phoneIncorrect") ? "" : "hidden"%>></div>--%>
+                <div class="error" hidden></div>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required value="<%= utemp != null ? utemp.getEmail() : "" %>" placeholder="Nhập email">
-                <div class="error" <%=status.equalsIgnoreCase("existeduser") ? "" : "hidden"%>>Email này đã được dùng để đăng ký trước đó</div>
+                <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp"  value="<%= utemp != null ? utemp.getEmail() : "" %>" placeholder="Nhập email">
+<%--                <div class="required" <%=status.equalsIgnoreCase("emailRequired") ? "" : "hidden"%>><%=status.equalsIgnoreCase("emailRequired") ? "Không được để trống mục này" : ""%></div>--%>
+<%--                <div class="error" <%=status.equalsIgnoreCase("existeduser") ? "" : "hidden"%>>Email này đã được dùng để đăng ký trước đó</div>--%>
+                <div class="error" hidden></div>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Mật khẩu</label>
@@ -68,6 +76,9 @@
                 </div>
                 <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>
 
+                <input type="password" class="form-control" id="password" name="password"  placeholder="Nhập mật khẩu">
+<%--                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>--%>
+                <div class="error" hidden></div>
             </div>
             <div class="mb-3">
                 <label for="repassword" class="form-label">Nhập lại mật khẩu</label>
@@ -77,6 +88,9 @@
                 </div>
                 <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>
 
+                <input type="password" class="form-control" id="repassword" name="repassword"  placeholder="Nhập lại mật khẩu">
+<%--                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>--%>
+                <div class="error" hidden></div>
             </div>
             <div class="mb-3">
                 <div id="sex" class="info-container">
@@ -177,5 +191,179 @@
     });
 </script>
 
+
+<script>
+
+    $(document).ready(function() {
+        // showSuccessToast("thanh cong tai");
+        document.querySelector("#myForm").addEventListener('submit', function (event){
+            event.preventDefault();
+            var formData = new FormData(this);
+            var name = formData.get("name");
+            var email = formData.get("email");
+            var phone = formData.get("phone");
+            var password = formData.get("password");
+            var repassword = formData.get("repassword");
+            var birthday = formData.get("birthday");
+
+            var isOk = true;
+
+            if(name.trim() === "") {
+                switchMessage("#name",'.error',1,"Không được để trống mục này");
+                isOk = false;
+            } else {
+                switchMessage("#name",'.error',0);
+
+            }
+
+            if(email.trim() === "") {
+                switchMessage("#email",'.error',1,"Không được để trống mục này");
+                isOk = false;
+            } else {
+                switchMessage("#email",'.error',0);
+                var regex= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(regex.test(email)) {
+                    switchMessage("#email",'.error',0);
+                } else {
+                    switchMessage("#email",'.error',1,"Email không hợp lệ");
+                    isOk=false;
+                }
+            }
+
+            if(phone.trim() ===""){
+                switchMessage("#phone",'.error',1,"Không được để trống mục này");
+                isOk = false;
+            } else {
+                switchMessage("#phone",'.error',0);
+                if(phone.length > 11) {
+                    switchMessage("#phone",'.error',1,"Số điện thoại không hợp lệ");
+                    isOk=false;
+
+                } else {
+                    var test;
+                    for(var i = 0; i<phone.length; i++) {
+                        test = parseInt(phone.charAt(i));
+                        if(isNaN(test)) {
+                            switchMessage("#phone",'.error',1,"Số điện thoại không hợp lệ");
+                            isOk=false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if(password.trim() === "") {
+                switchMessage("#password",'.error',1,"Không được để trống mục này");
+                isOk = false;
+            } else {
+                switchMessage("#password",'.error',0);
+
+            }
+
+            if(repassword.trim() === "") {
+                switchMessage("#repassword",'.error',1,"Không được để trống mục này");
+                isOk = false;
+            } else {
+                switchMessage("#repassword",'.error',0);
+
+            }
+
+            if(password.trim() !== "" && repassword.trim() !== "") {
+                switchMessage("#password",'.error',0);
+                switchMessage("#repassword",'.error',0);
+                if(password !== repassword) {
+                    switchMessage("#password",'.error',1,"Mật khẩu không trùng khớp");
+                    switchMessage("#repassword",'.error',1,"Mật khẩu không trùng khớp");
+                    isOk = false;
+
+                } else {
+                    if(!password.trim().length >= 8 || !password.match(/[a-z]/) || !password.match(/[A-Z]/)
+                                || !password.match(/\d/))  {
+                        switchMessage("#password",'.error',1,"Mật khẩu phải trên 7 kí tự, bao gồm chữ hoa, chữ thường và số");
+                        isOk = false;
+                    }
+                }
+
+            }
+
+            console.log(password);
+
+            var birth = new Date(birthday);
+            var year = birth.getFullYear();
+            var currentYear = new Date().getFullYear();
+            var curretnMonth = new Date().getMonth()+1;
+            var currentDay = new Date().getDate();
+
+            console.log(year);
+            if((currentYear - year) < 16) {
+                switchMessage("#birthday",'.error',1,"Chưa đủ 16 tuổi");
+                isOk = false;
+            } else {
+                switchMessage("#birthday",'.error',0);
+            }
+
+
+            if(isOk=== false) {
+                return;
+            }
+
+            // var id = formData.get("id");
+            var sex = formData.get("sex");
+            var address = formData.get("address");
+
+            document.querySelector("#myForm").submit();
+
+
+            // signup(name, email, password, repassword, phone, address, sex, birthday);
+
+        });
+
+
+        function signup(name, email, password, repassword, phone, address, sex, birthday) {
+            $.ajax({
+                url: "/LTWebFS/signup",
+                method: "POST",
+                data: {name: name, email: email, password: password, repassword: repassword, phone: phone, address: address, sex: sex, birthday: birthday},
+                success: function(data) {
+                    $("#myForm").html(data);
+
+                }
+            });
+        }
+
+        function switchMessage(parentSelector,selector, status) {
+            var e = document.querySelector(parentSelector).parentElement.querySelector(selector);
+            if(status === 1) {
+                e.hidden = false;
+            } else {
+                e.hidden = true;
+            }
+        }
+
+        function switchMessage(parentSelector,selector, status, msg) {
+            var e = document.querySelector(parentSelector).parentElement.querySelector(selector);
+            if(status === 1) {
+                e.hidden = false;
+                e.innerText = msg;
+
+
+            } else {
+                e.hidden = true;
+
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+</script>
 </body>
 </html>

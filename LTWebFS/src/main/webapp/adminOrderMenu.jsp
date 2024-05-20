@@ -83,10 +83,8 @@
     <div class="d-flex align-items-center justify-content-between">
         <!--        <i class="bi bi-list toggle-sidebar-btn"></i>-->
         <div class="logo">
-            <a href="index.jsp">
-                <img src="assets/img/Logo/favicon_icon.png" alt="Logo"
-                     style="width: 40px; height: 40px; border-radius: 5px">
-            </a>
+            <a href="admin-menu-controller?adminMenu=order" class="backto-AdminProduct">Quay lại</a>
+
         </div>
 
     </div><!-- End Logo -->
@@ -142,43 +140,62 @@
 <!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar" style="width: 170px; padding: 20px 0; scrollbar-width: none">
     <ul class="sidebar-nav" id="sidebar-nav">
-        <h3 style="text-align: center">[Admin]</h3>
-        <li class="nav-item <%=roles.contains("dashboard") ? "" : "hide" %>">
-            <a class="nav-link  <%= currentAdminMenu.equalsIgnoreCase("dashboard") ? "" :"collapsed" %> " href="admin-menu-controller?adminMenu=dashboard">
+        <h3 style="text-align: center">Đơn hàng</h3>
+        <li class="nav-item">
+            <a class="nav-link  <%= currentAdminMenu.equalsIgnoreCase("all") ? "" :"collapsed" %> " href="ordermenu?adminMenu=all">
                 <!--                <i class="bi bi-grid"></i>-->
-                <span>Thống kê doanh thu</span>
+                <span>Tất cả</span>
             </a>
         </li><!-- End Dashboard Nav -->
-        <li class="nav-item <%=roles.contains("customer") ? "" : "hide" %>">
-            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("customer") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=customer">
+        <li class="nav-item">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("confirm") ? "" :"collapsed" %>" href="ordermenu?adminMenu=confirm">
                 <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý khách hàng</span>
+                <span>Xác nhận</span>
             </a>
         </li>
-        <li class="nav-item <%=roles.contains("employee") ? "" : "hide" %>">
-            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("employee") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=employee">
+        <li class="nav-item">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("cancel") ? "" :"collapsed" %>" href="ordermenu?adminMenu=cancel">
                 <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý nhân viên</span>
+                <span>Hủy</span>
             </a>
         </li>
-        <li class="nav-item <%=roles.contains("product") ? "" : "hide" %>">
-            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("product") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=product">
+        <li class="nav-item">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("package") ? "" :"collapsed" %>" href="ordermenu?adminMenu=package">
                 <!--        <i class="bi bi-person"></i>-->
-                <span>Quản lý sản phẩm</span>
+                <span>Đóng gói</span>
             </a>
         </li>
-        <li class="nav-item <%=roles.contains("order") ? "" : "hide" %>">
-            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("order") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=order">
+        <li class="nav-item">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("delivery") ? "" :"collapsed" %>" href="ordermenu?adminMenu=delivery">
                 <!--        <i class="bi bi-person"></i>-->
-                <span>Đơn hàng</span>
+                <span>Bàn giao vận chuyển</span>
             </a>
         </li>
-        <li class="nav-item <%=roles.contains("log") ? "" : "hide" %>">
-            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("log") ? "" :"collapsed" %>" href="admin-menu-controller?adminMenu=log&index=1">
+        <li class="nav-item">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("complete") ? "" :"collapsed" %>" href="ordermenu?adminMenu=complete">
                 <!--        <i class="bi bi-person"></i>-->
-                <span>Log</span>
+                <span>Hoàn thành</span>
+            </a>
+        </li>
+        <div class="show-flex-row" style="justify-content: center"><div class="seperate-horizontal-90" style="border: 1px solid #4154f1;"></div></div>
+        <li class="nav-item" style="">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("confirmReturn") ? "" :"collapsed" %>" href="ordermenu?adminMenu=confirmReturn" style="color: red">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Xác nhận trả</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("return") ? "" :"collapsed" %>" href="ordermenu?adminMenu=return" style="color: red">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Bàn giao trả</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <%= currentAdminMenu.equalsIgnoreCase("completedReturn") ? "" :"collapsed" %>" href="ordermenu?adminMenu=completedReturn" style="color: red">
+                <!--        <i class="bi bi-person"></i>-->
+                <span>Xác nhận đã trả</span>
             </a>
         </li>
 

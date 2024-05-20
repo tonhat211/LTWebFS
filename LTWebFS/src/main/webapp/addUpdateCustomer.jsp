@@ -61,7 +61,6 @@
                     <p>Bạn chắc chắn muốn khóa tài khoản này?</p>
                 </div>
                 <div class="show-flex-row">
-<%--                                        <a class="btn btn-primary confirm-btn yes-confirm" href="#">Khóa</a>--%>
                     <a class="btn btn-primary confirm-btn yes-confirm" href="addUpdate-customer?action=lock&id=<%=u.getId()%>">Khóa</a>
                     <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                 </div>
@@ -76,9 +75,6 @@
                     <p><%= (u.getAvailable()==0?"Kích hoạt tài khoản?":"Mở khóa tài khoản này?") %></p>
                 </div>
                 <div class="show-flex-row">
-<%--                    <a class="no-a unlock-user"--%>
-<%--                       href="addUpdate-customer?action=unlock&id=<%=u.getId()%>" >--%>
-                    <%--                                        <a class="btn btn-primary confirm-btn yes-confirm" href="#">Khóa</a>--%>
                     <a class="btn btn-primary confirm-btn unlock-user" href="addUpdate-customer?action=unlock&id=<%=u.getId()%>"><%= (u.getAvailable()==0?"Kích hoạt":"Mở khóa") %></a>
                     <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                 </div>
@@ -144,7 +140,7 @@
                     <div class="form-group w-100">
                         <label class="w-20" for="address">Địa chỉ: </label>
                         <input type="text" class="form-control w-80" id="address" name="address" aria-describedby="" placeholder="Nhập Địa chỉ" value="<%=u.getAddress() %>">
-                        <div class="required" hidden>Không được để trống mục này</div>
+<%--                        <div class="required" hidden>Không được để trống mục này</div>--%>
 
                     </div>
 
@@ -155,21 +151,30 @@
                             if(info!=null){
                                 String infoTokens[] = info.split("=");
 
-                                if(infoTokens.length <2){
-                                    sex = "trống";
-                                    birthday="trống";
+                                switch (infoTokens.length) {
+                                    case 1: {
+                                        sex = infoTokens[0];
+                                        break;
+                                    }
+                                    case 2: {
+                                        sex = infoTokens[0];
+                                        birthday = infoTokens[1];
+                                        break;
+                                    }
+                                    default: {
+                                        sex = "";
+                                        birthday ="";
+                                        break;
+                                    }
                                 }
-                                else {
-                                    sex = infoTokens[0];
-                                    birthday = infoTokens[1];
+
+                                if(!birthday.equals("")) {
                                     String[] bdTokens = birthday.split("-");
                                     if((bdTokens[1].length()<2))
                                         bdTokens[1]="0" + bdTokens[1];
                                     if((bdTokens[2]).length()<2)
                                         bdTokens[2]="0" + bdTokens[2];
-
                                     birthday = bdTokens[0] + "-" + bdTokens[1] + "-" + bdTokens[2];
-
                                 }
                             }
 
@@ -302,14 +307,14 @@
 
 
             if(address.trim() === "") {
-                switchMessage("#address",'.required',1);
-                isOk = false;
+                address = "";
             } else {
-                switchMessage("#address",'.required',0);
+
 
             }
 
             var birth = new Date(birthday);
+
             var year = birth.getFullYear();
             var currentYear = new Date().getFullYear();
             var curretnMonth = new Date().getMonth()+1;
