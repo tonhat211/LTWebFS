@@ -584,4 +584,31 @@ public class UserDAO implements IDAO<User> {
 //        System.out.println(UserDAO.getInstance().selectByEmailAndPwd("21130464@st.hcmuf.edu.vn","currentPwd")
 //        );
     }
+
+    // change password
+    public boolean changePassword(String newPassword, String userEmail) {
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String updateQuery = "UPDATE users SET pwd = ? WHERE email = ?";
+
+            try (PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {
+                preparedStatement.setString(1, newPassword);
+                preparedStatement.setString(2, userEmail);
+
+                int rowCount = preparedStatement.executeUpdate();
+
+                // Kiểm tra số dòng đã được cập nhật
+                if (rowCount > 0) {
+                    // Mật khẩu đã được thay đổi thành công
+                    return true;
+                } else {
+                    // Không có dòng nào được cập nhật, có thể do email không tồn tại
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

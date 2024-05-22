@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="./assets/common/taglib.jsp"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -118,7 +119,8 @@
 
 <%--                    <td><%=cuss.get(i).getAddress() %></td>--%>
                     <td><%=customerList.get(i).getDateIn() %></td>
-                    <td><%=customerList.get(i).getTotalSpend() %></td>
+                    <td>   <fmt:formatNumber value="<%=customerList.get(i).getTotalSpend() %>" pattern="#,##0.00"/>
+                        VND</td>
                     <td><a href="goto-history-buying?cusID=<%=customerList.get(i).getId()%>">Lịch sử mua hàng</a></td>
 
 

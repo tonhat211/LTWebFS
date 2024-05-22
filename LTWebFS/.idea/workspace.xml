@@ -31,7 +31,16 @@
       <change afterPath="$PROJECT_DIR$/src/main/webapp/orderManagement.jsp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/orderPackage.jsp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/orderReturn.jsp" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="add time and log for OTP">
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/signup.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" afterDir="false" />
@@ -60,17 +69,33 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="AnnotationType" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="Class" />
         <option value="CSS File" />
+        <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PhanTTDuong&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="f924ba09-d24b-449d-afaf-2548103d9fd9" />
+        <option name="url" value="https://github.com/tonhat211/LTWebFS.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="JspContextManager">
     <jsp-to-context jsp-file="file://$PROJECT_DIR$/src/main/webapp/header.jsp" context-file="file://$PROJECT_DIR$/src/main/webapp/news.jsp" />
@@ -90,19 +115,26 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2a10VbFnYPeAS70hFiAnUK4DXw7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.smart tomcat.executor&quot;: &quot;Run&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;to-nhat&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Duong&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/LTWebFS/LTWebFS/src/main/webapp&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/TO NHAT/IdeaProjects/LTWeb/project_LTWeb/LTWebFS/src/main/webapp/assets/sound&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -114,13 +146,14 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.27701148&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\sound" />
+      <recent name="D:\LTWebFS\LTWebFS\src\main\webapp" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\WEB-INF\lib" />
@@ -252,14 +285,14 @@
       <predefined_log_file id="Tomcat Catalina Log" />
       <predefined_log_file id="Tomcat Manager Log" />
       <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="catalinaBase" value="C:\Users\TO NHAT\.SmartTomcat\LTWebFS\LTWebFS" />
+      <option name="catalinaBase" value="C:\Users\Admin\.SmartTomcat\LTWebFS\LTWebFS" />
       <option name="contextPath" value="/LTWebFS" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>
-          <option name="name" value="Apache Tomcat/9.0.80" />
-          <option name="path" value="$USER_HOME$/tomcat9" />
+          <option name="name" value="Apache Tomcat/9.0.80 (2)" />
+          <option name="path" value="C:/Tomcat/tomcat9" />
           <option name="version" value="9.0.80.0" />
         </TomcatInfo>
       </option>
@@ -281,6 +314,13 @@
         <item itemvalue="JAR Application.mysql-connector-j-8.2.0.jar" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-1.8.0_402-corretto-1.8.0_402-f644763e9732-af3fa2b8" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -336,6 +376,12 @@
       <workItem from="1714896472991" duration="58000" />
       <workItem from="1714897048496" duration="8362000" />
       <workItem from="1715230867419" duration="3856000" />
+      <workItem from="1715245244966" duration="38659000" />
+      <workItem from="1715609475340" duration="1497000" />
+      <workItem from="1715762279627" duration="20338000" />
+      <workItem from="1715863119029" duration="829000" />
+      <workItem from="1716185155021" duration="4969000" />
+      <workItem from="1716213820718" duration="2467000" />
       <workItem from="1715245244966" duration="38966000" />
       <workItem from="1715514279960" duration="599000" />
       <workItem from="1715786811858" duration="13039000" />
@@ -430,6 +476,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715318507501</updated>
     </task>
+    <task id="LOCAL-00012" summary="add time and log for OTP">
+      <option name="closed" value="true" />
+      <created>1715784230030</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715784230031</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add time and log for OTP">
+      <option name="closed" value="true" />
+      <created>1715863235437</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715863235437</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <task id="LOCAL-00012" summary="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax">
       <option name="closed" value="true" />
       <created>1715420994280</created>
@@ -461,17 +524,40 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="710c8144-adf5-40d1-a10a-c3c4f89dbd9a" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
-        <entry key="MAIN">
+        <entry key="710c8144-adf5-40d1-a10a-c3c4f89dbd9a">
           <value>
             <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Duong" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="xong chi tiet san pham" />
     <MESSAGE value="xong chi tiet san pham  thu2" />
     <MESSAGE value="xong chi tiet san pham  thu3" />
@@ -485,5 +571,10 @@
     <MESSAGE value="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao" />
     <MESSAGE value="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user" />
     <option name="LAST_COMMIT_MESSAGE" value="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user" />
+    <MESSAGE value="commit de pull code tu branch nhat" />
+    <MESSAGE value="add time for OTP" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/to-nhat' into Duong&#10;&#10;# Conflicts:&#10;#&#9;LTWebFS/.idea/webContexts.xml&#10;#&#9;LTWebFS/.idea/workspace.xml&#10;#&#9;LTWebFS/pom.xml&#10;#&#9;LTWebFS/src/main/java/com/example/ltwebfs/test.java&#10;#&#9;LTWebFS/src/main/java/controller/AddToCartControl.java&#10;#&#9;LTWebFS/src/main/java/database/UserDAO.java&#10;#&#9;LTWebFS/src/main/webapp/login.jsp" />
+    <MESSAGE value="add time and log for OTP" />
+    <option name="LAST_COMMIT_MESSAGE" value="add time and log for OTP" />
   </component>
 </project>

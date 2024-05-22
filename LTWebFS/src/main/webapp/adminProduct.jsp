@@ -8,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="./assets/common/taglib.jsp"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -119,7 +120,8 @@
             <td><%=pus.get(i).getName() %></td>
             <td><%=pus.get(i).getKind() %></td>
             <td><%=pus.get(i).getBrand() %></td>
-            <td><%=pus.get(i).getPrice() %></td>
+            <td><fmt:formatNumber value="<%=pus.get(i).getPrice() %>" pattern="#,##0.00"/>
+                VND</td>
             <td><%=pus.get(i).getAmount() %></td>
             <td><a class="btn-update-product" href="go-to-update-product?id=<%=pus.get(i).getId()%>">Cập nhật</a></td>
         </tr>
