@@ -9,24 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="them phan ma hoa pwd khi thiet lap mat khau moi, va them phan hien thi mat khau trong o input mat khau">
-      <change afterPath="$PROJECT_DIR$/src/main/java/constant/IConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginFBControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginWithGGControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/FacebookAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/FacebookLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/GoogleAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/GoogleLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-logging-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/fluent-hc-4.5.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/httpclient-4.5.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/httpcore-4.4.9.jar" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="them tinh nang dang nhap bang google va gho log cho dang nhap google">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -357,6 +341,7 @@
       <workItem from="1716720965582" duration="10644000" />
       <workItem from="1716810210424" duration="9652000" />
       <workItem from="1717378234800" duration="7195000" />
+      <workItem from="1717385708602" duration="379000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -470,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716216543167</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="them tinh nang dang nhap bang fb va ghi log cho dang nhap fb">
+      <option name="closed" value="true" />
+      <created>1717385833645</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1717385833645</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,6 +518,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/to-nhat' into Duong&#10;&#10;# Conflicts:&#10;#&#9;LTWebFS/.idea/webContexts.xml&#10;#&#9;LTWebFS/.idea/workspace.xml&#10;#&#9;LTWebFS/pom.xml&#10;#&#9;LTWebFS/src/main/java/com/example/ltwebfs/test.java&#10;#&#9;LTWebFS/src/main/java/controller/AddToCartControl.java&#10;#&#9;LTWebFS/src/main/java/database/UserDAO.java&#10;#&#9;LTWebFS/src/main/webapp/login.jsp" />
     <MESSAGE value="add time and log for OTP" />
     <MESSAGE value="them phan ma hoa pwd khi thiet lap mat khau moi, va them phan hien thi mat khau trong o input mat khau" />
-    <option name="LAST_COMMIT_MESSAGE" value="them phan ma hoa pwd khi thiet lap mat khau moi, va them phan hien thi mat khau trong o input mat khau" />
+    <MESSAGE value="them tinh nang dang nhap bang fb va ghi log cho dang nhap fb" />
+    <option name="LAST_COMMIT_MESSAGE" value="them tinh nang dang nhap bang fb va ghi log cho dang nhap fb" />
   </component>
 </project>
