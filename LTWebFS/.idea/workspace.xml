@@ -9,16 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="add time and log for OTP">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="them phan ma hoa pwd khi thiet lap mat khau moi, va them phan hien thi mat khau trong o input mat khau">
+      <change afterPath="$PROJECT_DIR$/src/main/java/constant/IConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginFBControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginWithGGControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/FacebookAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/FacebookLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/GoogleAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/GoogleLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-logging-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/fluent-hc-4.5.5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/httpclient-4.5.5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/httpcore-4.4.9.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/signup.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +91,7 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JAR Application.httpclient-4.5.13.jar.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -91,30 +100,31 @@
     &quot;git-widget-placeholder&quot;: &quot;Duong&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/LTWebFS/LTWebFS/src/main/webapp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/LTWebFS/LTWebFS/src/main/webapp/WEB-INF/lib&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.27701148&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.43563217&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\LTWebFS\LTWebFS\src\main\webapp\WEB-INF\lib" />
       <recent name="D:\LTWebFS\LTWebFS\src\main\webapp" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\WEB-INF\lib" />
-      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\LTWebFS\LTWebFS\src\main\webapp\WEB-INF\lib" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\html" />
     </key>
@@ -124,6 +134,10 @@
     </key>
   </component>
   <component name="RunManager" selected="Smart Tomcat.smart tomcat">
+    <configuration name="httpclient-4.5.13.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/httpclient-4.5.13.jar" />
+      <method v="2" />
+    </configuration>
     <configuration name="mysql-connector-j-8.2.0.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/src/main/java/mysql-connector-j-8.2.0.jar" />
       <method v="2" />
@@ -258,6 +272,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JAR Application.httpclient-4.5.13.jar" />
       <item itemvalue="JAR Application.mysql-connector-j-8.2.0.jar" />
       <item itemvalue="Smart Tomcat.smart tomcat" />
       <item itemvalue="Smart Tomcat.Tomcat: LTWebFS" />
@@ -265,6 +280,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.httpclient-4.5.13.jar" />
         <item itemvalue="Smart Tomcat.Tomcat: LTWebFS" />
         <item itemvalue="JAR Application.mysql-connector-j-8.2.0.jar" />
       </list>
@@ -336,7 +352,11 @@
       <workItem from="1715762279627" duration="20338000" />
       <workItem from="1715863119029" duration="829000" />
       <workItem from="1716185155021" duration="4969000" />
-      <workItem from="1716213820718" duration="2467000" />
+      <workItem from="1716213820718" duration="4473000" />
+      <workItem from="1716710306578" duration="10243000" />
+      <workItem from="1716720965582" duration="10644000" />
+      <workItem from="1716810210424" duration="9652000" />
+      <workItem from="1717378234800" duration="7195000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -442,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715863235437</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="them phan ma hoa pwd khi thiet lap mat khau moi, va them phan hien thi mat khau trong o input mat khau">
+      <option name="closed" value="true" />
+      <created>1716216543167</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716216543167</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,6 +524,7 @@
     <MESSAGE value="add time for OTP" />
     <MESSAGE value="Merge remote-tracking branch 'origin/to-nhat' into Duong&#10;&#10;# Conflicts:&#10;#&#9;LTWebFS/.idea/webContexts.xml&#10;#&#9;LTWebFS/.idea/workspace.xml&#10;#&#9;LTWebFS/pom.xml&#10;#&#9;LTWebFS/src/main/java/com/example/ltwebfs/test.java&#10;#&#9;LTWebFS/src/main/java/controller/AddToCartControl.java&#10;#&#9;LTWebFS/src/main/java/database/UserDAO.java&#10;#&#9;LTWebFS/src/main/webapp/login.jsp" />
     <MESSAGE value="add time and log for OTP" />
-    <option name="LAST_COMMIT_MESSAGE" value="add time and log for OTP" />
+    <MESSAGE value="them phan ma hoa pwd khi thiet lap mat khau moi, va them phan hien thi mat khau trong o input mat khau" />
+    <option name="LAST_COMMIT_MESSAGE" value="them phan ma hoa pwd khi thiet lap mat khau moi, va them phan hien thi mat khau trong o input mat khau" />
   </component>
 </project>

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
 
     <style>
-        .password-container {
+        .password-container{
             position: relative;
         }
 
@@ -26,6 +26,60 @@
             transform: translateY(-50%);
             cursor: pointer;
             z-index: 2;
+        }
+
+        .forgot {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social a {
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .social a.facebook {
+            background-color: #3b5998;
+        }
+
+        .social a.google {
+            background-color: #db4437;
+        }
+
+        .social i {
+            font-size: 20px;
+        }
+
+        .social-label {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .social-label::before,
+        .social-label::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+            margin: 0 10px;
         }
 
     </style>
@@ -67,19 +121,38 @@
                 <div class="error" <%= status.equalsIgnoreCase("loginFailed") ? "" : "hidden" %> >Sai mật khẩu</div>
             </div>
 
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div  class="forgot">
+                    <a href="ForgotPassword.jsp">Quên mật khẩu? </a>
+
             </div>
             <div style="display: flex; justify-content: center">
                 <button type="submit" class="btn btn-primary">Đăng nhập</button>
             </div>
+        </form>
+
+            <div class="social-label">
+                <span>Hoặc đăng nhập bằng</span>
+            </div>
+
+            <div class="social">
+                <div><a href="https://www.facebook.com/v19.0/dialog/oauth?fields=id,name,email&client_id=1443587996285926&redirect_uri=http://localhost:8080/LTWebFS/loginFB"
+                        class="facebook"><i class="fa-brands fa-facebook"></i></a></div>
+                <div><a href="https://accounts.google.com/o/oauth2/auth?scope=email profile openid
+
+&redirect_uri=http://localhost:8080/LTWebFS/loginGG
+
+&response_type=code
+
+&client_id=922388877466-mefk0ck070diu19f1dmqhpsvefcm08n7.apps.googleusercontent.com&approval_prompt=force" class="google"><i class="fa-brands fa-google-plus-g"></i></a></div>
+
+            </div>
+
             <div style="margin-top: 15px;text-align: center">
-                <a href="ForgotPassword.jsp">Quên mật khẩu? </a>
-                <br>
+
                 <a href="signup.jsp">Chưa có tài khoản? Đăng ký</a>
             </div>
-        </form>
+
+
     </div>
 
 </div>
@@ -96,6 +169,9 @@
             this.classList.toggle('fa-eye');
         });
     });
+
+
+
 </script>
 </body>
 </html>

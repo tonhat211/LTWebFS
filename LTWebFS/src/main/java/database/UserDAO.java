@@ -42,6 +42,31 @@ public class UserDAO implements IDAO<User> {
         }
     }
 
+    public int insertUser(User u){
+        int re=0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+
+            String sql = "insert into users (id, name, email, level, dateIn, available) values (?,?,?,?,?,?);";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, u.getId());
+            pst.setString(2, u.getName());
+            pst.setString(3, u.getEmail());
+            pst.setInt(4, u.getLevel());
+            pst.setString(5, u.getDateIn().getDateInMonthDayYearSql());
+            pst.setInt(6, u.getAvailable());
+
+            re = pst.executeUpdate();
+
+            System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return u.getId();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public int availableUser(String email){
         int re = 0;
         try {
@@ -327,6 +352,28 @@ public class UserDAO implements IDAO<User> {
             String sql = "select id from users where email=?;";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, emailin);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                re = rs.getInt("id");
+            }
+
+//			System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return re;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int checkExistUserFB(String name){
+        User res = null;
+        int re=0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select id from users where name=?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, name);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
                 re = rs.getInt("id");

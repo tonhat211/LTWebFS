@@ -122,6 +122,25 @@ public class User {
         this.info = info;
     }
 
+    public User(int id, String name, String email, int level, Datee dateIn, int available) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.level = level;
+        this.dateIn = dateIn;
+        this.available = available;
+    }
+
+    public User(int id, String name, int level, Datee dateIn, int available) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.level = level;
+        this.dateIn = dateIn;
+        this.available = available;
+    }
+
     public int getId() {
         return id;
     }
