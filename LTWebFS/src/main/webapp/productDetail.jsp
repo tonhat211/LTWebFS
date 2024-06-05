@@ -186,52 +186,6 @@
 <script type="module"  src="assets/js/productDetail.js"></script>
 <script>
 
-  // var xhr = XMLHttpRequest();
-  // xhr.open("POST",url,true);
-  // xhr.responseType= text;
-  // xhr.onLoad = function (){
-  //   if(xhr.status >=200 & <300){
-  //
-  //   } else {
-  //
-  //   }
-  // }
-  // xhr.onerror= function () {
-  //
-  // }
-  //
-  // xhr.send();
-
-
-  // document.querySelector('#addToCartForm').addEventListener('submit',function (event) {
-  //   event.preventDefault();
-  //   console.log("hi2")
-  //
-  //   var formData = new FormData(this);
-  //   console.log(formData);
-  //   var item = {
-  //     productID : formData.get("productID"),
-  //     qty : formData.get("qty")
-  //   };
-  //   console.log(item);
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.open("POST","/LTWebFS_war_exploded/add-to-cart",true);
-  //   xhr.responseType="text";
-  //   xhr.onload = function () {
-  //     if(xhr.status >=200 && xhr.status < 300) {
-  //       console.log(xhr.responseText);
-  //     } else {
-  //       alert("co loi, chua them duoc vao gio hang");
-  //     }
-  //   }
-  //   xhr.onerror = function() {
-  //     alert('Có lỗi xảy ra khi gửi yêu cầu.');
-  //   };
-  //   xhr.send(JSON.stringify(item));
-  // });
-
-  // JSOn.stringify(item);
-
 //   ajax jquery
 
   $(document).ready(function () {
@@ -248,7 +202,7 @@
     function addToCart(productID, qty) {
 
       $.ajax({
-        url: "/LTWebFS_war_exploded/add-to-cart",
+        url: "/LTWebFS/add-to-cart",
         method: "POST",
         data: {productID: productID, qty: qty},
         success: function (message) {

@@ -4,6 +4,8 @@ import model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ProductUnitDAO implements IDAO<ProductUnit> {
 
@@ -277,6 +279,74 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
         }
     }
 
+    public Map<Integer,ProductUnit> selectByIDsMap(ArrayList<Integer> idins) {
+//        ArrayList<ProductUnit> res = new ArrayList<>();
+        Map<Integer,ProductUnit> res = new LinkedHashMap<>();
+        if(idins.isEmpty()) return null;
+        String ids = "";
+        try {
+
+            for(Integer i : idins) {
+                ids +=i +",";
+            }
+            ids = ids.substring(0,ids.length()-1);
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select p.id  as pid, p.name as pname, p.brandid as pbrandid, p.areaid as pareaid, p.kind as  pkind, p.amount as pamount,  p.description as pdescription, u.imei as uimei, u.productid as uproductid, u.color as ucolor, u.size as usize, u.wattage as uwattage, u.price as uprice, u.amount as uamount, u.yearmade as uyearmade, u.dateimport as udateimport, u.available as uavailable, b.id as bid, b.name as bname, b.country as bcountry, b.available as bavailable, i.id as iid, i.url as iurl, i.parentid as  iparentid\n" +
+                    "from products p join units u on p.id = u.productID" +
+                    "                     join brands b on b.id = p.brandID" +
+                    "                    join images  i on i.parentID = p.id" +
+                    "                    " +
+                    "                    where p.id in  ("+ ids + ");";
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+//            ids += ")";
+//            pst.setString(1,ids);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                int id = rs.getInt("pid");
+                String name = rs.getString("pname");
+                int brandID = rs.getInt("pbrandID");
+                int areaID = rs.getInt("pareaID");
+                String kind = rs.getString("pkind");
+                int amount = rs.getInt("pamount");
+                String des = rs.getString("pdescription");
+//                ps.add(new Product(id,name, brandID, areaID, kind, amount, des));
+
+                int imei = rs.getInt("uimei");
+                int proID = rs.getInt("uproductID");
+                String color = rs.getString("ucolor");
+                String size = rs.getString("usize");
+                double wattage = rs.getDouble("uwattage");
+                double price = rs.getDouble("uprice");
+                int yearMade = rs.getInt("uyearMade");
+                Date dateSql = rs.getDate("udateImport");
+                Datee dateImport = new Datee(dateSql);
+                int available = rs.getInt("uavailable");
+                String phanloai = "" + (color!=""?color:"") + (size!=""?" - " + size:"") + (wattage!=0?" - " + wattage:"");
+
+
+                int brandid = rs.getInt("bid");
+                String brandName = rs.getString("bname");
+                String country = rs.getString("bcountry");
+                int brandAvailable = rs.getInt("bavailable");
+
+                int imageId = rs.getInt("iid");
+                String url = rs.getString("iurl");
+                int parentID = rs.getInt("iparentID");
+
+                res.put(id,new ProductUnit(id,name,brandID,areaID,kind,amount,des,imei,color,size,(float) wattage,phanloai,price,yearMade,country,dateImport.getDateInMonthDayYear(),available,null,brandName,url));
+//                res.add(new ProductUnit(id,name,brandID,areaID,kind,amount,des,imei,color,size,(float) wattage,phanloai,price,yearMade,country,dateImport.getDateInMonthDayYear(),available,null,brandName,url));
+
+            }
+            JDBCUtil.closeConnection(conn);
+            return res;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public ArrayList<ProductUnit> selectByKind(String kindin) {
         ArrayList<ProductUnit> re = new ArrayList<>();
@@ -458,8 +528,6 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
                     idAdded.add(id);
                     re.add(pu);
                 }
-
-
             }
             JDBCUtil.closeConnection(conn);
             return re;
@@ -507,6 +575,46 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
         }
     }
 
+    public int updateAmount(int id, int n) {
+        int re=0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "update products set amount= ? where id =?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, n);
+            pst.setInt(2, id);
+            re = pst.executeUpdate();
+            return re;
+
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int selectAmount(int idin) {
+       int re= -1;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select amount " +
+                    "from products where id = ?;";
+
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,idin);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                re = rs.getInt("amount");
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public int updateUnit(Product p,Unit u) {
         int re=0;
         try {
@@ -521,6 +629,23 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
             pst.setString(6, u.getDateImport().getDateInMonthDayYearSql());
             pst.setInt(7, u.getAmount());
             pst.setInt(8, p.getId());
+            re = pst.executeUpdate();
+            return re;
+
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int updateTime(int proid, Date date) {
+        int re=0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "update units set dateImport  = ? where productID =?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setDate(1,date);
+            pst.setInt(2, proid);
             re = pst.executeUpdate();
             return re;
 
@@ -604,20 +729,9 @@ public int addPro(Product p) {
 
 
     public static void main(String[] args) {
-//        Brand b = new Brand("iphpne","my");
-//        Product p = new Product(12,"test1",0,1,"a",100,"okok");
-//        Unit u = new Unit(122,12,"","",0,2,100,2020,new Datee(2023,1,1),1);
-//        Image i = new Image("fhwaeijvb",12);
-//
-//        System.out.println(ProductUnitDAO.getInstance().addProductUnit(p,b,u,i));
-
-        ArrayList<Integer> ids = new ArrayList<>();
-        ids.add(1015);
-        ids.add(1017);
-        System.out.println(ids.size());
-
-//        System.out.println(ProductUnitDAO.getInstance().selectByIDs(ids).size());
-        System.out.println(ProductUnitDAO.getInstance().selectById(1019));
+        System.out.println(ProductUnitDAO.getInstance().updateAmount(1,11));
+        System.out.println(ProductUnitDAO.getInstance().updateTime(1014,new Date(System.currentTimeMillis())));
+        System.out.println(ProductUnitDAO.getInstance().selectAmount(14));
     }
 
 }

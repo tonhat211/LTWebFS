@@ -4,6 +4,7 @@ import database.BrandDAO;
 import database.ProductUnitDAO;
 import database.UnitDAO;
 import model.Brand;
+import model.Datee;
 import model.ProductUnit;
 import sun.management.counter.Units;
 
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 @WebServlet("/goto-add-product")
@@ -29,21 +31,18 @@ public class GoToAddProduct extends HttpServlet {
 
         int id = ProductUnitDAO.getInstance().selectMaxID() +1;
         int idUnit  = UnitDAO.getInstance().selectTheMaxID() +1;
-        int status = Integer.parseInt(request.getParameter("status"));
-
-        int preID = id -1;
-        String message = "";
-        if(status ==1){
-            message = "Da them mot san pham voi id " + preID;
-        }
-
 
         ProductUnit pu = new ProductUnit(id,idUnit);
-        ArrayList<Brand> brandList = BrandDAO.getInstance().selectAll();
-
+        pu.setYearMade(2022);
         request.setAttribute("productUnit", pu);
         request.setAttribute("action","add");
-        request.setAttribute("status",status);
+        ArrayList<Brand> brandList = BrandDAO.getInstance().selectAll();
+
+
+        Datee dateimportDatee = new Datee(java.time.LocalDate.now().getYear(),java.time.LocalDate.now().getMonthValue(), java.time.LocalDate.now().getDayOfMonth());
+//        request.setAttribute("status",status);
+//        pu.setDateImport(dateimportDatee.toString());
+        pu.setDateImport(java.time.LocalDate.now().toString());
         request.setAttribute("brandList", brandList);
 
 

@@ -46,7 +46,8 @@ public class LoginControl extends HttpServlet {
                 session.setAttribute("userloging",userloging);
 
                  if(isAdmin) {
-                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin_dashboard.jsp");
+                     System.out.println("dang o login, cbi di den dashboard");
+                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-dashboard-admin");
                      rd.forward(request, response);
                  } else {
                      RequestDispatcher rd = getServletContext().getRequestDispatcher("/get-all-product");

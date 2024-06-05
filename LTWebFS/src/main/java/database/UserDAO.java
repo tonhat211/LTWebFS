@@ -42,6 +42,30 @@ public class UserDAO implements IDAO<User> {
         }
     }
 
+    public int updateOrderTime(int idin) {
+        int re = 0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+
+            String sql = "update users set orderTime = ? where id = ?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            Timestamp t = new Timestamp(new java.util.Date().getTime());
+            pst.setTimestamp(1,t);
+            pst.setInt(2,idin);
+
+            re = pst.executeUpdate();
+
+            System.out.println(re + " dong da duoc cap nhat");
+            JDBCUtil.closeConnection(conn);
+            return re;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
     public int availableUser(String email){
         int re = 0;
         try {
@@ -145,12 +169,97 @@ public class UserDAO implements IDAO<User> {
 
     }
 
+    public ArrayList<User> selectUnbackCus(int n, int index,int amount){
+        ArrayList<User> uList = new ArrayList<>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String temp = "";
+            if(n<3 && n>0) {
+                temp = "Month(CURRENT_DATE) - month(orderTime) = " + n;
+            } else if(n==-1) {
+                temp = "orderTime is null";
+            } else {
+                temp = "Month(CURRENT_DATE) - month(orderTime) >= 3";
+
+            }
+            String sql = "select id, name, phone, email, Date(orderTime) as orderDate from users where level=0 and (" + temp + ") order by orderTime asc limit ?,?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,index);
+            pst.setInt(2,amount);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
+                Date orderDate = rs.getDate("orderDate");
+
+                User u = new User(id,name, email,phone,orderDate);
+
+                uList.add(u);
+
+            }
+            JDBCUtil.closeConnection(conn);
+            return uList;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+    }
+
     public ArrayList<User> selectAllCus(){
         ArrayList<User> uList = new ArrayList<>();
         try {
             Connection conn = JDBCUtil.getConnection();
             String sql = "select * from users where level = 0 order by id asc;";
             PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String pwd = rs.getString("pwd");
+                int level =  rs.getInt("level");
+                String phone = rs.getString("phone");
+                String address  = rs.getString("address");
+                int banchID = rs.getInt("branchID");
+                String  info = rs.getString("info");
+                Date dateInSql = rs.getDate("dateIn");
+                Datee dateIn = new Datee(dateInSql);
+                Datee dateOut;
+                Date dateOutSql = rs.getDate("dateOut");
+                if(dateOutSql!=null){
+                    dateOut = new Datee(dateOutSql);
+                } else
+                    dateOut = null;
+                int available= rs.getInt("available");
+
+                User u = new User(id,name, email,pwd,level,phone,address,banchID,info,dateIn,dateOut,available);
+
+                uList.add(u);
+
+            }
+            JDBCUtil.closeConnection(conn);
+            return uList;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public ArrayList<User> selectRecentCus(int n){
+        ArrayList<User> uList = new ArrayList<>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select * from users where level = 0 and orderTime is not null order by orderTime desc limit 0,?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,n);
             ResultSet rs = pst.executeQuery();
 
             while(rs.next()) {

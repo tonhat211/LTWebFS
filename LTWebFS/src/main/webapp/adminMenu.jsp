@@ -148,7 +148,7 @@
         <li class="nav-item <%=roles.contains("dashboard") ? "" : "hide" %>">
             <a class="nav-link  <%= currentAdminMenu.equalsIgnoreCase("dashboard") ? "" :"collapsed" %> " href="admin-menu-controller?adminMenu=dashboard">
                 <!--                <i class="bi bi-grid"></i>-->
-                <span>Thống kê doanh thu</span>
+                <span>Thống kê</span>
             </a>
         </li><!-- End Dashboard Nav -->
         <li class="nav-item <%=roles.contains("customer") ? "" : "hide" %>">

@@ -39,10 +39,6 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<%--    <script src="assets/js/jquery.js"></script>--%>
-
-
     <!--fontawesome-->
     <link rel="stylesheet" href="./assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
     <!-- Template Main CSS File -->
@@ -51,15 +47,6 @@
     <link rel="stylesheet" href="assets/css/baseN.css">
     <link rel="stylesheet" href="assets/css/adminN.css">
     <link rel="stylesheet" href="assets/css/adminProduct.css">
-    <link rel="stylesheet" href="assets/css/toast.css">
-    <link rel="stylesheet" href="assets/css/login.css">
-
-
-    <script src="assets/js/toast.js"></script>
-    <script src="assets/js/adPro.js">
-
-    </script>
-
 </head>
 <body>
 <%
@@ -94,75 +81,86 @@
     <!--        <h1>Content</h1>-->
     <!--    </section>-->
     <div class="ad-content">
-        <div class="ad_header" style="width: 100%; flex-direction: column" id="action-product">
+        <div class="ad_header" style="width: 100%; flex-direction: column">
             <div class="show-flex-row" style="width: 100%; align-items: center">
                 <form class="ad_find-container" action="admin-search-product" method="get">
                     <input type="text" placeholder="Nhập tên hoặc nhóm" class="ad_find-input" name="search" value="<%=adminCurrentSearchProduct%>">
                     <button class="ad_find-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
                 <div>
-                    <a class="ad_btn-control" id="export-product-btn">Xuất kho</a>
-
+                    <a class="ad_btn-control btn-up-pro" href="goto-add-product?status=0">Thêm sản phẩm</a>
                 </div>
                 <div>
-                    <a class="ad_btn-control" id="import-product-btn">Nhập kho</a>
+                    <a class="ad_btn-control" href="goto-add-product?status=0">Thêm sản phẩm</a>
                 </div>
                 <div>
                     <a class="ad_btn-control btn-up-pro" href="goto-add-product?status=0">Thêm sản phẩm</a>
-
                 </div>
-
             </div>
-
-
             <div style="width: 100%" id="product-action">
+                <div class="seperate-horizontal-90" style="margin: 20px auto"></div>
+                <div style="width: 100%">
 
+                    <form action="" style="width: 70%; margin: 0 auto">
+                        <h4 style="text-align: center">Nhap kho</h4>
+                        <div class="show-flex-row">
+                            <div class="form-group w-30" style="margin: 0 10px">
+                                <label class="w-20" for="id">ID: </label>
+                                <input type="text" class="form-control w-80" id="id" name="id" aria-describedby="" placeholder="Enter name" value="">
+                                <div class="error">Vui lòng đăng nhập để sử dụng giỏ hàng</div>
+
+                            </div>
+
+                            <div class="form-group w-30" style="margin: 0 10px">
+                                <label class="w-20" for="amount">So luong: </label>
+                                <input type="text" class="form-control w-80" id="amount" name="amount" aria-describedby="" placeholder="Enter name" value="">
+                            </div>
+                        </div>
+                        <div class="form-group w-30" style="margin: 10px 10px">
+                            <label class="w-20" for="reason">Nguyen nhan: </label>
+
+                            <textarea  type="text" class="form-control" name="reason" id="reason" rows="6"></textarea>
+
+                        </div>
+
+                        <div class="show-flex-row" style="justify-content: end">
+                            <button class="btn btn-primary" type="submit" style="margin: 10px 10px;">Nhap</button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
+
+
+
         </div>
 
     </div>
 
-<%--    <%--%>
-<%--        for(ProductSuperDetail p : psds) {--%>
-<%--    %>--%>
-
-    <table class="table" id="info-table" style="width: 100vw;">
+    <table class="table" style="width: 100vw;" id="info-table">
         <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Tên</th>
-            <th scope="col">Lĩnh vực</th>
-            <th scope="col">Thương hiệu</th>
-            <th scope="col">Đơn giá</th>
-            <th scope="col">Tồn kho</th>
-            <th scope="col">Thao tác</th>
-        </tr>
+            <tr>
+                <th scope="col" style="width: 10%;">ID</th>
+                <th scope="col" style="width: 60%;">Tên</th>
+                <th scope="col" style="width: 10%;">So luong nhap</th>
+                <th scope="col" style="width: 20%">Thoi gian</th>
+            </tr>
         </thead>
-        <tbody id="info-table-body">
-            <%
-                for(int i=0; i<pus.size();i++) {
-            %>
-        <tr class="<%= i%2==0 ? "roww" : ""%>">
-            <th scope="row"><%=pus.get(i).getId()%></th>
-            <td><%=pus.get(i).getName() %></td>
-            <td><%=pus.get(i).getKind() %></td>
-            <td><%=pus.get(i).getBrand() %></td>
-            <td><fmt:formatNumber value="<%=pus.get(i).getPrice() %>" pattern="#,##0.00"/>
-                VND</td>
-            <td><%=pus.get(i).getAmount() %></td>
-            <td><a class="btn-update-product" href="go-to-update-product?id=<%=pus.get(i).getId()%>">Cập nhật</a></td>
-        </tr>
-            <%
-                }
-            %>
-
-                    </tbody>
-                </table>
-
-        <div class="ad-content-item">
+        <tbody >
+            <tr class="roww">
+                <th scope="row">12</th>
+                <td>may loc </td>
+                <td>100</td>
+                <td>8213</td>
+            </tr>
 
 
-        </div>
+        </tbody>
+    </table>
+
+    <div class="ad-content-item">
+
+    </div>
     </div>
 
 
@@ -175,15 +173,11 @@
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<script>
 
-
-
-</script>
 
 <!-- Template Main JS File -->
 <!--<script src="assets/js/main.js"></script>-->
-<%--<script src="assets/js/adPro.js"></script>--%>
+<script src="assets/js/adPro.js"></script>
 <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/chart.js/chart.umd.js"></script>

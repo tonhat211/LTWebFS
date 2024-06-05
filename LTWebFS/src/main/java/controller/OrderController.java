@@ -2,10 +2,7 @@ package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import database.DeOrderDAO;
-import database.DecartDAO;
-import database.LogDAO;
-import database.OrderDAO;
+import database.*;
 import model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -35,8 +32,8 @@ public class OrderController extends HttpServlet {
 
         int id = OrderDAO.getInstance().getMaxID() +1;
         int userId = u.getId();
-        float totalMoney = Float.parseFloat(request.getParameter("orderMoney"));
-        float deliveryFee = Float.parseFloat(request.getParameter("deliveryFee"));
+        int totalMoney = (int) Double.parseDouble(request.getParameter("orderMoney"));
+        int deliveryFee = (int) Double.parseDouble(request.getParameter("deliveryFee"));
         String receiver = request.getParameter("receiver");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
@@ -64,6 +61,8 @@ public class OrderController extends HttpServlet {
         DeOrderDAO.getInstance().insertDeOrderList(dos);
 
         DecartDAO.getInstance().deleteDecarts(userId,idpros);
+
+        UserDAO.getInstance().updateOrderTime(userId); //cap nhat thoi gian mua hang gan nhat
 
         request.setAttribute("status","orderSuccessful");
 

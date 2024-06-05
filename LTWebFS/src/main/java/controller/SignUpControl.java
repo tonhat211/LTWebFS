@@ -19,8 +19,6 @@ import java.util.Random;
 @WebServlet("/signup")
 public class SignUpControl extends HttpServlet {
 
-
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
