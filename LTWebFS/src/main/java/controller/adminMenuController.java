@@ -25,6 +25,7 @@ public class adminMenuController extends HttpServlet {
         String currentMenu;
         String menu = request.getParameter("adminMenu");
         HttpSession session = request.getSession();
+        System.out.println("da goi duoc menu controller, tham so truyen vao la: "+ menu);
 
         RequestDispatcher rd;
         switch (menu){
@@ -32,6 +33,7 @@ public class adminMenuController extends HttpServlet {
                 currentMenu = "dashboard";
 //                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
+                System.out.println("dang o menu controoler");
                 rd = getServletContext().getRequestDispatcher("/goto-dashboard-admin");
                 rd.forward(request, response);
                 break;

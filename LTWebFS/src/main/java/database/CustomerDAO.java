@@ -4,6 +4,7 @@ import model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class CustomerDAO implements IDAO<Customer> {
@@ -40,6 +41,29 @@ public class CustomerDAO implements IDAO<Customer> {
         return res;
     }
 
+    public Map<User,Order> getRecentCustomer(int n) {
+        ArrayList<User> users = UserDAO.getInstance().selectRecentCus(n);
+        ArrayList<Order> orders = OrderDAO.getInstance().selectRecentOrder(n);
+
+        Map<User,Order> res = new LinkedHashMap<>();
+        for(User u : users) {
+            res.put(u,null);
+        }
+
+        for(Order o : orders) {
+            User temp = new User(o.getCusID());
+            if(res.containsKey(temp)) {
+                res.replace(temp,o);
+            }
+        }
+
+        return res;
+
+
+    }
+
+
+
 
 
 
@@ -73,11 +97,28 @@ public class CustomerDAO implements IDAO<Customer> {
         return res;
     }
 
+    public ArrayList<User> getUnbackCus(int n, int index, int amount) {
+        return UserDAO.getInstance().selectUnbackCus(n,index,amount);
+    }
+
 
 
     public static void main(String[] args) {
-        System.out.println(CustomerDAO.getInstance().selectByCusNameOrEmailOrPhone("038"));
-        System.out.println("----------------------");
-        System.out.println(CustomerDAO.getInstance().selectById(3031));
+//        System.out.println(CustomerDAO.getInstance().getUnbackCus(0,0,4));
+        Map<User, Order> recentCustomer = CustomerDAO.getInstance().getRecentCustomer(5);
+//        System.out.println(recentCustomer);
+        String html="";
+        for (Map.Entry<User, Order> entry : recentCustomer.entrySet()) {
+
+            html += " <div class=\"activity-item d-flex\">\n" +
+                    "                                    <div class=\"activity-content\">\n" +
+                    "                                        "+entry.getKey().getId() + " | " + entry.getKey().getName()+"<br/>\n" +
+                    "                                        <a href=\"#\" class=\"fw-bold text-dark\">Mã đơn hàng: "+entry.getValue()+"</a> <br/>\n" +
+//                    "                                       "+entry.getValue().getDateSet() + " | " + entry.getValue().getTimeSet()+"\n" +
+                    "                                    </div>\n" +
+                    "                                </div>";
+
+        }
+        System.out.println(html);
     }
 }

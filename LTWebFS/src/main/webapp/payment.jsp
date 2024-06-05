@@ -159,8 +159,8 @@
 
                     <%
                                 totalMoney +=cartTemp.get(i).getP().getPrice() * cartTemp.get(i).getQty();
-                            }
 
+                            }
                         }
 
                         if(totalMoney > 1000000){

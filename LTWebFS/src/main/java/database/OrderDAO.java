@@ -3,10 +3,13 @@ package database;
 import model.*;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.sql.Date;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class OrderDAO implements IDAO<Order> {
 
@@ -23,14 +26,16 @@ public class OrderDAO implements IDAO<Order> {
             String sql = "insert into orders (id, totalPrice, cusID ,receiverInfo ,deliveryfee, status) VALUES  (?,?,?,?,?,?);";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, order.getId());
-            pst.setFloat(2, order.getTotalPrice());
+            pst.setInt(2, order.getTotalPrice());
             pst.setInt(3, order.getCusID());
             pst.setString(4,order.getReceiverInfo());
-            pst.setFloat(5, order.getDeliveryFee());
+            pst.setInt(5, order.getDeliveryFee());
             pst.setInt(6,order.getStatus());
 
 
+
             re = pst.executeUpdate();
+
 
             System.out.println(re + " dong da duoc them vao");
             JDBCUtil.closeConnection(conn);
@@ -109,7 +114,7 @@ public class OrderDAO implements IDAO<Order> {
                 int totalPrice =  rs.getInt("totalPrice");
                 int cusID  = rs.getInt("cusID");
                 String receiverInfo = rs.getString("receiverInfo");
-                float deliveryfee = rs.getFloat("deliveryfee");
+                int deliveryfee = rs.getInt("deliveryfee");
                 int status = rs.getInt("status");
 
                 Order  o = new Order(id,dateeSet,timeSql,totalPrice,cusID,receiverInfo,deliveryfee, status);
@@ -125,6 +130,8 @@ public class OrderDAO implements IDAO<Order> {
         }
 
     }
+
+
 
     public ArrayList<Order> selectOrderByCusId(int cusIdin) {
         ArrayList<Order> res = new ArrayList<Order>();
@@ -145,10 +152,41 @@ public class OrderDAO implements IDAO<Order> {
                 int totalPrice =  rs.getInt("totalPrice");
                 int cusID  = rs.getInt("cusID");
                 String receiverInfo = rs.getString("receiverInfo");
-                float deliveryfee = rs.getFloat("deliveryfee");
+                int deliveryfee = rs.getInt("deliveryfee");
                 int status = rs.getInt("status");
 
                 Order  o = new Order(id,dateeSet,timeSql,totalPrice,cusID,receiverInfo,deliveryfee, status);
+                res.add(o);
+            }
+
+//			System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return res;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<Order> selectRecentOrder(int n) {
+
+        ArrayList<Order> res = new ArrayList<Order>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+
+            String sql = "select id, cusId, dateSet, timeSet from orders where dateSet in (select date(orderTime) from users where level = 0 and orderTime is not null order by orderTime desc) and timeSet in (select time(orderTime) from users where level = 0 and orderTime is not null order by orderTime desc) limit 0,?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,n);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()){
+                int id = rs.getInt("id");
+                int cusID  = rs.getInt("cusID");
+                Date dateSql = rs.getDate("dateSet");
+                Datee dateeSet = new Datee(dateSql);
+                Time timeSql = rs.getTime("timeSet");
+
+                Order  o = new Order(id,dateeSet,timeSql,cusID);
                 res.add(o);
             }
 
@@ -180,7 +218,7 @@ public class OrderDAO implements IDAO<Order> {
                 int totalPrice = rs.getInt("totalPrice");
                 int cusID = rs.getInt("cusID");
                 String receiverInfo = rs.getString("receiverInfo");
-                float deliveryfee = rs.getFloat("deliveryfee");
+                int deliveryfee = rs.getInt("deliveryfee");
                 int status = rs.getInt("status");
 
                 Order o = new Order(id, dateeSet, timeSql, totalPrice, cusID, receiverInfo, deliveryfee, status);
@@ -216,7 +254,7 @@ public class OrderDAO implements IDAO<Order> {
                 int totalPrice = rs.getInt("totalPrice");
                 int cusID = rs.getInt("cusID");
                 String receiverInfo = rs.getString("receiverInfo");
-                float deliveryfee = rs.getFloat("deliveryfee");
+                int deliveryfee = rs.getInt("deliveryfee");
                 int status = rs.getInt("status");
 
                 Order o = new Order(id, dateeSet, timeSql, totalPrice, cusID, receiverInfo, deliveryfee, status);
@@ -257,7 +295,7 @@ public class OrderDAO implements IDAO<Order> {
                 int totalPrice = rs.getInt("totalPrice");
                 int cusID = rs.getInt("cusID");
                 String receiverInfo = rs.getString("receiverInfo");
-                float deliveryfee = rs.getFloat("deliveryfee");
+                int deliveryfee = rs.getInt("deliveryfee");
                 int status = rs.getInt("status");
 
                 Order o = new Order(id, dateeSet, timeSql, totalPrice, cusID, receiverInfo, deliveryfee, status);
@@ -480,10 +518,10 @@ public class OrderDAO implements IDAO<Order> {
                 Date dateSql = rs.getDate("dateSet");
                 Datee dateSet = new Datee(dateSql);
                 Time timeSet = rs.getTime("timeSet");
-                float totalPrice = rs.getInt("totalPrice");
+                int totalPrice = rs.getInt("totalPrice");
                 int cusId = rs.getInt("cusID");
                 String receiverInfo = rs.getString("receiverInfo");
-                float deliveryfee = rs.getFloat("deliveryfee");
+                int deliveryfee = rs.getInt("deliveryfee");
                 int status = rs.getInt("status");
 
                 res =  new Order(id,dateSet,timeSet,totalPrice,cusId,receiverInfo,deliveryfee, status);
@@ -518,40 +556,436 @@ public class OrderDAO implements IDAO<Order> {
         }
     }
 
+    public int countOrder(int time) {
+        int re=0;
+        String timee="";
+        if(time==1) { //today
+            timee = "where Date(dateSet) = CURRENT_DATE";
+        } else if(time==2){ //month
+            timee = "where Month(dateSet) = Month(CURRENT_DATE)";
+        } else if(time==3){ //year
+            timee = "where Year(dateSet) = Year(CURRENT_DATE)";
+        } else { //all time
+            timee="";
+        }
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select count(*) as total FROM `orders` " + timee;
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                re = rs.getInt("total");
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int countPreOrder(int time) {
+        int re=0;
+        String timee="";
+        if(time==1) { //today
+            timee = "where Date(dateSet) = CURRENT_DATE - 1 ";
+        } else if(time==2){ //month
+            timee = "where Month(dateSet) = Month(CURRENT_DATE) -1 ";
+        } else if(time==3){ //year
+            timee = "where Year(dateSet) = Year(CURRENT_DATE) -1";
+        } else { //all time
+            timee="";
+        }
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select count(*) as total FROM `orders` " + timee;
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                re = rs.getInt("total");
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int selectPreRevenue(int time) {
+        int re=0;
+        String timee="";
+        if(time==1) { //today
+            timee = "where Date(dateSet) = CURRENT_DATE - 1 ";
+        } else if(time==2){ //month
+            timee = "where Month(dateSet) = Month(CURRENT_DATE) -1 ";
+        } else if(time==3){ //year
+            timee = "where Year(dateSet) = Year(CURRENT_DATE) -1";
+        } else { //all time
+            timee="";
+        }
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select sum(totalPrice) as total FROM `orders` " + timee;
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+
+                re = rs.getInt("total");
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int selectRevenue(int time) {
+        int re=0;
+        String timee="";
+        if(time==1) { //today
+            timee = "where Date(dateSet) = CURRENT_DATE ";
+        } else if(time==2){ //month
+            timee = "where Month(dateSet) = Month(CURRENT_DATE) ";
+        } else if(time==3){ //year
+            timee = "where Year(dateSet) = Year(CURRENT_DATE) ";
+        } else { //all time
+            timee="";
+        }
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select sum(totalPrice) as total FROM `orders` " + timee;
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+
+                re = rs.getInt("total");
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int selectPreCusAmount(int time) {
+        int re=0;
+        String timee="";
+        if(time==1) { //today
+            timee = "and Date(dateIn) = CURRENT_DATE - 1 ";
+        } else if(time==2){ //month
+            timee = "and Month(dateIn) = Month(CURRENT_DATE) -1 ";
+        } else if(time==3){ //year
+            timee = "and Year(dateIn) = Year(CURRENT_DATE) -1";
+        } else { //all time
+            timee="";
+        }
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select count(id) as total FROM `users` where level = 0 " + timee;
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+
+                re = rs.getInt("total");
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+    public int selectCusAmount(int time) {
+        int re=0;
+        String timee="";
+        if(time==1) { //today
+            timee = "and Date(dateIn) = CURRENT_DATE ";
+        } else if(time==2){ //month
+            timee = "and Month(dateIn) = Month(CURRENT_DATE) ";
+        } else if(time==3){ //year
+            timee = "and Year(dateIn) = Year(CURRENT_DATE) ";
+        } else { //all time
+            timee="";
+        }
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select count(id) as total FROM `users` where level = 0 " + timee;
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+
+                re = rs.getInt("total");
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
+//    public Map<Product,Integer> selectTopProduct(int time, int topin)
+
+    public Map<ProductUnit,Integer> selectTopProductUnit(int time, int topin) {
+        Map<Integer,Integer> temp = new LinkedHashMap<>();
+        ArrayList<Integer> ids = new ArrayList<>();
+        Map<ProductUnit,Integer> res = new LinkedHashMap<>();
+        String timee="";
+        if(time==1) { //today
+            timee = "where Date(dateSet) = CURRENT_DATE";
+        } else if(time==2){ //month
+            timee = "where Month(dateSet) = Month(CURRENT_DATE)";
+        } else if(time==3){ //year
+            timee = "where Year(dateSet) = Year(CURRENT_DATE)";
+        } else { //all time
+            timee="";
+        }
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select count(d.proid), d.proID from de_orders d where d.ordid in\n" +
+                    "        (SELECT id FROM `orders` "+ timee +") group by d.proID order by count(d.proid) desc LIMIT 0, ?;\n";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,topin);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                int id = rs.getInt("proID");
+                int count = rs.getInt("count(d.proid)");
+                ids.add(id);
+                temp.put(id,count);
+            }
+            JDBCUtil.closeConnection(conn);
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+        Map<Integer,ProductUnit> ps = ProductUnitDAO.getInstance().selectByIDsMap(ids);
+        for(Integer i : ids) {
+            res.put(ps.get(i),temp.get(i));
+        }
+
+        return res;
+    }
+
+    public Map<User,Integer> selectTopCustomer(int time,int topin) {
+        Map<User,Integer> res = new LinkedHashMap<>();
+        String timee="";
+        if(time==1) { //today
+            timee = "where Date(dateSet) = CURRENT_DATE";
+        } else if(time==2){ //month
+            timee = "where Month(dateSet) = Month(CURRENT_DATE)";
+        } else if(time==3){ //year
+            timee = "where Year(dateSet) = Year(CURRENT_DATE)";
+        } else { //all time
+            timee="";
+        }
+
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "SELECT sum(o.totalPrice), o.cusID, u.name, u.email, u.phone FROM `orders` o join users u on o.cusID = u.id "+ timee +" GROUP by o.cusID order by sum(o.totalPrice) desc LIMIT 0,?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,topin);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                int id = rs.getInt("cusID");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
+                int sum = rs.getInt("sum(o.totalPrice)");
+                User u = new User(id,name,email,phone);
+                res.put(u,sum);
+            }
+            JDBCUtil.closeConnection(conn);
+            return res;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 
     @Override
     public ArrayList<Order> selectByCondition(Order order) {
         return null;
     }
 
-    public static void main(String[] args) {
-        ArrayList<Integer> is = new ArrayList<>();
-        is.add(-2);
-        is.add(-1);
-        is.add(-3);
+    public ArrayList<Integer> selectReportSales(int kindTime, ArrayList<Integer> times) {
+//       today: gio (0,2,9,15,18,21)
+//       month: ngay (1,7,15,22,30)
+//       year: thang (1,3,6,9,12)
+//       all: nam :lay tat ca nam >=2020
+        String sqlTemp = "";
 
-//        ArrayList<Order> os = OrderDAO.getInstance().selectOrderStatus(-3);
-//        for(Order o : os) {
-//            System.out.println(o.getId() + "\t" + o.getStatus())
-
-//        }
-//        Map<Order,String> os = (Map<Order, String>) OrderDAO.getInstance().searchOrderAndDatailBy("00:41:31");;
-//        for (Map.Entry<Order, String> item : os.entrySet()) {
-//            System.out.println(item.getKey().getId() +"\t" + item.getKey().getStatus() +"\n");
-//        }
-//        OrderDAO.getInstance().updateOrderStatus(1,0);
-
-        String input = "2024/04/30";
-        String inputTokens[] = input.split("/");
-        if(inputTokens.length>0) {
-            input = "";
-            for (int i = 0; i < inputTokens.length; i++) {
-                input += inputTokens[i] + "-";
-            }
+        String timesStr = "(";
+        for(Integer i : times) {
+            timesStr+=i + ",";
         }
-        input = input.substring(0,input.length()-1);
+        timesStr = timesStr.substring(0,timesStr.length()-1);
+        timesStr +=")";
 
-        System.out.println(input);
+        if(kindTime==1) { //today
+            sqlTemp = "SELECT count(*) as total, hour(timeSet) as timee from orders where hour(timeSet) in " + timesStr + " and Date(dateSet) = CURRENT_DATE group by hour(timeSet) order by hour(timeSet);";
+        } else if(kindTime==2){ //month
+            sqlTemp = "SELECT count(*) as total, Day(dateSet) as timee from orders where Day(dateSet) in " + timesStr + " and Month(dateSet) = Month(CURRENT_DATE) group by Day(dateSet) order by Day(dateSet);";
+        } else if(kindTime==3){ //year
+            sqlTemp = "SELECT count(*) as total, Month(dateSet) as timee from orders where Month(dateSet) in " + timesStr + " and Year(dateSet) = Year(CURRENT_DATE) group by Month(dateSet) order by Month(dateSet);";
+        } else { //all time
+            sqlTemp = "SELECT count(*) as total, year(dateSet) as timee from orders where year(dateSet) in " + timesStr + " group by year(dateSet) order by year(dateSet);";
+        }
+
+
+        ArrayList<Integer> res = new ArrayList<>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = sqlTemp;
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                int y = rs.getInt("timee");
+                res.add(y);
+                int n = rs.getInt("total");
+                res.add(n);
+            }
+
+            JDBCUtil.closeConnection(conn);
+            return res;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public ArrayList<Integer> selectReportRevenue(int kindTime, ArrayList<Integer> times) {
+//       today: gio (0,2,9,15,18,21)
+//       month: ngay (1,7,15,22,30)
+//       year: thang (1,3,6,9,12)
+//       all: nam :lay tat ca nam >=2020
+        String sqlTemp = "";
+
+        String timesStr = "(";
+        for(Integer i : times) {
+            timesStr+=i + ",";
+        }
+        timesStr = timesStr.substring(0,timesStr.length()-1);
+        timesStr +=")";
+
+        if(kindTime==1) { //today
+            sqlTemp = "SELECT sum(totalPrice) as total, hour(timeSet) as timee from orders where hour(timeSet) in " + timesStr + " and Date(dateSet) = CURRENT_DATE group by hour(timeSet) order by hour(timeSet);";
+        } else if(kindTime==2){ //month
+            sqlTemp = "SELECT sum(totalPrice) as total, Day(dateSet) as timee from orders where Day(dateSet) in " + timesStr + " and Month(dateSet) = Month(CURRENT_DATE) group by Day(dateSet) order by Day(dateSet);";
+        } else if(kindTime==3){ //year
+            sqlTemp = "SELECT sum(totalPrice) as total, Month(dateSet) as timee from orders where Month(dateSet) in " + timesStr + " and Year(dateSet) = Year(CURRENT_DATE) group by Month(dateSet) order by Month(dateSet);";
+        } else { //all time
+            sqlTemp = "SELECT sum(totalPrice) as total, year(dateSet) as timee from orders where year(dateSet) in " + timesStr + " group by year(dateSet) order by year(dateSet);";
+        }
+
+
+        ArrayList<Integer> res = new ArrayList<>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = sqlTemp;
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                int y = rs.getInt("timee");
+                res.add(y);
+                int n = rs.getInt("total");
+                n= n/1000000;
+                res.add(n);
+            }
+
+            JDBCUtil.closeConnection(conn);
+            return res;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+    }
+    public ArrayList<Integer> selectReportCustomer(int kindTime, ArrayList<Integer> times) {
+//       today: gio (0,2,9,15,18,21)
+//       month: ngay (1,7,15,22,30)
+//       year: thang (1,3,6,9,12)
+//       all: nam :lay tat ca nam
+        String sqlTemp = "";
+
+        String timesStr = "(";
+        for(Integer i : times) {
+            timesStr+=i + ",";
+        }
+        timesStr = timesStr.substring(0,timesStr.length()-1);
+        timesStr +=")";
+
+        if(kindTime==1) { //today
+            sqlTemp = "select count(id) as total, Month(dateIn) as timee FROM `users` where level = 0 and Month(dateIn) in " + timesStr + " and Year(dateIn) = Year(CURRENT_DATE) GROUP by (Month(dateIn)) order by  Month(dateIn);";
+
+        } else if(kindTime==2){ //month
+            sqlTemp = "select count(id) as total, Day(dateIn) as timee FROM `users` where level = 0 and Day(dateIn) in " + timesStr + " and Month(dateIn) = Month(CURRENT_DATE) GROUP by (Day(dateIn)) order by  Day(dateIn);";
+        } else if(kindTime==3){ //year
+            sqlTemp = "select count(id) as total, Month(dateIn) as timee FROM `users` where level = 0 and Month(dateIn) in " + timesStr + " and Year(dateIn) = Year(CURRENT_DATE) GROUP by (Month(dateIn)) order by  Month(dateIn);";
+        } else { //all time
+            sqlTemp = "SELECT count(id) as total, year(dateIn) as timee from users where level = 0 and year(dateIn) in " + timesStr + " group by year(dateIn) order by year(dateIn);";
+        }
+
+
+        ArrayList<Integer> res = new ArrayList<>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = sqlTemp;
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                int y = rs.getInt("timee");
+                res.add(y);
+                int n = rs.getInt("total");
+                res.add(n);
+            }
+
+            JDBCUtil.closeConnection(conn);
+            return res;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+
+
+    public static void main(String[] args) {
+
+        ArrayList<User> unbacks = CustomerDAO.getInstance().getUnbackCus(4,0,10);
+        System.out.println(unbacks);
+
+
+
 
 
     }

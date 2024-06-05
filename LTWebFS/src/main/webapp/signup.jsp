@@ -70,6 +70,9 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" class="form-control" id="password" name="password"  placeholder="Nhập mật khẩu">
+<%--                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>--%>
+                <div class="error" hidden></div>
                 <div class="password-container">
                 <input type="password" class="form-control" id="password" name="password" required placeholder="Nhập mật khẩu">
                 <i class="fa-solid fa-eye-slash toggle-password"></i>
@@ -82,6 +85,9 @@
             </div>
             <div class="mb-3">
                 <label for="repassword" class="form-label">Nhập lại mật khẩu</label>
+                <input type="password" class="form-control" id="repassword" name="repassword"  placeholder="Nhập lại mật khẩu">
+<%--                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>--%>
+                <div class="error" hidden></div>
                 <div class="password-container">
                 <input type="password" class="form-control" id="repassword" name="repassword" required placeholder="Nhập lại mật khẩu">
                 <i class="fa-solid fa-eye-slash toggle-password"></i>
@@ -365,5 +371,23 @@
 
 
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const togglePasswordElements = document.querySelectorAll('.toggle-password');
+
+        togglePasswordElements.forEach(togglePassword => {
+            togglePassword.addEventListener('click', function (e) {
+                const passwordInput = this.previousElementSibling;
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                this.classList.toggle('fa-eye-slash');
+                this.classList.toggle('fa-eye');
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

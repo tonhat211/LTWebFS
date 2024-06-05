@@ -25,6 +25,10 @@ public class GoToUpdateProductController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         String idString = (String) request.getParameter("id");
+//        String status = (String) request.getAttribute("status");
+//        if(status!=null || !status.equals("")) {
+//            request.setAttribute("status", status);
+//        }
 //        String idString = "1015";
         int id = Integer.parseInt(idString);
         ArrayList<Brand> brandList = BrandDAO.getInstance().selectAll();
@@ -33,7 +37,7 @@ public class GoToUpdateProductController extends HttpServlet {
         request.setAttribute("brandList", brandList);
 
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp?status=addsuccessful");
         rd.forward(request, response);
 
     }

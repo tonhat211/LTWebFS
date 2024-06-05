@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Time;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -18,18 +19,18 @@ public class Order {
 	private int id;
 	private Datee dateSet;
 	private Time timeSet;
-	private float totalPrice;
+	private int totalPrice;
 	private int cusID;
 
 	private String receiverInfo;
 	private int status;
 
-	private float deliveryFee;
+	private int deliveryFee;
 
 
 	private int isCompleted;
 
-	public Order(int id, float totalPrice, int cusID, String receiverInfo, float deliveryFee, int status) {
+	public Order(int id, int totalPrice, int cusID, String receiverInfo, int deliveryFee, int status) {
 		this.id = id;
 		this.totalPrice = totalPrice;
 		this.cusID = cusID;
@@ -41,7 +42,7 @@ public class Order {
 		this.id = id;
 	}
 
-	public Order(int id, Datee dateSet, Time timeSet, float totalPrice, int cusID, String receiverInfo, float deliveryFee, int status) {
+	public Order(int id, Datee dateSet, Time timeSet, int totalPrice, int cusID, String receiverInfo, int deliveryFee, int status) {
 		this.id = id;
 		this.dateSet = dateSet;
 		this.timeSet = timeSet;
@@ -50,6 +51,34 @@ public class Order {
 		this.receiverInfo = receiverInfo;
 		this.status = status;
 		this.deliveryFee = deliveryFee;
+	}
+
+	public Order(int id, Datee dateSet, Time timeSet, int cusID) {
+		this.id = id;
+		this.dateSet = dateSet;
+		this.timeSet = timeSet;
+		this.cusID = cusID;
+	}
+
+	public String getTotalPriceString() {
+		int intNumber = this.totalPrice;
+//		double doubleNumber = intNumber;
+
+		DecimalFormat df = new DecimalFormat("#,###");
+		df.setMaximumFractionDigits(0);
+
+		String formattedNumber = df.format(intNumber);
+		return formattedNumber;
+	}
+
+	public static String formatPriceOf(int num) {
+
+
+		DecimalFormat df = new DecimalFormat("#,###");
+		df.setMaximumFractionDigits(0);
+
+		String formattedNumber = df.format(num);
+		return formattedNumber;
 	}
 
 
@@ -85,7 +114,7 @@ public class Order {
 		this.status = status;
 	}
 
-	public Order(int id, Datee dateSet, Time timeSet, float totalPrice, int cusID, int isCompleted) {
+	public Order(int id, Datee dateSet, Time timeSet, int totalPrice, int cusID, int isCompleted) {
 		super();
 		this.id = id;
 		this.dateSet = dateSet;
@@ -95,7 +124,7 @@ public class Order {
 		this.isCompleted = isCompleted;
 	}
 
-	public Order(int id, float totalPrice, int cusID, float deliveryFee,int isCompleted) {
+	public Order(int id, int totalPrice, int cusID, int deliveryFee,int isCompleted) {
 		this.id = id;
 		this.totalPrice = totalPrice;
 		this.cusID = cusID;
@@ -103,11 +132,11 @@ public class Order {
 		this.isCompleted = isCompleted;
 	}
 
-	public float getDeliveryFee() {
+	public int getDeliveryFee() {
 		return deliveryFee;
 	}
 
-	public void setDeliveryFee(float deliveryFee) {
+	public void setDeliveryFee(int deliveryFee) {
 		this.deliveryFee = deliveryFee;
 	}
 
@@ -204,10 +233,10 @@ public class Order {
 	public void setTimeSet(Time timeSet) {
 		this.timeSet = timeSet;
 	}
-	public float getTotalPrice() {
+	public int getTotalPrice() {
 		return totalPrice;
 	}
-	public void setTotalPrice(float totalPrice) {
+	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 	public int getCusID() {
@@ -230,6 +259,8 @@ public class Order {
 		Order order = (Order) o;
 		return getId() == order.getId();
 	}
+
+
 
 	@Override
 	public int hashCode() {

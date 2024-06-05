@@ -359,8 +359,6 @@
             var birthday = formData.get("birthday");
             var datein = formData.get("datein");
 
-
-
             var isOk = true;
 
             if(name.trim() === "") {
@@ -432,6 +430,12 @@
             console.log(year);
             console.log(month);
             console.log(day);
+
+            console.log(currentYear);
+            console.log(curretnMonth);
+            console.log(currentDay);
+
+
 
             if((year <= currentYear && month <= curretnMonth && day <= currentDay)){
                 switchMessage("#datein",'.error',0);

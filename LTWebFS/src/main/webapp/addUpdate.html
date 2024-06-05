@@ -65,25 +65,19 @@
             <div class="form-container">
                 <form action="update-product" method="get">
                     <div class="show-flex-row">
+                        <h4>Cập nhật sản phẩm</h4>
+                    </div>
+                    <div class="show-flex-row">
                         <div class="grid__row img-showing">
                             <div class="grid-col-2 mtb-5px">
-                                <img src="./assets/img/product-img/A/may-tro-thinh.jpg" alt="" class="pro-img-item">
+                                <img src="./assets/img/products/may-do-huyet-ap-dien-tu-bap-tay-wellmed-1.jpg" alt="" class="pro-img-item">
+                            </div>                            <div class="disabled-showing active" style="right: 0; left: 100px; position: absolute">
+                            <div class="disabled-showing-content">
+                                NGƯNG BÁN
                             </div>
-                            <div class="grid-col-2 mtb-5px">
-                                <img src="./assets/img/product-img/A/may-tro-thinh.jpg" alt="" class="pro-img-item">
-                            </div>
-                            <div class="grid-col-2 mtb-5px">
-                                <img src="./assets/img/product-img/A/may-tro-thinh.jpg" alt="" class="pro-img-item">
-                            </div>
-                            <div class="grid-col-2 mtb-5px">
-                                <img src="./assets/img/product-img/A/may-tro-thinh.jpg" alt="" class="pro-img-item">
-                            </div>
-                            <div class="disabled-showing">
-                                <div class="disabled-showing-content">
-                                    NGƯNG BÁN
-                                </div> </div>
                         </div>
-                        <div class="stop_reSale" >
+                        </div>
+                        <div class="stop_reSale " >
                             <div class="btn btn-stop-pro ">Dừng bán</div>
                             <div class="btn btn-resale-pro active">Bán lại</div>
 
@@ -93,92 +87,119 @@
 
                         <div class="form-group w-50">
                             <label class="w-20" for="id">ID</label>
-                            <input type="text" size="10" class="form-control w-80" id="id" aria-describedby="emailHelp" placeholder="Enter email" value="101" disabled name="pid">
+                            <input type="text" size="10" class="form-control w-80" id="id" name="id" aria-describedby="emailHelp" placeholder="ID" value="1014" readonly>
                             <!--                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                         </div>
                         <div class="form-group w-50">
-                            <label class="w-20" for="name">Name: </label>
-                            <input type="text" class="form-control w-80" id="name" name="pname" aria-describedby="" placeholder="Enter name" value="May tro thinh">
+                            <label class="w-20" for="name">Tên: </label>
+                            <input type="text" class="form-control w-80" id="name" name="name" aria-describedby="" placeholder="Enter name" value="    Máy đo huyết áp điện tử bắp tay 4 AXD-804">
                             <!--                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                         </div>
                     </div>
-                    <div class="show-flex-row">
-                        <div class="form-group w-50">
-                            <label class="w-20" for="brand">Brand</label>
-                            <input type="text" size="10" class="form-control w-80" id="brand" name="pbrand" aria-describedby="" placeholder="Enter brand" value="Boso">
-                        </div>
-                        <div class="form-group w-50">
-                            <label class="w-20" for="country">Country: </label>
-                            <input type="text" class="form-control w-80" id="country" name="pcountry" aria-describedby="" placeholder="Enter country" value="Duc">
-                        </div>
-                    </div>
-                    <div class="form-group w-50">
-                        <label class="w-20" for="kind">Kind: </label>
-                        <input type="text" class="form-control w-80" id="kind" name="pkind" paria-describedby="" placeholder="Enter kind" value="A">
+                    <div class="form-group w-80">
+                        <label class="w-20" for="brand">Thương hiệu: </label>
+                        <select class="form-select" aria-label="Default select example" id="brand" name="brand">
+                            <option  value="5054=Wellmed">Wellmed - Đức</option><option  value="5055=Boso">Boso - Đức</option><option  value="5056=Spirit">Spirit - Đài Loan</option><option  value="5057=Wellcare">Wellcare - Đài Loan</option><option  value="5058=Sturdy">Sturdy - Đài Loan</option><option  value="5059=Philips">Philips - Mỹ</option><option  value="50510=Enno">Enno - Trung Quốc</option><option  value="50511=Dynmed">Dynmed - Trung Quốc</option><option  value="50512=Roaman">Roaman - Trung Quốc</option><option  value="50513=Reiwa">Reiwa - Nhật Bản</option><option  value="50514=Nakita">Nakita - Nhật Bản</option><option  value="50515=Fukuda">Fukuda - Nhật Bản</option><option  value="50516=Armoline">Armoline - Thổ Nhĩ Kì</option><option  value="50517=Zerone">Zerone - Hàn Quốc</option><option  value="50518=Changeui">Changeui - Hàn Quốc</option><option  value="50519=Daiwha">Daiwha - Hàn Quốc</option><option selected value="50520=Hilbro">Hilbro - Pakistan</option><option  value="50521=Vinamed">Vinamed - Việt Nam</option><option  value="50522=Pharmacity">Pharmacity - Việt Nam</option><option  value="50523=DrKare">DrKare - Đài Loan</option><option  value="50524=boso">boso - nam</option><option  value="50525=ảefv">ảefv - faersv</option><option  value="50526=edr">edr - wder</option><option  value="50527=dcf">dcf - aecf</option><option  value="50528=e">e - der</option><option  value="50529=fr">fr - er</option><option  value="50530=rf">rf - fr</option><option  value="50531=fev">fev - fev</option><option  value="50532=defv">defv - wedsv</option><option  value="50533=ad">ad - adsf</option><option  value="50534=3edr">3edr - ef</option><option  value="50535=ref">ref - re</option><option  value="50536=asx">asx - d</option><option  value="50537=sdv">sdv - ge</option><option  value="50538=ed">ed - e</option><option  value="50539=fr">fr - fr</option><option  value="50540=ef">ef - fs</option><option  value="50541=afe">afe - fre</option><option  value="50542=f">f - g</option>
+                        </select>
                     </div>
                     <div class="show-flex-row">
-                        <div class="form-group">
-                            <label  for="color">Color: </label>
-                            <input type="text" size="10" class="form-control" id="color" name="pcolor" aria-describedby="" placeholder="Enter color" value="null">
+                        <div class="form-group w-50">
+                            <label class="w-20" for="kind">Lĩnh vực: </label>
+                            <input type="text" class="form-control w-80" id="kind" name="kind" paria-describedby="" placeholder="Enter kind" value="A">
                         </div>
-                        <div class="form-group">
-                            <label for="size">Size: </label>
-                            <input type="text" class="form-control" id="size" name="psize" aria-describedby="" placeholder="Enter size" value="M">
+                        <div class="form-group w-50">
+                            <label class="w-20" for="price">Đơn giá: </label>
+                            <input type="text" class="form-control w-80" id="price" name="price" paria-describedby="" placeholder="Enter kind" value="198000.0">
                         </div>
-                        <div class="form-group">
-                            <label for="wattage">Wattage (W): </label>
-                            <input type="text" class="form-control" id="wattage" name="pwattage" aria-describedby="" placeholder="Enter wattage" value="10">
-                        </div>
-                    </div>
-                    <div id="role" class="info-container">
-                        <div class="info-container__title">
-                            <label for="role">Quyen
-                            </label>
-                        </div>
-                        <div class="info-container__content">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"name="employee" value="employee">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    employee
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked name="customer" value="customer">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    customer
-                                </label>
-                            </div>
-                        </div>
-
                     </div>
 
-                    <div class="form-group w-50">
-                        <label  class="w-20" for="amount">Amount: </label>
-                        <input type="text" class="form-control w-80" id="amount" name="pamount" aria-describedby="" placeholder="Enter amount" value="200">
+                    <div class="show-flex-row">
+                        <div class="form-group">
+                            <label  for="color">Màu sắc: </label>
+                            <input type="text" size="10" class="form-control" id="color" name="color" aria-describedby="" placeholder="Enter color" value="den">
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Kích cỡ: </label>
+                            <input type="text" class="form-control" id="size" name="size" aria-describedby="" placeholder="Enter size" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="wattage">Công suất (W): </label>
+                            <input type="text" class="form-control" id="wattage" name="wattage" aria-describedby="" placeholder="Enter wattage" value="0.0">
+                        </div>
+                    </div>
+                    <div class="form-group w-50" style="display: none;">
+                        <label  class="w-20" for="amount">Tồn kho: </label>
+                        <input type="number" class="form-control w-80" id="amount" name="amount" aria-describedby="" placeholder="Enter amount" value="141">
                     </div>
                     <div class="show-flex-row">
                         <div class="form-group w-50">
-                            <label  class="w-20" for="yearmade">Year made: </label>
-                            <input type="text" size="10" class="form-control w-80" id="yearmade" name="pyearmade"  aria-describedby="" placeholder="Enter year made" value="2022">
+                            <label  class="w-20" for="yearmade">Năm sản xuất: </label>
+                            <input type="number" size="10" class="form-control w-80" id="yearmade" name="yearmade"  aria-describedby="" placeholder="Enter year made" value="2022">
                         </div>
                         <div class="form-group w-50">
-                            <label  class="w-20"  for="dateimport">Date import: </label>
-                            <input type="date" class="form-control w-80" id="dateimport" name="pdateimport"  aria-describedby="" placeholder="Enter date import" value="20/10/2023">
+                            <label  class="w-20"  for="dateimport">Ngày nhập: </label>
+                            <input type="date" class="form-control w-80" id="dateimport" name="dateimport"  aria-describedby="" placeholder="Enter date import" value="2024-05-22">
                         </div>
 
                     </div>
                     <div class="form-group">
-                        <label class="w-20" for="img">Image url: </label>
-                        <input type="text" class="form-control" id="img" name="pimg" aria-describedby="" placeholder="Enter img url" value="afaidga.jpg">
+                        <label class="w-20" for="img">Hình ảnh: </label>
+                        <input type="text" class="form-control" id="img" name="img" aria-describedby="" placeholder="Enter img url" value="may-do-huyet-ap-dien-tu-bap-tay-wellmed-1.jpg">
                     </div>
                     <div class="form-group">
-                        <label class="w-20" for="description" class="input-title">Description</label>
-                        <textarea  type="text" class="form-control" name="description" name="pdescription" id="description" rows="6" >ayefuiogbshzdhsjkfbhgyatwevbdpf
+                        <label class="w-20" for="description" class="input-title">Mô tả</label>
+                        <textarea  type="text" class="form-control" name="description" id="description" rows="6" >Đo huyết áp tại nhà với máy đo huyết áp điện tử bắp tay Wellmed AXD-804 chắc chắn sẽ giúp bạn theo dõi chỉ số huyết áp chuẩn xác mỗi ngày. Thiết bị cung cấp các phép đo huyết áp và nhịp tim có độ chính xác chuẩn y tế với biểu hiện vạch màu theo chuẩn WHO.
+Máy đo huyết áp điện tử bắp tay Wellmed AXD-804 rất dễ sử dụng, thiết kế nhỏ gọn với màn hình LCD hiển thị thông số rõ nét. Máy đo huyết áp này có tính năng thông minh ghi nhớ 90 lần đo/người dùng cho tối đa 2 người sẽ là công cụ đắc lực để bạn theo dõi xu hướng sức khỏe của mình trong dài hạn.
+Ưu điểm và tính năng máy đo huyết áp bắp tay Wellmed
+Đo huyết áp tâm thu, tâm trương và nhịp tim bằng phương pháp đo dao động, kết quả chính xác chuẩn y tế và đáng tin cậy.
+Chức năng cảnh báo loạn nhịp tim, hiển thị với biểu tượng trên màn hình.
+Chỉ số huyết áp sau khi đo được phân loại theo vạch màu tiêu chuẩn WHO trên máy.
+Bộ nhớ lưu trữ 90 phép đo/người dùng cho tối đa 2 người, thuận tiện theo dõi sức khỏe theo thời gian.
+Khả năng tự động xác định mức độ lực bơm phù hợp khi vòng bít phồng lên để người dùng luôn thấy dễ chịu khi đo.
+Tính năng phát hiện lỗi trong quá trình đo, tự động dừng và tiến hành đo lại.
+Thiết kế đơn giản hóa, dễ sử dụng và thao tác với 3 nút ấn: khởi động, bộ nhớ và cài đặt.
+Tùy chọn đơn vị đo gồm mmHg và kPa theo nhu cầu sử dụng.
+Tự động tắt máy sau 2 phút để tiết kiệm năng lượng tối đa.
+Vòng bít có kích cỡ tiêu chuẩn 22 - 32 cm rất vừa vặn và thoải mái, phù hợp mọi người dùng.
+Màn hình LCD hiển thị rõ thông số, dễ đọc.
+Kiểu dáng nhỏ gọn, dễ dàng bỏ túi mang theo sử dụng mọi lúc mọi nơi.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </textarea>
                     </div>
+                    <div class="form-group" style="display: none">
+                        <label class="w-20" for="action" class="input-title">action</label>
+                        <input type="text" class="form-control" id="action" name="action" aria-describedby="" placeholder="Enter img url" value="update">
+
+                    </div>
+                    <div class="form-group" style="display: none">
+                        <label class="w-20" for="status" class="input-title">status</label>
+                        <input type="text" class="form-control" id="status" name="status" aria-describedby="" placeholder="Enter img url" value="1">
+
+                    </div>
+
                     <div class="show-flex-row">
                         <div class="ad_func-container">
-                            <div><a class="btn btn-third" href="adminProduct.jsp">Hủy</a></div>
+                            <div><a class="btn btn-third" href="goto-product-admin">Hủy</a></div>
                         </div>
                         <div class="ad_func-container">
                             <button class="btn btn-primary" type="submit">Lưu</button>
