@@ -40,6 +40,15 @@
   <link rel="stylesheet" href="assets/css/slidebar.css">
   <link rel="stylesheet" href="assets/css/productDetail.css">
   <title>Chi tiết sản phẩm</title>
+
+  <style>
+    .comment-section {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+  </style>
+
 </head>
 <body>
 <div>
@@ -178,10 +187,21 @@
     <!--        <div class="product-evaluate">-->
 
     <!--        </div>-->
+
+    <!-- Comment Section -->
+    <div class="comment-section">
+      <h2>Bình luận</h2>
+      <div class="fb-comments"
+           data-href="productDetail.jsp?id=<%=pu.getId()%>" data-width="1100" data-numposts="5"></div>
+    </div>
   </div>
 
+</div>
   <%@ include file="footer.jsp" %>
 </div>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0&appId=1443587996285926" nonce="nCjAkXvC"></script>
 
 <script type="module"  src="assets/js/productDetail.js"></script>
 <script>
