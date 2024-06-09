@@ -729,9 +729,7 @@ public int addPro(Product p) {
 
 
     public static void main(String[] args) {
-        System.out.println(ProductUnitDAO.getInstance().updateAmount(1,11));
-        System.out.println(ProductUnitDAO.getInstance().updateTime(1014,new Date(System.currentTimeMillis())));
-        System.out.println(ProductUnitDAO.getInstance().selectAmount(14));
+//        System.out.println(ProductUnitDAO.getInstance().selectByKindOrName("may"));
     }
 
 }

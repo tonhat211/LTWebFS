@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/adminN.css">
     <link rel="stylesheet" href="assets/css/baseN.css">
     <link rel="stylesheet" href="assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
         .password-container{
@@ -99,6 +100,33 @@
 %>
 
 <div class="ad-content mt10">
+    <div id="#message">
+        <div class="modal confirm-stop <%=status.equals("noPermission")?"active":""%>" style="z-index:99">
+            <div class="modal__overlay">
+                <div class="modal__confirm-content" onclick="event.stopPropagation()">
+                    <div class="confirm__message">
+                        <h6>Bạn chưa có quyền truy cập vào các chức năng trong trang quản trị <br/>
+                            Vui lòng liên hệ bộ phận kĩ thuật để được hỗ trợ</h6>
+                    </div>
+                    <div class="show-flex-row" style="justify-content: center">
+                        <div class="btn btn-primary confirm-btn no-confirm" style="margin-top: 20px">Cám ơn</div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function hideMessage() {
+                    $(".confirm-stop").removeClass("active");
+                    console.log("yes")
+                }
+
+                $(".modal__overlay").click(hideMessage);
+                $(".no-confirm").click(hideMessage);
+
+
+            </script>
+        </div>
+    </div>
+
     <div class="form-container" style="margin-top: 100px">
         <div class="title"><h1>Đăng nhập</h1></div>
 
@@ -172,8 +200,30 @@
         });
     });
 
+    // document.querySelector("#loginForm").addEventListener('submit', function (event){
+    //     event.preventDefault();
+    //     var data = new FormData(this);
+    //     var email = data.get("email");
+    //     var password = data.get("password");
+    //     console.log(email);
+    //
+    //     checkLogin(email,password);
+    //     console.log(password);
+    //
+    //
+    // });
 
-
+    function checkLogin(email,password) {
+        $.ajax({
+            url: "/LTWebFS/check-login",
+            method: "POST",
+            data: { email: email, password : password },
+            success: function(data) {
+                console.log(data);
+                $("#message").html(data);
+            }
+        });
+    }
 </script>
 </body>
 </html>

@@ -16,12 +16,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!--    google font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/cart.css">
-<%--    <link rel="stylesheet" href="assets/css/baseN.css">--%>
 <%--    <link href="assets/css/style.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="assets/css/modal.css">
     <link rel="stylesheet" href="assets/css/addUpdate.css">
@@ -29,6 +38,10 @@
     <link rel="stylesheet" href="assets/css/payment.css">
 
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/toast.css">
+    <script src="assets/js/toast.js"></script>
+<%--    <script src="assets/js/payment.js"></script>--%>
 </head>
 <body>
 <%
@@ -37,14 +50,6 @@
         u= new User();
     }
     ArrayList<cartitem> cartTemp = (ArrayList<cartitem>) request.getAttribute("cartTemp");
-//    String json = (String) request.getAttribute("cartTemp");
-//    Gson gson = new Gson();
-//
-//    cartitem[] cartTemp1 = gson.fromJson(json, cartitem[].class);
-//    ArrayList<cartitem> cartTemp = new ArrayList<>();
-//    for(int i =0; i<cartTemp1.length;i++) {
-//        cartTemp.add(cartTemp1[i]);
-//    }
 
     ArrayList<Address> addresses = (ArrayList<Address>) request.getAttribute("addresses");
     if(addresses.isEmpty()) {
@@ -57,64 +62,200 @@
 
 %>
 
+<script>
+    function showEditAddress(event) {
+        event.stopPropagation();
+        let addressItem = this.parentNode.parentNode.parentNode;
+        let id = addressItem.querySelector('.id').innerText;
+        let receiver = addressItem.querySelector('.receiver').innerText;
+        let phone = addressItem.querySelector('.receiver-phone').innerText;
+        let address = addressItem.querySelector('.address').innerText;
+
+        let html = '<form class="editAddressForm">'+
+            '<div class="show-flex-row" style="margin-top: 10px">'+
+            '   <input type="text"  class="form-control w-80" id="receiver" name="receiver"  aria-describedby="" placeholder="Nhập ten nguoi nhan" value="'+ receiver + '">'+
+            '   <div style="margin:0 10px"></div>'+
+            '   <input type="text" class="form-control w-80" id="phone" name="phone"  aria-describedby="" placeholder="Nhập ten nguoi nhan" value="'+ phone +'">'+
+            '</div>'+
+            '<input type="text" style="margin-top: 10px" class="form-control w-100" id="address" name="address"  aria-describedby="" placeholder="Nhập ten nguoi nhan" value="'+ address +'">'+
+            '<input type="text" class="form-control w-80" id="id" name="id"  aria-describedby="" placeholder="Nhập ten nguoi nhan" value="'+ id + '" hidden>'+
+            '<div class="show-flex-row" style="margin-top:20px">'+
+            '   <div class="ad_func-container">'+
+            '       <button class="btn btn-third" type="button" onclick="canelEditAddress()">Hủy</button>'+
+            '   </div>'+
+            '   <div class="ad_func-container">'+
+            '       <button class="btn btn-primary" type="submit">Lưu</button>'+
+            '   </div>'+
+            '</div>'+
+            '</form>'+
+            '<div class="seperate-horizontal-linear"></div>';
+
+        // reset hien thi danh sach item
+        canelEditAddress();
+
+        // hien thi edit box
+        const edits = document.querySelector('#modal_content').querySelectorAll('.address-item');
+        for(let i=0;i<edits.length;i++) {
+            if(edits[i].querySelector('.id').innerText===id) {
+                edits[i].classList.add("active");
+                edits[i].innerHTML = html;
+            }
+        }
+
+        const forms = document.querySelectorAll(".editAddressForm");
+        for(let i =0;i<forms.length;i++) {
+            forms[i].addEventListener('submit',function (event) {
+                event.preventDefault();
+                const data = new FormData(forms[i]);
+                const id = data.get("id");
+                const receiver = data.get("receiver");
+                const phone = data.get("phone");
+                const address = data.get("address");
+                const action = "update";
+                executeAddress(action,id,receiver,phone,address);
+            });
+        }
+
+        const addressItems = document.querySelector('#address-container').querySelectorAll('.address-item');
+        console.log(addressItems);
+        for(let i=0; i<addressItems.length;i++) {
+            addressItems[i].addEventListener('click', function () {
+                console.log("yes item");
+                let receiver = this.querySelector('.receiver');
+                let phone = this.querySelector('.phone');
+                let address = this.querySelector('.address');
+                changeAddress(receiver,phone,address);
+                hideAddresses();
+            });
+        }
+
+
+
+
+    }
+
+    function canelEditAddress() {
+        // reset hien thi danh sach item
+        let modal = document.querySelector('#modal_content');
+        modal.innerHTML= addressListHtml;
+    }
+
+    function showAddAddress() {
+        let html = ' <div class="address-item active">' +
+            '<form class="editAddressForm">'+
+            '<div class="show-flex-row" style="margin-top: 10px">'+
+            '   <input type="text"  class="form-control w-80" id="receiver" name="receiver"  aria-describedby="" placeholder="Nhập tên người nhận" value="">'+
+            '   <div style="margin:0 10px"></div>'+
+            '   <input type="text" class="form-control w-80" id="phone" name="phone"  aria-describedby="" placeholder="Nhập số điện thoại người nhận" value="">'+
+            '</div>'+
+            '<input type="text" style="margin-top: 10px" class="form-control w-100" id="address" name="address"  aria-describedby="" placeholder="Nhập địa chỉ nhận hàng" value="">'+
+            '<input type="text" class="form-control w-80" id="id" name="id"  aria-describedby="" placeholder="Nhập id người nhận" value="" hidden>'+
+            '<div class="show-flex-row" style="margin-top:20px">'+
+            '   <div class="ad_func-container">'+
+            '       <button class="btn btn-third" type="button" onclick="canelEditAddress()">Hủy</button>'+
+            '   </div>'+
+            '   <div class="ad_func-container">'+
+            '       <button class="btn btn-primary" type="submit">Thêm</button>'+
+            '   </div>'+
+            '</div>'+
+            '</form>'+
+            '<div class="seperate-horizontal-linear"></div>'+
+            '</div>';
+
+        canelEditAddress();
+
+        const addressContainer = document.querySelector('#add-address-container');
+        addressContainer.innerHTML = html;
+
+        const showAddAddressBtn = document.querySelector('.confirm__message .yes-confirm');
+        showAddAddressBtn.disabled = true;
+
+        const form = document.querySelector('#add-address-container .editAddressForm');
+        console.log(form);
+        form.addEventListener('submit',function (event) {
+            event.preventDefault();
+            const data = new FormData(this);
+            const id = data.get("id");
+            console.log(id);
+            const receiver = data.get("receiver");
+            const phone = data.get("phone");
+            const address = data.get("address");
+            console.log(address);
+            const action = "add";
+            executeAddress(action,id,receiver,phone,address);
+        });
+
+    }
+
+    function executeAddress(action, id, receiver, phone, address) {
+        $.ajax({
+            url: "/LTWebFS/address-management",
+            method: "POST",
+            data: {action: action, id: id, receiver: receiver, phone: phone, address: address},
+            success: function(data) {
+                if(action==="update")
+                    showSuccessToast("Cập nhật địa chỉ thành công");
+                else if(action==="add")
+                    showSuccessToast("Thêm địa chỉ thành công");
+                $('#modal_content').html(data);
+            }
+        });
+    }
+
+    function changeAddress() {
+        if(!this.classList.contains("active")) {
+            let receiver = this.querySelector('.receiver').innerText;
+            let phone = this.querySelector('.receiver-phone').innerText;
+            let address = this.querySelector('.address').innerText;
+
+            const container = document.querySelector('.address-info-showing');
+            container.querySelector('.sp-receiver').innerText = receiver;
+            container.querySelector('.sp-phone').innerText = phone;
+            container.querySelector('.sp-address').innerText = address;
+
+            container.querySelector('.ip-receiver').value = receiver;
+            container.querySelector('.ip-phone').value = phone;
+            container.querySelector('.ip-address').value = address;
+
+            hideModal();
+        }
+
+
+    }
+
+
+
+
+</script>
+
 
 <main id="main" class="main">
     <%@ include file="header.jsp" %>
-    <div class="ad_content">
-        <div class="modal confirm-stop">
+    <div class="ad_content"  style="padding: 10px">
+        <div id="toast">
+
+        </div>
+        <div class="modal confirm-stop  " style="z-index: 9">
             <div class="modal__overlay">
-                <div class="modal__confirm-content" onclick="event.stopPropagation()">
-                    <div class="confirm__message">
-                        <p>Them dia chi</p>
-                    </div>
-                    <form action="add-address" method="post" id="addressForm">
-                        <div class="form-group w-50">
-                            <label  class="w-20"  for="receiver">Ten nguoi nhan: </label>
-                            <input type="text" class="form-control w-80" id="receiver" name="receiver"  aria-describedby="" placeholder="Nhập ngày sinh">
-                            <div class="error" hidden></div>
-
-                        </div>
-                        <div class="form-group w-50">
-                            <label  class="w-20"  for="phone">So dien thoai: </label>
-                            <input type="text" class="form-control w-80" id="phone" name="phone"  aria-describedby="" placeholder="Nhập ngày sinh">
-                            <div class="error" hidden></div>
-
-                        </div>
-                        <div class="form-group w-50">
-                            <label  class="w-20"  for="address">Dia chi: </label>
-                            <input type="text" class="form-control w-80" id="address" name="address"  aria-describedby="" placeholder="Nhập ngày sinh">
-                            <div class="error" hidden></div>
-
-                        </div>
-                        <div class="show-flex-row">
-                            <a class="btn btn-primary confirm-btn yes-confirm" href="add-address">Them</a>
-                            <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
-                        </div>
-
-                    </form>
+                <div class="modal__confirm-content" id="modal_content" onclick="event.stopPropagation()" style="top:40px;">
 
 
                 </div>
             </div>
         </div>
-        <form action="order" method="post">
+
+        <form action="order" method="get">
             <h2>Thanh toán</h2>
             <div class="seperate-horizontal-linear"></div>
-            <div class="info-container">
+            <div class="info-container address-info-showing">
                 <h3>Địa chỉ nhận hàng</h3>
                 <div class="show-flex-row">
-                    <div class="info-item"><span><%=addresses.get(0).getReceiver()%></span><span><%=addresses.get(0).getPhone()%></span><span><%=addresses.get(0).getAddress()%></span></div>
-                    <input type="text" name="receiver" value="<%=addresses.get(0).getReceiver()%>" style="display: none">
-                    <input type="text" name="phone" value="<%=addresses.get(0).getPhone()%>" style="display: none">
-                    <input type="text" name="address" value="<%=addresses.get(0).getAddress()%>" style="display: none">
-                    <div id="changeAddress" style="position: relative" onclick="event.stopPropagation()">Thay đổi
-                        <ul class="sub-nav">
-                            <li><a href="#">Merchandise</a></li>
-                            <li><a href="#">Extras</a></li>
-                            <li><a href="#">Media</a></li>
-                            <li><a class="add-address">Them dia chi</a></li>
+                    <div class="info-item"><span class="sp-receiver"><%=addresses.get(0).getReceiver()%></span><span class="sp-phone"><%=addresses.get(0).getPhone()%></span><span class="sp-address"><%=addresses.get(0).getAddress()%></span></div>
+                    <input type="text" class="ip-receiver" name="receiver" value="<%=addresses.get(0).getReceiver()%>" style="display: none">
+                    <input type="text" class="ip-phone" name="phone" value="<%=addresses.get(0).getPhone()%>" style="display: none">
+                    <input type="text" class="ip-address" name="address" value="<%=addresses.get(0).getAddress()%>" style="display: none">
+                    <div id="changeAddress" onclick="event.stopPropagation()">Thay đổi
 
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -194,7 +335,6 @@
                 </div>
             </div>
         </form>
-
     </div>
     <%@ include file="footer.jsp" %>
 
@@ -236,6 +376,50 @@
     $('#changeAddress').click(showAddresses);
 
     $('.add-address').click(showModal);
+
+
+    const addressItems = document.querySelectorAll(".address-item");
+    for (let i = 0; i < addressItems.length; i++) {
+        var id = addressItems[i].querySelector('.id').innerText;
+        var receiver = addressItems[i].querySelector('.receiver').innerText;
+        var phone = addressItems[i].querySelector('.receiver-phone').innerText;
+        var address = addressItems[i].querySelector('.address').innerText;
+
+    }
+
+    const editIs = document.querySelectorAll(".editBtn i");
+    for(let i=0; i< editIs.length;i++) {
+        editIs[i].addEventListener('click',function (event){
+            event.preventDefault();
+        });
+    }
+
+
+    const editAddressBtns = document.querySelectorAll(".editBtn");
+    for(let i=0; i< editAddressBtns.length;i++) {
+        editAddressBtns[i].addEventListener('click', function () {
+
+        });
+    }
+
+    $('#changeAddress').click(showAddressList);
+    let addressListHtml;
+    function showAddressList() {
+
+        $.ajax({
+            url: "/LTWebFS/address-management?action=init",
+            method: "POST",
+            // data: { action: action},
+            success: function(data) {
+                // console.log(action);
+                $('.modal').addClass("active");
+                $('#modal_content').html(data);
+                addressListHtml = data;
+            }
+        });
+
+
+    }
 
 </script>
 

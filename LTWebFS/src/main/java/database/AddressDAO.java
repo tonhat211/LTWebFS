@@ -42,7 +42,24 @@ public class AddressDAO implements IDAO<Address> {
 
     @Override
     public int update(Address a) {
-        return 0;
+        int re =0;
+        try{
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "update addresses set receiver = ?, phone =?, address =? where id = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1,a.getReceiver());
+            pst.setString(2,a.getPhone());
+            pst.setString(3,a.getAddress());
+            pst.setInt(4,a.getId());
+            re = pst.executeUpdate();
+
+            JDBCUtil.closeConnection(conn);
+            return re;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -70,7 +87,7 @@ public class AddressDAO implements IDAO<Address> {
                 String phone = rs.getString("phone");
                 String address = rs.getString("address");
 
-                res =  new Address(user,receiver,phone,address);
+                res =  new Address(id,user,receiver,phone,address);
             }
 
             JDBCUtil.closeConnection(conn);
@@ -91,12 +108,13 @@ public class AddressDAO implements IDAO<Address> {
             pst.setInt(1,userID);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
-                int user = rs.getInt("userID");
+                int id = rs.getInt("id");
+//                int user = rs.getInt("userID");
                 String receiver = rs.getString("receiver");
                 String phone = rs.getString("phone");
                 String address = rs.getString("address");
 
-                res.add(new Address(user,receiver,phone,address));
+                res.add(new Address(id,userID,receiver,phone,address));
             }
 
             JDBCUtil.closeConnection(conn);

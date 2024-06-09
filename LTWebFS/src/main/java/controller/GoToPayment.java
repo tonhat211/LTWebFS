@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/goto-payment")
+@WebServlet("/payment")
 public class GoToPayment extends HttpServlet {
 
     public void destroy() {

@@ -19,8 +19,7 @@
     <!-- Favicons -->
     <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
-    <!--  <link href="assets/img/favicon.png" rel="icon">-->
-    <!--  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -80,15 +79,13 @@
             <div class="ad_header">
 
                 <div class="show-flex-row" style="width: 100%; align-items: center">
-                    <form class="ad_find-container" action="admin-search" method="get">
-                        <input type="text" placeholder="Nhập tên hoặc nhóm" class="ad_find-input" name="search" value="<%=adminCurrentSearch%>">
+                    <form class="ad_find-container" action="admin-search" method="get" id="searchForm">
+                        <input type="text" placeholder="Nhập tên hoặc nhóm" class="ad_find-input" name="input" value="<%=adminCurrentSearch%>">
                         <input type="text" style="display: none" placeholder="Nhập tên hoặc nhóm" class="ad_find-input" name="object" value="customer" readonly>
                         <button class="ad_find-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                     <div>
-                        <a class="ad_btn-control btn-up-pro" href="goto-add-customer?status=0">Thêm khách hàng</a>
-<%--                        <a class="ad_btn-control btn-up-pro" href="addUpdate-customer?action=add">Thêm khách hàng</a>--%>
-
+                        <a class="ad_btn-control btn-up-pro" href="customer?action=prepareAdd">Thêm khách hàng</a>
                     </div>
 
                 </div>
@@ -108,7 +105,7 @@
                     <th scope="col">Thao tác</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="customer-container">
                 <%
                     for(int i=0; i<customerList.size();i++) {
                 %>
@@ -124,7 +121,7 @@
                     <td><a href="goto-history-buying?cusID=<%=customerList.get(i).getId()%>">Lịch sử mua hàng</a></td>
 
 
-                    <td><a class="btn-update-product" href="goto-update-customer?id=<%=customerList.get(i).getId()%>">Cập nhật</a></td>
+                    <td><a class="btn-update-product" href="customer?action=prepareUpdate&&id=<%=customerList.get(i).getId()%>">Cập nhật</a></td>
                 </tr>
                 <%
                     }
@@ -137,6 +134,28 @@
 
     </div>
 
+    <script>
+        document.querySelector("#searchForm").addEventListener('submit',function (event){
+            event.preventDefault();
+            var data = new FormData(this);
+            var input = data.get("input");
+            var action ="search";
+            searchCustomer(action, input);
+
+        });
+
+        function searchCustomer(action, input) {
+            $.ajax({
+                url: "/LTWebFS/customer",
+                method: "GET",
+                data: {action: action, input: input},
+                success: function(data) {
+                    $("#customer-container").html(data);
+
+                }
+            });
+        }
+    </script>
 
 </main><!-- End #main -->
 
@@ -148,7 +167,6 @@
 <!-- Template Main JS File -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/main.js"></script>
-<script src="assets/js/adCus.js"></script>
 <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/chart.js/chart.umd.js"></script>

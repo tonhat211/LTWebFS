@@ -37,6 +37,20 @@ public class User {
         this.orderDate = orderDate;
     }
 
+
+    public User(int id, String name, String email, String pwd, int level, String phone, String address, String info, Datee dateIn, int available) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.pwd = pwd;
+        this.level = level;
+        this.phone = phone;
+        this.address = address;
+        this.info = info;
+        this.dateIn = dateIn;
+        this.available = available;
+    }
+
     public User(int id, String name, String email, String pwd, int level, String phone, String address, int branchID, String info, Datee dateIn, Datee dateOut, int available, String role) {
         this.id = id;
         this.name = name;

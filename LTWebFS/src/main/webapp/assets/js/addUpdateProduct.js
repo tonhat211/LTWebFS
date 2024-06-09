@@ -44,7 +44,6 @@ $(document).ready(function() {
             method: "POST",
             // data: { action: action, id : id },
             success: function(data) {
-                console.log(data);
                 if(data === "stopped") {
                     document.querySelector(".disabled-showing").classList.add("active");
                     document.querySelector(".btn-resale-pro").classList.add("active");
@@ -80,7 +79,6 @@ $(document).ready(function() {
         var dateimport = formData.get("dateimport");
         var img = formData.get("img");
         var description = formData.get("description");
-        console.log("Trc uoc ajax");
         if(action==="update")
             updateProduct(action,id, name, brand, kind, color, size, wattage, price, amount, yearmade, dateimport, img, description);
         else {
@@ -93,9 +91,8 @@ $(document).ready(function() {
     });
 
     function updateProduct(action,id, name, brand, kind, color, size, wattage, price, amount, yearmade, dateimport, img, description) {
-        console.log("chuan bi ajax");
         $.ajax({
-            url: "/LTWebFS/addUpdate-product",
+            url: "/LTWebFS/admin-product",
             method: "POST",
             data: {
                 action:action,

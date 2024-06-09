@@ -17,7 +17,8 @@ public class EmployeeDAO implements IDAO<Employee> {
         try {
             Connection conn = JDBCUtil.getConnection();
 
-            String sql = "insert into users values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
+            String sql = "insert into users (id,name,email,pwd,level,phone,address,branchID,info,dateIn,dateOut,available,role) " +
+                    " values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, employee.getId());
             pst.setString(2, employee.getName());
@@ -34,7 +35,6 @@ public class EmployeeDAO implements IDAO<Employee> {
             pst.setString(13, employee.getRole());
 
             re = pst.executeUpdate();
-
 //            System.out.println(re + " dong da duoc them vao");
             JDBCUtil.closeConnection(conn);
             return employee.getId();
@@ -69,8 +69,36 @@ public class EmployeeDAO implements IDAO<Employee> {
             throw new RuntimeException(ex);
         }
     }
+    public int updateInfo(Employee e) {
+        int re=0;
+        try {
+
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "update users set name = ?, email = ?, phone = ?, address = ?, info =? where id =?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1,e.getName());
+            pst.setString(2,e.getEmail());
+            pst.setString(3,e.getPhone());
+            pst.setString(4,e.getAddress());
+            pst.setString(5,e.getInfo());
+            pst.setInt(6, e.getId());
+            re = pst.executeUpdate();
+            return re;
+
+        } catch (SQLException ex) {
+            // TODO: handle exception
+            throw new RuntimeException(ex);
+        }
+    }
 
     public int updateEmployee(Employee e, Image i) {
+        int re= 0;
+        re+= this.update(e);
+        re+= ImageDAO.getInstance().update(i);
+        return re;
+    }
+
+    public int updateEmployeeInfo(Employee e, Image i) {
         int re= 0;
         re+= this.update(e);
         re+= ImageDAO.getInstance().update(i);
@@ -275,11 +303,7 @@ public class EmployeeDAO implements IDAO<Employee> {
 
     public static void main(String[] args) {
 
-//        System.out.println(EmployeeDAO.getInstance().selectByNameOrEmailOrPhone("hcm"));
-        System.out.println(EmployeeDAO.getInstance().selectById(3035));
-        Employee e = EmployeeDAO.getInstance().selectById(3035);
-        e.setName("too minhh nhatt");
-        System.out.println(EmployeeDAO.getInstance().update(e));
-
+        Employee e = new Employee(30327, "Tô Minh Nhật", "pharmacity@gmail.com", "4848485049484948", 1, "0587044673","", 1, "===", new Datee(2024,6,5), 0,"");
+        System.out.println(EmployeeDAO.getInstance().insert(e));
     }
 }

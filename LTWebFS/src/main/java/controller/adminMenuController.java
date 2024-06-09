@@ -25,16 +25,14 @@ public class adminMenuController extends HttpServlet {
         String currentMenu;
         String menu = request.getParameter("adminMenu");
         HttpSession session = request.getSession();
-        System.out.println("da goi duoc menu controller, tham so truyen vao la: "+ menu);
 
         RequestDispatcher rd;
         switch (menu){
             case "dashboard": {
                 currentMenu = "dashboard";
-//                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
-                System.out.println("dang o menu controoler");
-                rd = getServletContext().getRequestDispatcher("/goto-dashboard-admin");
+                rd = getServletContext().getRequestDispatcher("/dashboard?action=init");
+//                rd = getServletContext().getRequestDispatcher("/goto-dashboard-admin");
                 rd.forward(request, response);
                 break;
             }
@@ -42,7 +40,7 @@ public class adminMenuController extends HttpServlet {
                 currentMenu = "customer";
 //                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
-                rd = getServletContext().getRequestDispatcher("/goto-customer-admin");
+                rd = getServletContext().getRequestDispatcher("/customer?action=init");
                 rd.forward(request, response);
                 break;
             }
@@ -50,7 +48,7 @@ public class adminMenuController extends HttpServlet {
                 currentMenu = "employee";
 //                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
-                rd = getServletContext().getRequestDispatcher("/goto-employee-admin");
+                rd = getServletContext().getRequestDispatcher("/employee?action=init");
                 rd.forward(request, response);
                 break;
             }
@@ -59,7 +57,7 @@ public class adminMenuController extends HttpServlet {
 //                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
                 session.removeAttribute("adminCurrentSearchProduct");
-                rd = getServletContext().getRequestDispatcher("/goto-product-admin");
+                rd = getServletContext().getRequestDispatcher("/admin-product?action=init");
                 rd.forward(request, response);
                 break;
             }
@@ -91,6 +89,7 @@ public class adminMenuController extends HttpServlet {
 
 
         }
+
 
 
 

@@ -19,8 +19,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-@WebServlet("/addUpdate-employee")
-public class AddUpdateEmployeeControl extends HttpServlet {
+@WebServlet("/employee")
+public class AdminEmployeeControl extends HttpServlet {
 
     public void destroy() {
     }
@@ -37,6 +37,129 @@ public class AddUpdateEmployeeControl extends HttpServlet {
         if(action  !=  null){
             action = action.toUpperCase();
             switch(action){
+                case "INIT": {
+
+                    ArrayList<Employee> employeeList = EmployeeDAO.getInstance().selectAll();
+
+                    request.setAttribute("employeeList", employeeList);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminEmployee.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
+                case "SEARCH": {
+                    String input = request.getParameter("input");
+                    ArrayList<Employee> employeeList = EmployeeDAO.getInstance().selectByNameOrEmailOrPhone(input);
+                    request.setAttribute("employeeList", employeeList);
+                    request.setAttribute("currentSearch",input);
+                    
+                    String html ="";
+                    for(int i=0; i<employeeList.size();i++) {
+                        html +="           <tr class=\""+ (i%2==0 ?"roww" :"") +"\"  onclick=\"showDetail("+employeeList.get(i).getId()+")\">\n" +
+                                "                            <td style=\"height: 100px\" ><img src=\"./assets/img/employee/"+employeeList.get(i).getImgurl()+"\" alt=\"\" style=\"height: 100%\"></td>\n" +
+                                "                            <td>"+employeeList.get(i).getName() +"</td>\n" +
+                                "                            <td>"+employeeList.get(i).getEmail() +" <br> "+employeeList.get(i).getPhone()+" <br> "+employeeList.get(i).getAddress() +" </br></td>\n" +
+                                "                            <td>"+employeeList.get(i).getPosition() +"<br> "+employeeList.get(i).getArea()+"</td>\n" +
+                                "                            <td>"+employeeList.get(i).getBranch() +"</td>\n" +
+                                "                            <td><a href=\"employee?action=prepareUpdate&&id="+employeeList.get(i).getId()+"\">Cập nhật</a></td>\n" +
+                                "                        </tr>";
+                    }
+
+                    response.setContentType("text/html");
+                    response.setCharacterEncoding("UTF-8");
+                    response.getWriter().write(html);
+                    break;
+                }
+
+                case "SHOWINFO": {
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    Employee e = EmployeeDAO.getInstance().selectById(id);
+                    String html="<div class=\"confirm__message\">" +
+                            "       <div class=\"info-container\">" +
+                            "           <div class=\"info-container__title\">" +
+                            "               <img class=\"w-50\" src=\"./assets/img/employee/"+e.getImgurl()+"\" alt=\"\">" +
+                            "           </div>" +
+                            "           <div class=\"info-container__content\">" +
+                            "               <h6 style=\"font-size: 30px\">"+e.getName()+"</h6>" +
+                            "               <p>Chức vụ: <span>"+e.getPosition()+"</span></p>" +
+                            "               <p>Phòng ban: <span>"+e.getArea()+"</span></p>" +
+                            "           </div>" +
+                            "       </div>" +
+                            "   <div class=\"info-container\">" +
+                            "       <div class=\"info-container__title\">" +
+                            "           <p>Thông tin liên hệ:</p>" +
+                            "       </div>" +
+                            "       <div class=\"info-container__content\">" +
+                            "           <p>Email: <span>"+e.getEmail()+"</span></p>" +
+                            "           <p>Số điện thoại: <span>"+e.getPhone()+"</span></p>" +
+                            "           <p>Chi nhánh công tác: <span>"+e.getBranch()+"</span></p>" +
+                            "       </div>" +
+                            "   </div>" +
+                            "   <div class=\"info-container\">" +
+                            "       <div class=\"info-container__title\">" +
+                            "           <p>Thông tin công tác:</p>" +
+                            "       </div>" +
+                        "           <div class=\"info-container__content\">" +
+                            "           <p>Ngày vào làm: <span>"+e.getDatein()+"</span></p>" +
+                            "       </div>" +
+                            "   </div>" +
+                            "   <div class=\"info-container\">" +
+                            "       <div class=\"info-container__title\">" +
+                            "           <p>Thông tin cá nhân:</p>" +
+                            "       </div>" +
+                            "       <div class=\"info-container__content\">" +
+                            "           <p>Giới tính: <span>"+e.getSex()+"</span></p>" +
+                            "           <p>Ngày sinh: <span>"+e.getBirthday()+"</span></p>" +
+                        "               <p>Địa chỉ nơi ở hiện tại: <span>"+e.getAddress()+"</span></p>" +
+                            "       </div>" +
+                            "   </div>" +
+                            "</div>";
+                    response.setContentType("text/html");
+                    response.setCharacterEncoding("UTF-8");
+                    response.getWriter().write(html);
+                    break;
+
+                }
+                case "PREPAREUPDATE": {
+                    String idString = (String) request.getParameter("id");
+                    int id = Integer.parseInt(idString);
+                    Employee e = EmployeeDAO.getInstance().selectById(id);
+                    String status = (String) request.getAttribute("status");
+                    request.setAttribute("employee", e);
+                    request.setAttribute("branchList", branches);
+                    request.setAttribute("status",status);
+
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateEmployee.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
+                case "PREPAREADD": {
+                    int id = UserDAO.getInstance().selectTheMaxID();
+
+            //        xu ly bug id
+            //        3039 -> 3040 sai
+            //        3039 -> 30310 dung
+                    String idString = String.valueOf(id);
+                    if(idString.length() ==4 && idString.endsWith("9")){
+                        idString = idString.substring(0,idString.length()-1) + "10";
+
+                        id = Integer.valueOf(idString);
+                    } else {
+                        id = id +1;
+                    }
+
+                    Employee e = new Employee(id);
+                    e.setLevel(1);
+
+                    request.setAttribute("branchList", branches);
+                    request.setAttribute("employee", e);
+                    request.setAttribute("action","add");
+                    request.setAttribute("status","");
+
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateEmployee.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
+
                 case  "LOCK":{
                     int idin = Integer.parseInt(request.getParameter("id"));
                     Employee e = EmployeeDAO.getInstance().selectById(idin);
@@ -202,15 +325,14 @@ public class AddUpdateEmployeeControl extends HttpServlet {
                     String[] birthdayTokens = birthday.split("-");
                     String pwd;
                     if(birthday.equalsIgnoreCase(""))
-                        pwd="01012000";
+                        pwd="000000";
                     else
                         pwd = birthdayTokens[2] + birthdayTokens[1] + birthdayTokens[0];
                     String pwdEncoded = User.encodePwd(pwd);
-
                     int level =1;
-
                     Image i = new Image(imgurl,idin);
-                    Employee e = new Employee(idin,name,email,pwdEncoded,level,phone,address,branchID,branch,info,dateinDatee,null,0,0,imgurl,role);
+//                    Employee e = new Employee(30327, "Tô Minh Nhật", "pharmacity@gmail.com", "4848485049484948", 1, "0587044673","", 1, "===", new Datee(2024,6,5), 0,"");
+                    Employee e = new Employee(idin,name,email,pwdEncoded,level,phone,address,branchID,info,dateinDatee,0,role);
 
                     EmployeeDAO.getInstance().insertEmployee(e,i);
 

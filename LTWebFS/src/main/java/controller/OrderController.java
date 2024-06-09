@@ -71,7 +71,7 @@ public class OrderController extends HttpServlet {
         LogDAO.getInstance().insert(log);
 
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-cart");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/cart");
         rd.forward(request, response);
 
     }

@@ -59,7 +59,7 @@
     <%@ include file="header.jsp" %>
     <div class="ad_content" style="margin-top: 110px">
         <div class="cart__container">
-            <form action="goto-payment" method="post" id="myForm">
+            <form action="payment" method="post" id="myForm">
                 <div class="grid">
                     <div class="grid__row">
                         <div class="grid-col-9">

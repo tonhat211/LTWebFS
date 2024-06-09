@@ -28,52 +28,56 @@ public class LoginControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        boolean isAdmin = false;
-        HttpSession session = request.getSession();
-        User userloging=null;
-        int isExist = UserDAO.getInstance().checkExistUser(email);
-
-//        neu user ton tai
-        if(isExist!=0){
-//            kiem tra dang nhap
-            User u = UserDAO.getInstance().selectByEmailAndPwd(email,password);
-//            dang nhap thanh cong
-            if(u != null) {
-                isAdmin = u.isAdmin();
-                userloging = u;
-                session.setAttribute("userloging",userloging);
-
-                 if(isAdmin) {
-                     System.out.println("dang o login, cbi di den dashboard");
-                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-dashboard-admin");
-                     rd.forward(request, response);
-                 } else {
-                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/get-all-product");
-                     rd.forward(request, response);
-                 }
-            }
-//            dang nhap khong thanh cong
-            else {
-//                userloging = null;
-                session.setAttribute("userloging",null);
-                request.setAttribute("status","loginFailed");
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
-                rd.forward(request, response);
-            }
-        }
-//        tai khoan khong ton tai
-        else {
-            session.setAttribute("userloging",null);
-            request.setAttribute("status","notUser");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
-            rd.forward(request, response);
-        }
-
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String email = request.getParameter("email");
+//        String password = request.getParameter("password");
+//        boolean isAdmin = false;
+//        HttpSession session = request.getSession();
+//        User userloging=null;
+//        int isExist = UserDAO.getInstance().checkExistUser(email);
+//
+////        neu user ton tai
+//        if(isExist!=0){
+////            kiem tra dang nhap
+//            User u = UserDAO.getInstance().selectByEmailAndPwd(email,password);
+////            dang nhap thanh cong
+//            if(u != null) {
+//                isAdmin = u.isAdmin();
+//                userloging = u;
+//                session.setAttribute("userloging",userloging);
+//
+//                 if(isAdmin) {
+//                     String roles = u.getRole();
+//                     String[] roleToken = roles.split("=");
+//                     if(roles==null || roleToken.length==0) {
+//                         request.setAttribute("status","noPermission");
+//                         RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
+//                         rd.forward(request, response);
+//                     } else {
+//                         RequestDispatcher rd = getServletContext().getRequestDispatcher("/"+roleToken[0]+"?action=init");
+//                         rd.forward(request, response);
+//                     }
+//
+//                 } else {
+//                     RequestDispatcher rd = getServletContext().getRequestDispatcher("/get-all-product");
+//                     rd.forward(request, response);
+//                 }
+//            }
+////            dang nhap khong thanh cong
+//            else {
+////                userloging = null;
+//                session.setAttribute("userloging",null);
+//                request.setAttribute("status","loginFailed");
+//                RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
+//                rd.forward(request, response);
+//            }
+//        }
+////        tai khoan khong ton tai
+//        else {
+//            session.setAttribute("userloging",null);
+//            request.setAttribute("status","notUser");
+//            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
+//            rd.forward(request, response);
+//        }
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -149,34 +153,42 @@ public class LoginControl extends HttpServlet {
                             String url = "/goto-dashboard-admin";
                             String currentMenu = "dashboard";
                             if(roles!=null) {
-                                String firstRole = roles.split("=")[0];
-                                switch (firstRole) {
-                                    case "employee" :{
-                                        url = "/goto-employee-admin";
-                                        currentMenu = "employee";
-                                        break;
-                                    }
-                                    case "customer" :{
-                                        url = "/goto-customer-admin";
-                                        currentMenu = "customer";
-                                        break;
-                                    }
-                                    case "dashboard" :{
-                                        url = "/goto-dashboard-admin";
-                                        currentMenu = "dashboard";
-                                        break;
-                                    }
-                                    case "product" :{
-                                        url = "/goto-product-admin";
-                                        currentMenu = "product";
-                                        break;
-                                    }
-                                    case "order" :{
-                                        url = "/goto-product-admin";
-                                        currentMenu = "product";
-                                        break;
+                                if(roles.split("=").length==0) {
+                                    request.setAttribute("status","noPermission");
+                                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
+                                    rd.forward(request, response);
+                                } else {
+                                    String firstRole = roles.split("=")[0];
+
+                                    switch (firstRole) {
+                                        case "employee" :{
+                                            url = "/goto-employee-admin";
+                                            currentMenu = "employee";
+                                            break;
+                                        }
+                                        case "customer" :{
+                                            url = "/goto-customer-admin";
+                                            currentMenu = "customer";
+                                            break;
+                                        }
+                                        case "dashboard" :{
+                                            url = "/dashboard?action=init";
+                                            currentMenu = "dashboard";
+                                            break;
+                                        }
+                                        case "product" :{
+                                            url = "/goto-product-admin";
+                                            currentMenu = "product";
+                                            break;
+                                        }
+                                        case "order" :{
+                                            url = "/goto-product-admin";
+                                            currentMenu = "product";
+                                            break;
+                                        }
                                     }
                                 }
+
                             }
 
 
@@ -250,6 +262,40 @@ public class LoginControl extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
         }
+
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+
+    public String renderMessage() {
+        String html="";
+        html="        <div class=\"modal confirm-stop active\" style=\"z-index:99\">\n" +
+                "            <div class=\"modal__overlay\">\n" +
+                "                <div class=\"modal__confirm-content\" onclick=\"event.stopPropagation()\">\n" +
+                "                    <div class=\"confirm__message\">\n" +
+                "                        <h6>Bạn chưa có quyền truy cập vào các chức năng trong trang quản trị <br/>\n" +
+                "                            Vui lòng liên hệ bộ phận kĩ thuật để được hỗ trợ</h6>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"show-flex-row\" style=\"justify-content: center\">\n" +
+                "                        <div class=\"btn btn-primary confirm-btn no-confirm\" style=\"margin-top: 20px\">Cám ơn</div>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "            </div>\n" +
+                "            <script>\n" +
+                "                function hideMessage() {\n" +
+                "                    $(\".confirm-stop\").removeClass(\"active\");\n" +
+                "                    console.log(\"yes\")\n" +
+                "                }\n" +
+                "\n" +
+                "                $(\".modal__overlay\").click(hideMessage);\n" +
+                "                $(\".no-confirm\").click(hideMessage);\n" +
+                "\n" +
+                "\n" +
+                "            </script>\n" +
+                "        </div>";
+        return html;
     }
 
 
