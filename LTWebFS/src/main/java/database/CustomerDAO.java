@@ -13,8 +13,62 @@ public class CustomerDAO implements IDAO<Customer> {
     }
 
     @Override
-    public int insert(Customer customer) {
-        return 0;
+    public int insert(Customer u){
+        int re=0;
+        try {
+
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "insert into users (id,name,email,pwd,level,phone,address,info,dateIn,available) values (?,?,?,?,?,?,?,?,?,?);";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, u.getId());
+            pst.setString(2, u.getName());
+            pst.setString(3, u.getEmail());
+            pst.setString(4, u.getPwd());
+            pst.setInt(5, u.getLevel());
+            pst.setString(6, u.getPhone());
+            pst.setString(7, u.getAddress());
+            pst.setString(8, u.getInfo());
+            pst.setString(9, u.getDateIn().getDateInMonthDayYearSql());
+            pst.setInt(10, u.getAvailable());
+
+            re = pst.executeUpdate();
+
+            System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return u.getId();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int insertCustomer(User u){
+        int re=0;
+        try {
+
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "insert into users (id,name,email,pwd,level,phone,address,info,dateIn,available) values (?,?,?,?,?,?,?,?,?,?);";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, u.getId());
+            pst.setString(2, u.getName());
+            pst.setString(3, u.getEmail());
+            pst.setString(4, u.getPwd());
+            pst.setInt(5, u.getLevel());
+            pst.setString(6, u.getPhone());
+            pst.setString(7, u.getAddress());
+            pst.setString(8, u.getInfo());
+            pst.setString(9, u.getDateIn().getDateInMonthDayYearSql());
+            pst.setInt(10, u.getAvailable());
+
+            re = pst.executeUpdate();
+
+            System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return u.getId();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -104,21 +158,7 @@ public class CustomerDAO implements IDAO<Customer> {
 
 
     public static void main(String[] args) {
-//        System.out.println(CustomerDAO.getInstance().getUnbackCus(0,0,4));
-        Map<User, Order> recentCustomer = CustomerDAO.getInstance().getRecentCustomer(5);
-//        System.out.println(recentCustomer);
-        String html="";
-        for (Map.Entry<User, Order> entry : recentCustomer.entrySet()) {
-
-            html += " <div class=\"activity-item d-flex\">\n" +
-                    "                                    <div class=\"activity-content\">\n" +
-                    "                                        "+entry.getKey().getId() + " | " + entry.getKey().getName()+"<br/>\n" +
-                    "                                        <a href=\"#\" class=\"fw-bold text-dark\">Mã đơn hàng: "+entry.getValue()+"</a> <br/>\n" +
-//                    "                                       "+entry.getValue().getDateSet() + " | " + entry.getValue().getTimeSet()+"\n" +
-                    "                                    </div>\n" +
-                    "                                </div>";
-
-        }
-        System.out.println(html);
+        String t = "====";
+        System.out.println(t.split("=")[0]);
     }
 }

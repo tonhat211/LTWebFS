@@ -1,8 +1,8 @@
 package controller;
 
+import database.CustomerDAO;
+import database.EmployeeDAO;
 import database.LogDAO;
-import database.ProductUnitDAO;
-import database.UnitDAO;
 import database.UserDAO;
 import model.*;
 import model.JavaMail.EmailService;
@@ -19,8 +19,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-@WebServlet("/addUpdate-customer")
-public class AddUpdateCustomerControl extends HttpServlet {
+@WebServlet("/customer")
+public class AdminCustomerControl extends HttpServlet {
 
     public void destroy() {
     }
@@ -36,6 +36,66 @@ public class AddUpdateCustomerControl extends HttpServlet {
         if(action  !=  null){
             action = action.toUpperCase();
             switch(action){
+                case "INIT": {
+                    ArrayList<Customer> cuss = CustomerDAO.getInstance().selectAll();
+                    request.setAttribute("customerList", cuss);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminCustomer.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
+                case "SEARCH": {
+                    String input = request.getParameter("input");
+                    ArrayList<Customer> customerList = CustomerDAO.getInstance().selectByCusNameOrEmailOrPhone(input);
+                    request.setAttribute("customerList", customerList);
+                    request.setAttribute("currentSearch",input);
+                    String html="";
+                    for(int i=0; i<customerList.size();i++) {
+                        html+="            <tr class=\""+ (i%2==0 ?"roww":"")+"\">\n" +
+                                "                    <td>"+customerList.get(i).getName() +"</td>\n" +
+                                "                    <td>"+customerList.get(i).getEmail() +" <br> "+customerList.get(i).getPhone()+" <br> "+customerList.get(i).getAddress() +" </br></td>\n" +
+                                "                    <td>"+customerList.get(i).getDateIn() +"</td>\n" +
+                                "                    <td>   <fmt:formatNumber value=\""+customerList.get(i).getTotalSpend() +"\" pattern=\"#,##0.00\"/>\n" +
+                                "                        VND</td>\n" +
+                                "                    <td><a href=\"goto-history-buying?cusID="+customerList.get(i).getId()+"\">Lịch sử mua hàng</a></td>\n" +
+                                "                    <td><a class=\"btn-update-product\" href=\"customer?action=prepareUpdate&&id="+customerList.get(i).getId()+"\">Cập nhật</a></td>\n" +
+                                "                </tr>";
+                    }
+                    response.setContentType("text/html");
+                    response.setCharacterEncoding("UTF-8");
+                    response.getWriter().write(html);
+                    break;
+                }
+                case "PREPAREUPDATE": {
+//                    String idString = (String) request.getParameter("id");
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    User u = UserDAO.getInstance().selectById(id);
+                    request.setAttribute("customer", u);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateCustomer.jsp");
+                    rd.forward(request, response);
+
+                    break;
+                }
+                case "PREPAREADD": {
+                    int id = UserDAO.getInstance().selectTheMaxID();
+//        xu ly bug id
+//        3039 -> 3040 sai
+//        3039 -> 30310 dung
+                    String idString = String.valueOf(id);
+                    if(idString.length() ==4 && idString.endsWith("9")){
+                        idString = idString.substring(0,idString.length()-1) + "10";
+
+                        id = Integer.valueOf(idString);
+                    } else {
+                        id = id +1;
+                    }
+                    User u = new User(id);
+
+                    request.setAttribute("customer", u);
+                    request.setAttribute("action","add");
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateCustomer.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
                 case  "LOCK":{
                     int idin = Integer.parseInt(request.getParameter("id"));
                     User u = UserDAO.getInstance().selectById(idin);
@@ -136,8 +196,8 @@ public class AddUpdateCustomerControl extends HttpServlet {
                         pwd = birthdayTokens[2] + birthdayTokens[1] + birthdayTokens[0];
                     String pwdEncoded = User.encodePwd(pwd);
 
-                    User u = new User(idin,name,email,pwdEncoded,0,phone,address,0,info,dateinDatee,null,0,null);
-                    UserDAO.getInstance().insert(u);
+                    User u = new User(idin,name,email,pwdEncoded,0,phone,address,info,dateinDatee,0);
+                    CustomerDAO.getInstance().insertCustomer(u);
 
                     User afterU = UserDAO.getInstance().selectById(idin);
 

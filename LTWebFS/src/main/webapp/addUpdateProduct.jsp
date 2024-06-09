@@ -73,7 +73,7 @@
                     <p>Bạn chắc chắn muốn dừng bán sản phẩm này?</p>
                 </div>
                 <div class="show-flex-row">
-                    <a class="btn btn-primary confirm-btn yes-confirm" href="addUpdate-product?action=stop&id=<%=pu.getId()%>">Dừng</a>
+                    <a class="btn btn-primary confirm-btn yes-confirm" href="admin-product?action=stop&id=<%=pu.getId()%>">Dừng</a>
                     <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                     <p>Mở bán lại sản phẩm?</p>
                 </div>
                 <div class="show-flex-row">
-                    <a class="btn btn-primary confirm-btn yes-resale" href="addUpdate-product?action=resale&id=<%=pu.getId()%>">Bán lại</a>
+                    <a class="btn btn-primary confirm-btn yes-resale" href="admin-product?action=resale&id=<%=pu.getId()%>">Bán lại</a>
                     <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
     <div class="ad-content-item">
 
         <div class="ad_container">
-            <a href="goto-product-admin" class="backto-AdminProduct">Quay lại trang quản lí sản phẩm</a>
+            <a href="admin-menu-controller?adminMenu=product" class="backto-AdminProduct">Quay lại trang quản lí sản phẩm</a>
 
             <div class="form-container">
                 <form action="addUpdate-product" method="get" id="updateForm">
@@ -217,7 +217,7 @@
 
                         <div class="show-flex-row">
                             <div class="ad_func-container">
-                                <div><a class="btn btn-third" href="goto-product-admin">Hủy</a></div>
+                                <div><a class="btn btn-third" href="admin-menu-controller?adminMenu=product">Hủy</a></div>
                             </div>
                             <div class="ad_func-container">
                                 <button class="btn btn-primary" type="submit"><%= (pu.getName()==""?"Thêm":"Lưu") %></button>

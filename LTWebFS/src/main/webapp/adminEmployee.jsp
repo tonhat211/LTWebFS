@@ -19,8 +19,7 @@
     <!-- Favicons -->
     <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
-    <!--  <link href="assets/img/favicon.png" rel="icon">-->
-    <!--  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -103,13 +102,13 @@
                     <div class="ad_header">
 
                         <div class="show-flex-row" style="width: 100%; align-items: center">
-                            <form class="ad_find-container" action="admin-search" method="get">
-                                <input type="text" placeholder="Nhập tên hoặc thông tin liên quan" class="ad_find-input" name="search" value="<%=adminCurrentSearch%>">
+                            <form class="ad_find-container" action="admin-search" method="get" id="searchForm">
+                                <input type="text" placeholder="Nhập tên hoặc thông tin liên quan" class="ad_find-input" name="input" value="<%=adminCurrentSearch%>">
                                 <input type="text" style="display: none" placeholder="Nhập tên hoặc nhóm" class="ad_find-input" name="object" value="employee" readonly>
                                 <button class="ad_find-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                             <div>
-                                <a class="ad_btn-control btn-up-pro" href="goto-add-employee?status=0">Thêm nhân viên</a>
+                                <a class="ad_btn-control btn-up-pro" href="employee?action=prepareAdd">Thêm nhân viên</a>
                             </div>
 
                         </div>
@@ -126,11 +125,11 @@
                             <th scope="col">Cập nhật</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="employee-container">
                         <%
                             for(int i=0; i<employeeList.size();i++) {
                         %>
-                        <tr class="<%= i%2==0 ? "roww" : ""%>"  onclick="showDetail(ems[<%=i%>])">
+                        <tr class="<%= i%2==0 ? "roww" : ""%>"  onclick="showDetail(<%=employeeList.get(i).getId()%>)">
                             <%--                    <th scope="row"><%=pus.get(i).getId()%></th>--%>
                             <td style="height: 100px" ><img src="./assets/img/employee/<%=employeeList.get(i).getImgurl()%>" alt="" style="height: 100%"></td>
                             <td><%=employeeList.get(i).getName() %></td>
@@ -139,7 +138,7 @@
                             <%--                    <td><%=cuss.get(i).getAddress() %></td>--%>
                             <td><%=employeeList.get(i).getPosition() %><br> <%=employeeList.get(i).getArea()%></td>
                             <td><%=employeeList.get(i).getBranch() %></td>
-                            <td><a href="goto-update-employee?id=<%=employeeList.get(i).getId()%>">Cập nhật</a></td>
+                            <td><a href="employee?action=prepareUpdate&&id=<%=employeeList.get(i).getId()%>">Cập nhật</a></td>
 
 
 <%--                            <td><a class="btn-update-product" href="goto-update-customer?id=<%=customerList.get(i).getId()%>">Cập nhật</a></td>--%>
@@ -159,122 +158,52 @@
     <div class="confirm-popup confirm-stop">
         <div class="modal__overlay" onclick="unshowDetail()">
             <div class="modal__emplpoyee-detail" onclick="event.stopPropagation()">
-<%--                <div class="confirm__message">--%>
-<%--                    <div class="info-container">--%>
-<%--                        <div class="info-container__title">--%>
-<%--                            <img class="w-50" src="./assets/img/employee/3035.jpg" alt="">--%>
-<%--                        </div>--%>
-<%--                        <div class="info-container__content">--%>
-<%--                            <h6 style="font-size: 30px">To minh nhat</h6>--%>
-<%--                            <p>Chuc vu: <span>Truong phong</span></p>--%>
-<%--                            <p>Bo phan: <span>phong it</span></p>--%>
-
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="info-container">--%>
-<%--                        <div class="info-container__title">--%>
-<%--                            <p>Thong tin lien he:</p>--%>
-<%--                        </div>--%>
-
-<%--                        <div class="info-container__content">--%>
-<%--                            <p>email: <span>3614861@gmail.com</span></p>--%>
-<%--                            <p>sdt: <span>109253718</span></p>--%>
-<%--                            <p>Chi nhan laafm viec: <span>isdfviuwqhfl waefgiuerhwg</span></p>--%>
-
-<%--                        </div>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="info-container">--%>
-<%--                        <div class="info-container__title">--%>
-<%--                            <p>Thong tin lam viec:</p>--%>
-<%--                        </div>--%>
-<%--                        <div class="info-container__content">--%>
-<%--                            <p>ngayf vao lam: <span>1/1/2022</span></p>--%>
-<%--                            <p>ngayf ra: <span>null</span></p>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="info-container">--%>
-<%--                        <div class="info-container__title">--%>
-<%--                            <p>Thong tin ca nhan:</p>--%>
-<%--                        </div>--%>
-<%--                        <div class="info-container__content">--%>
-<%--                            <p>gioi tinh: <span>nam</span></p>--%>
-<%--                            <p>ngay sinh: <span>04-10-2003</span></p>--%>
-<%--                            <p>dia chi thuong chu: <span>isdfviuwqhfl waefgiuerhwg</span></p>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
 
             </div>
         </div>
     </div>
 
     <script>
-        // showDetail(e);
 
-        function showDetail(e){
-            const $ = document.querySelector.bind(document);
-            const $$ = document.querySelectorAll.bind(document);
-            $('.confirm-stop').classList.add('active');
+        function showDetail(id){
+            var action = "showInfo";
+            $.ajax({
+                url: "/LTWebFS/employee",
+                method: "GET",
+                data: {action: action, id: id},
+                success: function(data) {
+                    $('.confirm-stop').addClass('active');
+                    $('.modal__emplpoyee-detail').html(data);
 
-            console.log(e);
-
-
-            var html = '<div class="confirm__message">'
-                + '<div class="info-container">'
-
-                 + '<div class="info-container__title">'
-                + '<img class="w-50" src="./assets/img/employee/' + e.imgurl + '" alt="">'
-                + '</div>'
-                + '<div class="info-container__content">'
-                + '<h6 style="font-size: 30px">' + e.name + '</h6>'
-                + '<p>Chức vụ: <span>' + e.position + '</span></p>'
-                + '<p>Phòng ban: <span>' + e.area + '</span></p>'
-
-                + '</div>'
-                + '</div>'
-                + '<div class="info-container">'
-                + '<div class="info-container__title">'
-                +   '<p>Thông tin liên hệ:</p>'
-                + '</div>'
-
-                + '<div class="info-container__content">'
-                +   '<p>Email: <span>' + e.email + '</span></p>'
-                +   '<p>Số điện thoại: <span>' + e.phone + '</span></p>'
-                +   '<p>Chi nhánh công tác: <span>' + e.branch + '</span></p>'
-
-                + '</div>'
-                + '</div>'
-
-                + '<div class="info-container">'
-                + '<div class="info-container__title">'
-                + '<p>Thông tin công tác:</p>'
-                + '</div>'
-                + '<div class="info-container__content">'
-                + '<p>Ngày vào làm: <span>' + e.datein.dateInMonthDayYear + '</span></p>'
-                + '</div>'
-                + '</div>'
-
-                + '<div class="info-container">'
-                + '<div class="info-container__title">'
-                + '<p>Thông tin cá nhân:</p>'
-                + '</div>'
-                + '<div class="info-container__content">'
-                + '<p>Giới tính: <span>' + e.sex + '</span></p>'
-                + '<p>Ngày sinh: <span>' + e.birthday + '</span></p>'
-                + '<p>Địa chỉ nơi ở hiện tại: <span>' + e.address + '</span></p>'
-                + '</div>'
-                + '</div>'
-                + '</div>';
-            // let html1 = '<h1>html1 hoat dong</h1>'
-            $('.modal__emplpoyee-detail').innerHTML = html;
+                }
+            });
         }
 
         function unshowDetail(){
             const $ = document.querySelector.bind(document);
             const $$ = document.querySelectorAll.bind(document);
             $('.confirm-stop').classList.remove('active');
+        }
+
+        document.querySelector("#searchForm").addEventListener('submit',function (event){
+            event.preventDefault();
+            var data = new FormData(this);
+            var input = data.get("input");
+            var action ="search";
+            searchEmployee(action, input);
+
+        });
+
+        function searchEmployee(action, input) {
+            $.ajax({
+                url: "/LTWebFS/employee",
+                method: "GET",
+                data: {action: action, input: input},
+                success: function(data) {
+                    $("#employee-container").html(data);
+
+                }
+            });
         }
     </script>
 

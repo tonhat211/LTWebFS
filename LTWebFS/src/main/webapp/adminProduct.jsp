@@ -40,8 +40,6 @@
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<%--    <script src="assets/js/jquery.js"></script>--%>
-
 
     <!--fontawesome-->
     <link rel="stylesheet" href="./assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
@@ -96,8 +94,8 @@
     <div class="ad-content">
         <div class="ad_header" style="width: 100%; flex-direction: column" id="action-product">
             <div class="show-flex-row" style="width: 100%; align-items: center">
-                <form class="ad_find-container" action="admin-search-product" method="get">
-                    <input type="text" placeholder="Nhập tên hoặc nhóm" class="ad_find-input" name="search" value="<%=adminCurrentSearchProduct%>">
+                <form class="ad_find-container" action="admin-search-product" method="get" id="searchForm">
+                    <input type="text" placeholder="Nhập tên hoặc nhóm" class="ad_find-input" name="input" value="<%=adminCurrentSearchProduct%>">
                     <button class="ad_find-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
                 <div>
@@ -108,7 +106,7 @@
                     <a class="ad_btn-control" id="import-product-btn">Nhập kho</a>
                 </div>
                 <div>
-                    <a class="ad_btn-control btn-up-pro" href="goto-add-product?status=0">Thêm sản phẩm</a>
+                    <a class="ad_btn-control btn-up-pro" href="admin-product?action=prepareAdd">Thêm sản phẩm</a>
 
                 </div>
 
@@ -150,7 +148,7 @@
             <td><fmt:formatNumber value="<%=pus.get(i).getPrice() %>" pattern="#,##0.00"/>
                 VND</td>
             <td><%=pus.get(i).getAmount() %></td>
-            <td><a class="btn-update-product" href="go-to-update-product?id=<%=pus.get(i).getId()%>">Cập nhật</a></td>
+            <td><a class="btn-update-product" href="admin-product?action=prepareUpdate&&id=<%=pus.get(i).getId()%>">Cập nhật</a></td>
         </tr>
             <%
                 }
@@ -164,6 +162,31 @@
 
         </div>
     </div>
+
+    <script>
+
+        document.querySelector("#searchForm").addEventListener('submit',function (event){
+            event.preventDefault();
+            var data = new FormData(this);
+            var input = data.get("input");
+            var action ="search";
+            searchProduct(action, input);
+
+        });
+
+        function searchProduct(action, input) {
+            $.ajax({
+                url: "/LTWebFS/admin-product",
+                method: "GET",
+                data: {action: action, input: input},
+                success: function(data) {
+                    console.log(data);
+                    $("#info-table-body").html(data);
+
+                }
+            });
+        }
+    </script>
 
 
 

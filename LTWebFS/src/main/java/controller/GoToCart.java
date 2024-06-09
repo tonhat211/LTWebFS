@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/goto-cart")
+@WebServlet("/cart")
 public class GoToCart extends HttpServlet {
 
     public void destroy() {

@@ -14,7 +14,6 @@ public class UserDAO implements IDAO<User> {
         int re=0;
         try {
             Connection conn = JDBCUtil.getConnection();
-
             String sql = "insert into users values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, u.getId());

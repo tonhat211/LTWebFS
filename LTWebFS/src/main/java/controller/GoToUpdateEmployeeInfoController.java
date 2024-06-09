@@ -26,10 +26,6 @@ public class GoToUpdateEmployeeInfoController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        HttpSession session = request.getSession();
-
-        String idString = (String) request.getParameter("id");
-        String currentMenu = request.getParameter("currentMenu");
         ArrayList<Branch> branches = BranchDAO.getInstance().selectAll();
         request.setAttribute("branchList", branches);
 

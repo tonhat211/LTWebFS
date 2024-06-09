@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="show-flex-row">
-                    <a class="btn btn-primary confirm-btn yes-confirm" href="addUpdate-employee?action=lock&id=<%=e.getId()%>">Khóa</a>
+                    <a class="btn btn-primary confirm-btn yes-confirm" href="employee?action=lock&id=<%=e.getId()%>">Khóa</a>
                     <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                         <p><%= (e.getAvailable()==0?"Kích hoạt tài khoản?":"Mở khóa tài khoản này?") %></p>
                     </div>
                     <div class="show-flex-row">
-                        <a class="btn btn-primary confirm-btn unlock-user" href="addUpdate-employee?action=unlock&id=<%=e.getId()%>"><%=(e.getAvailable()==0?"Kích hoạt":"Mở khóa") %></a>
+                        <a class="btn btn-primary confirm-btn unlock-user" href="employee?action=unlock&id=<%=e.getId()%>"><%=(e.getAvailable()==0?"Kích hoạt":"Mở khóa") %></a>
                         <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
     <div class="ad-content-item">
 
         <div class="ad_container" style="width: 70%;">
-            <a href="goto-employee-admin" class="backto-AdminProduct">Quay lại trang quản lí nhân viên</a>
+            <a href="admin-menu-controller?adminMenu=employee" class="backto-AdminProduct">Quay lại trang quản lí nhân viên</a>
 
             <div class="form-container">
                 <form action="addUpdate-employee" method="get" id="employeeInfoForm">
@@ -329,13 +329,12 @@
 
                     <div class="show-flex-row">
                         <div class="ad_func-container">
-                            <div><a class="btn btn-third" href="goto-employee-admin">Hủy</a></div>
+                            <div><a class="btn btn-third" href="admin-menu-controller?adminMenu=employee">Hủy</a></div>
                         </div>
                         <div class="ad_func-container">
                             <button class="btn btn-primary" type="submit"><%= (e.getName()==""?"Thêm":"Lưu") %></button>
                         </div>
                     </div>
-                    <!--                    <button type="submit" class="btn btn-primary">Submit</button>-->
                 </form>
 
             </div>
@@ -427,15 +426,6 @@
             var year = date_in.getFullYear();
             var month = date_in.getMonth()+1;
             var day = date_in.getDate();
-            console.log(year);
-            console.log(month);
-            console.log(day);
-
-            console.log(currentYear);
-            console.log(curretnMonth);
-            console.log(currentDay);
-
-
 
             if((year <= currentYear && month <= curretnMonth && day <= currentDay)){
                 switchMessage("#datein",'.error',0);
@@ -464,15 +454,15 @@
             var imgurl = formData.get("imgurl");
 
 
-            updateCustomer(id,name, email, phone, address, birthday, datein, action, sex,
+            updateEmployee(id,name, email, phone, address, birthday, datein, action, sex,
                 position, area,branch,employee,customer,order,dashboard,log,imgurl);
 
         });
 
 
-        function updateCustomer(id, name, email, phone, address, birthday, datein, action, sex,position, area,branch,employee,customer,order,dashboard,log,imgurl) {
+        function updateEmployee(id, name, email, phone, address, birthday, datein, action, sex,position, area,branch,employee,customer,order,dashboard,log,imgurl) {
             $.ajax({
-                url: "/LTWebFS/addUpdate-employee",
+                url: "/LTWebFS/employee",
                 method: "POST",
                 data: { id: id, name: name, email: email, phone: phone, address: address, birthday: birthday, datein: datein, action: action, sex: sex,position: position, area:area,branch:branch,employee:employee,customer:customer,order:order,dashboard:dashboard,log:log,imgurl:imgurl },
                 success: function(data) {
@@ -559,7 +549,6 @@
     function availableUser(urlin) {
 
         $.ajax({
-            // url: "/LTWebFS_war_exploded/addUpdate-customer", // Đường dẫn đến Servlet
             url: urlin, // Đường dẫn đến Servlet
             method: "POST",
             // data: { action: action, id : id },

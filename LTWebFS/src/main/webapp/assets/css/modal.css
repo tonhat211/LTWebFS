@@ -45,5 +45,18 @@
     width: 40%;
     padding: 20px;
     top:  200px;
+    overflow-y: auto;
+    max-height:80%;
 
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.modal__confirm-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.modal__confirm-content {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }

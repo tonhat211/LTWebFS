@@ -9,46 +9,57 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/DashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jstl-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminDashboard.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdateProduct.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/importProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="hoan thanh thong ke">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddressControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AdminProductControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/payment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddUpdateProductControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAddProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAddProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAdminDashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminCustomerControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminEmployeeControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminProductSearchControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminSearchControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAddCustomer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAddEmployee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAddProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminCustomerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToPayment1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToProductAdminCotroller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateEmployeeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateEmployeeInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateEmployeeInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateProductController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductDetailControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/UpdateCustomerInfoControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateCustomerInfoControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/AddressDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/AddressDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/OrderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/EmployeeDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/ProductUnitDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ProductUnitDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/test1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/ProductUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ProductUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin_dashboard.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/adPro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/adPro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/payment.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdateProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdateProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/payment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/payment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/updateCustomerInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateCustomerInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/updateEmployeeInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateEmployeeInfo.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +144,7 @@
       <recent name="database" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Smart Tomcat.smart tomcat">
     <configuration name="mysql-connector-j-8.2.0.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/src/main/java/mysql-connector-j-8.2.0.jar" />
       <method v="2" />
@@ -344,7 +355,10 @@
       <workItem from="1716878460212" duration="16748000" />
       <workItem from="1717004817137" duration="20149000" />
       <workItem from="1717172270143" duration="38880000" />
-      <workItem from="1717561719459" duration="3504000" />
+      <workItem from="1717561719459" duration="24913000" />
+      <workItem from="1717594908587" duration="29813000" />
+      <workItem from="1717861869124" duration="899000" />
+      <workItem from="1717863657903" duration="19697000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -458,7 +472,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715835310747</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="hoan thanh thong ke">
+      <option name="closed" value="true" />
+      <created>1717567354783</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1717567354783</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,6 +510,7 @@
     <MESSAGE value="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax" />
     <MESSAGE value="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao" />
     <MESSAGE value="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="hoan thanh thong ke" />
+    <option name="LAST_COMMIT_MESSAGE" value="hoan thanh thong ke" />
   </component>
 </project>

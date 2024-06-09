@@ -1,6 +1,7 @@
 package model;
 
 public class Address {
+    private int id;
     private int userid;
     private String receiver;
     private String phone;
@@ -11,6 +12,22 @@ public class Address {
         this.receiver = receiver;
         this.phone = phone;
         this.address = address;
+    }
+
+    public Address(int id, int userid, String receiver, String phone, String address) {
+        this.id = id;
+        this.userid = userid;
+        this.receiver = receiver;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Address() {
@@ -51,7 +68,8 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "userid=" + userid +
+                "id=" + id +
+                ", userid=" + userid +
                 ", receiver='" + receiver + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +

@@ -39,7 +39,7 @@
 
         <div class="user">
             <div class="shopping-cart">
-                <a href="goto-cart">
+                <a href="cart">
                     <i class="ti-shopping-cart-full"></i>
                 </a>
             </div>
@@ -47,7 +47,7 @@
                 <%
                     if(user!=null){
                 %>
-                    <a href="goto-update-customer-info"><%=user.getName()%></a>
+                    <a href="update-info?action=init&&object=customer"><%=user.getName()%></a>
                     <i style="color: #f6f6f6; margin-right: 20px; margin-left: 20px;">|</i>
                     <a href="log-out">Đăng xuất</a>
                 <%

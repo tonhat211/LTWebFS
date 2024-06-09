@@ -61,7 +61,7 @@
                     <p>Bạn chắc chắn muốn khóa tài khoản này?</p>
                 </div>
                 <div class="show-flex-row">
-                    <a class="btn btn-primary confirm-btn yes-confirm" href="addUpdate-customer?action=lock&id=<%=u.getId()%>">Khóa</a>
+                    <a class="btn btn-primary confirm-btn yes-confirm" href="customer?action=lock&id=<%=u.getId()%>">Khóa</a>
                     <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     <p><%= (u.getAvailable()==0?"Kích hoạt tài khoản?":"Mở khóa tài khoản này?") %></p>
                 </div>
                 <div class="show-flex-row">
-                    <a class="btn btn-primary confirm-btn unlock-user" href="addUpdate-customer?action=unlock&id=<%=u.getId()%>"><%= (u.getAvailable()==0?"Kích hoạt":"Mở khóa") %></a>
+                    <a class="btn btn-primary confirm-btn unlock-user" href="customer?action=unlock&id=<%=u.getId()%>"><%= (u.getAvailable()==0?"Kích hoạt":"Mở khóa") %></a>
                     <div class="btn btn-third confirm-btn no-confirm">Hủy</div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
     <div class="ad-content-item">
 
         <div class="ad_container" style="width: 70%;">
-            <a href="goto-customer-admin" class="backto-AdminProduct">Quay lại trang quản lí khách hàng</a>
+            <a href="admin-menu-controller?adminMenu=customer" class="backto-AdminProduct">Quay lại trang quản lí khách hàng</a>
 
             <div class="form-container">
                 <form action="addUpdate-customer" method="post" id="customerInfoForm">
@@ -227,7 +227,7 @@
 
                     <div class="show-flex-row">
                         <div class="ad_func-container">
-                            <div><a class="btn btn-third" href="goto-customer-admin">Hủy</a></div>
+                            <div><a class="btn btn-third" href="admin-menu-controller?adminMenu=customer">Hủy</a></div>
                         </div>
                         <div class="ad_func-container">
                             <button class="btn btn-primary" type="submit"><%= (u.getName()==""?"Thêm":"Lưu") %></button>
@@ -331,11 +331,8 @@
             var year = date_in.getFullYear();
             var month = date_in.getMonth()+1;
             var day = date_in.getDate();
-            console.log(year);
-            console.log(month);
-            console.log(day);
 
-            if((year <= currentYear && month <= curretnMonth && day <= currentDay)){
+            if((date_in < new Date())){
                 switchMessage("#datein",'.error',0);
 
             } else {
@@ -360,7 +357,7 @@
 
         function updateCustomer(id, name, email, phone, address, birthday, datein, action, sex) {
             $.ajax({
-                url: "/LTWebFS/addUpdate-customer",
+                url: "/LTWebFS/customer",
                 method: "POST",
                 data: { id: id, name: name, email: email, phone: phone, address: address, birthday: birthday, datein: datein, action: action, sex: sex },
                 success: function(data) {

@@ -61,8 +61,55 @@ public class Employee {
         }
         this.role = role;
     }
+    public Employee(int id, String name, String email, String pwd, int level, String phone, String address, int branchID, String branch, String info, Datee datein, int available, int imgid, String imgurl,String role) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.pwd = pwd;
+        this.level = level;
+        this.phone = phone;
+        this.address = address;
+        this.branchID = branchID;
+        this.branch = branch;
+        this.info = info;
+        this.datein = datein;
+        this.available = available;
+        this.imgid = imgid;
+        this.imgurl = imgurl;
+        if(info !=null){
+            String[] infoTokens = info.split("=");
+            if(infoTokens.length == 4){
+                this.sex = infoTokens[0];
+                this.birthday = infoTokens[1];
+                this.position = infoTokens[2];
+                this.area = infoTokens[3];
+            }
+        }
+        else {
+            this.sex ="";
+            this.birthday ="";
+            this.position = "";
+            this.area ="";
+        }
+        this.role = role;
+    }
 
-    public Employee(int id, String name, String email,String pwd, int level, String phone, String address, int branchID, String branch, String info, Datee datein, int available, String imgurl,String role) {
+    public Employee(int id, String name, String email, String pwd, int level, String phone, String address, int branchID, String info, Datee datein, int available, String role) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.pwd = pwd;
+        this.level = level;
+        this.phone = phone;
+        this.address = address;
+        this.branchID = branchID;
+        this.info = info;
+        this.datein = datein;
+        this.available = available;
+        this.role = role;
+    }
+
+    public Employee(int id, String name, String email, String pwd, int level, String phone, String address, int branchID, String branch, String info, Datee datein, int available, String imgurl, String role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -100,6 +147,17 @@ public class Employee {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+
+    public Employee(int id, String name, String email, String phone, String address, String info, String imgurl) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.info = info;
+        this.imgurl = imgurl;
     }
 
     public Employee(int id, String name, String email, String pwd, int level, String phone, String address, int branchID, String branch, String info, Datee datein, Datee dateout, int available) {
