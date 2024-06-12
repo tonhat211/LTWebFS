@@ -9,57 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="hoan thanh thong ke">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddressControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AdminProductControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/payment.js" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="them chuc nang thay doi so dia chi cho phan thanh toan va cap nhat thong tin khach hang">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CusOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminOrderManagement.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/cusOrderManagement.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/progressStep.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/progressStep.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateCustomerControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminCustomerControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminEmployeeControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminProductSearchControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminSearchControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAddCustomer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAddEmployee.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAddProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminCustomerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToPayment1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToProductAdminCotroller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateEmployeeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateEmployeeInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateEmployeeInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateProductController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductDetailControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/UpdateCustomerInfoControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateCustomerInfoControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderMenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderMenuControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/AddressDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/AddressDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/EmployeeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/EmployeeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/ProductUnitDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ProductUnitDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/OrderDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/payment.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdateProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdateProduct.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DeOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DeOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminHeader.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminHeader.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/addUpdate.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/addUpdate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/header_footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/header_footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/payment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/payment.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderManagement.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderManagement.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/updateCustomerInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateCustomerInfo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/updateEmployeeInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateEmployeeInfo.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,9 +40,9 @@
         <option value="Jsp File" />
         <option value="AnnotationType" />
         <option value="HTML File" />
-        <option value="Class" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -112,7 +80,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;to-nhat&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/TO NHAT/IdeaProjects/LTWeb/project_LTWeb/LTWebFS/src/main/webapp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/TO NHAT/IdeaProjects/LTWeb/project_LTWeb/LTWebFS/src/main/webapp/assets/js&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -129,11 +97,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\js" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\WEB-INF\lib" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\sound" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
-      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
@@ -358,7 +326,8 @@
       <workItem from="1717561719459" duration="24913000" />
       <workItem from="1717594908587" duration="29813000" />
       <workItem from="1717861869124" duration="899000" />
-      <workItem from="1717863657903" duration="19697000" />
+      <workItem from="1717863657903" duration="48894000" />
+      <workItem from="1718185779492" duration="3233000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -480,7 +449,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717567354783</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="them chuc nang thay doi so dia chi cho phan thanh toan va cap nhat thong tin khach hang">
+      <option name="closed" value="true" />
+      <created>1717924804227</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1717924804227</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,6 +488,7 @@
     <MESSAGE value="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao" />
     <MESSAGE value="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user" />
     <MESSAGE value="hoan thanh thong ke" />
-    <option name="LAST_COMMIT_MESSAGE" value="hoan thanh thong ke" />
+    <MESSAGE value="them chuc nang thay doi so dia chi cho phan thanh toan va cap nhat thong tin khach hang" />
+    <option name="LAST_COMMIT_MESSAGE" value="them chuc nang thay doi so dia chi cho phan thanh toan va cap nhat thong tin khach hang" />
   </component>
 </project>

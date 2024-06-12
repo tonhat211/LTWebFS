@@ -33,6 +33,10 @@ public class Address {
     public Address() {
     }
 
+    public Address(int id) {
+        this.id = id;
+    }
+
     public int getUserid() {
         return userid;
     }

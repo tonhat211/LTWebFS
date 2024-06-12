@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class DeOrder {
 	private int ordID;
 	private int proID;
@@ -23,6 +25,19 @@ public class DeOrder {
 		this.pName = pName;
 		this.priceUnit = priceUnit;
 		this.qty = qty;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof DeOrder)) return false;
+		DeOrder deOrder = (DeOrder) o;
+		return getOrdID() == deOrder.getOrdID() && getProID() == deOrder.getProID();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(getOrdID());
 	}
 
 	@Override

@@ -47,7 +47,14 @@
                 <%
                     if(user!=null){
                 %>
-                    <a href="update-info?action=init&&object=customer"><%=user.getName()%></a>
+                    <div class="sub-menu-container" style="display: inline-block">
+                        <p class="user-name" style="display: inline-block"><%=user.getName()%></p>
+                        <ul class="sub-menu">
+                            <li><a href="update-info?action=init&&object=customer">Cập nhật tài khoản</a></li>
+                            <li><a href="cus-order?action=init">Đơn hàng</a></li>
+                        </ul>
+                    </div>
+
                     <i style="color: #f6f6f6; margin-right: 20px; margin-left: 20px;">|</i>
                     <a href="log-out">Đăng xuất</a>
                 <%
