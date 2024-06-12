@@ -60,6 +60,25 @@ public class Order {
 		this.cusID = cusID;
 	}
 
+	public String getReceiver() {
+		String temp = this.receiverInfo;
+		String tokens[] = temp.split("=");
+		if (tokens!=null || tokens.length>0) return tokens[0];
+		else return null;
+	}
+	public String getReceiverPhone() {
+		String temp = this.receiverInfo;
+		String tokens[] = temp.split("=");
+		if (tokens!=null || tokens.length>0) return tokens[1];
+		else return null;
+	}
+	public String getAddress() {
+		String temp = this.receiverInfo;
+		String tokens[] = temp.split("=");
+		if (tokens!=null || tokens.length>0) return tokens[2];
+		else return null;
+	}
+
 	public String getTotalPriceString() {
 		int intNumber = this.totalPrice;
 //		double doubleNumber = intNumber;

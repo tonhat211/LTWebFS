@@ -185,6 +185,124 @@
                 canelEditAddress();
             }
         }
+
+        function showChangePassword(id) {
+            let html = ' ' +
+                '<div class="form-container">'+
+                    '<form action="change-pwd" method="post" id="pwdForm">'+
+                        '<div class="show-flex-row" style="justify-content: center">'+
+                            '<h4>Đổi mật khẩu</h4>'+
+                        '</div>'+
+                        '<div class="form-group w-100" style="padding: 0px;">'+
+                            '<div class="show-flex-col w-100">'+
+                                '<div class="show-flex-row w-100">'+
+                                    '<label class="w-50" for="currentPwd">Mật khẩu hiện tại</label>'+
+                                    '<input type="password" size="10" class="form-control w-50" id="currentPwd" name="currentPwd" aria-describedby="" placeholder="Nhập mật khẩu hiện tại">'+
+                                    '<input type="text" size="10" class="form-control w-50" name="id" aria-describedby="" placeholder="Nhập mật khẩu hiện tại" value="'+id+'"  hidden>'+
+                                '</div>'+
+                                '<div class="error active" hidden>Sai mật khẩu</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="form-group w-100" style="padding: 0px;">'+
+                            '<div class="show-flex-col w-100">'+
+                                '<div class="show-flex-row w-100">'+
+                                    '<label class="w-50" for="newPwd">Mật khẩu mới</label>'+
+                                    '<input type="password" size="10" class="form-control w-50" id="newPwd" name="newPwd" aria-describedby="" placeholder="Nhập mật khẩu mới">'+
+                                '</div>'+
+                                '<div class="error active" hidden>Mật khẩu không trùng khớp</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="form-group w-100" style="padding: 0px;">'+
+                            '<div class="show-flex-col w-100">'+
+                                '<div class="show-flex-row w-100">'+
+                                    '<label class="w-50" for="renewPwd">Nhập lại mật khẩu mới</label>'+
+                                    '<input type="password" size="10" class="form-control w-50" id="renewPwd" name="renewPwd" aria-describedby="" placeholder="Nhập lại mật khẩu mới">'+
+                                '</div>'+
+                                '<div class="error active" hidden>Mật khẩu không trùng khớp</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="show-flex-row" style="justify-content: center; margin-top: 40px">'+
+                            '<div class="show-flex-row w-50">'+
+                                '<button class="btn btn-third confirm-btn no-confirm" type="button" onclick="hideModal()">Hủy</button>'+
+                                '<button class="btn btn-primary confirm-btn yes-confirm" type="submit">Lưu</button>'+
+                            '</div>'+
+                        '</div>'+
+                    '</form>'+
+                '</div>';
+            $('.modal').addClass("active");
+            $('#modal_content').html(html);
+
+            document.getElementById("pwdForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                var data = new FormData(this);
+                var currentPwd = data.get("currentPwd");
+                var newPwd = data.get("newPwd");
+                var renewPwd = data.get("renewPwd");
+                var action = "changePassword";
+                var id = data.get("id");
+
+                var isOk = true;
+
+                if(currentPwd==="") {
+                    isOk=false;
+                    showError('#currentPwd',"Không được để trống mục này");
+                } else {
+                    hideError('#currentPwd');
+                }
+                if(newPwd==="") {
+                    isOk=false;
+                    showError('#newPwd',"Không được để trống mục này");
+                } else {
+                    hideError('#newPwd');
+                }
+                if(renewPwd==="") {
+                    isOk=false;
+                    showError('#renewPwd',"Không được để trống mục này");
+                } else {
+                    hideError('#renewPwd');
+                }
+
+
+                if(newPwd !=="" && renewPwd!=="") {
+                    if(newPwd!== renewPwd) {
+                        isOk=false;
+                        showError('#newPwd',"Mật khẩu không trùng khớp");
+                        showError('#renewPwd',"Mật khẩu không trùng khớp");
+                    } else {
+                        hideError('#newPwd');
+                        hideError('#renewPwd');
+                        if (newPwd.length < 8 || !/[A-Z]/.test(newPwd) || !/[a-z]/.test(newPwd) || !/\d/.test(newPwd)) {
+                            showError('#newPwd',"Mật khẩu phải trên 8 kí tự, bao gồm chữ hoa, chữ thường và số");
+                            isOk=false;
+                        }
+                    }
+                }
+
+                if(isOk===true) {
+                    changePwd(action, id, currentPwd, newPwd);
+                }
+
+
+            });
+
+            function changePwd(action, id, currentPwd, newPwd) {
+                $.ajax({
+                    url: "/LTWebFS/update-info",
+                    method: "POST",
+                    data: { action: action, id: id, currentPwd:currentPwd, newPwd: newPwd},
+                    success: function(data) {
+                        if(data==="success") {
+                            showSuccessToast("Đổi mật khẩu thành công");
+                            $('.modal').removeClass("active");
+                        } else if(data==="wrongPwd") {
+                            showError("#currentPwd","Mật khẩu sai");
+                        } else if(data==="thesamePwd") {
+                            showError("#newPwd","Mật khẩu mới phải khác mật khẩu cũ");
+                        }
+                    }
+                });
+            }
+        }
     </script>
 
 </head>
@@ -204,59 +322,7 @@
     <div class="modal confirm-stop">
         <div class="modal__overlay">
             <div class="modal__confirm-content" id="modal_content" onclick="event.stopPropagation()" style="top: 80px">
-                <div class="form-container">
 
-                    <form action="change-pwd" method="post" id="pwdForm">
-                        <div class="show-flex-row" style="justify-content: center">
-                            <h4>Đổi mật khẩu</h4>
-
-                        </div>
-                        <div class="form-group w-100" style="padding: 0px;">
-                            <div class="show-flex-col w-100">
-                                <div class="show-flex-row w-100">
-                                    <label class="w-50" for="currentPwd">Mật khẩu hiện tại</label>
-                                    <input type="password" size="10" class="form-control w-50" id="currentPwd" name="currentPwd" aria-describedby="" placeholder="Nhập mật khẩu hiện tại">
-                                    <input type="text" size="10" class="form-control w-50" name="id" aria-describedby="" placeholder="Nhập mật khẩu hiện tại" value="<%=u.getId()%>" hidden>
-                                </div>
-                                <div class="error active" hidden>Sai mật khẩu</div>
-
-                            </div>
-                        </div>
-                        <div class="form-group w-100" style="padding: 0px;">
-                            <div class="show-flex-col w-100">
-                                <div class="show-flex-row w-100">
-                                    <label class="w-50" for="newPwd">Mật khẩu mới</label>
-                                    <input type="password" size="10" class="form-control w-50" id="newPwd" name="newPwd" aria-describedby="" placeholder="Nhập mật khẩu mới">
-                                </div>
-                                <div class="error active" hidden>Mật khẩu không trùng khớp</div>
-
-
-                            </div>
-
-                        </div>
-                        <div class="form-group w-100" style="padding: 0px;">
-                            <div class="show-flex-col w-100">
-                                <div class="show-flex-row w-100">
-                                    <label class="w-50" for="renewPwd">Nhập lại mật khẩu mới</label>
-                                    <input type="password" size="10" class="form-control w-50" id="renewPwd" name="renewPwd" aria-describedby="" placeholder="Nhập lại mật khẩu mới">
-
-                                </div>
-                                <div class="error active" hidden>Mật khẩu không trùng khớp</div>
-                            </div>
-
-                        </div>
-
-                        <div class="show-flex-row" style="justify-content: center; margin-top: 40px">
-                            <div class="show-flex-row w-50">
-                                <a class="btn btn-third confirm-btn no-confirm" href="#">Hủy</a>
-                                <button class="btn btn-primary confirm-btn yes-confirm" type="submit">Lưu</button>
-                            </div>
-                        </div>
-
-
-
-                    </form>
-                </div>
             </div>
         </div>
     </div>
@@ -276,7 +342,7 @@
                             <button class="btn" id="changeAddress" type="button" style="color: #0d6efd; text-decoration: underline">Sổ địa chỉ</button>
                         </div>
                         <div class="stop_reSale" style="display: flex; justify-content: right">
-                            <a class="btn btn-change-pwd" style="color: #0d6efd; text-decoration: underline" href="#">Đổi mật khẩu</a>
+                            <button class="btn btn-change-pwd" style="color: #0d6efd; text-decoration: underline" type="button" onclick="showChangePassword(<%=u.getId()%>)">Đổi mật khẩu</button>
                         </div>
                     </div>
 
@@ -381,13 +447,13 @@
     const confirmStopModal =p$('.confirm-stop');
     const changePwdBtn = p$('.btn-change-pwd');
     const yesConfirmBtn = p$('.yes-confirm');
-    const noConfirmBtn = p$('.no-confirm');
+    // const noConfirmBtn = p$('.no-confirm');
 
-    document.querySelector('.no-confirm').addEventListener('click',function (event) {
-        event.preventDefault();
-        hideModal();
-
-    });
+    // document.querySelector('.no-confirm').addEventListener('click',function (event) {
+    //     event.preventDefault();
+    //     hideModal();
+    //
+    // });
 
     $(".modal__overlay").click(hideModal);
 
@@ -414,76 +480,7 @@
     //
     // });
     //
-    document.getElementById("pwdForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        var data = new FormData(this);
-        var currentPwd = data.get("currentPwd");
-        var newPwd = data.get("newPwd");
-        var renewPwd = data.get("renewPwd");
-        var action = "changePassword";
-        var id = data.get("id");
 
-        var isOk = true;
-
-        if(currentPwd==="") {
-            isOk=false;
-            showError('#currentPwd',"Không được để trống mục này");
-        } else {
-            hideError('#currentPwd');
-        }
-        if(newPwd==="") {
-            isOk=false;
-            showError('#newPwd',"Không được để trống mục này");
-        } else {
-            hideError('#newPwd');
-        }
-        if(renewPwd==="") {
-            isOk=false;
-            showError('#renewPwd',"Không được để trống mục này");
-        } else {
-            hideError('#renewPwd');
-        }
-
-
-        if(newPwd !=="" && renewPwd!=="") {
-            if(newPwd!== renewPwd) {
-                isOk=false;
-                showError('#newPwd',"Mật khẩu không trùng khớp");
-                showError('#renewPwd',"Mật khẩu không trùng khớp");
-            } else {
-                hideError('#newPwd');
-                hideError('#renewPwd');
-                if (newPwd.length < 8 || !/[A-Z]/.test(newPwd) || !/[a-z]/.test(newPwd) || !/\d/.test(newPwd)) {
-                    showError('#newPwd',"Mật khẩu phải trên 8 kí tự, bao gồm chữ hoa, chữ thường và số");
-                    isOk=false;
-                }
-            }
-        }
-
-        if(isOk===true) {
-            changePwd(action, id, currentPwd, newPwd);
-        }
-
-
-    });
-
-    function changePwd(action, id, currentPwd, newPwd) {
-        $.ajax({
-            url: "/LTWebFS/update-info",
-            method: "POST",
-            data: { action: action, id: id, currentPwd:currentPwd, newPwd: newPwd},
-            success: function(data) {
-                if(data==="success") {
-                    showSuccessToast("Đổi mật khẩu thành công");
-                    $('.modal').removeClass("active");
-                } else if(data==="wrongPwd") {
-                    showError("#currentPwd","Mật khẩu sai");
-                } else if(data==="thesamePwd") {
-                    showError("#newPwd","Mật khẩu mới phải khác mật khẩu cũ");
-                }
-            }
-        });
-    }
 
 
     $(document).ready(function() {

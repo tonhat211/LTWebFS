@@ -64,7 +64,21 @@ public class AddressDAO implements IDAO<Address> {
 
     @Override
     public int delete(Address a) {
-        return 0;
+        int re =0;
+        try{
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "delete from addresses where id = ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,a.getId());
+            re = pst.executeUpdate();
+
+            JDBCUtil.closeConnection(conn);
+            return re;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -103,7 +117,7 @@ public class AddressDAO implements IDAO<Address> {
         ArrayList<Address> res = new ArrayList<>();
         try{
             Connection conn = JDBCUtil.getConnection();
-            String sql = "select * from addresses where userID = ?";
+            String sql = "select * from addresses where userID = ? order by id desc";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1,userID);
             ResultSet rs = pst.executeQuery();
@@ -162,6 +176,6 @@ public class AddressDAO implements IDAO<Address> {
 //        System.out.println(ids);
 //
 //        System.out.println(OrderDAO.getInstance().totalSpendOfIDs(ids));
-        System.out.println(AddressDAO.getInstance().selectByUserID(3031));
+        System.out.println(AddressDAO.getInstance().delete(new Address(2)));
     }
 }

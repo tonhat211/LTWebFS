@@ -247,6 +247,70 @@ html{
   color: #f6f6f6;
 }
 
+.sub-menu-container {
+  position: relative;
+}
+
+.user-name {
+  color: white;
+}
+
+.sub-menu-container:hover .user-name {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sub-menu-container:hover .sub-menu {
+  display: block;
+}
+
+
+
+.sub-menu {
+  position: absolute;
+  padding: 5px;
+  background-color: white;
+  border-radius: 4px;
+  z-index: 2;
+  width: 190px;
+  bottom: -70px;
+  left: 10px;
+  display: none;
+}
+
+.sub-menu:before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  top: -20px;
+  left: -20px;
+
+}
+
+.sub-menu:before:hover {
+  cursor: pointer;
+}
+
+#header .sub-menu li {
+  padding: 4px 10px;
+  list-style-type: none;
+}
+
+#header .sub-menu li a {
+  text-decoration: none;
+  color: #00a6cf;
+
+}
+
+#header .sub-menu li:hover,
+#header .sub-menu li a:hover {
+  cursor: pointer;
+
+}
+
+
+
 
 /*
     Phần footer

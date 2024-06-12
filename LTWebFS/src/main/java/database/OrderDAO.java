@@ -4,11 +4,6 @@ import model.*;
 
 import java.sql.*;
 import java.sql.Date;
-import java.text.DecimalFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class OrderDAO implements IDAO<Order> {
@@ -139,6 +134,46 @@ public class OrderDAO implements IDAO<Order> {
             Connection conn = JDBCUtil.getConnection();
 
             String sql = "select * from orders where cusID = ? order by id desc;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,cusIdin);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()){
+                int id = rs.getInt("id");
+                Date dateSql  = rs.getDate("dateSet");
+                Datee dateeSet  = new Datee(dateSql);
+                Time  timeSql  = rs.getTime("timeSet");
+                int totalPrice =  rs.getInt("totalPrice");
+                int cusID  = rs.getInt("cusID");
+                String receiverInfo = rs.getString("receiverInfo");
+                int deliveryfee = rs.getInt("deliveryfee");
+                int status = rs.getInt("status");
+
+                Order  o = new Order(id,dateeSet,timeSql,totalPrice,cusID,receiverInfo,deliveryfee, status);
+                res.add(o);
+            }
+
+//			System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return res;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<Order> selectOrderByCusIdStatus(int cusIdin, ArrayList<Integer> s) {
+        String sString = "(";
+        for(Integer i : s) {
+            sString+= i +",";
+        }
+        sString =  sString.substring(0,sString.length()-1);
+        sString+=")";
+        ArrayList<Order> res = new ArrayList<Order>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+
+            String sql = "select * from orders where cusID = ? and status in "+ sString +" order by id desc;";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1,cusIdin);
 
@@ -976,15 +1011,97 @@ public class OrderDAO implements IDAO<Order> {
 
     }
 
+    public Map<Order,ArrayList<Map.Entry<DeOrder,ProductUnit>>> getOrderOf(int userid) {
+        Map<Order,ArrayList<Map.Entry<DeOrder,ProductUnit>>> res = new LinkedHashMap<>();
+        Map<DeOrder,ProductUnit> subRes = new LinkedHashMap<>();
+        ArrayList<Order> os = OrderDAO.getInstance().selectOrderByCusId(userid);
+        ArrayList<Integer> oids = new ArrayList<>();
+        for(Order o : os) {
+            oids.add(o.getId());
+            res.put(o,new ArrayList<>());
+        }
 
+        if(oids.isEmpty()) return null;
+
+        ArrayList<DeOrder> dos = DeOrderDAO.getInstance().selectByOIDs(oids);
+        ArrayList<Integer> pids = new ArrayList<>();
+        for(DeOrder deOrder : dos ){
+            if(!pids.contains(deOrder.getOrdID())) pids.add(deOrder.getProID());
+        }
+
+//        ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectByIDs(pids);
+
+        Map<Integer,ProductUnit> pus = ProductUnitDAO.getInstance().selectByIDsMap(pids);
+
+        for(DeOrder de : dos) {
+            subRes.put(de,pus.get(de.getProID()));
+        }
+        for (Map.Entry<Order, ArrayList<Map.Entry<DeOrder,ProductUnit>>> item : res.entrySet()) {
+            int oid = item.getKey().getId();
+//            ArrayList<Map<DeOrder, ProductUnit>> temp = new ArrayList<>();
+            for (Map.Entry<DeOrder,ProductUnit> de : subRes.entrySet()) {
+                if(de.getKey().getOrdID()==oid) {
+//                    temp.add(de.getValue());
+                    item.getValue().add(de);
+                }
+            }
+//            res.replace(item.getKey(),temp);
+        }
+        return res;
+    }
+    public Map<Order,ArrayList<Map.Entry<DeOrder,ProductUnit>>> getOrderOfStatus(int userid, ArrayList<Integer> s) {
+        Map<Order,ArrayList<Map.Entry<DeOrder,ProductUnit>>> res = new LinkedHashMap<>();
+        Map<DeOrder,ProductUnit> subRes = new LinkedHashMap<>();
+        ArrayList<Order> os = OrderDAO.getInstance().selectOrderByCusIdStatus(userid,s);
+        ArrayList<Integer> oids = new ArrayList<>();
+        for(Order o : os) {
+            oids.add(o.getId());
+            res.put(o,new ArrayList<>());
+        }
+
+        if(oids.isEmpty()) return null;
+
+        ArrayList<DeOrder> dos = DeOrderDAO.getInstance().selectByOIDs(oids);
+        ArrayList<Integer> pids = new ArrayList<>();
+        for(DeOrder deOrder : dos ){
+            if(!pids.contains(deOrder.getOrdID())) pids.add(deOrder.getProID());
+        }
+
+//        ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectByIDs(pids);
+
+        Map<Integer,ProductUnit> pus = ProductUnitDAO.getInstance().selectByIDsMap(pids);
+
+        for(DeOrder de : dos) {
+            subRes.put(de,pus.get(de.getProID()));
+        }
+        for (Map.Entry<Order, ArrayList<Map.Entry<DeOrder,ProductUnit>>> item : res.entrySet()) {
+            int oid = item.getKey().getId();
+//            ArrayList<Map<DeOrder, ProductUnit>> temp = new ArrayList<>();
+            for (Map.Entry<DeOrder,ProductUnit> de : subRes.entrySet()) {
+                if(de.getKey().getOrdID()==oid) {
+//                    temp.add(de.getValue());
+                    item.getValue().add(de);
+                }
+            }
+//            res.replace(item.getKey(),temp);
+        }
+        return res;
+    }
 
 
     public static void main(String[] args) {
 
-        ArrayList<User> unbacks = CustomerDAO.getInstance().getUnbackCus(4,0,10);
-        System.out.println(unbacks);
+        ArrayList<Integer> temp =new ArrayList<>();
+        temp.add(0);
 
+        Map<Order,ArrayList<Map.Entry<DeOrder,ProductUnit>>> t = OrderDAO.getInstance().getOrderOfStatus(3031,temp);
 
+        for (Map.Entry<Order, ArrayList<Map.Entry<DeOrder,ProductUnit>>> item : t.entrySet()) {
+            System.out.println("key:" +  item.getKey().getId());
+            for(Map.Entry<DeOrder,ProductUnit> de : item.getValue()) {
+                System.out.println("\tchi tiet: "+ de.getKey().getOrdID() + " san pham: " + de.getValue().getName());
+            }
+        }
 
 
 

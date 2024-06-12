@@ -42,7 +42,7 @@ public class OrderMenuControl extends HttpServlet {
 
                 orderWithDatails = OrderDAO.getInstance().getAllOrderAndDatail();
                 request.setAttribute("orders", orderWithDatails);
-                rd = getServletContext().getRequestDispatcher("/orderManagement.jsp");
+                rd = getServletContext().getRequestDispatcher("/adminOrderManagement.jsp");
                 rd.forward(request, response);
                 break;
             case "confirm":
