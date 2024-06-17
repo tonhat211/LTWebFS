@@ -32,7 +32,6 @@ public class MenuControl extends HttpServlet {
         switch (menu){
             case "index":
                 currentMenu = "index";
-//                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentMenu",currentMenu);
                 rd = getServletContext().getRequestDispatcher("/index.jsp");
                 rd.forward(request, response);
@@ -40,27 +39,8 @@ public class MenuControl extends HttpServlet {
             case "product":
                 currentMenu = "product";
                 session.setAttribute("currentMenu",currentMenu);
-                String kind = request.getParameter("kind");
-//                ControllerProduct qly = new ControllerProduct(kind);
-                ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectByKind(kind);
-                ArrayList<Integer> idBrandAdded = new ArrayList<>();
-                ArrayList<Brand> brandList = new ArrayList<>();
-                ArrayList<String> countryList = new ArrayList<>();
-                for(ProductUnit pu : pus ){
-                    if(!idBrandAdded.contains(pu.getBrandID())){
-                        brandList.add(new Brand(pu.getBrandID(), pu.getBrand(),pu.getMadeIn(),1));
-                        countryList.add(pu.getMadeIn());
-                        idBrandAdded.add(pu.getBrandID());
 
-                    }
-                }
-                request.setAttribute("productUnitList", pus);
-                request.setAttribute("brandList", brandList);
-                request.setAttribute("countryList", countryList);
-                request.setAttribute("currentKind",kind);
-
-//        request.getRequestDispatcher("product.jsp").forward(request,response);
-                rd = getServletContext().getRequestDispatcher("/product.jsp");
+                rd = getServletContext().getRequestDispatcher("/product?action=init");
                 rd.forward(request, response);
                 break;
             case "news":

@@ -8,7 +8,10 @@ import java.util.ArrayList;
 
 import model.Brand;
 
+
+
 public class BrandDAO implements IDAO<Brand>{
+	public static final int TOP = 6;
 	public static BrandDAO getInstance(){
 		return new BrandDAO();
 	}
@@ -124,8 +127,171 @@ public class BrandDAO implements IDAO<Brand>{
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+
+
+	}
+	public ArrayList<Brand> selectByCountry(String countryin) {
+		// TODO Auto-generated method stub
+		ArrayList<Brand> res = new ArrayList<Brand>();
+		try {
+			Connection conn = JDBCUtil.getConnection();
+
+			String sql = "select * from brands where country = ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1,countryin);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()){
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				String country = rs.getString("country");
+				int available = rs.getInt("available");
+				res.add(new Brand(id, name, country, available));
+			}
+
+//			System.out.println(re + " dong da duoc them vao");
+			JDBCUtil.closeConnection(conn);
+			return res;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+
 	}
 
+	public ArrayList<String> selectAllCountry() {
+		// TODO Auto-generated method stub
+		ArrayList<String> res = new ArrayList<String>();
+		try {
+			Connection conn = JDBCUtil.getConnection();
+
+			String sql = "SELECT DISTINCT country FROM `brands` WHERE 1;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+
+
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				String country = rs.getString("country");
+				res.add(country);
+			}
+
+//			System.out.println(re + " dong da duoc them vao");
+			JDBCUtil.closeConnection(conn);
+			return res;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	public ArrayList<Brand> selectTopOf(String kind, int top) {
+		// TODO Auto-generated method stub
+		ArrayList<Brand> res = new ArrayList<Brand>();
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+//		lay top ids
+		try {
+			Connection conn = JDBCUtil.getConnection();
+
+			String sql = "SELECT brandID FROM `products` WHERE kind = ? group by brandID order by COUNT(brandID) DESC limit 0,?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, kind);
+			pst.setInt(2,top);
+
+
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()){
+				int id = rs.getInt("brandID");
+				ids.add(id);
+			}
+			JDBCUtil.closeConnection(conn);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+//		lay brand tu top ids
+		String str="(";
+		for(Integer i : ids) {
+			str+= i + ",";
+		}
+		str = str.substring(0,str.length()-1);
+		str+=")";
+		try {
+			Connection conn = JDBCUtil.getConnection();
+
+			String sql = "SELECT * FROM `brands` WHERE available = 1 and id in " + str +";";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()){
+				int id = rs.getInt("id");
+				String name  = rs.getString("name");
+				String country  = rs.getString("country");
+				int available = rs.getInt("available");
+				res.add(new Brand(id,name,country,available));
+			}
+			JDBCUtil.closeConnection(conn);
+			return res;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	public ArrayList<Brand> selectOtherOf(String kind, int top) {
+		// TODO Auto-generated method stub
+		ArrayList<Brand> res = new ArrayList<Brand>();
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+//		lay top ids
+		try {
+			Connection conn = JDBCUtil.getConnection();
+
+			String sql = "SELECT brandID FROM `products` WHERE kind = ? group by brandID order by COUNT(brandID) DESC limit 0,?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, kind);
+			pst.setInt(2,top);
+
+
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()){
+				int id = rs.getInt("brandID");
+				ids.add(id);
+			}
+			JDBCUtil.closeConnection(conn);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+//		lay brand tu top ids
+		String str="(";
+		for(Integer i : ids) {
+			str+= i + ",";
+		}
+		str = str.substring(0,str.length()-1);
+		str+=")";
+		try {
+			Connection conn = JDBCUtil.getConnection();
+
+			String sql = "SELECT * FROM `brands` WHERE available = 1 and id not in " + str +";";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()){
+				int id = rs.getInt("id");
+				String name  = rs.getString("name");
+				String country  = rs.getString("country");
+				int available = rs.getInt("available");
+				res.add(new Brand(id,name,country,available));
+			}
+			JDBCUtil.closeConnection(conn);
+			return res;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
 	@Override
 	public Brand selectById(int id) {
 		// TODO Auto-generated method stub
@@ -156,6 +322,7 @@ public class BrandDAO implements IDAO<Brand>{
 			throw new RuntimeException(e);
 		}
 	}
+
 
 	@Override
 	public ArrayList<Brand> selectByCondition(Brand t) {
@@ -376,28 +543,7 @@ public class BrandDAO implements IDAO<Brand>{
 	}
 	
 	public static void main(String[] args) {
-//		insertData(); hàm này chỉ chạy 1 lần duy nhất để nhập db
-//		ArrayList<Brand> brandList = BrandDAO.getInstance().selectAll();
-//		String country="";
-//		ArrayList<String> countries= new ArrayList<>();
-//		for(Brand b : brandList) {
-//			country = b.getCountry();
-//			if(!countries.contains(country))
-//				countries.add(country);
-//		}
-//		
-//		for(String countr : countries) {
-//			System.out.println(countr);
-//		}
-		
-		
-//		for(int i=4;i<=23;i++) {
-//			int newID = Integer.parseInt("505" + i);
-//			BrandDAO.getInstance().updateID(i, newID);
-//		}
-
-		System.out.println(BrandDAO.getInstance().checkBrand(new Brand(1,"Bosos", "Đứcs",1)));
-		
+		System.out.println(BrandDAO.getInstance().selectTopOf("a",6));
 	}
 
 }
