@@ -37,6 +37,14 @@
             rel='stylesheet'>
 
     <style>
+        .error {
+            color: red;
+            background-color: rgba(255, 0, 0, 0.22);
+            padding: 7px;
+            margin: 4px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
         .forgot {
             background-color: #fff;
             padding: 12px;
@@ -86,12 +94,13 @@
                         OTP ở trang tiếp theo</li>
                 </ol>
             </div>
-            <form class="card mt-4" action="ForgotPasswordControl" method="post">
+            <form class="card mt-4" action="ForgotPasswordControl" method="post" id="forgotPass">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="email-for-pass">Nhập địa chỉ email của bạn</label> <input
                             class="form-control" type="text" name="email"
                             id="email-for-pass" required="">
+                        <div class="error" hidden></div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -121,6 +130,36 @@
 <script type='text/javascript' src=''></script>
 <script type='text/javascript' src=''></script>
 <script type='text/Javascript'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('forgotPass');
 
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email-for-pass');
+            const email = emailInput.value.trim();
+            const errorElement = emailInput.parentElement.querySelector('.error');
+
+            if (!validateEmail(email)) {
+                showMessage(errorElement, 'Email không hợp lệ');
+                return;
+            }
+
+            this.submit();
+        });
+
+        function validateEmail(email) {
+            const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            return emailRegex.test(email);
+        }
+
+        function showMessage(element, message) {
+            if (element) {
+                element.hidden = false;
+                element.innerText = message;
+            }
+        }
+    });
+</script>
 </body>
 </html>

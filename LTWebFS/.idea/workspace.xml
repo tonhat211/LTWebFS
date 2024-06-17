@@ -9,9 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="them tinh nang dang nhap bang google va gho log cho dang nhap google">
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="them tinh nang binh luan bang fb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ForgotPassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ForgotPassword.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ResetPassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ResetPassword.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/signup.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/controller/DeleteUserServlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/controller/RegisterServlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/controller/ShowUsers.java" beforeDir="false" />
@@ -356,7 +359,10 @@
       <workItem from="1717378234800" duration="7195000" />
       <workItem from="1717385708602" duration="379000" />
       <workItem from="1717409598503" duration="237000" />
-      <workItem from="1717576088789" duration="3133000" />
+      <workItem from="1717576088789" duration="3421000" />
+      <workItem from="1717592636093" duration="2482000" />
+      <workItem from="1718611367397" duration="7882000" />
+      <workItem from="1718627231428" duration="6546000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -486,7 +492,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717409657785</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="them tinh nang binh luan bang fb">
+      <option name="closed" value="true" />
+      <created>1717579506107</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1717579506107</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,6 +557,7 @@
     <MESSAGE value="them phan ma hoa pwd khi thiet lap mat khau moi, va them phan hien thi mat khau trong o input mat khau" />
     <MESSAGE value="them tinh nang dang nhap bang fb va ghi log cho dang nhap fb" />
     <MESSAGE value="them tinh nang dang nhap bang google va gho log cho dang nhap google" />
-    <option name="LAST_COMMIT_MESSAGE" value="them tinh nang dang nhap bang google va gho log cho dang nhap google" />
+    <MESSAGE value="them tinh nang binh luan bang fb" />
+    <option name="LAST_COMMIT_MESSAGE" value="them tinh nang binh luan bang fb" />
   </component>
 </project>

@@ -70,32 +70,20 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Mật khẩu</label>
-                <input type="password" class="form-control" id="password" name="password"  placeholder="Nhập mật khẩu">
-<%--                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>--%>
-                <div class="error" hidden></div>
+
                 <div class="password-container">
                 <input type="password" class="form-control" id="password" name="password" required placeholder="Nhập mật khẩu">
                 <i class="fa-solid fa-eye-slash toggle-password"></i>
                 </div>
-                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>
-
-                <input type="password" class="form-control" id="password" name="password"  placeholder="Nhập mật khẩu">
-<%--                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>--%>
-                <div class="error" hidden></div>
+               <div class="error" hidden></div>
             </div>
             <div class="mb-3">
                 <label for="repassword" class="form-label">Nhập lại mật khẩu</label>
-                <input type="password" class="form-control" id="repassword" name="repassword"  placeholder="Nhập lại mật khẩu">
-<%--                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>--%>
-                <div class="error" hidden></div>
                 <div class="password-container">
                 <input type="password" class="form-control" id="repassword" name="repassword" required placeholder="Nhập lại mật khẩu">
                 <i class="fa-solid fa-eye-slash toggle-password"></i>
                 </div>
-                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>
 
-                <input type="password" class="form-control" id="repassword" name="repassword"  placeholder="Nhập lại mật khẩu">
-<%--                <div class="error"<%=status.equalsIgnoreCase("differentpwd") ? "" : "hidden"%> >Mật khẩu không trùng khớp</div>--%>
                 <div class="error" hidden></div>
             </div>
             <div class="mb-3">
@@ -157,6 +145,7 @@
                 <div class="form-group">
                     <label  class="w-20"  for="birthday">Ngày sinh: </label>
                     <input type="date" class="form-control w-80" id="birthday" name="birthday"  aria-describedby="" placeholder="Nhập ngày sinh" required value="<%=birthday%>" >
+                    <div class="error" hidden></div>
                 </div>
 
             </div>
@@ -164,6 +153,7 @@
                 <div class="form-group">
                     <label class="w-20" for="address">Địa chỉ: </label>
                     <input type="text" class="form-control w-80" id="address" name="address" aria-describedby="" placeholder="Nhập địa chỉ" required value="<%= utemp != null ? utemp.getAddress() : "" %>">
+                    <div class="error" hidden></div>
                 </div>
 
             </div>
@@ -181,7 +171,7 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('DOMContentLoaded', function() {
         const togglePasswordElements = document.querySelectorAll('.toggle-password');
 
         togglePasswordElements.forEach(togglePassword => {
@@ -194,136 +184,130 @@
                 this.classList.toggle('fa-eye');
             });
         });
-    });
-</script>
 
-
-<script>
-
-    $(document).ready(function() {
-        // showSuccessToast("thanh cong tai");
-        document.querySelector("#myForm").addEventListener('submit', function (event){
+        document.querySelector("#myForm").addEventListener('submit', function (event) {
             event.preventDefault();
-            var formData = new FormData(this);
-            var name = formData.get("name");
-            var email = formData.get("email");
-            var phone = formData.get("phone");
-            var password = formData.get("password");
-            var repassword = formData.get("repassword");
-            var birthday = formData.get("birthday");
+            const formData = new FormData(this);
 
-            var isOk = true;
+            const name = formData.get("name").trim();
+            const email = formData.get("email").trim();
+            const phone = formData.get("phone").trim();
+            const password = formData.get("password").trim();
+            const repassword = formData.get("repassword").trim();
+            const birthday = formData.get("birthday").trim();
 
-            if(name.trim() === "") {
-                switchMessage("#name",'.error',1,"Không được để trống mục này");
-                isOk = false;
+            let isValid = true;
+
+            if (!validateNotEmpty(name, "#name", "Không được để trống mục này")) isValid = false;
+            if (!validateEmail(email, "#email")) isValid = false;
+            if (!validatePhone(phone, "#phone")) isValid = false;
+            if (!validatePassword(password, "#password")) isValid = false;
+            if (!validateRepassword(password, repassword, "#repassword")) isValid = false;
+            if (!validateBirthday(birthday, "#birthday")) isValid = false;
+
+            if (isValid) {
+                signup(name, email, password, repassword, phone, address, sex, birthday);
+            }
+        });
+
+        function validateNotEmpty(value, selector, message) {
+            const element = document.querySelector(selector);
+            const errorElement = element.parentElement.querySelector('.error');
+            if (value === "") {
+                showMessage(errorElement, message);
+                return false;
             } else {
-                switchMessage("#name",'.error',0);
-
+                hideMessage(errorElement);
+                return true;
             }
+        }
 
-            if(email.trim() === "") {
-                switchMessage("#email",'.error',1,"Không được để trống mục này");
-                isOk = false;
+        function validateEmail(email, selector) {
+            const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            const element = document.querySelector(selector);
+            const errorElement = element.parentElement.querySelector('.error');
+            if (!validateNotEmpty(email, selector, "Không được để trống mục này")) return false;
+            if (!emailRegex.test(email)) {
+                showMessage(errorElement, "Email không hợp lệ");
+                return false;
             } else {
-                switchMessage("#email",'.error',0);
-                var regex= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                if(regex.test(email)) {
-                    switchMessage("#email",'.error',0);
-                } else {
-                    switchMessage("#email",'.error',1,"Email không hợp lệ");
-                    isOk=false;
-                }
+                hideMessage(errorElement);
+                return true;
             }
+        }
 
-            if(phone.trim() ===""){
-                switchMessage("#phone",'.error',1,"Không được để trống mục này");
-                isOk = false;
+        function validatePhone(phone, selector) {
+            const element = document.querySelector(selector);
+            const errorElement = element.parentElement.querySelector('.error');
+            if (!validateNotEmpty(phone, selector, "Không được để trống mục này")) return false;
+            if (phone.length > 11 || isNaN(phone)) {
+                showMessage(errorElement, "Số điện thoại không hợp lệ");
+                return false;
             } else {
-                switchMessage("#phone",'.error',0);
-                if(phone.length > 11) {
-                    switchMessage("#phone",'.error',1,"Số điện thoại không hợp lệ");
-                    isOk=false;
-
-                } else {
-                    var test;
-                    for(var i = 0; i<phone.length; i++) {
-                        test = parseInt(phone.charAt(i));
-                        if(isNaN(test)) {
-                            switchMessage("#phone",'.error',1,"Số điện thoại không hợp lệ");
-                            isOk=false;
-                            break;
-                        }
-                    }
-                }
+                hideMessage(errorElement);
+                return true;
             }
+        }
 
-            if(password.trim() === "") {
-                switchMessage("#password",'.error',1,"Không được để trống mục này");
-                isOk = false;
+        function validatePassword(password, selector) {
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            const element = document.querySelector(selector);
+            const errorElement = element.parentElement.querySelector('.error');
+            if (!validateNotEmpty(password, selector, "Không được để trống mục này")) return false;
+            if (!passwordRegex.test(password)) {
+                showMessage(errorElement, "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số");
+                return false;
             } else {
-                switchMessage("#password",'.error',0);
-
+                hideMessage(errorElement);
+                return true;
             }
+        }
 
-            if(repassword.trim() === "") {
-                switchMessage("#repassword",'.error',1,"Không được để trống mục này");
-                isOk = false;
+        function validateRepassword(password, repassword, selector) {
+            const element = document.querySelector(selector);
+            const errorElement = element.parentElement.querySelector('.error');
+            if (!validateNotEmpty(repassword, selector, "Không được để trống mục này")) return false;
+            if (password !== repassword) {
+                showMessage(errorElement, "Mật khẩu không trùng khớp");
+                return false;
             } else {
-                switchMessage("#repassword",'.error',0);
-
+                hideMessage(errorElement);
+                return true;
             }
+        }
 
-            if(password.trim() !== "" && repassword.trim() !== "") {
-                switchMessage("#password",'.error',0);
-                switchMessage("#repassword",'.error',0);
-                if(password !== repassword) {
-                    switchMessage("#password",'.error',1,"Mật khẩu không trùng khớp");
-                    switchMessage("#repassword",'.error',1,"Mật khẩu không trùng khớp");
-                    isOk = false;
 
-                } else {
-                    if(!password.trim().length >= 8 || !password.match(/[a-z]/) || !password.match(/[A-Z]/)
-                                || !password.match(/\d/))  {
-                        switchMessage("#password",'.error',1,"Mật khẩu phải trên 7 kí tự, bao gồm chữ hoa, chữ thường và số");
-                        isOk = false;
-                    }
-                }
-
-            }
-
-            console.log(password);
+        function validateBirthday(birthday, selector) {
+            const element = document.querySelector(selector);
+            const errorElement = element.parentElement.querySelector('.error');
+            if (!validateNotEmpty(birthday, selector, "Không được để trống mục này")) return false;
 
             var birth = new Date(birthday);
             var year = birth.getFullYear();
             var currentYear = new Date().getFullYear();
-            var curretnMonth = new Date().getMonth()+1;
-            var currentDay = new Date().getDate();
 
-            console.log(year);
-            if((currentYear - year) < 16) {
-                switchMessage("#birthday",'.error',1,"Chưa đủ 16 tuổi");
-                isOk = false;
+            if ((currentYear - year) < 16) {
+                showMessage(errorElement, "Chưa đủ 16 tuổi");
+                return false;
             } else {
-                switchMessage("#birthday",'.error',0);
+                hideMessage(errorElement);
+                return true;
             }
+        }
 
-
-            if(isOk=== false) {
-                return;
+        function showMessage(element, message) {
+            if (element) {
+                element.hidden = false;
+                element.innerText = message;
             }
+        }
 
-            // var id = formData.get("id");
-            var sex = formData.get("sex");
-            var address = formData.get("address");
-
-            document.querySelector("#myForm").submit();
-
-
-            // signup(name, email, password, repassword, phone, address, sex, birthday);
-
-        });
-
+        function hideMessage(element) {
+            if (element) {
+                element.hidden = true;
+                element.innerText = '';
+            }
+        }
 
         function signup(name, email, password, repassword, phone, address, sex, birthday) {
             $.ajax({
@@ -332,62 +316,10 @@
                 data: {name: name, email: email, password: password, repassword: repassword, phone: phone, address: address, sex: sex, birthday: birthday},
                 success: function(data) {
                     $("#myForm").html(data);
-
                 }
             });
         }
-
-        function switchMessage(parentSelector,selector, status) {
-            var e = document.querySelector(parentSelector).parentElement.querySelector(selector);
-            if(status === 1) {
-                e.hidden = false;
-            } else {
-                e.hidden = true;
-            }
-        }
-
-        function switchMessage(parentSelector,selector, status, msg) {
-            var e = document.querySelector(parentSelector).parentElement.querySelector(selector);
-            if(status === 1) {
-                e.hidden = false;
-                e.innerText = msg;
-
-
-            } else {
-                e.hidden = true;
-
-            }
-        }
-    });
-
-
-
-
-
-
-
-
-
-
-
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const togglePasswordElements = document.querySelectorAll('.toggle-password');
-
-        togglePasswordElements.forEach(togglePassword => {
-            togglePassword.addEventListener('click', function (e) {
-                const passwordInput = this.previousElementSibling;
-                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                passwordInput.setAttribute('type', type);
-
-                this.classList.toggle('fa-eye-slash');
-                this.classList.toggle('fa-eye');
-            });
-        });
     });
 </script>
-
 </body>
 </html>

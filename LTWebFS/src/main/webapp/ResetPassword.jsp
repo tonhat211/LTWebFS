@@ -31,6 +31,14 @@
 
     <!-- Custom CSS -->
     <style>
+        .error {
+            color: red;
+            background-color: rgba(255, 0, 0, 0.22);
+            padding: 7px;
+            margin: 4px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
         .custom-control-label::before {
             background-color: #dee2e6;
             border: #dee2e6
@@ -81,6 +89,7 @@
                                             <input type="password" name="password"
                                                    placeholder="Nhập mật khẩu mới"
                                                    class="form-control border-info placeicon">
+                                            <div class="error" hidden></div>
                                         </div>
                                     </div>
                                     <div class="form-group row justify-content-center px-3">
@@ -128,6 +137,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
 <script type='text/javascript'
         src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
+
+
 
 </body>
 </html>

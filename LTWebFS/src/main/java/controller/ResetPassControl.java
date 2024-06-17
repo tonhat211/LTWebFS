@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet("/newPassword")
 public class ResetPassControl extends HttpServlet {
@@ -26,13 +28,13 @@ public class ResetPassControl extends HttpServlet {
         // Lấy email từ session
         String userEmail = (String) session.getAttribute("email");
 
-        // Kiểm tra nếu mật khẩu mới và xác nhận mật khẩu không khớp
-        if (!newPassword.equals(confirmPassword))
+            // Kiểm tra nếu mật khẩu mới và xác nhận mật khẩu không khớp
+            if (!newPassword.equals(confirmPassword))
             {
-            request.setAttribute("message", "Mật khẩu và xác nhận mật khẩu không khớp.");
-            request.getRequestDispatcher("/ResetPassword.jsp").forward(request, response);
-            return; // Dừng luồng xử lý, không tiếp tục thực hiện đổi mật khẩu
-        }
+                request.setAttribute("message", "Mật khẩu và xác nhận mật khẩu không khớp.");
+                request.getRequestDispatcher("/ResetPassword.jsp").forward(request, response);
+                return;
+            }
 
         // Thực hiện đổi mật khẩu
         UserDAO usersDAO = UserDAO.getInstance();
@@ -55,5 +57,4 @@ public class ResetPassControl extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
     }
-
 }
