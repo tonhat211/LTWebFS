@@ -1,24 +1,24 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-const containerPrdE = $(".product__container");
-const filterTitles = $$(".subnav__filter-title");
-const filterLis = $$(".filter-item");
-const cancelFilter = $(".cancel-filter");
-const filterItems= $$(".subnav__filter-item");
-const productItems= $$(".product-item");
+const p$ = document.querySelector.bind(document);
+const p$$ = document.querySelectorAll.bind(document);
+const containerPrdE = p$(".product__container");
+const filterTitles = p$$(".subnav__filter-title");
+const filterLis = p$$(".filter-item");
+// const cancelFilter = p$(".cancel-filter");
+const filterItems= p$$(".subnav__filter-item");
+const productItems= p$$(".product-item");
 
-const showSliders = $$(".prd__slidebar-indicator-item");
-const sliders = $$(".prd__sliderbar-item");
-const slideLeft = $(".move-left");
-const slideRight = $(".move-right");
+const showSliders = p$$(".prd__slidebar-indicator-item");
+const sliders = p$$(".prd__sliderbar-item");
+const slideLeft = p$(".move-left");
+const slideRight = p$(".move-right");
 
-const kindbtns = $$(".kindBtn");
-for(let i of kindbtns){
-    // i.addEventListener('click', chooseKind());
-    i.onclick = function (){
-        chooseKind();
-    }
-}
+const kindbtns = p$$(".kindBtn");
+// for(let i of kindbtns){
+//     // i.addEventListener('click', chooseKind());
+//     i.onclick = function (){
+//         chooseKind();
+//     }
+// }
 
 function chooseKind(){
     var kind = this.innerText;
@@ -168,13 +168,13 @@ function filterInit() {
     //     });
     // }
 
-    cancelFilter.onclick = function () {
-        // console.log("ok");
-        for(let i=0; i<filterItems.length;i++) {
-            filterItems[i].querySelector(".filter-chosen").innerText="Tất cả";
-            // console.log("1");
-        }
-    }
+    // cancelFilter.onclick = function () {
+    //     // console.log("ok");
+    //     for(let i=0; i<filterItems.length;i++) {
+    //         filterItems[i].querySelector(".filter-chosen").innerText="Tất cả";
+    //         // console.log("1");
+    //     }
+    // }
 
 
 
@@ -200,20 +200,20 @@ const removeActive = function (items) {
 }
 
 function brandInit() {
-    const brands = $$(".brand-item");
+    const brands = p$$(".brand-item");
     toggleActive(brands);
 
-    const allBrand = $(".all-brand");
+    const allBrand = p$(".all-brand");
     allBrand.onclick = function () {
         removeActive(brands);
     }
 }
 
-brandInit();
+// brandInit();
 
 function showProInKind(kind) {
     var kindd = "pro" + kind;
-    const productList = $$(".oneProduct");
+    const productList = p$$(".oneProduct");
     for (let i of productList){
         if(i.classList.contains(kindd))
             i.style.display = "block";

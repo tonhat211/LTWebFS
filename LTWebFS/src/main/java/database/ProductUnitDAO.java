@@ -1,5 +1,6 @@
 package database;
 
+import controller.ProductControl;
 import model.*;
 
 import java.sql.*;
@@ -39,6 +40,159 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
                     "                     join brands b on b.id = p.brandID" +
                     "                    join images  i on i.parentID = p.id order by p.id asc;";
             PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                int id = rs.getInt("pid");
+                String name = rs.getString("pname");
+                int brandID = rs.getInt("pbrandID");
+                int areaID = rs.getInt("pareaID");
+                String kind = rs.getString("pkind");
+                int amount = rs.getInt("pamount");
+                String des = rs.getString("pdescription");
+//                ps.add(new Product(id,name, brandID, areaID, kind, amount, des));
+
+                int imei = rs.getInt("uimei");
+                int proID = rs.getInt("uproductID");
+                String color = rs.getString("ucolor");
+                String size = rs.getString("usize");
+                double wattage = rs.getDouble("uwattage");
+                double price = rs.getDouble("uprice");
+                int yearMade = rs.getInt("uyearMade");
+                Date dateSql = rs.getDate("udateImport");
+                Datee dateImport = new Datee(dateSql);
+                int available = rs.getInt("uavailable");
+                String phanloai = "" + (color!=""?color:"") + (size!=""?" - " + size:"") + (wattage!=0?" - " + wattage:"");
+
+
+                int brandid = rs.getInt("bid");
+                String brandName = rs.getString("bname");
+                String country = rs.getString("bcountry");
+                int brandAvailable = rs.getInt("bavailable");
+
+                int imageId = rs.getInt("iid");
+                String url = rs.getString("iurl");
+                int parentID = rs.getInt("iparentID");
+
+                ProductUnit pu = new ProductUnit(id,name,brandID,areaID,kind,amount,des,imei,color,size,(float) wattage,phanloai,price,yearMade,country,dateImport.toString(),available,null,brandName,url);
+                if(!idAdded.contains(id)){
+                    idAdded.add(id);
+                    re.add(pu);
+                }
+
+
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    public ArrayList<ProductUnit> selectByBrandAndKind(int bid, String kindin,int arrange, int index, int top) {
+        String orderby="";
+        if(arrange==1) {
+            orderby ="order by u.price asc";
+        } else if(arrange==-1) {
+            orderby = "order by u.price desc";
+        } else {
+            orderby = "order by p.id asc";
+        }
+
+
+        ArrayList<ProductUnit> re = new ArrayList<>();
+        ArrayList<Integer>  idAdded = new ArrayList<>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select p.id  as pid, p.name as pname, p.brandid as pbrandid, p.areaid as pareaid, p.kind as  pkind, p.amount as pamount,  p.description as pdescription, u.imei as uimei, u.productid as uproductid, u.color as ucolor, u.size as usize, u.wattage as uwattage, u.price as uprice, u.amount as uamount, u.yearmade as uyearmade, u.dateimport as udateimport, u.available as uavailable, b.id as bid, b.name as bname, b.country as bcountry, b.available as bavailable, i.id as iid, i.url as iurl, i.parentid as  iparentid\n" +
+                    "from products p join units u on p.id = u.productID" +
+                    "                     join brands b on b.id = p.brandID" +
+                    "                    join images  i on i.parentID = p.id where p.brandid = ? and p.kind = ? "+ orderby+" limit ?,?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,bid);
+            pst.setString(2,kindin);
+            pst.setInt(3,index);
+            pst.setInt(4,top);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                int id = rs.getInt("pid");
+                String name = rs.getString("pname");
+                int brandID = rs.getInt("pbrandID");
+                int areaID = rs.getInt("pareaID");
+                String kind = rs.getString("pkind");
+                int amount = rs.getInt("pamount");
+                String des = rs.getString("pdescription");
+//                ps.add(new Product(id,name, brandID, areaID, kind, amount, des));
+
+                int imei = rs.getInt("uimei");
+                int proID = rs.getInt("uproductID");
+                String color = rs.getString("ucolor");
+                String size = rs.getString("usize");
+                double wattage = rs.getDouble("uwattage");
+                double price = rs.getDouble("uprice");
+                int yearMade = rs.getInt("uyearMade");
+                Date dateSql = rs.getDate("udateImport");
+                Datee dateImport = new Datee(dateSql);
+                int available = rs.getInt("uavailable");
+                String phanloai = "" + (color!=""?color:"") + (size!=""?" - " + size:"") + (wattage!=0?" - " + wattage:"");
+
+
+                int brandid = rs.getInt("bid");
+                String brandName = rs.getString("bname");
+                String country = rs.getString("bcountry");
+                int brandAvailable = rs.getInt("bavailable");
+
+                int imageId = rs.getInt("iid");
+                String url = rs.getString("iurl");
+                int parentID = rs.getInt("iparentID");
+
+                ProductUnit pu = new ProductUnit(id,name,brandID,areaID,kind,amount,des,imei,color,size,(float) wattage,phanloai,price,yearMade,country,dateImport.toString(),available,null,brandName,url);
+                if(!idAdded.contains(id)){
+                    idAdded.add(id);
+                    re.add(pu);
+                }
+
+
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    public ArrayList<ProductUnit> selectByNotBrandAndKind(ArrayList<Integer> ids, String kindin, int arrange, int index, int top) {
+        String orderby="";
+        if(arrange==1) {
+            orderby ="order by u.price asc";
+        } else if(arrange==-1) {
+            orderby = "order by u.price desc";
+        } else {
+            orderby = "order by p.id asc";
+        }
+        String str="(";
+        for(Integer i : ids) {
+            str+=i+",";
+        }
+        str = str.substring(0,str.length()-1);
+        str +=")";
+        ArrayList<ProductUnit> re = new ArrayList<>();
+        ArrayList<Integer>  idAdded = new ArrayList<>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select p.id  as pid, p.name as pname, p.brandid as pbrandid, p.areaid as pareaid, p.kind as  pkind, p.amount as pamount,  p.description as pdescription, u.imei as uimei, u.productid as uproductid, u.color as ucolor, u.size as usize, u.wattage as uwattage, u.price as uprice, u.amount as uamount, u.yearmade as uyearmade, u.dateimport as udateimport, u.available as uavailable, b.id as bid, b.name as bname, b.country as bcountry, b.available as bavailable, i.id as iid, i.url as iurl, i.parentid as  iparentid\n" +
+                    "from products p join units u on p.id = u.productID" +
+                    "                     join brands b on b.id = p.brandID" +
+                    "                    join images  i on i.parentID = p.id where p.brandid in "+ str + " and p.kind = ? " + orderby +" limit ?,?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1,kindin);
+            pst.setInt(2,index);
+            pst.setInt(3,top);
             ResultSet rs = pst.executeQuery();
 
             while(rs.next()) {
@@ -348,9 +502,17 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
     }
 
 
-    public ArrayList<ProductUnit> selectByKind(String kindin) {
+    public ArrayList<ProductUnit> selectByKind(String kindin, int arrange, int index, int top) {
         ArrayList<ProductUnit> re = new ArrayList<>();
         ArrayList<Integer> idAdded  = new ArrayList<>();
+        String orderby="";
+        if(arrange==1) {
+            orderby ="order by u.price asc";
+        } else if(arrange==-1) {
+            orderby = "order by u.price desc";
+        } else {
+            orderby = "order by p.id asc";
+        }
         try {
             Connection conn = JDBCUtil.getConnection();
             String sql = "select p.id  as pid, p.name as pname, p.brandid as pbrandid, p.areaid as pareaid, p.kind as  pkind, p.amount as pamount,  p.description as pdescription, u.imei as uimei, u.productid as uproductid, u.color as ucolor, u.size as usize, u.wattage as uwattage, u.price as uprice, u.amount as uamount, u.yearmade as uyearmade, u.dateimport as udateimport, u.available as uavailable, b.id as bid, b.name as bname, b.country as bcountry, b.available as bavailable, i.id as iid, i.url as iurl, i.parentid as  iparentid\n" +
@@ -358,9 +520,11 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
                     "                     join brands b on b.id = p.brandID" +
                     "                    join images  i on i.parentID = p.id" +
                     "                    " +
-                    "                    where p.kind = ?;";
+                    "                    where p.kind = ? " + orderby + " limit ?,?;";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1,kindin);
+            pst.setInt(2,index);
+            pst.setInt(3,top);
             ResultSet rs = pst.executeQuery();
 
             while(rs.next()) {
@@ -371,8 +535,89 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
                 String kind = rs.getString("pkind");
                 int amount = rs.getInt("pamount");
                 String des = rs.getString("pdescription");
-//                ps.add(new Product(id,name, brandID, areaID, kind, amount, des));
+                int imei = rs.getInt("uimei");
+                int proID = rs.getInt("uproductID");
+                String color = rs.getString("ucolor");
+                String size = rs.getString("usize");
+                double wattage = rs.getDouble("uwattage");
+                double price = rs.getDouble("uprice");
+                int yearMade = rs.getInt("uyearMade");
+                Date dateSql = rs.getDate("udateImport");
+                Datee dateImport = new Datee(dateSql);
+                int available = rs.getInt("uavailable");
+                String phanloai = "" + (color!=""?color:"") + (size!=""?" - " + size:"") + (wattage!=0?" - " + wattage:"");
 
+
+                int brandid = rs.getInt("bid");
+                String brandName = rs.getString("bname");
+                String country = rs.getString("bcountry");
+                int brandAvailable = rs.getInt("bavailable");
+
+                int imageId = rs.getInt("iid");
+                String url = rs.getString("iurl");
+                int parentID = rs.getInt("iparentID");
+
+                ProductUnit pu = new ProductUnit(id,name,brandID,areaID,kind,amount,des,imei,color,size,(float) wattage,phanloai,price,yearMade,country,dateImport.toString(),available,null,brandName,url);
+                if(!idAdded.contains(id)){
+                    idAdded.add(id);
+                    re.add(pu);
+                }
+
+
+            }
+            JDBCUtil.closeConnection(conn);
+            return re;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+    }
+    public ArrayList<ProductUnit> selectByCountry(String kindin,String countryin, int arrange, int index, int top) {
+        ArrayList<Brand> bs = BrandDAO.getInstance().selectByCountry(countryin);
+        ArrayList<Integer> bids = new ArrayList<>();
+        for(Brand b : bs ) {
+            bids.add(b.getId());
+        }
+        if(bids.isEmpty()) return null;
+        String ids = "(";
+        for(Integer i : bids) {
+            ids +=i +",";
+        }
+        ids = ids.substring(0,ids.length()-1);
+        ids +=")";
+
+        ArrayList<ProductUnit> re = new ArrayList<>();
+        ArrayList<Integer> idAdded  = new ArrayList<>();
+        String orderby="";
+        if(arrange==1) {
+            orderby ="order by u.price asc";
+        } else if(arrange==-1) {
+            orderby = "order by u.price desc";
+        } else {
+            orderby = "order by p.id asc";
+        }
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select p.id  as pid, p.name as pname, p.brandid as pbrandid, p.areaid as pareaid, p.kind as  pkind, p.amount as pamount,  p.description as pdescription, u.imei as uimei, u.productid as uproductid, u.color as ucolor, u.size as usize, u.wattage as uwattage, u.price as uprice, u.amount as uamount, u.yearmade as uyearmade, u.dateimport as udateimport, u.available as uavailable, b.id as bid, b.name as bname, b.country as bcountry, b.available as bavailable, i.id as iid, i.url as iurl, i.parentid as  iparentid\n" +
+                    "from products p join units u on p.id = u.productID" +
+                    "                     join brands b on b.id = p.brandID" +
+                    "                    join images  i on i.parentID = p.id" +
+                    "                    " +
+                    "                    where p.kind = ? and p.brandid in " + ids + " " + orderby +"  limit ?,?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1,kindin);
+            pst.setInt(2,index);
+            pst.setInt(3,top);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+                int id = rs.getInt("pid");
+                String name = rs.getString("pname");
+                int brandID = rs.getInt("pbrandID");
+                int areaID = rs.getInt("pareaID");
+                String kind = rs.getString("pkind");
+                int amount = rs.getInt("pamount");
+                String des = rs.getString("pdescription");
                 int imei = rs.getInt("uimei");
                 int proID = rs.getInt("uproductID");
                 String color = rs.getString("ucolor");
@@ -729,7 +974,9 @@ public int addPro(Product p) {
 
 
     public static void main(String[] args) {
-//        System.out.println(ProductUnitDAO.getInstance().selectByKindOrName("may"));
+        System.out.println(ProductUnitDAO.getInstance().selectByCountry("A","Đức",0,0, ProductControl.TOP));
+        ArrayList<Integer> tes = new ArrayList<>();
+        System.out.println(tes.isEmpty());
     }
 
 }
