@@ -109,7 +109,7 @@ function changeSliderToLeft(sliders, showSliders) {
 
 }
 
-showProInKind("A");
+// showProInKind("A");
 
 // const kindProducts = $$(".subnav__kind-item");
 // radioCusActive(kindProducts);

@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="them trang theo doi don hang cho khach hang">
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="hoan thien chuc nang loc san pham trong trang xem san pham">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/BrandDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/BrandDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/ProductUnitDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ProductUnitDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/product.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
@@ -69,7 +68,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "to-nhat",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/code/harmony_server/harmony_chat",
+    "last_opened_file_path": "D:/code/android/server",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -317,7 +316,9 @@
       <workItem from="1717861869124" duration="899000" />
       <workItem from="1717863657903" duration="48894000" />
       <workItem from="1718185779492" duration="11904000" />
-      <workItem from="1718248619775" duration="23719000" />
+      <workItem from="1718248619775" duration="23840000" />
+      <workItem from="1718696121861" duration="21000" />
+      <workItem from="1718696183244" duration="3913000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -455,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718189490617</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="hoan thien chuc nang loc san pham trong trang xem san pham">
+      <option name="closed" value="true" />
+      <created>1718648691631</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1718648691631</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,6 +497,7 @@
     <MESSAGE value="hoan thanh thong ke" />
     <MESSAGE value="them chuc nang thay doi so dia chi cho phan thanh toan va cap nhat thong tin khach hang" />
     <MESSAGE value="them trang theo doi don hang cho khach hang" />
-    <option name="LAST_COMMIT_MESSAGE" value="them trang theo doi don hang cho khach hang" />
+    <MESSAGE value="hoan thien chuc nang loc san pham trong trang xem san pham" />
+    <option name="LAST_COMMIT_MESSAGE" value="hoan thien chuc nang loc san pham trong trang xem san pham" />
   </component>
 </project>
