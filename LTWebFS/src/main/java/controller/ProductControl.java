@@ -39,7 +39,7 @@ public class ProductControl extends HttpServlet {
         switch (action) {
             case "INIT": {
                 session.setAttribute("kind","A");
-                ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectByKind("A",0,0,24);
+                ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectByKind("A",0,0,TOP);
                 ArrayList<Brand> topBrandList = BrandDAO.getInstance().selectTopOf("A",6);
                 ArrayList<String> countryList = BrandDAO.getInstance().selectAllCountry();
 

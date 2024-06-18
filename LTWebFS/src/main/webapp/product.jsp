@@ -125,7 +125,8 @@
                 </div>
                 <div class="subnav__filter">
                     <div class="">
-                        <i class="fa-solid fa-x cancel-filter"></i>
+                        <a href="product?action=query&&kind=<%=kind%>" ><i class="fa-solid fa-x cancel-filter"></i></a>
+
 
                     </div>
                     <div class="subnav__filter-item country-filter">
@@ -221,7 +222,7 @@
                     <!--                    1sp-->
                     <%
                         for(ProductUnit p : pus){%>
-                    <div class="grid-col-2 mt20 oneProduct proA">
+                    <div class="grid-col-2 mt20 oneProduct">
                         <div class="product-item">
                             <a href="productDetail?id=<%=p.getId()%>" class="product-item-link">
                                 <div class="product-img">
@@ -279,21 +280,20 @@
     const moreProBtn = document.querySelector(".more-product");
     moreProBtn.addEventListener('click', function(event) {
         event.preventDefault();
-        let kind = "<%=kind%>";
         const index = document.querySelectorAll(".product-item").length;
         let country= document.querySelector("#current-country").value;
         let brandID= document.querySelector("#current-brandID").value;
         let arrange= document.querySelector("#current-arrange").value;
+        console.log(index);
 
-        moreProduct(kind, country, brandID, arrange, index);
+        moreProduct(country, brandID, arrange, index);
     });
 
-    function moreProduct(kind, country, brandID, arrange, index) {
-        console.log()
+    function moreProduct(country, brandID, arrange, index) {
         $.ajax({
             url: "/LTWebFS/product?action=more",
             type: "GET",
-            data: { kind: kind, country: country, brandID: brandID, arrange: arrange, index: index},
+            data: {country: country, brandID: brandID, arrange: arrange, index: index},
             success: function(data) {
                 $('.product-list').append(data);
             }
@@ -407,20 +407,7 @@
         });
     }
 
-//     huy filter
-    const cancelFilter = document.querySelector(".cancel-filter");
-    cancelFilter.addEventListener('click',function () {
-        for(let j=0;j<brands.length;j++) {
-            brands[j].classList.remove("active");
-        }
-        document.querySelector(".country-filter").querySelector('.filter-chosen').innerText = "Tất cả";
-        document.querySelector(".price-filter").querySelector('.filter-chosen').innerText = "Mặc định";
-        document.querySelector("#current-arrange").value = 0;
-        document.querySelector("#current-country").value = "Tất cả";
-        document.querySelector("#current-brandID").value = -2;
 
-        queryProduct("/LTWebFS/product?action=query&&kind=A");
-    });
 </script>
 
 
