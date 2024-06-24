@@ -109,7 +109,7 @@ public class ProductControl extends HttpServlet {
                 } else if(brandID==-1) {//khac
                     ArrayList<Brand> brands = BrandDAO.getInstance().selectOtherOf(kind,BrandDAO.TOP);
                     ArrayList<Integer> brIDs = new ArrayList<>();
-                    for(Brand b : brands) {
+                     for(Brand b : brands) {
                         brIDs.add(b.getId());
                     }
                     pus = ProductUnitDAO.getInstance().selectByNotBrandAndKind(brIDs,kind,arrange,0,TOP);

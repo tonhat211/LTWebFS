@@ -27,6 +27,7 @@ public class LoginControl extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        System.out.println("login get here");
 
 //        String email = request.getParameter("email");
 //        String password = request.getParameter("password");
@@ -78,9 +79,9 @@ public class LoginControl extends HttpServlet {
 //            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
 //            rd.forward(request, response);
 //        }
-        response.setContentType("text/html; charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
+//        response.setContentType("text/html; charset=UTF-8");
+//        request.setCharacterEncoding("UTF-8");
+//        response.setCharacterEncoding("UTF-8");
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -90,6 +91,9 @@ public class LoginControl extends HttpServlet {
         int id = UserDAO.getInstance().checkExistUser(email);
         String ipAddress = request.getRemoteAddr();
 
+        System.out.println("get info:" + ipAddress);
+        System.out.println("email:" + email);
+        System.out.println("pwd:" + password);
 
 //        neu user ton tai
         if(id!=0){
@@ -97,6 +101,7 @@ public class LoginControl extends HttpServlet {
 //            kiem tra xem tai khoan co dang bi tam khoa khong
             int avai = UserDAO.getInstance().checkAvailable(email);
             if(avai == -1) {
+                System.out.println("banned account");
                 session.setAttribute("userloging",null);
                 request.setAttribute("status","lockedTemporarilyAccount");
                 request.setAttribute("email",email);
@@ -117,15 +122,18 @@ public class LoginControl extends HttpServlet {
                 rd.forward(request, response);
 
             } else {
+                System.out.println("available account");
                 //            kiem tra dang nhap
                 password = User.encodePwd(password);
                 User u = UserDAO.getInstance().selectByEmailAndPwd(email,password);
 
 //            dang nhap thanh cong
                 if(u != null) {
+                    System.out.println("login successful");
 //                isAdmin = u.isAdmin();
 //                userloging = u;
                     if(u.getAvailable()==0 || u.getAvailable() == -1) {//kiem tra available cua tai khoan
+                        System.out.println("account not available");
                         session.setAttribute("userloging",null);
                         request.setAttribute("status","unavailableAccount");
                         request.setAttribute("email",email);
@@ -148,6 +156,7 @@ public class LoginControl extends HttpServlet {
                     } else {// dang nhap thanh cong
                         session.removeAttribute("logingFailedCount");
                         if(u.getLevel() > 0) {
+                            System.out.println("account of admin");
                             Employee e = EmployeeDAO.getInstance().selectById(u.getId());
                             String roles = e.getRole();
                             String url = "/goto-dashboard-admin";
@@ -202,6 +211,7 @@ public class LoginControl extends HttpServlet {
                             RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
                             rd.forward(request, response);
                         } else {
+                            System.out.println("account of customer");
                             session.setAttribute("userloging",u);
                             session.removeAttribute("adminloging");
                             Log log = new Log(ipAddress,email + " | login ","Đăng nhập thành công vào website." ,"trống",u.getEmail(),1 );
@@ -266,6 +276,7 @@ public class LoginControl extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("login post here");
         doGet(request,response);
     }
 
