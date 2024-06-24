@@ -276,7 +276,6 @@ public class LoginControl extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("login post here");
         doGet(request,response);
     }
 

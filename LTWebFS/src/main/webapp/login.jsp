@@ -130,14 +130,14 @@
     <div class="form-container" style="margin-top: 100px">
         <div class="title"><h1>Đăng nhập</h1></div>
 
-        <form action="check-login" method="post">
+        <form action="check-login" method="post" id="loginForm">
             <div class="successful" <%=status.equalsIgnoreCase("verifySuccessful") ? "" : "hidden"%>>Xác minh tài khoản thành công, vui lòng đăng nhập lại</div>
             <div class="error" <%=status.equalsIgnoreCase("loginForUsingCart") ? "" : "hidden"%>>Vui lòng đăng nhập để sử dụng giỏ hàng</div>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
 <%--                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" value="<%=email%>" placeholder="Nhập email">--%>
-                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" value="2003tonhat@gmail.com" placeholder="Nhập email">
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" value="pharmacity@gmail.com" placeholder="Nhập email">
                 <div class="error" <%=status.equalsIgnoreCase("notUser") ? "" : "hidden"%>>Tài khoản không tồn tại</div>
 
             </div>
@@ -145,7 +145,7 @@
                 <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
                 <div class="password-container">
 <%--                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Nhập mật khẩu">--%>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Nhập mật khẩu" value="1234">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Nhập mật khẩu" value="Nook1234">
                     <i class="fa-solid fa-eye-slash toggle-password"></i>
                 </div>
                 <div class="error" <%= status.equalsIgnoreCase("loginFailed") ? "" : "hidden" %> >Sai mật khẩu</div>
