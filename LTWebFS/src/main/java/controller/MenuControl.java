@@ -39,7 +39,6 @@ public class MenuControl extends HttpServlet {
             case "product":
                 currentMenu = "product";
                 session.setAttribute("currentMenu",currentMenu);
-
                 rd = getServletContext().getRequestDispatcher("/product?action=init");
                 rd.forward(request, response);
                 break;
@@ -63,8 +62,8 @@ public class MenuControl extends HttpServlet {
 
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");

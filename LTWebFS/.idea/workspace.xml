@@ -10,10 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="sua bug loi cancel filter">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControlTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddProductControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BrandControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CusOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CusOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FilterUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GetAllProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminDashboardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminOrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToChangePwd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToChangePwd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToHistoryBuying.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToHistoryBuying.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToOrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToOrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/IPHelper.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductDetailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductDetailSearchControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductFilterControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResendCodeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResendCodeControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gotoLogManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gotoLogManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,6 +346,7 @@
       <workItem from="1718783318997" duration="45000" />
       <workItem from="1718857619059" duration="6510000" />
       <workItem from="1719130590513" duration="2173000" />
+      <workItem from="1719246638131" duration="5158000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />

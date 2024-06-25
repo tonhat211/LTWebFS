@@ -2,14 +2,7 @@
 package database;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import controller.ControllerProduct;
-import model.DeCart;
 import model.User;
-import model.cartitem;
-
-import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) throws JsonProcessingException {

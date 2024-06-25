@@ -110,7 +110,7 @@ public class SignUpControl extends HttpServlet {
                 VerifyCodeDAO.getInstance().insertNewCode(code,email);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/VerifyCode.jsp");
                 rd.forward(request, response);
-
+                System.out.println("call resend get");
             }
         }
 
@@ -120,6 +120,7 @@ public class SignUpControl extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        System.out.println("call resend post");
         doGet(request,response);
     }
 

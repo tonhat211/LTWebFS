@@ -1,9 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="database.BrandDAO" %>
 <%@ page import="model.Brand" %>
-<%@ page import="model.Product" %>
-<%@ page import="controller.ControllerProduct" %>
-<%@ page import="model.ProductHeader" %>
 <%@ page import="model.ProductUnit" %><%--
   Created by IntelliJ IDEA.
   User: TO NHAT

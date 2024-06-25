@@ -25,8 +25,6 @@ public class GoToHistoryBuying extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-//        int id = UserDAO.getInstance().selectTheMaxID() +1;
-//        int status = Integer.parseInt(request.getParameter("status"));
         int cusID = Integer.parseInt(request.getParameter("cusID"));
         ArrayList<Order> os = OrderDAO.getInstance().selectOrderByCusId(cusID);
 
@@ -38,5 +36,10 @@ public class GoToHistoryBuying extends HttpServlet {
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/historyBuying.jsp");
         rd.forward(request, response);
 
+    }
+
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req,resp);
     }
 }

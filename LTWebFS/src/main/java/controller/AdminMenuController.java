@@ -1,9 +1,5 @@
 package controller;
 
-import database.ProductUnitDAO;
-import model.Brand;
-import model.ProductUnit;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 
 @WebServlet("/admin-menu-controller")
-public class adminMenuController extends HttpServlet {
+public class AdminMenuController extends HttpServlet {
 
     public void destroy() {
     }
@@ -32,13 +27,11 @@ public class adminMenuController extends HttpServlet {
                 currentMenu = "dashboard";
                 session.setAttribute("currentAdminMenu", currentMenu);
                 rd = getServletContext().getRequestDispatcher("/dashboard?action=init");
-//                rd = getServletContext().getRequestDispatcher("/goto-dashboard-admin");
                 rd.forward(request, response);
                 break;
             }
             case "customer": {
                 currentMenu = "customer";
-//                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
                 rd = getServletContext().getRequestDispatcher("/customer?action=init");
                 rd.forward(request, response);
@@ -46,7 +39,6 @@ public class adminMenuController extends HttpServlet {
             }
             case "employee": {
                 currentMenu = "employee";
-//                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
                 rd = getServletContext().getRequestDispatcher("/employee?action=init");
                 rd.forward(request, response);
@@ -54,7 +46,6 @@ public class adminMenuController extends HttpServlet {
             }
             case "product": {
                 currentMenu = "product";
-//                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
                 session.removeAttribute("adminCurrentSearchProduct");
                 rd = getServletContext().getRequestDispatcher("/admin-product?action=init");
@@ -63,7 +54,6 @@ public class adminMenuController extends HttpServlet {
             }
             case "order": {
                 currentMenu = "order";
-//                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
                 session.removeAttribute("adminCurrentSearchProduct");
 
@@ -80,21 +70,15 @@ public class adminMenuController extends HttpServlet {
             }
             case "news": {
                 currentMenu = "news";
-//                request.setAttribute("currentMenu",currentMenu);
                 session.setAttribute("currentAdminMenu", currentMenu);
                 rd = getServletContext().getRequestDispatcher("/adminNews.jsp");
                 rd.forward(request, response);
                 break;
             }
-
-
         }
-
-
-
-
-        // Hello
-
     }
 
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req,resp);
+    }
 }
