@@ -1,15 +1,9 @@
 package controller;
 
-import database.BrandDAO;
 import database.DecartDAO;
-import database.ProductUnitDAO;
-import database.UnitDAO;
-import model.Brand;
-import model.ProductUnit;
 import model.User;
 import model.cartitem;
 
-import javax.mail.Session;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/goto-cart")
+@WebServlet("/cart")
 public class GoToCart extends HttpServlet {
 
     public void destroy() {
@@ -61,7 +55,6 @@ public class GoToCart extends HttpServlet {
         resp.setContentType("text/html; charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
-
         doGet(req,resp);
     }
 }

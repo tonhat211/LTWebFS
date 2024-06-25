@@ -29,15 +29,16 @@ public class GoToOrderDetail extends HttpServlet {
 
         int ordID = Integer.parseInt(request.getParameter("ordID"));
         ArrayList<DeOrder> dos = DeOrderDAO.getInstance().selectByOID(ordID);
-
         Order o = OrderDAO.getInstance().selectById(ordID);
-
 
         request.setAttribute("order", o);
         request.setAttribute("dos",dos);
-
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/orderDetail.jsp");
         rd.forward(request, response);
+    }
 
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req,resp);
     }
 }

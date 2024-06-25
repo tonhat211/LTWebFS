@@ -1,5 +1,8 @@
 package controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import database.*;
 import model.*;
 
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
 import java.io.IOException;
 
 @WebServlet("/add-to-cart")
@@ -35,8 +39,20 @@ public class AddToCartControl extends HttpServlet {
         } else {
             int productID = Integer.parseInt(request.getParameter("productID"));
             int qty = Integer.parseInt(request.getParameter("qty"));
-
-
+//            BufferedReader reader = request.getReader();
+//            StringBuilder json = new StringBuilder();
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                json.append(line);
+//            }
+//
+//            Gson gson = new Gson();
+//            cartitem item = gson.fromJson(String.valueOf(json), cartitem.class);
+//
+//            int productID = item.getProID();
+//            int qty = item.getQty();
+//            System.out.println("hi");
+//            System.out.println(productID);
 //            kiem tra xem san pham da co trong gio hang chua
             DeCart dc = DecartDAO.getInstance().selectOneByCusaProID(u.getId(),productID);
             if(dc.getIdCart() == 0) { //chua co trong gio hang
@@ -47,11 +63,16 @@ public class AddToCartControl extends HttpServlet {
                 DecartDAO.getInstance().updateDecart(u.getId(),productID,newQty);
             }
 
-            request.setAttribute("status","addToCartSuccessful");
-            request.setAttribute("id",productID);
+            String message = "Sản phẩm " + productID +" đã được thêm vào giỏ hàng.";
 
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/productDetail");
-            rd.forward(request,response);
+//            request.setAttribute("");
+
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(message);
+            response.getWriter().flush();
+//            RequestDispatcher rd = getServletContext().getRequestDispatcher("/productDetail");
+//            rd.forward(request,response);
         }
 
 

@@ -19,8 +19,6 @@ import java.util.Random;
 @WebServlet("/resendCode")
 public class ResendCodeControl extends HttpServlet {
 
-
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 //        request.getRequestDispatcher("logup.jsp").forward(request, response);
         String email = request.getParameter("email");

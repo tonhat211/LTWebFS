@@ -2,9 +2,7 @@ package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import database.DeOrderDAO;
-import database.DecartDAO;
-import database.OrderDAO;
+import database.*;
 import model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -34,12 +32,14 @@ public class OrderController extends HttpServlet {
 
         int id = OrderDAO.getInstance().getMaxID() +1;
         int userId = u.getId();
-        float totalMoney = Float.parseFloat(request.getParameter("orderMoney"));
-        float deliveryFee = Float.parseFloat(request.getParameter("deliveryFee"));
+        int totalMoney = (int) Double.parseDouble(request.getParameter("orderMoney"));
+        int deliveryFee = (int) Double.parseDouble(request.getParameter("deliveryFee"));
+        String receiver = request.getParameter("receiver");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String receiverInfo = receiver + "=" + phone + "=" + address;
 
-
-
-        Order o = new Order(id,totalMoney,userId,deliveryFee,0);
+        Order o = new Order(id,totalMoney,userId,receiverInfo,deliveryFee,0);
         OrderDAO.getInstance().insert(o);
 
         String[] productIDs = request.getParameterValues("productID");
@@ -62,10 +62,16 @@ public class OrderController extends HttpServlet {
 
         DecartDAO.getInstance().deleteDecarts(userId,idpros);
 
+        UserDAO.getInstance().updateOrderTime(userId); //cap nhat thoi gian mua hang gan nhat
+
         request.setAttribute("status","orderSuccessful");
 
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/goto-cart");
+        Log log = new Log(request.getRemoteAddr(),u.getEmail() + " | payment ","Đã đặt thành công một đơn hàng." ,"trống","Mã đơn hàng: " + o.getId(),1 );
+        LogDAO.getInstance().insert(log);
+
+
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/cart");
         rd.forward(request, response);
 
     }
@@ -76,42 +82,6 @@ public class OrderController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         doGet(request,response);
-
-    }
-
-    public void doPost1(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html; charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
-        HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("userloging");
-
-        String cartJSON = request.getParameter("selectedProducts");
-
-        Gson gson = new Gson();
-        DeCart[] selectedProducts = gson.fromJson(cartJSON, DeCart[].class);
-
-        ArrayList<Integer> idpros = new ArrayList<>();
-            for (int i = 0; i < selectedProducts.length; i++) {
-                idpros.add(selectedProducts[i].getIdProduct());
-            }
-            int idcart = selectedProducts[0].getIdCart();
-
-            ArrayList<cartitem> cartTemp = DecartDAO.getInstance().getCartItemsByCaP(idcart, idpros);
-
-//            request.setAttribute("cartTemp", cartTemp);
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        cartitem[] cart = new cartitem[cartTemp.size()];
-        for(int i=0; i >cartTemp.size();i++) {
-            cart[i] = cartTemp.get(i);
-        }
-
-        String json = mapper.writeValueAsString(cart);
-
-        response.getWriter().write(json);
 
     }
 

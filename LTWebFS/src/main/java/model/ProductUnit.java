@@ -184,6 +184,86 @@ public class ProductUnit {
         return brand;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBrandID(int brandID) {
+        this.brandID = brandID;
+    }
+
+    public void setAreaID(int areaID) {
+        this.areaID = areaID;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
+    }
+
+    public void setImei(int imei) {
+        this.imei = imei;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public void setWattage(float wattage) {
+        this.wattage = wattage;
+    }
+
+    public void setPhanloai(String phanloai) {
+        this.phanloai = phanloai;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setYearMade(int yearMade) {
+        this.yearMade = yearMade;
+    }
+
+    public void setMadeIn(String madeIn) {
+        this.madeIn = madeIn;
+    }
+
+    public void setDateImport(String dateImport) {
+        this.dateImport = dateImport;
+    }
+
+    public void setAvailable(int available) {
+        this.available = available;
+    }
+
+    public void setImgrls(ArrayList<String> imgrls) {
+        this.imgrls = imgrls;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override
     public String toString() {
         return "ProductUnit{" +

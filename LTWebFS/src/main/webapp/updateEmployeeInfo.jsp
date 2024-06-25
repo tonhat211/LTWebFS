@@ -11,8 +11,7 @@
     <!-- Favicons -->
     <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
-    <!--  <link href="assets/img/favicon.png" rel="icon">-->
-    <!--  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -34,6 +33,9 @@
     <link rel="stylesheet" href="assets/css/addUpdate.css">
     <link rel="stylesheet" href="assets/css/modal.css">
     <link rel="stylesheet" href="assets/css/updateCustomerInfo.css">
+    <link rel="stylesheet" href="assets/css/toast.css">
+
+    <script src="assets/js/toast.js"></script>
 
 </head>
 <body>
@@ -49,48 +51,79 @@
         branchList= new ArrayList<>();
     }
 
-    String status = (String) request.getAttribute("status");
-%>
-
-<%
-    if(status != null) {
-        if(status.equalsIgnoreCase("updateInfoSuccessful")){
-%>
-<script>
-    alert("Cập nhật thông tin thành công");
-</script>
-<%
-
-        } else if(status.equalsIgnoreCase("changePwdSuccessful")){
-%>
-<script>
-    alert("Đổi mật khẩu thành công");
-</script>
-<%
-        }
-    }
 %>
 
 
 <div class="ad-content mt10">
+    <div id="toast">
+        <%--        <script> showSuccessToast("hi")</script>--%>
+
+    </div>
+
     <div class="modal confirm-stop">
         <div class="modal__overlay">
+            <div class="modal__confirm-content" onclick="event.stopPropagation()" style="top: 80px">
+                <div class="form-container">
+                    <form action="change-pwd" method="post" id="pwdForm">
+                        <div class="show-flex-row" style="justify-content: center">
+                            <h4>Đổi mật khẩu</h4>
+
+                        </div>
+                        <div class="form-group w-100" style="padding: 0px;">
+                            <div class="show-flex-col w-100">
+                                <div class="show-flex-row w-100">
+                                    <label class="w-50" for="currentPwd">Mật khẩu hiện tại</label>
+                                    <input type="password" size="10" class="form-control w-50" id="currentPwd" name="currentPwd" aria-describedby="" placeholder="Nhập mật khẩu hiện tại">
+                                    <input type="text" size="10" class="form-control w-50" name="id" aria-describedby="" placeholder="Nhập mật khẩu hiện tại" value="<%=e.getId()%>" hidden>
+                                </div>
+                                <div class="error active" hidden>Sai mật khẩu</div>
+
+                            </div>
+                        </div>
+                        <div class="form-group w-100" style="padding: 0px;">
+                            <div class="show-flex-col w-100">
+                                <div class="show-flex-row w-100">
+                                    <label class="w-50" for="newPwd">Mật khẩu mới</label>
+                                    <input type="password" size="10" class="form-control w-50" id="newPwd" name="newPwd" aria-describedby="" placeholder="Nhập mật khẩu mới">
+                                </div>
+                                <div class="error active" hidden>Mật khẩu không trùng khớp</div>
+                            </div>
+                        </div>
+                        <div class="form-group w-100" style="padding: 0px;">
+                            <div class="show-flex-col w-100">
+                                <div class="show-flex-row w-100">
+                                    <label class="w-50" for="renewPwd">Nhập lại mật khẩu mới</label>
+                                    <input type="password" size="10" class="form-control w-50" id="renewPwd" name="renewPwd" aria-describedby="" placeholder="Nhập lại mật khẩu mới">
+                                </div>
+                                <div class="error active" hidden>Mật khẩu không trùng khớp</div>
+                            </div>
+                        </div>
+
+                        <div class="show-flex-row" style="justify-content: center; margin-top: 40px">
+                            <div class="show-flex-row w-50">
+                                <a class="btn btn-third confirm-btn no-confirm" href="#">Hủy</a>
+                                <button class="btn btn-primary confirm-btn yes-confirm" type="submit">Lưu</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="ad-content-item">
 
         <div class="ad_container">
-            <a href="goto-<%=currentAdminMenu%>-admin" class="backto-AdminProduct">Quay lại</a>
+            <a href="admin-menu-controller?adminMenu=<%=currentAdminMenu%>" class="backto-AdminProduct">Quay lại</a>
 
             <div class="form-container">
-                <form action="update-employee-info" method="get" id="myForm">
+                <form action="update-employee-info" method="get" id="infoForm">
 
                     <div class="show-flex-row" style="justify-content: center">
                         <h4>Cập nhật thông tin</h4>
 
                     </div>
                     <div class="stop_reSale" style="display: flex; justify-content: right">
-                        <a class="btn btn-change-pwd" style="color: #0d6efd; text-decoration: underline" href="goto-changePwd?object=employee">Đổi mật khẩu</a>
+                        <a class="btn btn-change-pwd" style="color: #0d6efd; text-decoration: underline" href="#">Đổi mật khẩu</a>
                     </div>
 
                     <%String info = e.getInfo();
@@ -101,30 +134,54 @@
                         if(info!=null){
                             String infoTokens[] = info.split("=");
 
-                            if(infoTokens.length <4){
-                                sex = "";
-                                birthday="";
-                                position="";
-                                area="";
+                            switch (infoTokens.length) {
+                                case 1: {
+                                    sex = infoTokens[0];
+                                    break;
+                                }
+                                case 2: {
+                                    sex = infoTokens[0];
+                                    birthday = infoTokens[1];
+                                    break;
+                                }
+                                case 3: {
+                                    sex = infoTokens[0];
+                                    birthday = infoTokens[1];
+                                    position = infoTokens[2];
+                                    break;
+                                }
+                                case 4: {
+                                    sex = infoTokens[0];
+                                    birthday = infoTokens[1];
+                                    position = infoTokens[2];
+                                    area = infoTokens[3];
+                                    break;
+                                }
+                                default: {
+                                    sex = "";
+                                    birthday="";
+                                    position="";
+                                    area="";
+                                    break;
+                                }
+
                             }
-                            else {
-                                sex = infoTokens[0];
-                                birthday = infoTokens[1];
-                                position = infoTokens[2];
-                                area = infoTokens[3];
+
+                            if(!birthday.equals("")) {
                                 String[] bdTokens = birthday.split("-");
                                 if((bdTokens[1].length()<2))
                                     bdTokens[1]="0" + bdTokens[1];
                                 if((bdTokens[2]).length()<2)
                                     bdTokens[2]="0" + bdTokens[2];
-
                                 birthday = bdTokens[0] + "-" + bdTokens[1] + "-" + bdTokens[2];
-
                             }
                         }
 
 
                     %>
+
+
+
 
 
                     <div class="form-group w-50" style="display: none">
@@ -135,119 +192,46 @@
 
 
                     <div class="form-group w-80">
-                        <label class="w-20" for="name">Họ và tên: </label>
-                        <input type="text" class="form-control w-80" id="name" name="name" aria-describedby="" placeholder="Nhập họ và tên" value="<%=e.getName() %>">
+                        <label class="w-100" for="name">Họ và tên: </label>
+                        <input type="text" class="form-control w-100" id="name" name="name" aria-describedby="" placeholder="Nhập họ và tên" value="<%=e.getName() %>">
                         <!--                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                     </div>
-                    <div class="form-group w-80" style="display: none">
-                        <label class="w-20" for="position">Chức vụ</label>
-                        <input type="text" size="10" class="form-control w-80" id="position" name="position" aria-describedby="" placeholder="Nhập chức vụ" value="<%=e.getPosition() %>">
-                    </div>
-                    <div class="form-group w-80" style="display: none">
-                        <label class="w-20" for="area">Phòng ban: </label>
-                        <input type="text" class="form-control w-80" id="area" name="area" aria-describedby="" placeholder="Nhập phòng ban" value="<%=e.getArea() %>">
-                    </div>
-
 
                     <div class="form-group w-80">
-                        <label class="w-20" for="email">Email</label>
-                        <input type="text" size="10" class="form-control w-80" id="email" name="email" aria-describedby="" placeholder="Nhập email" value="<%=e.getEmail() %>">
+                        <label class="w-100" for="email">Email</label>
+                        <input type="text" size="10" class="form-control w-100" id="email" name="email" aria-describedby="" placeholder="Nhập email" value="<%=e.getEmail() %>">
                     </div>
                     <div class="form-group w-80">
-                        <label class="w-20" for="phone">Số điện thoại: </label>
-                        <input type="text" class="form-control w-80" id="phone" name="phone" aria-describedby="" placeholder="Nhập số điện thoại" value="<%=e.getPhone() %>">
-                    </div>
-                    <div class="form-group w-80"  style="display: none">
-                        <label class="w-20" for="branch">Chi nhánh: </label>
-                        <select class="form-select" aria-label="Default select example" id="branch" name="branch">
-                            <% for(Branch b : branchList) {
-                            %>
-                            <option <%=b.getId()==e.getBranchID() ? "selected" : "" %> value="<%=b.getId()+"="+b.getName()%>"><%=b.getName() %></option>
-                            <%
-                                }
-                            %>
-
-                        </select>
+                        <label class="w-100" for="phone">Số điện thoại: </label>
+                        <input type="text" class="form-control w-100" id="phone" name="phone" aria-describedby="" placeholder="Nhập số điện thoại" value="<%=e.getPhone() %>">
                     </div>
 
-                    <%
-                        String roles = e.getRole();
-                        if(roles == null) {
-                            roles="";
-                        }
 
-                    %>
-
-                    <div id="role" class="info-container" style="display: none">
-                        <div class="info-container__title">
-                            <label for="role">Quyền truy cập
-                            </label>
-                        </div>
-                        <div class="info-container__content">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="employee"name="employee" value="employee" <%=roles.contains("employee")?"checked":""%>>
-                                <label class="form-check-label" for="employee">
-                                    Nhân viên
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="customer" name="customer" value="customer" <%=roles.contains("customer")?"checked":""%>>
-                                <label class="form-check-label" for="customer">
-                                    Khách hàng
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="product" name="product" value="product" <%=roles.contains("product")?"checked":""%>>
-                                <label class="form-check-label" for="product">
-                                    Sản phẩm
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="order" name="order" value="order" <%=roles.contains("order")?"checked":""%>>
-                                <label class="form-check-label" for="order">
-                                    Đơn hàng
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="dashboard" name="dashboard" value="dashboard" <%=roles.contains("dashboard")?"checked":""%>>
-                                <label class="form-check-label" for="dashboard">
-                                    Thống kê
-                                </label>
-                            </div>
-                        </div>
-
-                    </div>
 
                     <div class="show-flex-row">
 
                         <div class="form-group w-50">
-                            <label class="w-20" for="sex">Giới tính: </label>
-                            <input type="text" class="form-control w-80" id="sex" name="sex" paria-describedby="" placeholder="Nhập giới tính" value="<%=e.getSex()%>">
+                            <label class="w-100" for="sex">Giới tính: </label>
+                            <input type="text" class="form-control w-100" id="sex" name="sex" paria-describedby="" placeholder="Nhập giới tính" value="<%=sex%>">
                         </div>
                         <div class="form-group w-50">
-                            <label  class="w-20"  for="birthday">Ngày sinh: </label>
-                            <input type="date" class="form-control w-80" id="birthday" name="birthday"  aria-describedby="" placeholder="Nhập ngày sinh" value="<%=e.getBirthday()%>">
+                            <label  class="w-100"  for="birthday">Ngày sinh: </label>
+                            <input type="date" class="form-control w-100" id="birthday" name="birthday"  aria-describedby="" placeholder="Nhập ngày sinh" value="<%=birthday%>">
+                            <input type="text" class="form-control w-100" name="position"  aria-describedby="" placeholder="Nhập ngày sinh" value="<%=position%>" hidden>
+                            <input type="text" class="form-control w-100" id="area" name="birthday"  aria-describedby="" placeholder="Nhập ngày sinh" value="<%=area%>" hidden>
                         </div>
                     </div>
                     <div class="form-group w-100">
-                        <label class="w-20" for="address">Địa chỉ: </label>
-                        <input type="text" class="form-control w-80" id="address" name="address" aria-describedby="" placeholder="Nhập Địa chỉ" value="<%=e.getAddress() %>">
+                        <label class="w-100" for="address">Địa chỉ: </label>
+                        <input type="text" class="form-control w-100" id="address" name="address" aria-describedby="" placeholder="Nhập Địa chỉ" value="<%=e.getAddress() %>">
                     </div>
                     <div class="form-group w-50">
-                        <label  class="w-20"  for="datein">Ngày vào làm: </label>
-                        <input type="date" class="form-control w-80" id="datein" name="datein"  aria-describedby="" placeholder="Nhập ngày vào làm" value="<%= e.getDatein().getDateInMonthDayYearSql()%>" readonly>
+                        <label  class="w-100"  for="datein">Ngày vào làm: </label>
+                        <input type="date" class="form-control w-100" id="datein" name="datein"  aria-describedby="" placeholder="Nhập ngày vào làm" value="<%= e.getDatein().getDateInMonthDayYearSql()%>" readonly>
                     </div>
                     <div class="form-group w-50">
-                        <label  class="w-20"  for="imgurl">Ảnh đại diện: </label>
-                        <input type="text" class="form-control w-80" id="imgurl" name="imgurl"  aria-describedby="" placeholder="Nhập ảnh đại diện" value="<%= e.getImgurl()%>">
-                    </div>
-                    <div class="form-group" style="display: none">
-                        <label class="w-20" for="action" class="input-title">action</label>
-                        <input type="text" class="form-control" id="action" name="action" aria-describedby="" placeholder="Enter img url" value="update">
-                    </div>
-                    <div class="form-group" style="display: none">
-                        <label class="w-20" for="status" class="input-title">status</label>
-                        <input type="text" class="form-control" id="status" name="status" aria-describedby="" placeholder="Enter img url" value="1">
+                        <label  class="w-100"  for="imgurl">Ảnh đại diện: </label>
+                        <input type="text" class="form-control w-100" id="imgurl" name="imgurl"  aria-describedby="" placeholder="Nhập ảnh đại diện" value="<%= e.getImgurl()%>">
                     </div>
 
                     <div class="show-flex-row" style="justify-content: center; margin-top: 40px">
@@ -278,60 +262,143 @@
     const yesConfirmBtn = p$('.yes-confirm');
     const noConfirmBtn = p$('.no-confirm');
 
-    // changePwdBtn.addEventListener('click',showModal);
-    // confirmStopModalOverlay.addEventListener('click',hideModal);
-    // noConfirmBtn.addEventListener('click',hideModal);
+    document.querySelector('.no-confirm').addEventListener('click',function (event) {
+        event.preventDefault();
+        hideModal();
+
+    });
+
+    $(".modal__overlay").click(hideModal);
 
     function showModal() {
         confirmStopModal.classList.add('active');
-
-        // document.getElementById('myForm').onsubmit = function() {
-        //     var newPwd = p$('#renewPwd').value;
-        //     var renewPwd = p$('#renewPwd').value;
-        //     var checked =false
-        //     if (newPwd === renewPwd) {
-        //         checked= true;
-        //
-        //
-        //     }
-        //
-        //     if (!checked) {
-        //         console.log("khong khop");
-        //         p$$('.error').forEach(function(errorElement) {
-        //             errorElement.classList.add("active");
-        //         });
-        //         return false;
-        //     }
-        //
-        // };
-
-
-
     }
 
     function hideModal(){
         confirmStopModal.classList.remove('active');
     }
 
+    document.querySelector(".btn-change-pwd").addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.modal').addClass("active");
+    });
+
     document.getElementById("pwdForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Ngăn chặn hành động mặc định của form
-        console.log("Đã gửi form pwd");
+        event.preventDefault();
+        var data = new FormData(this);
+        var currentPwd = data.get("currentPwd");
+        var newPwd = data.get("newPwd");
+        var renewPwd = data.get("renewPwd");
+        var action = "changePassword";
+        var id = data.get("id");
+
+        var isOk = true;
+
+        if(currentPwd==="") {
+            isOk=false;
+            showError('#currentPwd',"Không được để trống mục này");
+        } else {
+            hideError('#currentPwd');
+        }
+        if(newPwd==="") {
+            isOk=false;
+            showError('#newPwd',"Không được để trống mục này");
+        } else {
+            hideError('#newPwd');
+        }
+        if(renewPwd==="") {
+            isOk=false;
+            showError('#renewPwd',"Không được để trống mục này");
+        } else {
+            hideError('#renewPwd');
+        }
+
+
+        if(newPwd !=="" && renewPwd!=="") {
+            if(newPwd!== renewPwd) {
+                isOk=false;
+                showError('#newPwd',"Mật khẩu không trùng khớp");
+                showError('#renewPwd',"Mật khẩu không trùng khớp");
+            } else {
+                hideError('#newPwd');
+                hideError('#renewPwd');
+                if (newPwd.length < 8 || !/[A-Z]/.test(newPwd) || !/[a-z]/.test(newPwd) || !/\d/.test(newPwd)) {
+                    showError('#newPwd',"Mật khẩu phải trên 8 kí tự, bao gồm chữ hoa, chữ thường và số");
+                    isOk=false;
+                }
+            }
+        }
+
+        if(isOk===true) {
+            changePwd(action, id, currentPwd, newPwd);
+        }
+
 
     });
 
-    document.getElementById("infoForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Ngăn chặn hành động mặc định của form
+    function changePwd(action, id, currentPwd, newPwd) {
+        $.ajax({
+            url: "/LTWebFS/update-info",
+            method: "POST",
+            data: { action: action, id: id, currentPwd:currentPwd, newPwd: newPwd},
+            success: function(data) {
+                if(data==="success") {
+                    showSuccessToast("Đổi mật khẩu thành công");
+                    $('.modal').removeClass("active");
+                } else if(data==="wrongPwd") {
+                    showError("#currentPwd","Mật khẩu sai");
+                } else if(data==="thesamePwd") {
+                    showError("#newPwd","Mật khẩu mới phải khác mật khẩu cũ");
+                }
+            }
+        });
+    }
 
-        // Thực hiện xử lý cho form 2
-        console.log("Đã gửi form info");
+
+    $(document).ready(function() {
+        document.querySelector('#infoForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var data = new FormData(this);
+            var id = data.get("id");
+            var name = data.get("name");
+            var email = data.get("email");
+            var phone = data.get("pho;ne");
+            var sex = data.get("sex")
+            var birthday = data.get("birthday");
+            var position = data.get("position");
+            var area = data.get("area");
+            var address = data.get("address");
+            var imgurl = data.get("imgurl");
+            var action = "update";
+            var object = "employee";
+
+            updateInfo(action, object, id, name, email, phone, sex, birthday, position, area, address, imgurl);
+
+        });
+
+        function updateInfo(action, object, id, name, email, phone, sex, birthday, position, area, address, imgurl) {
+            $.ajax({
+                url: "/LTWebFS/update-info",
+                method: "POST",
+                data: { action: action, object: object, id: id, name: name, email: email, phone: phone, sex: sex, birthday: birthday, position: position, area: area,address: address, imgurl: imgurl},
+                success: function(data) {
+                    console.log(data);
+                    $('#toast').html(data);
+                }
+            });
+        }
+
+
+
     });
 
-
-
-
-
-
-
+    function showError(parent,error) {
+        document.querySelector(parent).parentNode.parentNode.querySelector(".error").hidden = false;
+        document.querySelector(parent).parentNode.parentNode.querySelector(".error").innerText = error;
+    }
+    function hideError(parent) {
+        document.querySelector(parent).parentNode.parentNode.querySelector(".error").hidden = true;
+    }
 
 </script>
 

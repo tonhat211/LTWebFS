@@ -2,7 +2,9 @@ package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import database.AddressDAO;
 import database.DecartDAO;
+import model.Address;
 import model.DeCart;
 import model.User;
 import model.cartitem;
@@ -17,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/goto-payment")
+@WebServlet("/payment")
 public class GoToPayment extends HttpServlet {
 
     public void destroy() {
@@ -31,32 +33,7 @@ public class GoToPayment extends HttpServlet {
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("userloging");
 
-        String[] idproString =  request.getParameterValues("check");
-//        String[] idproductstr = request.getParameterValues("idproduct");
-//        String[] qtystr = request.getParameterValues("qty");
-        ArrayList<Integer> idpros = new ArrayList<>();
-        if(idproString.length > 0) {
-            for(int i = 0; i<idproString.length;i++) {
-                idpros.add(Integer.parseInt(idproString[i]));
-
-            }
-        }
-        int idcart = u.getId();
-        ArrayList<cartitem> cartTemp = DecartDAO.getInstance().getCartItemsByCaP(idcart,idpros);
-
-        request.setAttribute("cartTemp", cartTemp);
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/payment.jsp");
-        rd.forward(request, response);
-
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html; charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
-        HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("userloging");
+        ArrayList<Address> addresses = AddressDAO.getInstance().selectByUserID(u.getId());
 
         String[] idproString =  request.getParameterValues("check");
         ArrayList<Integer> idpros = new ArrayList<>();
@@ -70,6 +47,7 @@ public class GoToPayment extends HttpServlet {
             ArrayList<cartitem> cartTemp = DecartDAO.getInstance().getCartItemsByCaP(idcart,idpros);
 
             request.setAttribute("cartTemp", cartTemp);
+            request.setAttribute("addresses", addresses);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/payment.jsp");
             rd.forward(request, response);
         } else {
@@ -79,6 +57,10 @@ public class GoToPayment extends HttpServlet {
         }
 
 
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        doGet(request,response);
     }
 
     public void doPost1(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

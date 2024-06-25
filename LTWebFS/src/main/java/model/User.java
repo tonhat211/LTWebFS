@@ -3,6 +3,7 @@ package model;
 import javax.sound.midi.Soundbank;
 import java.sql.Date;
 import java.sql.SQLOutput;
+import java.util.Objects;
 
 public class User {
     private int id;
@@ -18,6 +19,37 @@ public class User {
     private Datee dateOut;
     private int available;
     private String role;
+    private Date orderDate;
+
+    public User(int id, String name, String email, String phone, Date orderDate) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.orderDate = orderDate;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
+
+    public User(int id, String name, String email, String pwd, int level, String phone, String address, String info, Datee dateIn, int available) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.pwd = pwd;
+        this.level = level;
+        this.phone = phone;
+        this.address = address;
+        this.info = info;
+        this.dateIn = dateIn;
+        this.available = available;
+    }
 
     public User(int id, String name, String email, String pwd, int level, String phone, String address, int branchID, String info, Datee dateIn, Datee dateOut, int available, String role) {
         this.id = id;
@@ -33,6 +65,26 @@ public class User {
         this.dateOut = dateOut;
         this.available = available;
         this.role = role;
+    }
+
+    public User(int id, String name, String email, String phone) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return getId() == user.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 
     public String getRole() {
@@ -85,6 +137,8 @@ public class User {
         this.pwd = pwd;
     }
 
+
+
     public User(int id, String name, String email, String phone, String info, Datee dateIn) {
         this.id = id;
         this.name = name;
@@ -120,6 +174,25 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.info = info;
+    }
+
+    public User(int id, String name, String email, int level, Datee dateIn, int available) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.level = level;
+        this.dateIn = dateIn;
+        this.available = available;
+    }
+
+    public User(int id, String name, int level, Datee dateIn, int available) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.level = level;
+        this.dateIn = dateIn;
+        this.available = available;
     }
 
     public int getId() {
@@ -265,5 +338,8 @@ public class User {
 
     public static void main(String[] args) {
         System.out.println(User.encodePwd("123456"));
+        Date date = new Date(System.currentTimeMillis());
+        Datee dateimportDatee = new Datee(java.time.LocalDate.now().getYear(),java.time.LocalDate.now().getMonthValue(), java.time.LocalDate.now().getDayOfMonth());
+        System.out.println(java.time.LocalDate.now().toString());
     }
 }

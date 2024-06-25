@@ -1,178 +1,249 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+function importProduct() {
+    console.log($('#import-product-form'));
+    var form = document.querySelector("#import-product-form");
+    var formData = new FormData(form);
+    var id = formData.get("id");
+    var amount = formData.get("amount");
+    var action = formData.get("action");
+    console.log(id);
+    console.log(amount);
+    console.log(action);
+    var isOk = true;
 
-const updateBtn = $('.btn-up-pro');
-const saveChangedBtn =$('.ad_func-save-btn');
-const stopBtn =$('.btn-stop-pro');
-const resaleBtn =$('.btn-resale-pro');
-const yesResaleBtn =$('.yes-resale-confirm');
-const noResaleBtn =$('.no-resale-confirm');
-const modalOverlays =$$('.modal__overlay');
-const yesStopBtn =$('.yes-confirm');
-const cancelStopBtn =$('.no-confirm');
+    if(id === "") {
+        document.querySelector('.idinput').hidden = false;
+        document.querySelector('.idinput').innerText = "Không được bỏ trống mục này";
 
-const addProBtn =$('.ad_func-add-btn');
-const addImgBtn =$('.btn-add-em-img');
-const yesAddImgBtn =$('.add-img-btn');
-const noAddImgBtn =$('.cancel-add-img-btn');
-
-
-
-// updateBtn.addEventListener('click',getInfo);
-// saveChangedBtn.addEventListener('click',saveChanged);
-stopBtn.addEventListener('click',confirmStop);
-yesStopBtn.addEventListener('click',yesStop);
-for(let i of modalOverlays){
-    i.addEventListener('click',noStop);
-
-}
-cancelStopBtn.addEventListener('click',noStop);
-resaleBtn.addEventListener('click',confirmResale);
-yesResaleBtn.addEventListener('click',yesResale);
-noResaleBtn.addEventListener('click',noResale);
-
-// addProBtn.addEventListener('click',addProduct);
-// addImgBtn.addEventListener('click',showAddImg);
-// yesAddImgBtn.addEventListener('click',addImg);
-// noAddImgBtn.addEventListener('click',cancelAddImg);
-
-
-
-function getInfo() {
-
-
-    $('.ad_func-save-btn').classList.add('active');
-    $('.ad_func-add-btn').classList.remove('active');
-
-    const imgs = $$('.pro-img-item');
-    var imgUrls="";
-    for(let i of imgs) {
-        var  temp  = i.src.split('/');
-        imgUrls+= temp[temp.length - 1]+ '==';
-
-    }
-
-
-    const nameInput = $('#pro-name').value = $('.pro_name').innerText;
-    const imgInput = $('#pro-imgs').value = imgUrls;
-    const countryInput = $('#pro-country').value = $('.pro_country').innerText;
-    const brandInput = $('#pro-brand').value = $('.pro_brand').innerText;
-    const kindInput = $('#pro-kind').value = $('.pro_kind').innerText;
-    const typeInput = $('#pro-type').value = $('.pro_type').innerText;
-    const areaInput = $('#pro-area').value = $('.pro_area').innerText;
-    const priceInput = $('#pro-price').value = parseFloat($('.pro_price').innerText);
-    const amountInput = $('#pro-amount').value = parseInt($('.pro_amount').innerText);
-    const yearMadeInput = $('#pro-yearMade').value = parseInt($('.pro_yearMade').innerText);
-    const dateImportInput = $('#pro-dateImport').value = new  Date($('.pro_dateImport').innerText);
-    const desInput = $('#pro-des').value = $('.pro_des').innerText;
-
-}
-
-function saveChanged() {
-
-    $('.ad_func-save-btn').classList.remove('active');
-    $('.ad_func-add-btn').classList.add('active');
-}
-
-function addProduct(){
-    const proInputs = $$('.form-container input');
-    for(let i of proInputs){
-        if(i.value ==""){
-            alert("Vui lòng nhập đầy đủ thông tin.");
-            break;
-        }
-        else {
-
-            const id = $('.pro_id');
-            let newId =  parseInt(id.innerText.slice(id.innerText.indexOf('o')+1)) +1;
-            id.innerText = `#pro${newId+1}`;
-
-
-            const name = $('.pro_name').innerText =$('#pro-name').value;
-            console.log($('#pro-name').value);
-            // console.log($('#pro_dateImport').value);
-            // const price = $('.pro_price').innerText = $('#pro-price').value;
-            // const number = $('.pro_amount').innerText = $('#pro-amount').value;
-            // const kind = $('.pro_kind').innerText = $('#pro-kind').value;
-            // const year = $('.pro_year').innerText = $('#pro-year').value;
-            // const dateIn = $('.pro_dateImport').innerText = $('#pro-dateImport').value;
-            console.log($('#pro-dateImport').value);
-            // const from = $('.pro_country').innerText = $('#pro-country').value;
-            //
-            // const brand = $('.pro_brand').innerText = $('#pro-brand').value;
-            // const des = $('.pro_des').innerText = $('#pro-des').value;
-
-        }
-
-    }
-
-
-
-}
-
-function  init() {
-    if($('.disabled-showing').classList.contains('active')){
-        resaleBtn.style.display='block';
-        stopBtn.style.display='none';
-
+        isOk = false;
+    } else if (isNaN(id)) {
+        console.log(isNaN(id));
+        document.querySelector('.idinput').innerText = "Mục này phải là số";
+        document.querySelector('.idinput').hidden = false;
+        isOk = false;
     } else {
-        resaleBtn.style.display='none';
-        stopBtn.style.display='block';
+        document.querySelector('.idinput').hidden = true;
     }
 
+    if(amount === "") {
+        document.querySelector('.amountinput').hidden = false;
+        document.querySelector('.amountinput').innerText = "Không được bỏ trống mục này";
+        isOk = false;
+    } else if (isNaN(amount)) {
+        console.log(isNaN(id));
+        document.querySelector('.amountinput').innerText = "Mục này phải là số";
+        document.querySelector('.amountinput').hidden = false;
+        isOk = false;
+    } else {
+        document.querySelector('.amountinput').hidden = true;
+    }
+
+    if(isOk===false) return;
+
+
+    $.ajax({
+        url: "/LTWebFS/addUpdate-product",
+        method: "POST",
+        data: {id : id, amount: amount, action :action},
+        success: function(data) {
+            $("#info-table-body").append(data);
+        }
+    });
 }
 
-function confirmStop() {
-    $('.confirm-stop').classList.add('active')
+function exportProduct() {
+    console.log($('#export-product-form'));
+    var form = document.querySelector("#export-product-form");
+    var formData = new FormData(form);
+    var id = formData.get("id");
+    var amount = formData.get("amount");
+    var action = formData.get("action");
+    var reason = formData.get("reason");
+    console.log(id);
+    console.log(amount);
+    console.log(reason);
+    var isOk = true;
+
+    if(id === "") {
+        document.querySelector('.idinput').hidden = false;
+        document.querySelector('.idinput').innerText = "Không được bỏ trống mục này";
+
+        isOk = false;
+    } else if (isNaN(id)) {
+        console.log(isNaN(id));
+        document.querySelector('.idinput').innerText = "Mục này phải là số";
+        document.querySelector('.idinput').hidden = false;
+        isOk = false;
+    } else {
+        console.log(isNaN(id));
+        document.querySelector('.idinput').hidden = true;
+
+    }
+
+    if(amount === "") {
+        document.querySelector('.amountinput').hidden = false;
+        document.querySelector('.amountinput').innerText = "Không được bỏ trống mục này";
+
+        isOk = false;
+    } else if (isNaN(amount)) {
+        console.log(isNaN(id));
+        document.querySelector('.amountinput').innerText = "Mục này phải là số";
+        document.querySelector('.amountinput').hidden = false;
+        isOk = false;
+    } else {
+        document.querySelector('.amountinput').hidden = true;
+    }
+
+    if(isOk===false) return;
+
+    $.ajax({
+        url: "/LTWebFS/addUpdate-product",
+        method: "POST",
+        data: {id : id, amount: amount, action :action, reason: reason},
+        success: function(data) {
+            $("#info-table-body").append(data);
+        }
+    });
 }
 
-function noStop() {
-    $('.confirm-stop').classList.remove('active');
-    $('.confirm-resale').classList.remove('active');
-    $('.add-img-box').classList.remove('active');
+$(document).ready(function() {
 
-}
+    // showSuccessToast("thanh cong tai");
+    document.querySelector("#import-product-btn").addEventListener('click',function (event) {
 
-function yesStop() {
-    $('.confirm-stop').classList.remove('active');
-    $('.disabled-showing').classList.add('active');
-    init();
-}
+        event.preventDefault();
+        $("#product-action").html(`<div class="seperate-horizontal-90" style="margin: 20px auto"></div>
+                <div style="width: 100%">
 
-function confirmResale() {
-    $('.confirm-resale').classList.add('active');
-}
+                    <form action="" style="width: 70%; margin: 0 auto" id="import-product-form">
+                        <h4 style="text-align: center">Nhập kho</h4>
+                        <div class="show-flex-row">
+                            <div class="form-group w-30" style="margin: 0 10px">
+                                <label class="w-20" for="id">ID: </label>
+                                <input type="text" class="form-control w-80" id="id" name="id" aria-describedby="" placeholder="Nhập ID" value="">
+                                <div class="error idinput" hidden>Không được bỏ trống mục này</div>
 
-function noResale() {
-    $('.confirm-resale').classList.remove('active');
+                            </div>
+                            <div class="form-group w-30" style="margin: 0 10px">
+                                <label class="w-20" for="amount">Số lượng: </label>
+                                <input type="text" class="form-control w-80" id="amount" name="amount" aria-describedby="" placeholder="Nhập số lượng" value="">
+                                <div class="error amountinput" hidden>Không được bỏ trống mục này</div>
 
-}
+                            </div>
+                            <input type="text" class="form-control w-80" id="action" name="action" aria-describedby="" placeholder="Enter name" value="import" hidden readonly>
 
-function yesResale() {
-    $('.confirm-resale').classList.remove('active');
-    $('.disabled-showing').classList.remove('active');
-    init();
-}
-
-function showAddImg() {
-    $('.add-img-box').classList.add('active');
-    console.log("hi");
-}
-
-function addImg() {
-    // const imgInput = $("#em-img");
-    // $('.employee-img').src = imgInput.value;
-    const imgsInput = $("#pro-imgs");
-    imgsInput.value  += $("#pro-img").value +"==";
-    cancelAddImg();
-}
-
-function cancelAddImg() {
-    $('.add-img-box').classList.remove('active');
-    $("#pro-img").value = "";
-}
+                        </div>
+                        <div class="show-flex-row" style="justify-content: end">
+                            <button class="btn btn-primary" type="button" onclick="importProduct()" style="margin: 10px 10px;">Nhập</button>
+                        </div>
 
 
+                    </form>
+    <div class="toastt-container" style="height: 30px; margin-top: 5px; margin-bottom: 5px">
+                            <div id="toast-2" style="margin: auto 0">
+<!--                                <div class="toastt-2 toast-2&#45;&#45;success">-->
+<!--                                    <p class="toast__msg" style="color: white">thanh cong</p>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+
+                </div>`
+        );
+        $("#info-table").html(`
+
+        <thead>
+            <tr>
+                <th scope="col" style="width: 10%;">ID</th>
+                <th scope="col" style="width: 60%;">Tên</th>
+                <th scope="col" style="width: 10%;">Số lượng</th>
+                <th scope="col" style="width: 20%">Thời gian</th>
+            </tr>
+        </thead>
+
+        <tbody id="info-table-body">
+<!--            <tr class="roww">-->
+<!--                <th scope="row">12</th>-->
+<!--                <td>may loc </td>-->
+<!--                <td>100</td>-->
+<!--                <td>8213</td>-->
+<!--            </tr>-->
+
+
+        </tbody>`);
+    });
+
+    document.querySelector("#export-product-btn").addEventListener('click',function (event) {
+
+        event.preventDefault();
+        $("#product-action").html(`<div class="seperate-horizontal-90" style="margin: 20px auto"></div>
+                <div style="width: 100%">
+
+                    <form action="" style="width: 70%; margin: 0 auto" id="export-product-form">
+                        <h4 style="text-align: center">Xuất kho</h4>
+                        <div class="show-flex-row">
+                            <div class="form-group w-30" style="margin: 0 10px">
+                                <label class="w-20" for="id">ID: </label>
+                                <input type="text" class="form-control w-80" id="id" name="id" aria-describedby="" placeholder="Nhập ID" value="">
+                                <div class="error idinput" hidden>Không được bỏ trống mục này</div>
+
+                            </div>
+                            <div class="form-group w-30" style="margin: 0 10px">
+                                <label class="w-20" for="amount">Số lượng: </label>
+                                <input type="text" class="form-control w-80" id="amount" name="amount" aria-describedby="" placeholder="Nhập số lượng" value="">
+                                <div class="error amountinput" hidden>Không được bỏ trống mục này</div>
+
+                            </div>
+                            <input type="text" class="form-control w-80" id="action" name="action" aria-describedby="" placeholder="Enter name" value="export" hidden readonly>
+
+                        </div>
+                        <div class="form-group w-30" style="margin: 10px 10px">
+                            <label class="w-20" for="reason">Nguyên nhân: </label>
+
+                            <textarea  type="text" class="form-control" name="reason" id="reason" rows="6"></textarea>
+
+                        </div>
+                        <div class="show-flex-row" style="justify-content: end">
+                            <button class="btn btn-primary" type="button" onclick="exportProduct()" style="margin: 10px 10px;">Xuất</button>
+                        </div>
+
+
+                    </form>
+    <div class="toastt-container" style="height: 30px; margin-top: 5px; margin-bottom: 5px">
+                            <div id="toast-2" style="margin: auto 0">
+<!--                                <div class="toastt-2 toast-2&#45;&#45;success">-->
+<!--                                    <p class="toast__msg" style="color: white">thanh cong</p>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+
+                </div>`
+        );
+        $("#info-table").html(`
+
+        <thead>
+            <tr>
+                <th scope="col" style="width: 10%;">ID</th>
+                <th scope="col" style="width: 60%;">Tên</th>
+                <th scope="col" style="width: 10%;">So luong</th>
+                <th scope="col" style="width: 20%">Thoi gian</th>
+            </tr>
+        </thead>
+
+        <tbody id="info-table-body">
+<!--            <tr class="roww">-->
+<!--                <th scope="row">12</th>-->
+<!--                <td>may loc </td>-->
+<!--                <td>100</td>-->
+<!--                <td>8213</td>-->
+<!--            </tr>-->
+
+
+        </tbody>`);
+    });
+
+    // function submitImport() {
+    //     var formData =
+    // }
 
 
 
+});

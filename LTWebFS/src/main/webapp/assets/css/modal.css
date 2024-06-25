@@ -4,9 +4,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    /*display: flex;*/
     z-index: 2;
-    /*display: none;*/
     animation: modalFadeIn ease 0.49s;
     display: none;
 }
@@ -47,5 +45,18 @@
     width: 40%;
     padding: 20px;
     top:  200px;
+    overflow-y: auto;
+    max-height:80%;
 
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.modal__confirm-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.modal__confirm-content {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }

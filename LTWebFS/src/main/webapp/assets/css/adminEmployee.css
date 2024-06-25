@@ -212,6 +212,7 @@
     display: flex;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding: 4px 20px;
 
 }
 
@@ -223,10 +224,11 @@
 
 .info-container__content {
     width:60%;
+    padding: 4px 20px;
 }
 
 .modal__emplpoyee-detail {
-    position: absolute;
+    position: fixed;
     top: 75px;
     left: 30%;
     background-color: var(--white-color);

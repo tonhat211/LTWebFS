@@ -95,17 +95,9 @@ public class AddProductControl extends HttpServlet {
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/adminProduct.jsp");
         rd.forward(request, response);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req,resp);
     }
 }

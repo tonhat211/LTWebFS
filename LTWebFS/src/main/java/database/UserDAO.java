@@ -14,7 +14,6 @@ public class UserDAO implements IDAO<User> {
         int re=0;
         try {
             Connection conn = JDBCUtil.getConnection();
-
             String sql = "insert into users values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, u.getId());
@@ -41,6 +40,55 @@ public class UserDAO implements IDAO<User> {
             throw new RuntimeException(e);
         }
     }
+
+    public int insertUser(User u){
+        int re=0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+
+            String sql = "insert into users (id, name, email, level, dateIn, available) values (?,?,?,?,?,?);";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, u.getId());
+            pst.setString(2, u.getName());
+            pst.setString(3, u.getEmail());
+            pst.setInt(4, u.getLevel());
+            pst.setString(5, u.getDateIn().getDateInMonthDayYearSql());
+            pst.setInt(6, u.getAvailable());
+
+            re = pst.executeUpdate();
+
+            System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return u.getId();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int updateOrderTime(int idin) {
+        int re = 0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+
+            String sql = "update users set orderTime = ? where id = ?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            Timestamp t = new Timestamp(new java.util.Date().getTime());
+            pst.setTimestamp(1,t);
+            pst.setInt(2,idin);
+
+            re = pst.executeUpdate();
+
+            System.out.println(re + " dong da duoc cap nhat");
+            JDBCUtil.closeConnection(conn);
+            return re;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
     public int availableUser(String email){
         int re = 0;
@@ -145,12 +193,97 @@ public class UserDAO implements IDAO<User> {
 
     }
 
+    public ArrayList<User> selectUnbackCus(int n, int index,int amount){
+        ArrayList<User> uList = new ArrayList<>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String temp = "";
+            if(n<3 && n>0) {
+                temp = "Month(CURRENT_DATE) - month(orderTime) = " + n;
+            } else if(n==-1) {
+                temp = "orderTime is null";
+            } else {
+                temp = "Month(CURRENT_DATE) - month(orderTime) >= 3";
+
+            }
+            String sql = "select id, name, phone, email, Date(orderTime) as orderDate from users where level=0 and (" + temp + ") order by orderTime asc limit ?,?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,index);
+            pst.setInt(2,amount);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
+                Date orderDate = rs.getDate("orderDate");
+
+                User u = new User(id,name, email,phone,orderDate);
+
+                uList.add(u);
+
+            }
+            JDBCUtil.closeConnection(conn);
+            return uList;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+    }
+
     public ArrayList<User> selectAllCus(){
         ArrayList<User> uList = new ArrayList<>();
         try {
             Connection conn = JDBCUtil.getConnection();
             String sql = "select * from users where level = 0 order by id asc;";
             PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()) {
+
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String pwd = rs.getString("pwd");
+                int level =  rs.getInt("level");
+                String phone = rs.getString("phone");
+                String address  = rs.getString("address");
+                int banchID = rs.getInt("branchID");
+                String  info = rs.getString("info");
+                Date dateInSql = rs.getDate("dateIn");
+                Datee dateIn = new Datee(dateInSql);
+                Datee dateOut;
+                Date dateOutSql = rs.getDate("dateOut");
+                if(dateOutSql!=null){
+                    dateOut = new Datee(dateOutSql);
+                } else
+                    dateOut = null;
+                int available= rs.getInt("available");
+
+                User u = new User(id,name, email,pwd,level,phone,address,banchID,info,dateIn,dateOut,available);
+
+                uList.add(u);
+
+            }
+            JDBCUtil.closeConnection(conn);
+            return uList;
+        } catch (SQLException e) {
+            // TODO: handle exception
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public ArrayList<User> selectRecentCus(int n){
+        ArrayList<User> uList = new ArrayList<>();
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select * from users where level = 0 and orderTime is not null order by orderTime desc limit 0,?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,n);
             ResultSet rs = pst.executeQuery();
 
             while(rs.next()) {
@@ -324,18 +457,12 @@ public class UserDAO implements IDAO<User> {
         int re=0;
         try {
             Connection conn = JDBCUtil.getConnection();
-
             String sql = "select id from users where email=?;";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, emailin);
-
-
             ResultSet rs = pst.executeQuery();
-
             while(rs.next()){
-
                 re = rs.getInt("id");
-
             }
 
 //			System.out.println(re + " dong da duoc them vao");
@@ -345,9 +472,53 @@ public class UserDAO implements IDAO<User> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
+    public int checkExistUserFB(String name){
+        User res = null;
+        int re=0;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select id from users where name=?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, name);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                re = rs.getInt("id");
+            }
+
+//			System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return re;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int checkAvailable(String emailin){
+        User res = null;
+        int re=-99;
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String sql = "select available from users where email=?;";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, emailin);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                re = rs.getInt("available");
+            }
+
+//			System.out.println(re + " dong da duoc them vao");
+            JDBCUtil.closeConnection(conn);
+            return re;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
     public User selectByEmailAndPwd(String emailin, String pwdin){
         User res = null;
@@ -564,7 +735,35 @@ public class UserDAO implements IDAO<User> {
 //        System.out.println(UserDAO.getInstance().insert(u));
 //        int u =  UserDAO.getInstance().availableUser("no665ok@gmail.com");
 //        System.out.println(u);
-        System.out.println(UserDAO.getInstance().selectByEmailAndPwd("21130464@st.hcmuf.edu.vn","currentPwd")
-        );
+        System.out.println(UserDAO.getInstance().checkExistUser("2113463@st.hcmuaf.edu.vn"));
+//        System.out.println(UserDAO.getInstance().selectByEmailAndPwd("21130464@st.hcmuf.edu.vn","currentPwd")
+//        );
+    }
+
+    // change password
+    public boolean changePassword(String newPassword, String userEmail) {
+        try {
+            Connection conn = JDBCUtil.getConnection();
+            String updateQuery = "UPDATE users SET pwd = ? WHERE email = ?";
+
+            try (PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {
+                preparedStatement.setString(1, newPassword);
+                preparedStatement.setString(2, userEmail);
+
+                int rowCount = preparedStatement.executeUpdate();
+
+                // Kiểm tra số dòng đã được cập nhật
+                if (rowCount > 0) {
+                    // Mật khẩu đã được thay đổi thành công
+                    return true;
+                } else {
+                    // Không có dòng nào được cập nhật, có thể do email không tồn tại
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

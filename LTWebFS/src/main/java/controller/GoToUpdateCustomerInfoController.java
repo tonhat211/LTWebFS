@@ -2,7 +2,7 @@ package controller;
 
 import database.UserDAO;
 import model.User;
-import org.hsqldb.Session;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

@@ -10,7 +10,26 @@ public class Product {
 	private String kind;
 	private int amount;
 	private String description;
-	public Product(int id, String name, int brandID,int areaID, String kind, String description) {
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Product)) return false;
+		Product product = (Product) o;
+		return getId() == product.getId();
+	}
+
+	public Product(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(getId());
+	}
+
+	public Product(int id, String name, int brandID, int areaID, String kind, String description) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -102,23 +121,6 @@ public class Product {
 		return this.name + "\t" + this.brandID + "\t" + this.areaID+ "\t" + this.kind + "\t" + this.description;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		return id == other.id;
-	}
-	
 	public static void main(String[] args) {
 		Product p1 = new Product(1,"nhat", 1, 1, "A", "hhhhhhhhhhhhhhhhhhhh");
 		Product p2 = new Product(2);

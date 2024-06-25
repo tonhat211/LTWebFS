@@ -2,36 +2,43 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="LTWebFS:war exploded" />
+      <artifact name="LTWebFS:war" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="da sua dang dang nhap, dang ky,chuc nang sua thong tin tai khoan cho khach hang">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateEmployeeInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/UpdateEmployeeInfoControl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/adminMenu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/updateEmployeeInfo.jsp" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="sua bug loi cancel filter">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControlTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebfs/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddUpdateEmployeeControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ChangePwdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ChangePwdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAdminCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToAdminEmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddProductControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BrandControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CusOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CusOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FilterUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GetAllProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminDashboardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminOrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToChangePwd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToChangePwd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToProductAdminCotroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToProductAdminCotroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToUpdateCustomerInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToHistoryBuying.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToHistoryBuying.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToOrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToOrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/IPHelper.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminEmployee.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminHeader.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminHeader.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminMenu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/changePwd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/changePwd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/updateCustomerInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/updateCustomerInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductDetailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductDetailSearchControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductFilterControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResendCodeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResendCodeControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gotoLogManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gotoLogManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,12 +48,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Jsp File" />
         <option value="AnnotationType" />
         <option value="HTML File" />
-        <option value="Class" />
+        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -84,14 +91,14 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;to-nhat&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/TO NHAT/IdeaProjects/LTWeb/project_LTWeb/LTWebFS/src/main/webapp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/code/android/server&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.27701148&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -101,11 +108,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\js" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp" />
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\WEB-INF\lib" />
-      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java" />
-      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java\model" />
-      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\java\database" />
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\sound" />
+      <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\TO NHAT\IdeaProjects\LTWeb\project_LTWeb\LTWebFS\src\main\webapp\assets\css" />
@@ -116,7 +123,7 @@
       <recent name="database" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.801">
+  <component name="RunManager" selected="Smart Tomcat.smart tomcat">
     <configuration name="mysql-connector-j-8.2.0.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/src/main/java/mysql-connector-j-8.2.0.jar" />
       <method v="2" />
@@ -227,15 +234,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="smart tomcat" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="catalinaBase" value="C:\Users\TO NHAT\.SmartTomcat\LTWebFS\LTWebFS" />
+      <option name="contextPath" value="/LTWebFS" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="extraClassPath" value="" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.80" />
+          <option name="path" value="$USER_HOME$/tomcat9" />
+          <option name="version" value="9.0.80.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <module name="LTWebFS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JAR Application.mysql-connector-j-8.2.0.jar" />
+      <item itemvalue="Smart Tomcat.smart tomcat" />
       <item itemvalue="Smart Tomcat.Tomcat: LTWebFS" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.801" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Smart Tomcat.Tomcat: LTWebFS" />
         <item itemvalue="JAR Application.mysql-connector-j-8.2.0.jar" />
+        <item itemvalue="Smart Tomcat.Tomcat: LTWebFS" />
       </list>
     </recent_temporary>
   </component>
@@ -288,7 +319,34 @@
       <workItem from="1714300414077" duration="588000" />
       <workItem from="1714312401487" duration="25600000" />
       <workItem from="1714458055674" duration="17199000" />
-      <workItem from="1714548152763" duration="9815000" />
+      <workItem from="1714548152763" duration="10122000" />
+      <workItem from="1714710822446" duration="38960000" />
+      <workItem from="1714896472991" duration="58000" />
+      <workItem from="1714897048496" duration="8362000" />
+      <workItem from="1715230867419" duration="3856000" />
+      <workItem from="1715245244966" duration="38966000" />
+      <workItem from="1715514279960" duration="599000" />
+      <workItem from="1715786811858" duration="13039000" />
+      <workItem from="1715831601819" duration="68176000" />
+      <workItem from="1716432293355" duration="1869000" />
+      <workItem from="1716437219610" duration="164000" />
+      <workItem from="1716464416412" duration="3565000" />
+      <workItem from="1716878460212" duration="16748000" />
+      <workItem from="1717004817137" duration="20149000" />
+      <workItem from="1717172270143" duration="38880000" />
+      <workItem from="1717561719459" duration="24913000" />
+      <workItem from="1717594908587" duration="29813000" />
+      <workItem from="1717861869124" duration="899000" />
+      <workItem from="1717863657903" duration="48894000" />
+      <workItem from="1718185779492" duration="11904000" />
+      <workItem from="1718248619775" duration="23840000" />
+      <workItem from="1718696121861" duration="21000" />
+      <workItem from="1718696183244" duration="6227000" />
+      <workItem from="1718781623502" duration="599000" />
+      <workItem from="1718783318997" duration="45000" />
+      <workItem from="1718857619059" duration="6510000" />
+      <workItem from="1719130590513" duration="2173000" />
+      <workItem from="1719246638131" duration="5158000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -362,7 +420,87 @@
       <option name="project" value="LOCAL" />
       <updated>1714548231768</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="chuc nang tu sua thong tin cho nhan vien">
+      <option name="closed" value="true" />
+      <created>1714583136362</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714583136362</updated>
+    </task>
+    <task id="LOCAL-00011" summary="chinh sua thuoc tinh log, them trang hien thi log">
+      <option name="closed" value="true" />
+      <created>1715318507501</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715318507501</updated>
+    </task>
+    <task id="LOCAL-00012" summary="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax">
+      <option name="closed" value="true" />
+      <created>1715420994280</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715420994280</updated>
+    </task>
+    <task id="LOCAL-00013" summary="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao">
+      <option name="closed" value="true" />
+      <created>1715790483258</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715790483259</updated>
+    </task>
+    <task id="LOCAL-00014" summary="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user">
+      <option name="closed" value="true" />
+      <created>1715835310747</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715835310747</updated>
+    </task>
+    <task id="LOCAL-00015" summary="hoan thanh thong ke">
+      <option name="closed" value="true" />
+      <created>1717567354783</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1717567354783</updated>
+    </task>
+    <task id="LOCAL-00016" summary="them chuc nang thay doi so dia chi cho phan thanh toan va cap nhat thong tin khach hang">
+      <option name="closed" value="true" />
+      <created>1717924804227</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1717924804227</updated>
+    </task>
+    <task id="LOCAL-00017" summary="them trang theo doi don hang cho khach hang">
+      <option name="closed" value="true" />
+      <created>1718189490617</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1718189490617</updated>
+    </task>
+    <task id="LOCAL-00018" summary="hoan thien chuc nang loc san pham trong trang xem san pham">
+      <option name="closed" value="true" />
+      <created>1718648691631</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1718648691631</updated>
+    </task>
+    <task id="LOCAL-00019" summary="sua bug loi cancel filter">
+      <option name="closed" value="true" />
+      <created>1718719342220</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1718719342220</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,6 +525,16 @@
     <MESSAGE value="base" />
     <MESSAGE value="da sua admin customer va product" />
     <MESSAGE value="da sua dang dang nhap, dang ky,chuc nang sua thong tin tai khoan cho khach hang" />
-    <option name="LAST_COMMIT_MESSAGE" value="da sua dang dang nhap, dang ky,chuc nang sua thong tin tai khoan cho khach hang" />
+    <MESSAGE value="chuc nang tu sua thong tin cho nhan vien" />
+    <MESSAGE value="chinh sua thuoc tinh log, them trang hien thi log" />
+    <MESSAGE value="cap nhat lai trang hien thi log, sua cap nhat customer thanh ajax" />
+    <MESSAGE value="sua mat khau mac dinh thanh ngay-thang-nam sinh, bo required cho address, thay doi vi tri thong bao" />
+    <MESSAGE value="chinh them/cap nhat nhan vien qua ajax, va sua loi cua truong thong tin cua user" />
+    <MESSAGE value="hoan thanh thong ke" />
+    <MESSAGE value="them chuc nang thay doi so dia chi cho phan thanh toan va cap nhat thong tin khach hang" />
+    <MESSAGE value="them trang theo doi don hang cho khach hang" />
+    <MESSAGE value="hoan thien chuc nang loc san pham trong trang xem san pham" />
+    <MESSAGE value="sua bug loi cancel filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="sua bug loi cancel filter" />
   </component>
 </project>

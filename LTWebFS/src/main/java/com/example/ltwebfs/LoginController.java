@@ -38,7 +38,7 @@ public class LoginController extends HttpServlet {
             session.setAttribute("userName",user2.getName());
             if (user2.getLevel() == 2) {
                 request.setAttribute("admin_name", user2.getName());
-                request.getRequestDispatcher("admin_dashboard.jsp").forward(request, response);
+                request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
             } else {
                 request.setAttribute("user_name", user2.getName());
                 request.getRequestDispatcher("index.jsp").forward(request, response);

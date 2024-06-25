@@ -9,6 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="./assets/common/taglib.jsp"%>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -39,6 +40,15 @@
   <link rel="stylesheet" href="assets/css/slidebar.css">
   <link rel="stylesheet" href="assets/css/productDetail.css">
   <title>Chi tiết sản phẩm</title>
+
+  <style>
+    .comment-section {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+  </style>
+
 </head>
 <body>
 <div>
@@ -111,7 +121,10 @@
           <p> <%= pu.getName()%> </p>
         </div>
         <div class="product-price">
-          <p> <%= pu.getPrice()%> <span>VND</span></p>
+          <p class="product-price">
+            <fmt:formatNumber value="<%= pu.getPrice()%>" pattern="#,##0.00"/>
+            VND
+          </p>
         </div>
         <div class="product-info-buying">
           <div class="product-info-short">
@@ -123,7 +136,7 @@
           </div>
 
           <%--          test them san pham vao gio hang bang servlet--%>
-          <form class="product-qty-buying" method="post" action="add-to-cart">
+          <form class="product-qty-buying" method="post" action="add-to-cart" id="addToCartForm">
             <div class="product-qty-control">
 
               <i class="fa-solid fa-plus qty-control btn-plus-qty"></i>
@@ -146,7 +159,7 @@
 <%--              <input type="text" class="product-qty-input qtyClass" name="qty" value="1" maxlength="2" size="2">--%>
 <%--              <i class="fa-solid fa-minus qty-control btn-minus-qty"></i>--%>
 
-<%--              <input type="text" hidden class="product-qty-input productIDClass" name="productID" value="<%=productDetail.getProductID()%>" maxlength="2" size="2">--%>
+<%--              <input type="text" hidden class="product-productID-input productIDClass" name="productID" value="<%=pu.getId()%>" maxlength="2" size="2">--%>
 
 <%--            </div>--%>
 <%--            <div class="add-to-cart-btn"><p>Thêm vào giỏ hàng</p></div>--%>
@@ -174,37 +187,64 @@
     <!--        <div class="product-evaluate">-->
 
     <!--        </div>-->
+
+    <!-- Comment Section -->
+    <div class="comment-section">
+      <h2>Bình luận</h2>
+      <div class="fb-comments"
+           data-href="productDetail.jsp?id=<%=pu.getId()%>" data-width="1100" data-numposts="5"></div>
+    </div>
   </div>
 
+</div>
   <%@ include file="footer.jsp" %>
 </div>
 
-<script src="assets/js/productDetail.js"></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0&appId=1443587996285926" nonce="nCjAkXvC"></script>
+
+<script type="module"  src="assets/js/productDetail.js"></script>
 <script>
-  // $(document).ready(function() {
-  //   $(".add-to-cart-btn").click(function() {
-  //     var productId = $(".productIDClass").val();
-  //     var qty = $(".qtyClass").val();
-  //     // console.log(productId);
-  //     // console.log(qty);
-  //     addToCart(productId, qty);
-  //   });
+
+//   ajax jquery
+
+  $(document).ready(function () {
+    document.querySelector('#addToCartForm').addEventListener('submit',function (event){
+      event.preventDefault();
+
+      var data = new FormData(this);
+      console.log(data);
+      var productID = data.get("productID");
+      var qty = data.get("qty");
+      addToCart(productID,qty);
+    });
+
+    function addToCart(productID, qty) {
+
+      $.ajax({
+        url: "/LTWebFS/add-to-cart",
+        method: "POST",
+        data: {productID: productID, qty: qty},
+        success: function (message) {
+          alert(message);
+        }
+      });
+    }
+
+  });
+
+  // $.ajax({
+  //   url,
+  //   method
+  //   data: {},
+  //   success: function (message) {
   //
-  //   function addToCart(productId, qty) {
-  //     console.log(productId);
-  //     console.log(qty);
-  //     $.ajax({
-  //       url: "/LTWebFS_war_exploded/add-to-cart",
-  //       method: "POST",
-  //       data: {productId: productId, qty: qty },
-  //       success: function(data) {
-  //
-  //         alert("da them thanh cong san pham vao gio hang") // Log thông báo thành công
-  //       }
-  //     });
   //   }
-  //
   // });
+
+
+
+
 
 </script>
 </body>

@@ -28,7 +28,8 @@
 .form-group {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     margin: 10px 0;
     padding: 4px 20px;
 
@@ -50,7 +51,6 @@
     border: 1px solid #cccccc;
     /*border: 2px solid var(--primary-color-ad);*/
     background-color: white;
-
 }
 
 .btn-third:hover {
@@ -104,8 +104,9 @@
 }
 
 .stop_reSale {
-    margin: auto;
-    padding-right: 20px;
+    margin: 20px 0;
+    width: 200px;
+    margin-left: auto;
 }
 
 .stop_reSale.hide {
@@ -143,7 +144,7 @@
 }
 
 .disabled-showing {
-    position: absolute;
+    /*position: absolute;*/
     /*display: flex;*/
     justify-content: center;
     align-items: center;
@@ -195,6 +196,35 @@
     background-color: white;
 }
 
+.error {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.22);
+    padding: 7px;
+    margin: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+.required {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.22);
+    padding: 7px;
+    margin: 4px;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+.confirm-unlock {
+    display: none;
+}
+
+.confirm-unlock.active {
+    display: block;
+}
+
+.form-group {
+
+}
 
 
 
