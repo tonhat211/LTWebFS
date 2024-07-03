@@ -932,7 +932,11 @@ public int addPro(Product p) {
     public int  addImage(Image i){
         return  ImageDAO.getInstance().insert(i);
     }
-    public int addProductUnit(Product p, Brand b, Unit u, Image i) {
+
+    public int addImageList(ArrayList<Image> imgs) {
+        return  ImageDAO.getInstance().insertImageList(imgs);
+    }
+    public int addProductUnit(Product p, Brand b, Unit u, ArrayList<Image> imgs) {
         int re=0;
         boolean isBrand = BrandDAO.getInstance().checkBrand(b);
         int brandid=0;
@@ -946,8 +950,8 @@ public int addPro(Product p) {
         p.setBrandID(brandid);
         re+= addPro(p);
         re+= addUnit(u);
-        re+= addImage(i);
-
+//        re+= addImage(i);
+        re+=addImageList(imgs);
 
         return re;
     }

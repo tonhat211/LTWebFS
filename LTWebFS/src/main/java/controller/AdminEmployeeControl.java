@@ -589,10 +589,17 @@ public class AdminEmployeeControl extends HttpServlet {
                 "                        <div class=\"error\" hidden></div>\n" +
 
                 "                    </div>\n" +
-                "                    <div class=\"form-group w-50\">\n" +
-                "                        <label  class=\"w-40\"  for=\"imgurl\">Ảnh đại diện: </label>\n" +
-                "                        <input type=\"text\" class=\"form-control w-80\" id=\"imgurl\" name=\"imgurl\"  aria-describedby=\"\" placeholder=\"Nhập ảnh đại diện\" value=\"" + afterE.getImgurl()+"\">\n" +
-                "                    </div>\n" +
+                "                   <div class=\"form-group\" id=\"img-container\">\n" +
+                "                        <label class=\"w-40\" for=\"myfile\">Ảnh đại diện: </label>\n" +
+                "                        <input type=\"file\" id=\"myfile\" name=\"myfile\" accept=\".jpg, .png\" onchange=\"preview()\">\n" +
+                "                        <div id=\"imgs-container\">\n" +
+                "                            <div class=\"chosen-img\">\n" +
+                "                                <i class=\"fa-solid fa-circle-xmark delete-img-btn\" onclick=\"deleteImg(this)\"></i>\n" +
+                "                                <img src=\"./assets/img/products/"+afterE.getImgurl() +"\" alt=\"\" style=\"width: 100px\" >\n" +
+                "                                <input class=\"img-name\" name=\"imgurl\" value=\""+afterE.getImgurl() +"\" readonly>\n" +
+                "                            </div>\n" +
+                "                        </div>\n" +
+                "                    </div>"+
                 "                    <div class=\"form-group\" style=\"display: none\">\n" +
                 "                        <label class=\"w-20\" for=\"action\" class=\"input-title\">action</label>\n" +
                 "                        <input type=\"text\" class=\"form-control\" id=\"action\" name=\"action\" aria-describedby=\"\" placeholder=\"Enter img url\" value=\"" + (afterE.getName()==""?"add":"update") +"\">\n" +
@@ -604,7 +611,7 @@ public class AdminEmployeeControl extends HttpServlet {
                 "\n" +
                 "                    <div class=\"show-flex-row\">\n" +
                 "                        <div class=\"ad_func-container\">\n" +
-                "                            <div><a class=\"btn btn-third\" href=\"goto-employee-admin\">Hủy</a></div>\n" +
+                "                            <div><a class=\"btn btn-third\" href=\"admin-menu-controller?adminMenu=employee\">Hủy</a></div>\n" +
                 "                        </div>\n" +
                 "                        <div class=\"ad_func-container\">\n" +
                 "                            <button class=\"btn btn-primary\" type=\"submit\">" + (afterE.getName()==""?"Thêm":"Lưu") +"</button>\n" +

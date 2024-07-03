@@ -81,10 +81,7 @@ public class ImageDAO implements IDAO<Image>{
 			String sql = "select * from images where parentID = ?;";
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, parentIDIn);
-
-
 			ResultSet rs = pst.executeQuery();
-
 			while(rs.next()){
 				int id = rs.getInt("id");
 				String url = rs.getString("url");
@@ -217,6 +214,31 @@ public class ImageDAO implements IDAO<Image>{
 		}
 		System.out.println(re + " dong da duoc them vao");
 		
+	}
+
+	public int insertImageList(ArrayList<Image> imgs) {
+		int re=0;
+		String temp = "";
+		if(imgs.isEmpty()) return 0;
+		for(Image i : imgs) {
+			temp += "(\"" + i.getUrl() +"\"," + i.getParentID()+")"+",";
+		}
+		temp = temp.substring(0,temp.length()-1);
+		try {
+			Connection conn = JDBCUtil.getConnection();
+
+			String sql = "insert into images (url, parentID) values " +temp +";";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			System.out.println(pst);
+			re = pst.executeUpdate();
+
+//			System.out.println(re + " dong da duoc them vao");
+			JDBCUtil.closeConnection(conn);
+			return re;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public int deleteImageByParent(int idin){

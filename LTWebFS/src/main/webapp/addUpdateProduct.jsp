@@ -3,6 +3,7 @@
 <%@ page import="model.ProductSuperDetail" %>
 <%@ page import="model.ProductUnit" %>
 <%@ page import="model.Brand" %>
+<%@ page import="model.Image" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -42,6 +43,58 @@
 
     <script src="assets/js/toast.js"></script>
     <script src="assets/js/addUpdateProduct.js"></script>
+
+    <style>
+        #imgs-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .chosen-img {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            margin: 15px;
+            border: 1px solid #B0CFFE;
+            border-radius: 4px;
+            padding: 4px;
+
+        }
+
+        .chosen-img i {
+            position: absolute;
+            font-size: 20px;
+            top: -5px;
+            left: -5px;
+            z-index: 1;
+            display: none;
+        }
+
+        .chosen-img:hover i {
+            display: block;
+            cursor: pointer;
+        }
+
+        .chosen-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .chosen-img .img-name {
+            font-size: 12px;
+            border: none;
+            outline: none;
+            text-align: center;
+        }
+
+
+
+
+    </style>
 </head>
 <body>
 <%
@@ -55,6 +108,11 @@
         brandList = new ArrayList<>();
     }
 
+    ArrayList<Image> imgList = (ArrayList<Image>) request.getAttribute("imgList");
+    if(imgList==null){
+        imgList = new ArrayList<>();
+    }
+
     String status = (String) request.getAttribute("status");
     if(status==null) {
         status="";
@@ -65,7 +123,8 @@
 
     </div>
 
-    <%=(status.equalsIgnoreCase("addsuccessful")?"<script> showSuccessToast(\"Thêm thành công sản phẩm ID: "+ pu.getId() +"\"); </script>":"")%>
+    <%=(status.equalsIgnoreCase("addsuccessful")?"<script> showSuccessToast(\"Thêm thành công sản phẩm ID: "+ pu.getId() +"\");  " +
+            "window.history.pushState({}, '', \"\");</script>":"")%>
     <div class="modal confirm-stop">
         <div class="modal__overlay">
             <div class="modal__confirm-content" onclick="event.stopPropagation()">
@@ -98,25 +157,25 @@
             <a href="admin-menu-controller?adminMenu=product" class="backto-AdminProduct">Quay lại trang quản lí sản phẩm</a>
 
             <div class="form-container">
-                <form action="addUpdate-product" method="get" id="updateForm">
+                <form action="admin-product" method="get" id="updateForm">
                     <div class="show-flex-row">
                         <h4><%= (pu.getName()==""?"Thêm sản phẩm":"Cập nhật sản phẩm") %></h4>
                     </div>
                     <div class="show-flex-row">
                         <div class="grid__row img-showing">
-                        <%
-                            String[] imgsTokens = pu.getImg().split("--");
-                            for(int i=0; i<imgsTokens.length;i++){
-                        %>
-                            <div class="grid-col-2 mtb-5px">
-                                <img src="./assets/img/products/<%=imgsTokens[i]%>" alt="" class="pro-img-item">
-                            </div>
+<%--                        <%--%>
+<%--                            String[] imgsTokens = pu.getImg().split("--");--%>
+<%--                            for(int i=0; i<imgsTokens.length;i++){--%>
+<%--                        %>--%>
+<%--                            <div class="grid-col-2 mtb-5px">--%>
+<%--                                <img src="./assets/img/products/<%=imgsTokens[i]%>" alt="" class="pro-img-item">--%>
+<%--                            </div>--%>
 
-                        <%
+<%--                        <%--%>
 
-                            }
+<%--                            }--%>
 
-                        %>
+<%--                        %>--%>
                             <div class="disabled-showing <%= (pu.getAvailable()==0?"active":"") %>" style="right: 0; left: 100px; position: absolute;">
                                 <div class="disabled-showing-content">
                                     NGƯNG BÁN
@@ -195,10 +254,81 @@
                             </div>
 
                         </div>
-                        <div class="form-group">
-                            <label class="w-20" for="img">Hình ảnh: </label>
-                            <input type="text" class="form-control" id="img" name="img" aria-describedby="" placeholder="Enter img url" value="<%=pu.getImg() %>">
+
+
+
+                        <div class="form-group" id="img-container">
+                            <label class="w-20" for="myfile">Hình ảnh: </label>
+                            <input type="file" id="myfile" name="myfile" accept=".jpg, .png" onchange="preview()" multiple >
+                            <div id="imgs-container">
+                                <%
+                                    for(int i=0;i<imgList.size();i++) {
+                                %>
+                                    <div class="chosen-img">
+                                        <i class="fa-solid fa-circle-xmark delete-img-btn" onclick="deleteImg(this)"></i>
+                                        <img src="./assets/img/products/<%=imgList.get(i).getUrl()%>" alt="" style="width: 100px" >
+                                        <input class="img-name" name="img-name" value="<%=imgList.get(i).getUrl()%>" readonly>
+                                    </div>
+
+                                <%
+                                    }
+                                %>
+                            </div>
                         </div>
+
+
+                        <script>
+                            // const chooseImg = document.querySelector('#myfile');
+                            // const reader = new FileReader();
+                            //
+                            // console.log(chooseImg);
+                            //
+                            // chooseImg.addEventListener("change", (event) => {
+                            //     // Lấy thông tin tập tin được đăng tải
+                            //     const files  = event.target.files;
+                            //
+                            //     const getSizeImage = files[0].size;
+                            //     if(size > 1024 * 1024) alert("Chỉ cho phép tải tệp tin nhỏ hơn 1MB");
+                            //
+                            //     // Đọc thông tin tập tin đã được đăng tải
+                            //     reader.readAsDataURL(files[0])
+                            //
+                            //     for (let i=0;i<files.length;i++) {
+                            //         reader.addEventListener("load",(event) => {
+                            //             let img = event.target.result;
+                            //             const imgContainer = document.querySelector(".imgs-container");
+                            //             imgContainer.innerHTML+=`<img src="`+img+`" alt="" style="width: 100px" >`;
+                            //
+                            //         });
+                            //     }
+                            //
+                            //     // Lắng nghe quá trình đọc tập tin hoàn thành
+                            //     // reader.addEventListener("load", (event) => {
+                            //     //     // Lấy chuỗi Binary thông tin hình ảnh
+                            //     //     const img = event.target.result;
+                            //     //
+                            //     //     // Thực hiện hành động gì đó, có thể append chuỗi giá trị này vào thẻ IMG
+                            //     //     console.log(img) // data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAA........
+                            //     //
+                            //     //     const imgContainer = document.querySelector(".imgs-container");
+                            //     //     for(let i=0; i<files.length;i++) {
+                            //     //         imgContainer.innerHTML+=`<img src="`+img+`" alt="" style="width: 100px" >`;
+                            //     //     }
+                            //     // });
+                            // });
+                            //
+                            // reader.addEventListener("progress", (event) => {
+                            //     const {loaded, total} = event;
+                            //
+                            //     if(loaded && total) {
+                            //         const percent = Math.round(loaded / total) * 100;
+                            //
+                            //         document.querySelector("progress").value = percent
+                            //     }
+                            //
+                            // });
+
+                        </script>
                         <div class="form-group">
                             <label class="w-20" for="description" class="input-title">Mô tả</label>
                             <textarea  type="text" class="form-control" name="description" id="description" rows="6" ><%=pu.getDes() %>
@@ -234,9 +364,40 @@
 </div>
 <script>
 
+    let myfile = document.getElementById("myfile");
+    let imageContainer = document.getElementById("imgs-container");
+    // let numOfFiles = document.getElementById("num-of-files");
+
+    function preview() {
+        let html = "";
+        <%--numOfFiles.textContent = `${fileInput.files.length} Files Selected`;--%>
+        for (let i of myfile.files) {
+            let reader = new FileReader();
+            reader.onload = () => {
+                console.log("reader successful");
+                html = ` <div class="chosen-img">
+                                                <i class="fa-solid fa-circle-xmark" onclick="deleteImg(this)"></i>
+                                                <img src="` + reader.result + `" alt="" style="width: 100px" >
+                                                <input class="img-name" name="img-name" value="` + i.name + `" readonly>
+                                            </div>`;
+                imageContainer.innerHTML += html;
+
+            }
+            reader.readAsDataURL(i);
+        }
+    }
 
 
 
+    function deleteImg(e) {
+        if(document.querySelectorAll(".chosen-img").length==1) return;
+        e.parentNode.remove();
+    }
+
+
+
+</script>
+<script>
 
 
 </script>

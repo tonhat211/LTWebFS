@@ -9,36 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="sua bug loi cancel filter">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControlTest.java" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="bo sung phuong thuc post vao cac controller, loc bo mot so class/controller khong can thiet">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_06_2024_4_25_CH_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_06_2024_4_25_CH__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddProductControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BrandControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControllerProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CusOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CusOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FilterUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GetAllProductController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminDashboardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToAdminOrderController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToChangePwd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToChangePwd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToHistoryBuying.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToHistoryBuying.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToOrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToOrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/IPHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MailController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductDetailController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductDetailSearchControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductFilterControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResendCodeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResendCodeControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SignUpControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/adminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/gotoLogManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/gotoLogManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddUpdateProductControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminEmployeeControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminEmployeeControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminProductControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/ImageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ImageDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/ProductUnitDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ProductUnitDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateEmployee.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addUpdateProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addUpdateProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdateProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/addUpdateProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -346,7 +330,7 @@
       <workItem from="1718783318997" duration="45000" />
       <workItem from="1718857619059" duration="6510000" />
       <workItem from="1719130590513" duration="2173000" />
-      <workItem from="1719246638131" duration="5158000" />
+      <workItem from="1719246638131" duration="36896000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -500,7 +484,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718719342220</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="bo sung phuong thuc post vao cac controller, loc bo mot so class/controller khong can thiet">
+      <option name="closed" value="true" />
+      <created>1719300006290</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1719300006290</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,6 +527,18 @@
     <MESSAGE value="them trang theo doi don hang cho khach hang" />
     <MESSAGE value="hoan thien chuc nang loc san pham trong trang xem san pham" />
     <MESSAGE value="sua bug loi cancel filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="sua bug loi cancel filter" />
+    <MESSAGE value="bo sung phuong thuc post vao cac controller, loc bo mot so class/controller khong can thiet" />
+    <option name="LAST_COMMIT_MESSAGE" value="bo sung phuong thuc post vao cac controller, loc bo mot so class/controller khong can thiet" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/addUpdateProduct.jsp</url>
+          <line>46</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

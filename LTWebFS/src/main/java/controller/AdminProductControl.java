@@ -1,9 +1,6 @@
 package controller;
 
-import database.BrandDAO;
-import database.LogDAO;
-import database.ProductUnitDAO;
-import database.UnitDAO;
+import database.*;
 import model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @WebServlet("/admin-product")
 public class AdminProductControl extends HttpServlet {
@@ -72,9 +70,13 @@ public class AdminProductControl extends HttpServlet {
                     int id = Integer.parseInt(request.getParameter("id"));
                     ArrayList<Brand> brandList = BrandDAO.getInstance().selectAll();
                     ProductUnit pu = ProductUnitDAO.getInstance().selectOneByID(id);
+                    ArrayList<Image> imgs = ImageDAO.getInstance().selectByParentID(id);
                     request.setAttribute("productUnit", pu);
                     request.setAttribute("brandList", brandList);
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp?status=addsuccessful");
+                    request.setAttribute("imgList", imgs);
+//                    String status = request.getParameter("status");
+//                    if(status!=null) request.setAttribute("status",status);
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/addUpdateProduct.jsp");
                     rd.forward(request, response);
                     break;
                 }
@@ -143,8 +145,8 @@ public class AdminProductControl extends HttpServlet {
                     int yearMade = Integer.parseInt(request.getParameter("yearmade"));
                     String dateImport = request.getParameter("dateimport");
                     String img = request.getParameter("img");
+
                     String description = request.getParameter("description");
-//                    System.out.println(dateImport);
 
                     String[] dateImportTokens = dateImport.split("-");
                     Datee dateimportDatee = new Datee(Integer.parseInt(dateImportTokens[0]),
@@ -172,26 +174,23 @@ public class AdminProductControl extends HttpServlet {
 //                    break;
                     ArrayList<Brand> brands = BrandDAO.getInstance().selectAll();
                     String message="Cập nhật sản phẩm ID: " + idin + " thành công";
-                    String html = renderInfoHtml(message,pu,brands);
+                    ArrayList<Image> newimgs = ImageDAO.getInstance().selectByParentID(idin);
+                    String html = renderInfoHtml(message,pu,brands,newimgs);
                     System.out.println("update");
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
-
                     break;
                 }
                 case "ADD":{
                     System.out.println("add");
                     int idin = Integer.parseInt(request.getParameter("id"));
-//                  xu ly cap nhat
+//                  xu ly them
                     String name = request.getParameter("name");
-                    String country = request.getParameter("country");
                     String brand = request.getParameter("brand");
                     String[] brandTokens = brand.split("=");
-                    int brandID = Integer.parseInt(brandTokens[0]);
                     String brandName = brandTokens[1];
                     String brandCountry = brandTokens[2];
-
                     String kind = request.getParameter("kind");
                     String color = request.getParameter("color");
                     String size = request.getParameter("size");
@@ -212,17 +211,31 @@ public class AdminProductControl extends HttpServlet {
                     int idUnit = UnitDAO.getInstance().selectTheMaxID() +1;
                     Unit u = new Unit(idUnit,idin,color,size,wattage,price,yearMade,dateimportDatee,1);
                     Brand b =  new Brand(brandName,brandCountry);
-                    Image i = new Image(img,idin);
+                    ArrayList<Image> imgs = new ArrayList<>();
+                    if(img==null) imgs = new ArrayList<>();
+                    String[] imgTokens = img.split("--");
+                    for(int  i=0; i<imgTokens.length;i++) {
+                        Image itemp = new Image(imgTokens[i], idin);
+                        imgs.add(itemp);
+                    }
 
+                    ProductUnitDAO.getInstance().addProductUnit(p,b,u,imgs);
 
-
-                    ProductUnitDAO.getInstance().addProductUnit(p,b,u,i);
-//                    int status= Integer.parseInt(request.getParameter("status"));
-
-                    request.setAttribute("id",idin);
-                    request.setAttribute("status","addsuccessful");
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/go-to-update-product");
-                    rd.forward(request, response);
+//                    request.setAttribute("id",idin);
+//                    request.setAttribute("status","addsuccessful");
+//                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin-product?action=prepareUpdate");
+//                    rd.forward(request, response);
+//
+//                    break;
+                    ProductUnit pu = ProductUnitDAO.getInstance().selectOneByID(idin);
+                    ArrayList<Brand> brands = BrandDAO.getInstance().selectAll();
+                    String message="Thêm sản phẩm mới thành công. ID sản phẩm mới:  " + idin;
+                    ArrayList<Image> newimgs = ImageDAO.getInstance().selectByParentID(idin);
+                    String html = renderInfoHtml(message,pu,brands,newimgs);
+                    System.out.println("add");
+                    response.setContentType("text/html");
+                    response.setCharacterEncoding("UTF-8");
+                    response.getWriter().write(html);
                     break;
                 }
                 case  "IMPORT":{
@@ -314,15 +327,20 @@ public class AdminProductControl extends HttpServlet {
         return html;
     }
 
-    public String renderInfoHtml(String message,ProductUnit pu, ArrayList<Brand> brandList) {
+    public String renderInfoHtml(String message,ProductUnit pu, ArrayList<Brand> brandList, ArrayList<Image> imgs) {
         String html="";
-        String imgs = "";
+        String imgNames = "";
+        String imgEs ="";
         String[] imgsTokens = pu.getImg().split("--");
         for(int i=0; i<imgsTokens.length;i++){
-            imgs += "<div class=\"grid-col-2 mtb-5px\">\n" +
+            imgNames += "<div class=\"grid-col-2 mtb-5px\">\n" +
                     "      <img src=\"./assets/img/products/"+imgsTokens[i]+"\" alt=\"\" class=\"pro-img-item\">\n" +
                     "</div>";
         }
+
+//        for(Image i : imgs) {
+//            imgNames
+//        }
 
         String brands ="";
          for(Brand b : brandList) {
@@ -330,13 +348,31 @@ public class AdminProductControl extends HttpServlet {
 
         }
 
+         imgEs="<div class=\"form-group\" id=\"img-container\">\n" +
+                 "                            <label class=\"w-20\" for=\"myfile\">Hình ảnh: </label>\n" +
+                 "                            <input type=\"file\" id=\"myfile\" name=\"myfile\" accept=\".jpg, .png\" onchange=\"preview()\" multiple >\n" +
+                 "                            <div id=\"imgs-container\">";
+
+        for(int i=0;i<imgs.size();i++) {
+                                imgEs+="<div class=\"chosen-img\">\n" +
+                                        "                                        <i class=\"fa-solid fa-circle-xmark delete-img-btn\" onclick=\"deleteImg(this)\"></i>\n" +
+                                        "                                        <img src=\"./assets/img/products/"+ imgs.get(i).getUrl()+"\" alt=\"\" style=\"width: 100px\" >\n" +
+                                        "                                        <input class=\"img-name\" name=\"img-name\" value=\""+ imgs.get(i).getUrl()+"\" readonly>\n" +
+                                        "                                    </div>";
+
+
+        }
+        imgEs+="  </div>\n" +
+                "                        </div>";
+
+
         html =  "<script> showSuccessToast(\"" + message + "\"); </script> " +
                 "                    <div class=\"show-flex-row\">\n" +
                 "                        <h4>"+ (pu.getName()==""?"Thêm sản phẩm":"Cập nhật sản phẩm") +"</h4>\n" +
                 "                    </div>\n" +
                 "                    <div class=\"show-flex-row\">\n" +
                 "                        <div class=\"grid__row img-showing\">\n" +
-                                       imgs +
+//                                       imgs +
                 "                            <div class=\"disabled-showing "+ (pu.getAvailable()==0?"active":"") +"\" style=\"right: 0; left: 100px; position: absolute\">\n" +
                 "                                <div class=\"disabled-showing-content\">\n" +
                 "                                    NGƯNG BÁN\n" +
@@ -409,10 +445,11 @@ public class AdminProductControl extends HttpServlet {
                 "                        </div>\n" +
                 "\n" +
                 "                    </div>\n" +
-                "                    <div class=\"form-group\">\n" +
-                "                        <label class=\"w-20\" for=\"img\">Hình ảnh: </label>\n" +
-                "                        <input type=\"text\" class=\"form-control\" id=\"img\" name=\"img\" aria-describedby=\"\" placeholder=\"Enter img url\" value=\""+pu.getImg() +"\">\n" +
-                "                    </div>\n" +
+//                "                    <div class=\"form-group\">\n" +
+//                "                        <label class=\"w-20\" for=\"img\">Hình ảnh: </label>\n" +
+//                "                        <input type=\"text\" class=\"form-control\" id=\"img\" name=\"img\" aria-describedby=\"\" placeholder=\"Enter img url\" value=\""+pu.getImg() +"\">\n" +
+//                "                    </div>\n" +
+                imgEs +
                 "                    <div class=\"form-group\">\n" +
                 "                        <label class=\"w-20\" for=\"description\" class=\"input-title\">Mô tả</label>\n" +
                 "                        <textarea  type=\"text\" class=\"form-control\" name=\"description\" id=\"description\" rows=\"6\" >"+pu.getDes() +"\n" +
@@ -431,7 +468,7 @@ public class AdminProductControl extends HttpServlet {
                 "\n" +
                 "                    <div class=\"show-flex-row\">\n" +
                 "                        <div class=\"ad_func-container\">\n" +
-                "                            <div><a class=\"btn btn-third\" href=\"goto-product-admin\">Hủy</a></div>\n" +
+                "                            <div><a class=\"btn btn-third\" href=\"admin-menu-controller?adminMenu=product\">Hủy</a></div>\n" +
                 "                        </div>\n" +
                 "                        <div class=\"ad_func-container\">\n" +
                 "                            <button class=\"btn btn-primary\" type=\"submit\">"+ (pu.getName().equals("")?"Thêm":"Lưu") +"</button>\n" +

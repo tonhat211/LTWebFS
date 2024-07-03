@@ -20,8 +20,8 @@
             <div class="slideshow-container">
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 4</div>
-<%--                    <img src="assets/img/slide-show/Thiet_bi_y_te_vat_ly_tri_lieu.png"--%>
-                    <img src="https://photos.google.com/photo/AF1QipNbrpsDZt3XclVDWB5ei-Sdy7UyZA_MPm1O2UDD"
+                    <img src="assets/img/slide-show/Thiet_bi_y_te_vat_ly_tri_lieu.png"
+<%--                    <img src="https://photos.google.com/photo/AF1QipNbrpsDZt3XclVDWB5ei-Sdy7UyZA_MPm1O2UDD"--%>
                          style="width:100%; height: 450px">
                     <div class="text">Thiết bị y tế</div>
                 </div>
