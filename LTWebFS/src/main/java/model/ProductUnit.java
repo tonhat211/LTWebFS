@@ -24,7 +24,11 @@ public class ProductUnit {
     private String brand;
     private  String img;
 
-    public ProductUnit(int id, String name, int brandID, int areaID, String kind, int amount, String des, int imei, String color, String size, float wattage, String phanloai, double price, int yearMade, String madeIn, String dateImport, int available, ArrayList<String> imgrls, String brand,  String img) {
+    public ProductUnit(int id) {
+        this.id = id;
+    }
+
+    public ProductUnit(int id, String name, int brandID, int areaID, String kind, int amount, String des, int imei, String color, String size, float wattage, String phanloai, double price, int yearMade, String madeIn, String dateImport, int available, ArrayList<String> imgrls, String brand, String img) {
         this.id = id;
         this.name = name;
         this.brandID = brandID;
@@ -92,6 +96,7 @@ public class ProductUnit {
     }
 
     public ProductUnit() {
+        this.id=-1;
     }
 
     public int getId() {

@@ -131,7 +131,7 @@ public class DeOrderDAO implements IDAO<DeOrder> {
             String sql = "select o.ordID, o.proID, p.name, o.priceUnit, o.qty from de_orders o join products p on o.proID = p.id where ordID in (" + oidss+");";
             PreparedStatement pst = conn.prepareStatement(sql);
 //            pst.setString(1,oidss);
-            System.out.println(pst);
+//            System.out.println(pst);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
                 int oid = rs.getInt("ordID");

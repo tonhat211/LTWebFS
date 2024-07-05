@@ -29,6 +29,7 @@ public class AdminProductControl extends HttpServlet {
         Employee adminloging = (Employee) session.getAttribute("adminloging");
 
         String action = request.getParameter("action");
+        String method = request.getParameter("method");
         if(action  !=  null){
             action = action.toUpperCase();
             switch(action){
@@ -243,7 +244,8 @@ public class AdminProductControl extends HttpServlet {
                     int amount = Integer.parseInt(request.getParameter("amount"));
                     int currentAmount = ProductUnitDAO.getInstance().selectAmount(idin);
                     if(currentAmount==-1) {
-                        String html = renderTableHTML(null,amount,"Nhập");
+                        System.out.println("error");
+                        String html = renderTableHTML(method,new ProductUnit(-idin),amount,"Nhập");
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -259,20 +261,20 @@ public class AdminProductControl extends HttpServlet {
                         Log t = new Log(ipAddress,adminloging.getEmail() + " | importProduct | product ","Nhập kho sản phẩm ID: " + idin ,String.valueOf(currentAmount),String.valueOf(pu.getAmount()),2 );
                         LogDAO.getInstance().insert(t);
 
-                        String html = renderTableHTML(pu,amount,"Nhập");
+                        String html = renderTableHTML(method,pu,amount,"Nhập");
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
                     }
                     break;
                 }
-                case  "EXPORT":{
+                case "EXPORT":{
                     int idin = Integer.parseInt(request.getParameter("id"));
                     int amount = Integer.parseInt(request.getParameter("amount"));
                     int currentAmount = ProductUnitDAO.getInstance().selectAmount(idin);
                     String reason = request.getParameter("reason");
                     if(currentAmount==-1) {
-                        String html = renderTableHTML(null,amount,"Xuất");
+                        String html = renderTableHTML(method,new ProductUnit(-idin),amount,"Xuất");
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -289,7 +291,7 @@ public class AdminProductControl extends HttpServlet {
                         Log t = new Log(ipAddress,adminloging.getEmail() + " | exportProduct | product ","Xuất kho sản phẩm ID: " + idin ,String.valueOf(currentAmount),String.valueOf(pu.getAmount()) + " | Nguyên nhân: "+ reason,2 );
                         LogDAO.getInstance().insert(t);
 
-                        String html = renderTableHTML(pu,amount,"Xuất");
+                        String html = renderTableHTML(method,pu,amount,"Xuất");
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -306,23 +308,46 @@ public class AdminProductControl extends HttpServlet {
         doGet(req,resp);
     }
 
-    public String renderTableHTML(ProductUnit p, int amount, String action) {
+    public String renderTableHTML(String method, ProductUnit p, int amount, String action) {
         String amoutt = String.valueOf(amount);
-
+        System.out.println("product: " + p.toString());
         String html ="";
-        if(p==null) {
-            html +="<script> showErrorToast2(\"" + action + " thất bại. Sản phẩm không tồn tại.\"); </script>";
+        if(method.equalsIgnoreCase("auto")) {
+            if(p.getId()<0) {
+                int id = -p.getId();
+                html ="<script> showErrorToast2(\"" + action + " thất bại. Sản phẩm không tồn tại.\"); " +
+                        "updateExcelList("+id+",\"notfound\");" +
+                        "</script>";
 
+            } else {
+                html ="            <tr>\n" +
+                        "                <th scope=\"row\">"+p.getId() +"</th>\n" +
+                        "                <td>"+ p.getName() +" </td>\n" +
+                        "                <td>"+amoutt +"</td>\n" +
+                        "                <td>"+ p.getDateImport()+"</td>\n" +
+                        "            </tr>";
+                html +="<script> showSuccessToast2(\"" + action + " " +  p.getId() + " thành công.\"); " +
+                        "updateExcelList("+p.getId()+",\"successful\");" +
+                        "</script>";
+
+            }
+            System.out.println(html);
         } else {
-            html ="            <tr>\n" +
-                    "                <th scope=\"row\">"+p.getId() +"</th>\n" +
-                    "                <td>"+ p.getName() +" </td>\n" +
-                    "                <td>"+amoutt +"</td>\n" +
-                    "                <td>"+ p.getDateImport()+"</td>\n" +
-                    "            </tr>";
-            html +="<script> showSuccessToast2(\"" + action + " " +  p.getId() + " thành công.\"); </script>";
+            if(p.getId()<0) {
+                html +="<script> showErrorToast2(\"" + action + " thất bại. Sản phẩm không tồn tại.\"); </script>";
 
+            } else {
+                html ="            <tr>\n" +
+                        "                <th scope=\"row\">"+p.getId() +"</th>\n" +
+                        "                <td>"+ p.getName() +" </td>\n" +
+                        "                <td>"+amoutt +"</td>\n" +
+                        "                <td>"+ p.getDateImport()+"</td>\n" +
+                        "            </tr>";
+                html +="<script> showSuccessToast2(\"" + action + " " +  p.getId() + " thành công.\"); </script>";
+
+            }
         }
+
 
         return html;
     }
