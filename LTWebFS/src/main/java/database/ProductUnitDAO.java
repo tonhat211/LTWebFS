@@ -385,6 +385,7 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
                     "                    " +
                     "                    where p.id in  ("+ ids + ");";
             PreparedStatement pst = conn.prepareStatement(sql);
+//            System.out.println(pst);
 
 //            ids += ")";
 //            pst.setString(1,ids);
@@ -526,6 +527,7 @@ public class ProductUnitDAO implements IDAO<ProductUnit> {
             pst.setString(1,kindin);
             pst.setInt(2,index);
             pst.setInt(3,top);
+            System.out.println(pst);
             ResultSet rs = pst.executeQuery();
 
             while(rs.next()) {
@@ -932,7 +934,11 @@ public int addPro(Product p) {
     public int  addImage(Image i){
         return  ImageDAO.getInstance().insert(i);
     }
-    public int addProductUnit(Product p, Brand b, Unit u, Image i) {
+
+    public int addImageList(ArrayList<Image> imgs) {
+        return  ImageDAO.getInstance().insertImageList(imgs);
+    }
+    public int addProductUnit(Product p, Brand b, Unit u, ArrayList<Image> imgs) {
         int re=0;
         boolean isBrand = BrandDAO.getInstance().checkBrand(b);
         int brandid=0;
@@ -946,8 +952,8 @@ public int addPro(Product p) {
         p.setBrandID(brandid);
         re+= addPro(p);
         re+= addUnit(u);
-        re+= addImage(i);
-
+//        re+= addImage(i);
+        re+=addImageList(imgs);
 
         return re;
     }
@@ -975,9 +981,8 @@ public int addPro(Product p) {
 
 
     public static void main(String[] args) {
-        System.out.println(ProductUnitDAO.getInstance().selectByCountry("A","Đức",0,0, ProductControl.TOP));
-        ArrayList<Integer> tes = new ArrayList<>();
-        System.out.println(tes.isEmpty());
+        ArrayList<ProductUnit> ps = ProductUnitDAO.getInstance().selectByKind("C",0,0,10);
+
     }
 
 }

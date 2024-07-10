@@ -294,7 +294,7 @@ public class ProductDAO implements IDAO<Product>{
 			dataString += read.nextLine();
 		}
 		read.close();
-		System.out.println(dataString);
+//		System.out.println(dataString);
 		StringTokenizer st = new StringTokenizer(dataString, "|");
 		
 		while(st.hasMoreTokens()) {

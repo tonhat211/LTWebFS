@@ -4,10 +4,7 @@ import database.DeOrderDAO;
 import database.DecartDAO;
 import database.LogDAO;
 import database.OrderDAO;
-import model.DeOrder;
-import model.Log;
-import model.Order;
-import model.User;
+import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,10 +47,16 @@ public class UpdateOrderController extends HttpServlet {
         if(!actionTemp.equalsIgnoreCase("SEARCH")) {
             id = Integer.parseInt(request.getParameter("id"));
         }
-
-
-
-
+        String method = request.getParameter("method");
+        Order oCheck = OrderDAO.getInstance().selectById(id);
+        if(oCheck.getId()==0) {
+            System.out.println("khong thay don hang");
+            String html = renderHtmlNotFoundToAuto(id,OrderDAO.getInstance().getAllOrderAndDatail());
+            response.setContentType("text/html");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(html);
+            return;
+        }
         switch (actionTemp) {
             case "SEARCH" : {
 //                int searchStatus = Integer.parseInt(request.getParameter("searchStatus"));
@@ -97,12 +100,12 @@ public class UpdateOrderController extends HttpServlet {
                     OrderDAO.getInstance().updateOrderStatus(id,newStatus);
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
                     if(orders==null) {
-                        String html = renderHtmlNull(action);
+                        String html = renderHtmlNull(id,"auto",action,OrderDAO.getInstance().getAllOrderAndDatail());
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
                     } else {
-                        String html = renderHtml(id,action,currentStatus,"successful",orders);
+                        String html = renderHtml(id,method,action,currentStatus,"successful",orders);
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -112,7 +115,7 @@ public class UpdateOrderController extends HttpServlet {
                 } else {
 
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
-                    String html = renderHtml(id,action,currentStatus,"error",orders);
+                    String html = renderHtml(id,method,action,currentStatus,"error",orders);
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
@@ -134,12 +137,12 @@ public class UpdateOrderController extends HttpServlet {
                     OrderDAO.getInstance().updateOrderStatus(id,newStatus);
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatailIn(statusCheck);
                     if(orders==null) {
-                        String html = renderHtmlNull(action);
+                        String html = renderHtmlNull(id,"auto",action,OrderDAO.getInstance().getAllOrderAndDatail());
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
                     } else {
-                        String html = renderHtml(id,action,currentStatus,"successful",orders);
+                        String html = renderHtml(id,method,action,currentStatus,"successful",orders);
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -147,7 +150,7 @@ public class UpdateOrderController extends HttpServlet {
                 } else {
 
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatailIn(statusCheck);
-                    String html = renderHtml(id,action,currentStatus,"error",orders);
+                    String html = renderHtml(id,method,action,currentStatus,"error",orders);
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
@@ -169,12 +172,12 @@ public class UpdateOrderController extends HttpServlet {
                     OrderDAO.getInstance().updateOrderStatus(id,newStatus);
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
                     if(orders==null) {
-                        String html = renderHtmlNull(action);
+                        String html = renderHtmlNull(id,"auto",action,OrderDAO.getInstance().getAllOrderAndDatail());
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
                     } else {
-                        String html = renderHtml(id,action,currentStatus,"successful",orders);
+                        String html = renderHtml(id,method,action,currentStatus,"successful",orders);
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -182,7 +185,7 @@ public class UpdateOrderController extends HttpServlet {
                 } else {
 
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
-                    String html = renderHtml(id,action,currentStatus,"error",orders);
+                    String html = renderHtml(id,method,action,currentStatus,"error",orders);
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
@@ -203,12 +206,12 @@ public class UpdateOrderController extends HttpServlet {
                     OrderDAO.getInstance().updateOrderStatus(id,newStatus);
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
                     if(orders==null) {
-                        String html = renderHtmlNull(action);
+                        String html = renderHtmlNull(id,"auto",action,OrderDAO.getInstance().getAllOrderAndDatail());
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
                     } else {
-                        String html = renderHtml(id,action,currentStatus,"successful",orders);
+                        String html = renderHtml(id,method,action,currentStatus,"successful",orders);
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -216,7 +219,7 @@ public class UpdateOrderController extends HttpServlet {
                 } else {
 
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
-                    String html = renderHtml(id,action,currentStatus,"error",orders);
+                    String html = renderHtml(id,method,action,currentStatus,"error",orders);
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
@@ -237,12 +240,12 @@ public class UpdateOrderController extends HttpServlet {
                     OrderDAO.getInstance().updateOrderStatus(id,newStatus);
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
                     if(orders==null) {
-                        String html = renderHtmlNull(action);
+                        String html = renderHtmlNull(id,"auto",action,OrderDAO.getInstance().getAllOrderAndDatail());
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
                     } else {
-                        String html = renderHtml(id,action,currentStatus,"successful",orders);
+                        String html = renderHtml(id,method,action,currentStatus,"successful",orders);
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -250,7 +253,7 @@ public class UpdateOrderController extends HttpServlet {
                 } else {
 
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
-                    String html = renderHtml(id,action,currentStatus,"error",orders);
+                    String html = renderHtml(id,method,action,currentStatus,"error",orders);
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
@@ -268,12 +271,12 @@ public class UpdateOrderController extends HttpServlet {
                     OrderDAO.getInstance().updateOrderStatus(id,newStatus);
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
                     if(orders==null) {
-                        String html = renderHtmlNull(action);
+                        String html = renderHtmlNull(id,"auto",action,OrderDAO.getInstance().getAllOrderAndDatail());
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
                     } else {
-                        String html = renderHtml(id,action,currentStatus,"successful",orders);
+                        String html = renderHtml(id,method,action,currentStatus,"successful",orders);
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -281,7 +284,7 @@ public class UpdateOrderController extends HttpServlet {
                 } else {
 
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
-                    String html = renderHtml(id,action,currentStatus,"error",orders);
+                    String html = renderHtml(id,method,action,currentStatus,"error",orders);
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
@@ -300,12 +303,12 @@ public class UpdateOrderController extends HttpServlet {
                     OrderDAO.getInstance().updateOrderStatus(id,newStatus);
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
                     if(orders==null) {
-                        String html = renderHtmlNull(action);
+                        String html = renderHtmlNull(id,"auto",action,OrderDAO.getInstance().getAllOrderAndDatail());
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
                     } else {
-                        String html = renderHtml(id,action,currentStatus,"successful",orders);
+                        String html = renderHtml(id,method,action,currentStatus,"successful",orders);
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -313,7 +316,7 @@ public class UpdateOrderController extends HttpServlet {
                 } else {
 
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
-                    String html = renderHtml(id,action,currentStatus,"error",orders);
+                    String html = renderHtml(id,method,action,currentStatus,"error",orders);
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
@@ -333,13 +336,13 @@ public class UpdateOrderController extends HttpServlet {
                     OrderDAO.getInstance().updateOrderStatus(id,newStatus);
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
                     if(orders==null) {
-                        String html = renderHtmlNull(action);
+                        String html = renderHtmlNull(id,"auto",action,OrderDAO.getInstance().getAllOrderAndDatail());
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
 
                     } else {
-                        String html = renderHtml(id,action,currentStatus,"successful",orders);
+                        String html = renderHtml(id,method,action,currentStatus,"successful",orders);
                         response.setContentType("text/html");
                         response.setCharacterEncoding("UTF-8");
                         response.getWriter().write(html);
@@ -349,11 +352,20 @@ public class UpdateOrderController extends HttpServlet {
                 } else {
 
                     Map<Order, String> orders = OrderDAO.getInstance().getOrderAndDatail(fitStatus);
-                    String html = renderHtml(id,action,currentStatus,"error",orders);
+                    String html = renderHtml(id,method,action,currentStatus,"error",orders);
                     response.setContentType("text/html");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(html);
                 }
+                break;
+            }
+            default: {
+                System.out.println("Default");
+                Map<Order, String> orders = OrderDAO.getInstance().getAllOrderAndDatail();
+                String html = renderHtmlWrongAction(id,orders);
+                response.setContentType("text/html");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(html);
                 break;
             }
         }
@@ -373,24 +385,39 @@ public class UpdateOrderController extends HttpServlet {
 
     }
 
-    public String renderHtmlNull(String action) {
-        return
-                "<script> showInfoToast2(\"Hết đơn hàng cần " + translate(action) +" \"); </script>";
+    public String renderHtmlNull(int id, String method, String action,Map<Order,String> orders) {
+        System.out.println("order null");
+        String ac = translate(action);
+        String html="";
+        System.out.println("Het don hang, method: " + method);
+        if(method.equalsIgnoreCase("auto")) {
+            int i =0;
+            for (Map.Entry<Order, String> item : orders.entrySet()) {
+                i++;
+                html += "            <tr class=\""+ (i%2==0 ? "roww": "") +"\" >\n" +
+                        "                <td>" + item.getKey().getId()+"</td>\n" +
+                        "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
+                        "                <td>" +item.getValue()+"</td>\n" +
+                        "                <td>" + ProductUnit.formatPrice(item.getKey().getTotalPrice()) +"</td>\n" +
+                        "                <td class=\""+item.getKey().getColorByStatus()+"\">"+item.getKey().getStatusBefore()+"</td>"+
+                        "            </tr>\n";
+            }
+            html +="<script> showSuccessToast2(\"" + ac + " " +  id + " thành công. "+ "\"); " +
+                    "updateExcelList("+ id + ",\"successful\"); </script>";
+
+        } else {
+            html = "<script> showInfoToast2(\"Hết đơn hàng cần " + translate(action) +" \"); </script>";
+        }
+        return html;
+
     }
 
     public String renderHtmlNotFound() {
         return
                 "<script> showInfoToast2(\"Không thấy đơn hàng cần tìm\"); </script>";
     }
-
-    public String renderHtml(int id, String action, int orderStatus, String funcStatus, Map<Order,String> orders) {
-
-        String ac = translate(action);
-        String oStatus = getStatus(orderStatus);
+    public String renderHtmlWrongAction(int id, Map<Order,String> orders) {
         String html="";
-        String statuss = "";
-        if(funcStatus.equalsIgnoreCase("successful")) statuss = "thành công";
-            else statuss = "thất bại";
         int i =0;
         for (Map.Entry<Order, String> item : orders.entrySet()) {
             i++;
@@ -398,12 +425,72 @@ public class UpdateOrderController extends HttpServlet {
                     "                <td>" + item.getKey().getId()+"</td>\n" +
                     "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
                     "                <td>" +item.getValue()+"</td>\n" +
-                    "                <td>" +item.getKey().getTotalPrice()+"</td>\n" +
-                    "                <td>" +item.getKey().getStatusBefore()+"</td>\n" +
-                    "                <td><button class=\"btn_confirm_order " + action + "\" onclick=\"updateOrder('" +action + "',"+item.getKey().getId()+");\">"+ translate(action) +"</button> </td>\n" +
-
+                    "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
+                    "                <td class=\""+item.getKey().getColorByStatus()+"\">"+item.getKey().getStatusBefore()+"</td>"+
                     "            </tr>\n";
         }
+        html+="<script> showInfoToast2(\"Hành động không hợp lệ\"); updateExcelList("+ id + ",\"notfound\");</script>";
+        return html;
+    }
+    public String renderHtmlNotFoundToAuto(int id, Map<Order,String> orders) {
+        String html="";
+        int i =0;
+        for (Map.Entry<Order, String> item : orders.entrySet()) {
+            i++;
+            html += "            <tr class=\""+ (i%2==0 ? "roww": "") +"\" >\n" +
+                    "                <td>" + item.getKey().getId()+"</td>\n" +
+                    "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
+                    "                <td>" +item.getValue()+"</td>\n" +
+                    "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
+                    "                <td class=\""+item.getKey().getColorByStatus()+"\">"+item.getKey().getStatusBefore()+"</td>"+
+                    "            </tr>\n";
+        }
+        html+="<script> showInfoToast2(\"Không tìm thấy đơn hàng\"); updateExcelList("+ id + ",\"notfound\");</script>";
+        return html;
+    }
+
+    public String renderHtml(int id, String method, String action, int orderStatus, String funcStatus, Map<Order,String> orders) {
+        String ac = translate(action);
+        String oStatus = getStatus(orderStatus);
+        String html="";
+        String statuss = "";
+        if(funcStatus.equalsIgnoreCase("successful")) statuss = "thành công";
+        else statuss = "thất bại";
+        int i;
+        System.out.println("Con don hang, method:" + method);
+        if(method.equalsIgnoreCase("auto")) {
+            orders = OrderDAO.getInstance().getAllOrderAndDatail();
+            i =0;
+            for (Map.Entry<Order, String> item : orders.entrySet()) {
+                i++;
+                html += "            <tr class=\""+ (i%2==0 ? "roww": "") +"\" >\n" +
+                        "                <td>" + item.getKey().getId()+"</td>\n" +
+                        "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
+                        "                <td>" +item.getValue()+"</td>\n" +
+                        "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
+                        "                <td class=\""+item.getKey().getColorByStatus()+"\">"+item.getKey().getStatusBefore()+"</td>"+
+                        "            </tr>\n";
+            }
+            html +="<script> updateExcelList("+ id + ",\""+ funcStatus+"\"); </script>";
+
+        } else {
+            i =0;
+            for (Map.Entry<Order, String> item : orders.entrySet()) {
+                i++;
+                html += "            <tr class=\""+ (i%2==0 ? "roww": "") +"\" >\n" +
+                        "                <td>" + item.getKey().getId()+"</td>\n" +
+                        "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
+                        "                <td>" +item.getValue()+"</td>\n" +
+                        "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
+                        "                <td>" +item.getKey().getStatusBefore()+"</td>\n" +
+                        "                <td><button class=\"btn_confirm_order " + action + "\" onclick=\"updateOrder('" +action + "',"+item.getKey().getId()+");\">"+ translate(action) +"</button> </td>\n" +
+
+                        "            </tr>\n";
+            }
+        }
+
+
+
 
         if(funcStatus.equalsIgnoreCase("successful")) {
             html +="<script> showSuccessToast2(\"" + ac + " " +  id + " "+ statuss +". "+ "\"); </script>";
@@ -429,13 +516,11 @@ public class UpdateOrderController extends HttpServlet {
                     "                <td>" + item.getKey().getId()+"</td>\n" +
                     "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
                     "                <td>" +item.getValue()+"</td>\n" +
-                    "                <td>" +item.getKey().getTotalPrice()+"</td>\n" +
+                    "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
                     "                <td class=\"" + item.getKey().getColorByStatus()+"\">" +item.getKey().getStatusBefore()+"</td>\n" +
 
                     "            </tr>\n";
         }
-
-
 
 
         return html;
@@ -463,9 +548,6 @@ public class UpdateOrderController extends HttpServlet {
      public String renderHtmlFailed(int id, String action, String status,Map<Order,String> orders) {
         String ac = "";
         ac = translate(action);
-
-
-
 
         return "<script> showErrorToast2(\"" + ac +" " + id + " khong thanh cong. " + status +"\"); </script>";
      }

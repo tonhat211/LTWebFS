@@ -6,6 +6,7 @@ import java.sql.SQLOutput;
 import java.util.Objects;
 
 public class User {
+    public static final int NO_EXIST = -1;
     private int id;
     private String name;
     private String email;
@@ -28,6 +29,8 @@ public class User {
         this.phone = phone;
         this.orderDate = orderDate;
     }
+
+
 
     public Date getOrderDate() {
         return orderDate;
@@ -112,8 +115,10 @@ public class User {
     }
 
     public User() {
-        super();
+        this.id = NO_EXIST;
     }
+
+
 
     public User(int id, String name, String email, String pwd, int level, String phone, String address, int branchID,
                 String info, Datee dateIn, Datee dateOut, int available) {

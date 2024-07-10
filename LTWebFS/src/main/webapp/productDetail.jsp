@@ -39,6 +39,10 @@
   <link rel="stylesheet" href="assets/css/baseN.css">
   <link rel="stylesheet" href="assets/css/slidebar.css">
   <link rel="stylesheet" href="assets/css/productDetail.css">
+  <link rel="stylesheet" href="assets/css/toast.css">
+
+
+
   <title>Chi tiết sản phẩm</title>
 
   <style>
@@ -51,12 +55,21 @@
 
 </head>
 <body>
+<script>
+  function gotoLogin() {
+    var login = confirm("Đăng nhập để sử dung giỏ hàng.");
+    if (login) {
+      window.location.href = "${pageContext.request.contextPath}/login.jsp";
+    }
+  }
+</script>
 <div>
   <%@ include file="header.jsp" %>
 
   <%
     ProductUnit pu = (ProductUnit) request.getAttribute("productDetail");
     String status = (String) request.getAttribute("status");
+    User u = (User) session.getAttribute("userloging");
   %>
 
   <%
@@ -72,6 +85,9 @@
     }
   %>
   <div class="product__container">
+    <div id="toast">
+
+    </div>
     <div class="product-item">
       <div class="prd__slidebar">
 
@@ -85,7 +101,7 @@
             for(int i  =  0;i< urls.size();i++){
           %>
                 <div class="prd__sliderbar-item <%=  i==0 ? "active"  : ""%> ">
-                  <img src="./assets/img/products/<%=urls.get(i)%>" alt="">
+                  <img src="<%=urls.get(i)%>" alt="">
                 </div>
 
           <%
@@ -204,6 +220,8 @@
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0&appId=1443587996285926" nonce="nCjAkXvC"></script>
 
 <script type="module"  src="assets/js/productDetail.js"></script>
+<script src="assets/js/toast.js"></script>
+
 <script>
 
 //   ajax jquery
@@ -225,11 +243,13 @@
         url: "/LTWebFS/add-to-cart",
         method: "POST",
         data: {productID: productID, qty: qty},
-        success: function (message) {
-          alert(message);
+        success: function (data) {
+          $('#toast').html(data);
         }
       });
     }
+
+
 
   });
 

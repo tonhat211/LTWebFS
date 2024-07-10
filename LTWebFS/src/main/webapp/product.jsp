@@ -52,6 +52,7 @@
 
         String kind = (String) session.getAttribute("kind");
         if(kind==null) kind= "A";
+        System.out.println("kind in jsp: " + kind);
 
     %>
 
@@ -122,8 +123,6 @@
                 <div class="subnav__filter">
                     <div class="">
                         <a href="product?action=query&&kind=<%=kind%>" ><i class="fa-solid fa-x cancel-filter"></i></a>
-
-
                     </div>
                     <div class="subnav__filter-item country-filter">
                         <p class="subnav__filter-title">Xuất xứ <i class="fa-solid fa-caret-down"></i></p>
@@ -220,9 +219,9 @@
                         for(ProductUnit p : pus){%>
                     <div class="grid-col-2 mt20 oneProduct">
                         <div class="product-item">
-                            <a href="productDetail?id=<%=p.getId()%>" class="product-item-link">
+                            <a href="product?action=detail&&id=<%=p.getId()%>" class="product-item-link">
                                 <div class="product-img">
-                                    <%String imgurl  =  "./assets/img/products/" + p.getImg();%>
+                                    <%String imgurl = p.getImg();%>
                                     <img src= <%=imgurl%>  alt="">
                                 </div>
 
@@ -276,11 +275,11 @@
     const moreProBtn = document.querySelector(".more-product");
     moreProBtn.addEventListener('click', function(event) {
         event.preventDefault();
-        const index = document.querySelectorAll(".product-item").length;
+        let index = document.querySelectorAll(".product-item").length;
         let country= document.querySelector("#current-country").value;
         let brandID= document.querySelector("#current-brandID").value;
         let arrange= document.querySelector("#current-arrange").value;
-        console.log(index);
+        console.log("index jsp: " +index);
 
         moreProduct(country, brandID, arrange, index);
     });

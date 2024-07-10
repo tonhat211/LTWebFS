@@ -34,7 +34,57 @@
     <link rel="stylesheet" href="assets/css/addUpdate.css">
     <link rel="stylesheet" href="assets/css/modal.css">
     <link rel="stylesheet" href="assets/css/toast.css">
+    <style>
+        #imgs-container {
+            display: flex;
+            flex-direction: row;
+        }
 
+        .chosen-img {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            margin: 15px;
+            border: 1px solid #B0CFFE;
+            border-radius: 4px;
+            padding: 4px;
+
+        }
+
+        .chosen-img i {
+            position: absolute;
+            font-size: 20px;
+            top: -5px;
+            left: -5px;
+            z-index: 1;
+            display: none;
+        }
+
+        .chosen-img:hover i {
+            display: block;
+            cursor: pointer;
+        }
+
+        .chosen-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .chosen-img .img-name {
+            font-size: 12px;
+            border: none;
+            outline: none;
+            text-align: center;
+        }
+
+
+
+
+    </style>
 </head>
 <body>
 <%
@@ -314,9 +364,20 @@
                         <div class="error" hidden></div>
 
                     </div>
-                    <div class="form-group w-50">
-                        <label  class="w-40"  for="imgurl">Ảnh đại diện: </label>
-                        <input type="text" class="form-control w-80" id="imgurl" name="imgurl"  aria-describedby="" placeholder="Nhập ảnh đại diện" value="<%= e.getImgurl()%>">
+<%--                    <div class="form-group w-50">--%>
+<%--                        <label  class="w-40"  for="imgurl">Ảnh đại diện: </label>--%>
+<%--                        <input type="text" class="form-control w-80" id="imgurl" name="imgurl"  aria-describedby="" placeholder="Nhập ảnh đại diện" value="<%= e.getImgurl()%>">--%>
+<%--                    </div>--%>
+                    <div class="form-group" id="img-container">
+                        <label class="w-40" for="myfile">Ảnh đại diện: </label>
+                        <input type="file" id="myfile" name="myfile" accept=".jpg, .png" onchange="preview()">
+                        <div id="imgs-container">
+                            <div class="chosen-img">
+                                <i class="fa-solid fa-circle-xmark delete-img-btn" onclick="deleteImg(this)"></i>
+                                <img src="<%=e.getImgurl()%>" alt="" style="width: 100px" >
+                                <input class="img-name" name="imgurl" value="<%=e.getImgurl()%>" hidden>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group" style="display: none">
                         <label class="w-20" for="action" class="input-title">action</label>
@@ -427,7 +488,7 @@
             var month = date_in.getMonth()+1;
             var day = date_in.getDate();
 
-            if((year <= currentYear && month <= curretnMonth && day <= currentDay)){
+            if((date_in <= new Date())){
                 switchMessage("#datein",'.error',0);
 
             } else {
@@ -454,19 +515,25 @@
             var imgurl = formData.get("imgurl");
 
 
-            updateEmployee(id,name, email, phone, address, birthday, datein, action, sex,
+            executeEmployee(id,name, email, phone, address, birthday, datein, action, sex,
                 position, area,branch,employee,customer,order,dashboard,log,imgurl);
 
         });
 
 
-        function updateEmployee(id, name, email, phone, address, birthday, datein, action, sex,position, area,branch,employee,customer,order,dashboard,log,imgurl) {
+        function executeEmployee(id, name, email, phone, address, birthday, datein, action, sex,position, area,branch,employee,customer,order,dashboard,log,imgurl) {
             $.ajax({
                 url: "/LTWebFS/employee",
                 method: "POST",
                 data: { id: id, name: name, email: email, phone: phone, address: address, birthday: birthday, datein: datein, action: action, sex: sex,position: position, area:area,branch:branch,employee:employee,customer:customer,order:order,dashboard:dashboard,log:log,imgurl:imgurl },
                 success: function(data) {
                     $("#employeeInfoForm").html(data);
+                    if(action==="add") {
+                        let url = window.location.href;
+                        url = url.slice(0,url.indexOf('?'));
+                        url += "?action=prepareUpdate&&id=" + id;
+                        window.history.pushState('string','',url);
+                    }
 
                 }
             });
@@ -557,6 +624,41 @@
             }
         });
     }
+
+
+//     thao tac hinh anh
+        let myfile = document.getElementById("myfile");
+        let imageContainer = document.getElementById("imgs-container");
+        // let numOfFiles = document.getElementById("num-of-files");
+
+        function preview() {
+        let html = "";
+        <%--numOfFiles.textContent = `${fileInput.files.length} Files Selected`;--%>
+        for (let i of myfile.files) {
+        let reader = new FileReader();
+        reader.onload = () => {
+        console.log("reader successful");
+        html = ` <div class="chosen-img">
+                                                <i class="fa-solid fa-circle-xmark" onclick="deleteImg(this)"></i>
+                                                <img src="` + reader.result + `" alt="" style="width: 100px" >
+                                                <input class="img-name" name="imgurl" value="` + reader.result + `" hidden>
+                                            </div>`;
+        imageContainer.innerHTML += html;
+
+    }
+        reader.readAsDataURL(i);
+    }
+    }
+
+
+
+        function deleteImg(e) {
+        if(document.querySelectorAll(".chosen-img").length==1) return;
+        e.parentNode.remove();
+    }
+
+
+
 
 
 

@@ -429,7 +429,7 @@
                                         for (Map.Entry<ProductUnit, Integer> item : topPro.entrySet()) {
                                     %>
                                             <tr>
-                                                <%String imgurl  =  "./assets/img/products/" + item.getKey().getImg();%>
+                                                <%String imgurl  = item.getKey().getImg();%>
                                                 <th scope="row"><img src=<%=imgurl%> alt=""></th>
                                                 <td><a href="#" class="text-primary fw-bold"> <%=item.getKey().getName()%> </a></td>
                                                 <td class="fw-bold"><%=item.getValue()%></td>

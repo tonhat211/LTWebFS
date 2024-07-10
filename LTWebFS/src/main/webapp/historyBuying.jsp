@@ -56,7 +56,7 @@
 <div class="ad-content mt10">
     <div class="ad-content-item">
         <div class="ad_container">
-            <a href="goto-customer-admin" class="backto-AdminProduct">Quay lại trang quản lí khách hàng</a>
+            <a href="admin-menu-controller?adminMenu=customer" class="backto-AdminProduct">Quay lại trang quản lí khách hàng</a>
             <div class="customer-info">
                 <div class="show-flex-row">
                     <h4>Khách hàng</h4>
@@ -67,7 +67,7 @@
                         <th scope="col">Họ và tên</th>
                         <th scope="col">Liên hệ</th>
                         <th scope="col">Ngày đăng kí</th>
-                        <th scope="col">Tổng chi tiêu</th>
+                        <th scope="col">Tổng chi tiêu (VND)</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -75,7 +75,7 @@
                         <td><%= cus.getName()%></td>
                         <td><%=cus.getEmail() %> <br> <%=cus.getPhone()%> <br> <%=cus.getAddress() %> </br></td>
                         <td><%=cus.getDateIn() %></td>
-                        <td><%=cus.getTotalSpend() %></td>
+                        <td><%=ProductUnit.formatPrice(cus.getTotalSpend()) %></td>
                     </tr>
                     </tbody>
                 </table>
@@ -105,11 +105,12 @@
 <%--                    <%= i%2==0 ? "roww" : ""%>--%>
                     <tr class=" <%= i%2==0 ? "roww" : ""%>">
                         <td><%=os.get(i).getId()%></td>
-                        <td><%=os.get(i).getTotalPrice()%></td>
+                        <td><%=ProductUnit.formatPrice(os.get(i).getTotalPrice())%></td>
                         <td><%=os.get(i).getDateSet()%></td>
                         <td><%=os.get(i).getTimeSet()%></td>
-                        <td><%=(os.get(i).getIsCompleted()==1?"Đã hoàn thành":"Chưa hoàn thành")%></td>
-                        <td><a href="goto-order-detail?ordID=<%=os.get(i).getId()%>">Chi tiết đơn hàng</a></td>
+<%--                        <td><%=(os.get(i).getIsCompleted()==1?"Đã hoàn thành":"Chưa hoàn thành")%></td>--%>
+                        <td><%=os.get(i).getStatusBefore()%></td>
+                        <td><a href="order-detail?ordID=<%=os.get(i).getId()%>">Chi tiết đơn hàng</a></td>
 
                     </tr>
                     <%

@@ -52,19 +52,19 @@
         let html = '   ' +
             '<div>' +
                 '<div class="steps">' +
-                    '<p class="step-item "><span class="circle "><i class="bi bi-card-checklist"></i></span>xac nhan</p>' +
-                    '<p class="step-item "><span class="circle "><i class="bi bi-box-seam"></i></span>Dong goi</p>' +
-                    '<p class="step-item "><span class="circle "><<i class="bi bi-truck"></i></span>Van chuyen</p>' +
-                    '<p class="step-item "><span class="circle "><i class="bi bi-check-circle-fill"></i></span>Hoan thanh</p>' +
+                    '<p class="step-item "><span class="circle "><i class="bi bi-card-checklist"></i></span>Xác nhận</p>' +
+                    '<p class="step-item "><span class="circle "><i class="bi bi-box-seam"></i></span>Đóng gói</p>' +
+                    '<p class="step-item "><span class="circle "><i class="bi bi-truck"></i></span>Vận chuyển</p>' +
+                    '<p class="step-item "><span class="circle "><i class="bi bi-check-circle-fill"></i></span>Hoàn thành</p>' +
                     '<div class="progress-bar">' +
                         '<span class="indicator"></span>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
             '<div style="margin-top: 40px">' +
-                '<p>Dia chi nhan hang</p>' +
-                '<p>Nguoi nhan: <span class="receiver">'+ receiver +'</span>   |   <span class="phone">'+ receiverPhone +'</span></p>' +
-                '<p>Dia chi: <span class="address">'+ address +'</span></p>' +
+                '<p>Địa chỉ nhận hàng</p>' +
+                '<p>Người nhận: <span class="receiver">'+ receiver +'</span>   |   <span class="phone">'+ receiverPhone +'</span></p>' +
+                '<p>Địa chỉ: <span class="address">'+ address +'</span></p>' +
             '</div>';
 
 
@@ -152,7 +152,7 @@
                 %>
                 <div class="order-container">
                     <div class="show-flex-row">
-                        <p>Ma don hang: <span class="orderID"><%=item.getKey().getId()%></span> </p>
+                        <p>Mã đơn hàng: <span class="orderID"><%=item.getKey().getId()%></span> </p>
                         <span class="orderStatusNumber" style="display: none"><%=item.getKey().getStatus()%></span>
                         <span class="orderReceiver" style="display: none"><%=item.getKey().getReceiver()%></span>
                         <span class="orderReceiverPhone" style="display: none"><%=item.getKey().getReceiverPhone()%></span>
@@ -165,13 +165,14 @@
                     <div class="order-item" onclick="showDetailsOrder.call(this)">
                         <div class="show-flex-row" style="justify-content: left; align-items: start">
                             <div class="product-img-container" style="width: 10%">
-                                <img src="./assets/img/products/<%=p.getValue().getImg()%>" alt="" class="produc-img" style="width: 100%">
+<%--                                <img src="./assets/img/products/<%=p.getValue().getImg()%>" alt="" class="produc-img" style="width: 100%">--%>
+                                <img src="<%=p.getValue().getImg()%>" alt="" class="product-img" style="width: 100%">
                             </div>
                             <div class="product-info show-flex-col" style="width: 90%; height: 100%; justify-content: space-between">
                                 <p class="product-name" style="font-size: 20px; font-weight: 600"><%=p.getValue().getName()%></p>
                                 <div class="show-flex-row" style="justify-content: space-between; height: 100%">
-                                    <p><span class="product-price"><%=p.getValue().getPrice()%></span>VND</p>
-                                    <p style="display: block">So luong: <span class="product-qty"><%=p.getKey().getQty()%></span></p>
+                                    <p><span class="product-price"><%=ProductUnit.formatPrice(p.getValue().getPrice())%></span>VND</p>
+                                    <p style="display: block">Số lượng: <span class="product-qty"><%=p.getKey().getQty()%></span></p>
                                 </div>
                             </div>
                         </div>
@@ -184,13 +185,13 @@
 
                     <div class="show-flex-row">
                         <div>
-                            <p>Ngay dat: <span class="order-dateSet">10/1/2024</span></p>
-                            <p>Ngay hoan thanh: <span class="order-dateFinish">12/1/2024</span></p>
+                            <p>Ngày đặt: <span class="order-dateSet"><%=item.getKey().getDateSet()%></span></p>
+                            <p>Ngày hoàn thành: <span class="order-dateFinish"><%=item.getKey().getCompleteDateSet()%></span></p>
                         </div>
                         <div class="show-flex-col" style="align-items: end">
-                            <p>Tong tien: <span class="order-Price">21982357</span> (VND)</p>
+                            <p>Tổng tiền: <span class="order-Price"><%=ProductUnit.formatPrice(item.getKey().getTotalPrice())%></span> (VND)</p>
                             <% if(item.getKey().getStatus()>=0 && item.getKey().getStatus() <3) {%>
-                                <button type="button" class="btn btn-third" >Huy</button>
+                                <button type="button" class="btn btn-third" >Hủy</button>
                             <%
                                 }
                             %>
@@ -255,6 +256,7 @@
             success: function(data) {
                 // console.log(data);
                 $('.order-content').html(data);
+                window.history.pushState({}, '', urlin)
             }
         });
     }

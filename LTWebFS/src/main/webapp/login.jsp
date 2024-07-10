@@ -137,7 +137,7 @@
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
 <%--                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" value="<%=email%>" placeholder="Nhập email">--%>
-                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" value="pharmacity@gmail.com" placeholder="Nhập email">
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" value="2003tonhat@gmail.com" placeholder="Nhập email">
                 <div class="error" <%=status.equalsIgnoreCase("notUser") ? "" : "hidden"%>>Tài khoản không tồn tại</div>
 
             </div>

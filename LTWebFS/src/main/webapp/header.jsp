@@ -48,7 +48,7 @@
                     if(user!=null){
                 %>
                     <div class="sub-menu-container" style="display: inline-block">
-                        <p class="user-name" style="display: inline-block"><%=user.getName()%></p>
+                        <p class="user-name" style="display: inline-block; margin-bottom: 0"><%=user.getName()%></p>
                         <ul class="sub-menu">
                             <li><a href="update-info?action=init&&object=customer">Cập nhật tài khoản</a></li>
                             <li><a href="cus-order?action=init">Đơn hàng</a></li>

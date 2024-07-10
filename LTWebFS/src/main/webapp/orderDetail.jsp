@@ -61,7 +61,7 @@
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Tổng tiền (VND)</th>
                         <th scope="col">Ngày tạo</th>
                         <th scope="col">Thời gian tạo</th>
                         <th scope="col">Tình trạng</th>
@@ -70,10 +70,11 @@
                     <tbody>
                     <tr>
                         <td><%= o.getId()%></td>
-                        <td><%= o.getTotalPrice()%></td>
+                        <td><%= ProductUnit.formatPrice(o.getTotalPrice())%></td>
                         <td><%= o.getDateSet()%></td>
                         <td><%=o.getTimeSet()%></td>
-                        <td><%= o.getIsCompleted()==1 ? "Đã hoàn thành" : "Chưa hoàn thành"%></td>
+                        <td><%= o.getStatusBefore()%></td>
+<%--                        <td><%= o.getIsCompleted()==1 ? "Đã hoàn thành" : "Chưa hoàn thành"%></td>--%>
 
 
                     </tr>
@@ -92,7 +93,7 @@
                         <th scope="col">ID đơn hàng</th>
                         <th scope="col">ID sản phẩm</th>
                         <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Đơn giá (VND)</th>
                         <th scope="col">Số lượng</th>
                     </tr>
                     </thead>
@@ -106,7 +107,7 @@
                         <td><%=dos.get(i).getOrdID()%></td>
                         <td><%=dos.get(i).getProID()%></td>
                         <td><%=dos.get(i).getpName()%></td>
-                        <td><%=dos.get(i).getPriceUnit()%></td>
+                        <td><%=ProductUnit.formatPrice(dos.get(i).getPriceUnit())%></td>
                         <td><%=dos.get(i).getQty()%></td>
 
                     </tr>

@@ -41,7 +41,7 @@ function importProduct() {
 
 
     $.ajax({
-        url: "/LTWebFS/addUpdate-product",
+        url: "/LTWebFS/admin-product",
         method: "POST",
         data: {id : id, amount: amount, action :action},
         success: function(data) {
@@ -96,7 +96,7 @@ function exportProduct() {
     if(isOk===false) return;
 
     $.ajax({
-        url: "/LTWebFS/addUpdate-product",
+        url: "/LTWebFS/admin-product",
         method: "POST",
         data: {id : id, amount: amount, action :action, reason: reason},
         success: function(data) {
@@ -113,7 +113,7 @@ $(document).ready(function() {
         event.preventDefault();
         $("#product-action").html(`<div class="seperate-horizontal-90" style="margin: 20px auto"></div>
                 <div style="width: 100%">
-
+                <i class="bi bi-x-lg"></i>
                     <form action="" style="width: 70%; margin: 0 auto" id="import-product-form">
                         <h4 style="text-align: center">Nhập kho</h4>
                         <div class="show-flex-row">

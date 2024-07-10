@@ -41,7 +41,7 @@ $(document).ready(function() {
     function availableProduct(urlin) {
         $.ajax({
             url: urlin,
-            method: "POST",
+            method: "GET",
             // data: { action: action, id : id },
             success: function(data) {
                 if(data === "stopped") {
@@ -77,20 +77,45 @@ $(document).ready(function() {
         var amount = formData.get("amount");
         var yearmade = formData.get("yearmade");
         var dateimport = formData.get("dateimport");
-        var img = formData.get("img");
-        var description = formData.get("description");
-        if(action==="update")
-            updateProduct(action,id, name, brand, kind, color, size, wattage, price, amount, yearmade, dateimport, img, description);
-        else {
-            console.log(action);
-
-            this.submit();
-            console.log("submit xong");
-
+        var imgArr = formData.getAll("img-name");
+        var img="";
+        for(let i=0;i<imgArr.length;i++) {
+            img+=imgArr[i]+"--";
         }
+        var description = formData.get("description");
+        executeProduct(action, id, name, brand, kind, color, size, wattage, price, amount, yearmade, dateimport, img, description);
+        if(action==="add") {
+            let url = window.location.href;
+            url = url.slice(0,url.indexOf('?'));
+            url += "?action=prepareUpdate&&id=" + id;
+            window.history.pushState('string','',url);
+        }
+        // if(action==="update") {
+        //     updateProduct(action, id, name, brand, kind, color, size, wattage, price, amount, yearmade, dateimport, img, description);
+        //     var url = window.location.href;
+        //     console.log(url);
+        //     url = url.slice(0, url.indexOf('?'));
+        //     url += "?action=prepareUpdate&&id=1015";
+        //     window.history.pushState('string', '', url);
+        //     console.log(url);
+        // } else if(action==="add") {
+        //     console.log(action);
+        //     let formData = new FormData(this);
+        //     let id = formData.get("id");
+        //     console.log(id);
+        //     this.submit();
+        //     var url = window.location.href;
+        //     console.log(url);
+        //     url = url.slice(0, url.indexOf('?'));
+        //     url+= "?action=prepareUpdate&&id=1015";
+        //     window.history.pushState('string', '', url);
+        //     console.log(url);
+        //
+        //
+        // }
     });
 
-    function updateProduct(action,id, name, brand, kind, color, size, wattage, price, amount, yearmade, dateimport, img, description) {
+    function executeProduct(action,id, name, brand, kind, color, size, wattage, price, amount, yearmade, dateimport, img, description) {
         $.ajax({
             url: "/LTWebFS/admin-product",
             method: "POST",

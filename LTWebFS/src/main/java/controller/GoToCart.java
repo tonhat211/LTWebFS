@@ -27,6 +27,7 @@ public class GoToCart extends HttpServlet {
 
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("userloging");
+        System.out.println("cart: " + u);
         if (u!=null) {
             String status = (String) request.getAttribute("status");
             if(status ==  null) {

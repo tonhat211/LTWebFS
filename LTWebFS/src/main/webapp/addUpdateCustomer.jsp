@@ -362,7 +362,12 @@
                 data: { id: id, name: name, email: email, phone: phone, address: address, birthday: birthday, datein: datein, action: action, sex: sex },
                 success: function(data) {
                     $("#customerInfoForm").html(data);
-
+                    if(action==="add") {
+                        let url = window.location.href;
+                        url = url.slice(0,url.indexOf('?'));
+                        url += "?action=prepareUpdate&&id=" + id;
+                        window.history.pushState('string','',url);
+                    }
                 }
             });
         }

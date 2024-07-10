@@ -559,11 +559,36 @@ public class DecartDAO implements IDAO<cartitem>{
 		ArrayList<Integer> ids = new ArrayList<>();
 		ids.add(10111);
 		ids.add(10110);
+
+
 //		System.out.println(DecartDAO.getInstance().getCartItemsByCaP(3032,ids).size());
 
 //		System.out.println(DecartDAO.getInstance().selectOneByCusaProID(1204312,12412));
 
 //		System.out.println(DecartDAO.getInstance().deleteDecarts(3031,ids));
+
+//		ArrayList<cartitem> cart = DecartDAO.getInstance().getCartItems(3031);
+//		for(int i=0;i<cart.size();i++) {
+//			System.out.println(i);
+////			System.out.println(cart.get(i).getP().getImg());
+//		}
+
+		ArrayList<Integer> idproins = new ArrayList<>();
+		idproins.add(10115);
+		idproins.add(10116);
+		ArrayList<DeCart> dcs = DecartDAO.getInstance().selectByCusaProID(30317,idproins);
+//		System.out.println(dcs.size());
+//		for(DeCart detail : dcs) {
+//			System.out.println(detail.toString());
+//		}
+
+		ArrayList<cartitem> items = DecartDAO.getInstance().getCartItemsByCaP(30317,idproins);
+		for(cartitem i : items) {
+			System.out.println(i.getQty());
+		}
+		for(int i=0;i<items.size();i++) {
+			System.out.println(items.get(i).getQty());
+		}
 	}
 
 

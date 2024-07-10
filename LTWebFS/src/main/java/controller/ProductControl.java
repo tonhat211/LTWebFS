@@ -51,18 +51,35 @@ public class ProductControl extends HttpServlet {
                 rd.forward(request, response);
                 break;
             }
+            case "DETAIL": {
+                int id = Integer.parseInt(request.getParameter("id"));
+//                String status = (String) request.getAttribute("status");
+                ProductUnit pu = ProductUnitDAO.getInstance().selectById(id);
+                request.setAttribute("productDetail", pu);
+//                if(status != null) {
+//                    request.setAttribute("status",status);
+//                }
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/productDetail.jsp");
+                rd.forward(request, response);
+                break;
+            }
             case "QUERY": {
                 String kindin = request.getParameter("kind");
                 session.setAttribute("kind",kindin);
-                ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectByKind(kind,0,0,TOP);
+                ArrayList<ProductUnit> pus = ProductUnitDAO.getInstance().selectByKind(kindin,0,0,TOP);
 
-                ArrayList<Brand> topBrandList = BrandDAO.getInstance().selectTopOf(kind,6);
+                ArrayList<Brand> topBrandList = BrandDAO.getInstance().selectTopOf(kindin,6);
                 ArrayList<String> countryList = BrandDAO.getInstance().selectAllCountry();
                 kind = kind.toUpperCase();
-                request.setAttribute("kind",kind);
+//                request.setAttribute("kind",kind);
                 request.setAttribute("productUnitList", pus);
                 request.setAttribute("topBrandList", topBrandList);
                 request.setAttribute("countryList", countryList);
+
+                System.out.println("danh sach san pham ben servlet");
+                for(ProductUnit p : pus ){
+                    System.out.println(p.getId() + " | " + p.getKind());
+                }
 
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/product.jsp");
                 rd.forward(request, response);
@@ -74,6 +91,7 @@ public class ProductControl extends HttpServlet {
                 int brandID = Integer.parseInt(request.getParameter("brandID"));
                 int arrange = Integer.parseInt(request.getParameter("arrange"));
                 country = country.toUpperCase();
+                System.out.println("index servlet: "+ index);
 
                 ArrayList<ProductUnit> pus = new ArrayList<>();
 
@@ -189,9 +207,9 @@ public class ProductControl extends HttpServlet {
             String priceString = numberFormat.format(p.getPrice());
             html +=  "                    <div class=\"grid-col-2 mt20 oneProduct proA\">\n" +
                     "                        <div class=\"product-item\">\n" +
-                    "                            <a href=\"productDetail?id="+p.getId()+"\" class=\"product-item-link\">\n" +
+                    "                            <a href=\"product?action=detail&&id="+p.getId()+"\" class=\"product-item-link\">\n" +
                     "                                <div class=\"product-img\">\n" +
-                    "                                    <img src=\"./assets/img/products/"+p.getImg()+"\"  alt=\"\">\n" +
+                    "                                    <img src=\""+p.getImg()+"\"  alt=\"\">\n" +
                     "                                </div>\n" +
                     "\n" +
                     "                                <div class=\"product-info\">\n" +

@@ -73,8 +73,14 @@ function updatePrice() {
         chooseAll.checked = true;
     }
 
+    const VND = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
+
     // console.log("updated")
-    totalMoney.textContent = total;
+    totalMoney.textContent = total.toLocaleString('vi-VN') +".000";
+    // totalMoney.textContent = VND.format(total);
     totalProduct.textContent = totalPro;
 }
 
@@ -153,13 +159,15 @@ $(document).ready(function() {
 
     // Hàm cập nhật số lượng
     function updateQuantity(cartId, productId, quantity) {
+        console.log("cap nhat so luong");
+        console.log("so luong cu: " + quantity);
         $.ajax({
-            url: "/LTWebFS_war_exploded/update-cart", // Đường dẫn đến Servlet
+            url: "/LTWebFS/update-cart", // Đường dẫn đến Servlet
             method: "POST",
             data: { cartId:cartId, productId: productId, quantity: quantity },
             success: function(data) {
                 updatePrice();
-                alert(data);
+                // alert(data);
             }
         });
     }

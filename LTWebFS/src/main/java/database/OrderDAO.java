@@ -392,23 +392,16 @@ public class OrderDAO implements IDAO<Order> {
     public Map<Order,String> getOrderAndDatailIn(ArrayList<Integer> statuses) {
         Map<Order,String> res = new LinkedHashMap<>();
         ArrayList<Order> os = OrderDAO.getInstance().selectOrderStatusIn(statuses);
-        System.out.println("id ar");
-        for(Order o : os) {
-            System.out.println(o.getId());
-        }
+
         if(os.isEmpty()) return null;
         ArrayList<Integer> ids = new ArrayList<>();
         Order temp = new Order();
         for(Order o : os) {
-            System.out.println("id temp: " + o.getId());
             ids.add(o.getId());
             res.put(o,"");
 
         }
-        System.out.println("id trong");
-        for (Map.Entry<Order, String> item : res.entrySet()) {
-            System.out.println(item.getKey().getId());
-        }
+
         ArrayList<DeOrder> des = DeOrderDAO.getInstance().selectByOIDs(ids);
         for(DeOrder de : des) {
             String detail = de.getQty() + " x " + de.getpName();
@@ -509,7 +502,7 @@ public class OrderDAO implements IDAO<Order> {
         }
         idsString = idsString.substring(0, idsString.length()-1);
 //        idsString+="";
-        System.out.println(idsString);
+//        System.out.println(idsString);
         Map<Integer,Double> res = new HashMap<>();
         try {
             Connection conn = JDBCUtil.getConnection();
@@ -517,7 +510,7 @@ public class OrderDAO implements IDAO<Order> {
             String sql = "SELECT cusid, sum(totalPrice) as  totalspend FROM orders where cusID in (?) group by cusID;";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1,idsString);
-            System.out.println(sql);
+//            System.out.println(sql);
 
             ResultSet rs = pst.executeQuery();
 
@@ -1091,17 +1084,18 @@ public class OrderDAO implements IDAO<Order> {
 
     public static void main(String[] args) {
 
-        ArrayList<Integer> temp =new ArrayList<>();
-        temp.add(0);
-
-        Map<Order,ArrayList<Map.Entry<DeOrder,ProductUnit>>> t = OrderDAO.getInstance().getOrderOfStatus(3031,temp);
-
-        for (Map.Entry<Order, ArrayList<Map.Entry<DeOrder,ProductUnit>>> item : t.entrySet()) {
-            System.out.println("key:" +  item.getKey().getId());
-            for(Map.Entry<DeOrder,ProductUnit> de : item.getValue()) {
-                System.out.println("\tchi tiet: "+ de.getKey().getOrdID() + " san pham: " + de.getValue().getName());
-            }
-        }
+//        ArrayList<Integer> temp =new ArrayList<>();
+//        temp.add(0);
+//
+//        Map<Order,ArrayList<Map.Entry<DeOrder,ProductUnit>>> t = OrderDAO.getInstance().getOrderOfStatus(3031,temp);
+//
+//        for (Map.Entry<Order, ArrayList<Map.Entry<DeOrder,ProductUnit>>> item : t.entrySet()) {
+//            System.out.println("key:" +  item.getKey().getId());
+//            for(Map.Entry<DeOrder,ProductUnit> de : item.getValue()) {
+//                System.out.println("\tchi tiet: "+ de.getKey().getOrdID() + " san pham: " + de.getValue().getName());
+//            }
+//        }
+        System.out.println(OrderDAO.getInstance().selectById(100));
 
 
 
