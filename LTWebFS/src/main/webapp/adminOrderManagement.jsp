@@ -406,7 +406,7 @@
                 <th scope="col" class="w-5" style="width: 5%;"> ID</th>
                 <th scope="col" style="width: 10%;">Thời gian</th>
                 <th scope="col" style="width: 45%;">Danh sách sản phẩm</th>
-                <th scope="col" style="width: 15%;">Tổng tiền</th>
+                <th scope="col" style="width: 15%;">Tổng tiền (VND)</th>
                 <th scope="col" style="width: 15%;">Tình trạng</th>
             </tr>
             </thead>
@@ -424,7 +424,7 @@
                 <td><%=item.getKey().getId()%></td>
                 <td><%=item.getKey().getDateSet()%> <br/> <%=item.getKey().getTimeSet()%></td>
                 <td><%=item.getValue()%></td>
-                <td><%=item.getKey().getTotalPrice()%></td>
+                <td><%=ProductUnit.formatPrice(item.getKey().getTotalPrice())%></td>
                 <td class="<%=item.getKey().getColorByStatus()%>"><%=item.getKey().getStatusBefore()%></td>
             </tr>
             <%

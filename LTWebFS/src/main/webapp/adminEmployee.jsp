@@ -131,7 +131,7 @@
                         %>
                         <tr class="<%= i%2==0 ? "roww" : ""%>"  onclick="showDetail(<%=employeeList.get(i).getId()%>)">
                             <%--                    <th scope="row"><%=pus.get(i).getId()%></th>--%>
-                            <td style="height: 100px" ><img src="./assets/img/employee/<%=employeeList.get(i).getImgurl()%>" alt="" style="height: 100%"></td>
+                            <td style="height: 100px" ><img src="<%=employeeList.get(i).getImgurl()%>" alt="" style="height: 100%"></td>
                             <td><%=employeeList.get(i).getName() %></td>
                             <td><%=employeeList.get(i).getEmail() %> <br> <%=employeeList.get(i).getPhone()%> <br> <%=employeeList.get(i).getAddress() %> </br></td>
 

@@ -1,6 +1,8 @@
 package model;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ProductUnit {
     private int id;
@@ -295,7 +297,14 @@ public class ProductUnit {
                 '}';
     }
 
+    public static String formatPrice(double price) {
+        NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
+        String priceString = numberFormat.format(price);
+        return priceString;
+    }
+
     public static void main(String[] args) {
-        System.out.println(new ProductUnit().getName());
+//        System.out.println(new ProductUnit().getName());
+        System.out.println(ProductUnit.formatPrice(9000));
     }
 }

@@ -562,7 +562,7 @@
             $.ajax({
                 url: "/LTWebFS/admin-product",
                 method: "POST",
-                data: {id : id, amount: amount, action :action},
+                data: {id : id, amount: amount, action :action,method: "hand"},
                 success: function(data) {
                     $("#info-table-body").append(data);
                 }
@@ -617,7 +617,7 @@
             $.ajax({
                 url: "/LTWebFS/admin-product",
                 method: "POST",
-                data: {id : id, amount: amount, action :action, reason: reason},
+                data: {id : id, amount: amount, action :action, reason: reason, method: "hand"},
                 success: function(data) {
                     $("#info-table-body").append(data);
                 }

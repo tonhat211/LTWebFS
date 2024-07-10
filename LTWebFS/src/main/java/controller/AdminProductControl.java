@@ -359,7 +359,7 @@ public class AdminProductControl extends HttpServlet {
         String[] imgsTokens = pu.getImg().split("--");
         for(int i=0; i<imgsTokens.length;i++){
             imgNames += "<div class=\"grid-col-2 mtb-5px\">\n" +
-                    "      <img src=\"./assets/img/products/"+imgsTokens[i]+"\" alt=\"\" class=\"pro-img-item\">\n" +
+                    "      <img src=\""+imgsTokens[i]+"\" alt=\"\" class=\"pro-img-item\">\n" +
                     "</div>";
         }
 
@@ -381,8 +381,8 @@ public class AdminProductControl extends HttpServlet {
         for(int i=0;i<imgs.size();i++) {
                                 imgEs+="<div class=\"chosen-img\">\n" +
                                         "                                        <i class=\"fa-solid fa-circle-xmark delete-img-btn\" onclick=\"deleteImg(this)\"></i>\n" +
-                                        "                                        <img src=\"./assets/img/products/"+ imgs.get(i).getUrl()+"\" alt=\"\" style=\"width: 100px\" >\n" +
-                                        "                                        <input class=\"img-name\" name=\"img-name\" value=\""+ imgs.get(i).getUrl()+"\" readonly>\n" +
+                                        "                                        <img src=\""+ imgs.get(i).getUrl()+"\" alt=\"\" style=\"width: 100px\" >\n" +
+                                        "                                        <input class=\"img-name\" name=\"img-name\" value=\""+ imgs.get(i).getUrl()+"\" hidden>\n" +
                                         "                                    </div>";
 
 

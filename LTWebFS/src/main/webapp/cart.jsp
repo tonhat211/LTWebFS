@@ -1,4 +1,5 @@
 <%@ page import="model.cartitem" %>
+<%@ page import="model.ProductUnit" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -40,14 +41,15 @@
 
 %>
             <script>
-                alert("Chưa có sản phẩm nào được chọn!");
+                // alert("Chưa có sản phẩm nào được chọn!");
+                alert("noProductChosen");
             </script>
 <%
         }
         else if(status.equalsIgnoreCase("orderSuccessful")){
             %>
             <script>
-                alert("Dat hang thanh cong");
+                alert("Đặt hàng thành công");
             </script>
             <%
 
@@ -91,10 +93,10 @@
 
                                         </div>
                                     </th>
-                                    <td style="height: 100px" ><img src="./assets/img/products/<%=cart.get(i).getP().getImg()%>" alt="" style="height: 100%"></td>
+                                    <td style="height: 100px" ><img src="<%=cart.get(i).getP().getImg()%>" alt="" style="height: 100%"></td>
 
                                     <td><%= cart.get(i).getP().getName() %></td>
-                                    <td class="price" ><%= cart.get(i).getP().getPrice() %></td>
+                                    <td class="price" ><%=ProductUnit.formatPrice(cart.get(i).getP().getPrice())%></td>
                                     <td>
                                         <div class="product-qty-control">
 
@@ -142,6 +144,10 @@
 
         </div>
     </div>
+
+    <script>
+
+    </script>
 
     <%@ include file="footer.jsp" %>
 </main>

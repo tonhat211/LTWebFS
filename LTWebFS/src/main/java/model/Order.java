@@ -243,6 +243,12 @@ public class Order {
 	public Datee getDateSet() {
 		return dateSet;
 	}
+
+	public Datee getCompleteDateSet() {
+		Datee d = dateSet;
+		d.setDay(d.getDay()+3);
+		return d;
+	}
 	public void setDateSet(Datee dateSet) {
 		this.dateSet = dateSet;
 	}

@@ -260,6 +260,27 @@ public class ImageDAO implements IDAO<Image>{
 		}
 	}
 
+	public int updateImageData(String url, String data) {
+		int re=0;
+		try {
+			Connection conn = JDBCUtil.getConnection();
+			String sql = "update images set data = ? where url = ?;";
+			PreparedStatement pst = conn.prepareStatement(sql);
+
+//			pst.setInt(1, t.getId());
+			pst.setString(1, data);
+			pst.setString(2, url);
+			System.out.println(pst);
+			re = pst.executeUpdate();
+//			System.out.println(re + " dong da duoc them vao");
+			JDBCUtil.closeConnection(conn);
+			return re;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	public int updateImage(Product p, ArrayList<Image> imgs){
 		deleteImageByParent(p.getId());
 		int count=0;

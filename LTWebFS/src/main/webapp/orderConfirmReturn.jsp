@@ -93,7 +93,7 @@
                 <th scope="col" class="w-5" style="width: 5%;"> ID</th>
                 <th scope="col" style="width: 10%;">Thời gian</th>
                 <th scope="col" style="width: 45%;">Danh sách sản phẩm</th>
-                <th scope="col" style="width: 15%;">Tổng tiền</th>
+                <th scope="col" style="width: 15%;">Tổng tiền (VND)</th>
                 <th scope="col" style="width: 15%;">Tình trạng</th>
                 <th scope="col" style="width: 10%;">Cập nhật</th>
 
@@ -114,7 +114,7 @@
                 <td><%=item.getKey().getId()%></td>
                 <td><%=item.getKey().getDateSet()%> <br/> <%=item.getKey().getTimeSet()%></td>
                 <td><%=item.getValue()%></td>
-                <td><%=item.getKey().getTotalPrice()%></td>
+                <td><%=ProductUnit.formatPrice(item.getKey().getTotalPrice())%></td>
                 <td><%=item.getKey().getStatusBefore()%></td>
                 <td><button class="btn_confirm_order confirmReturn" onclick="updateOrder('confirmReturn',<%=item.getKey().getId()%>);">Xác nhận trả</button> </td>
 <%--                <td><button  class="btn_confirm_order" onclick="showErrorToast2('hi');">Xac nhan</button> </td>--%>
@@ -136,7 +136,7 @@
         $.ajax({
             url: "/LTWebFS/update-order",
             method: "POST",
-            data: {action: action, id: id},
+            data: {action: action, id: id, method: "hand"},
             success: function(data) {
                 console.log(data);
                 $(".order-info-container").html(data);

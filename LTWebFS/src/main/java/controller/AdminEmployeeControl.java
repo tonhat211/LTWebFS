@@ -55,7 +55,7 @@ public class AdminEmployeeControl extends HttpServlet {
                     String html ="";
                     for(int i=0; i<employeeList.size();i++) {
                         html +="           <tr class=\""+ (i%2==0 ?"roww" :"") +"\"  onclick=\"showDetail("+employeeList.get(i).getId()+")\">\n" +
-                                "                            <td style=\"height: 100px\" ><img src=\"./assets/img/employee/"+employeeList.get(i).getImgurl()+"\" alt=\"\" style=\"height: 100%\"></td>\n" +
+                                "                            <td style=\"height: 100px\" ><img src=\""+employeeList.get(i).getImgurl()+"\" alt=\"\" style=\"height: 100%\"></td>\n" +
                                 "                            <td>"+employeeList.get(i).getName() +"</td>\n" +
                                 "                            <td>"+employeeList.get(i).getEmail() +" <br> "+employeeList.get(i).getPhone()+" <br> "+employeeList.get(i).getAddress() +" </br></td>\n" +
                                 "                            <td>"+employeeList.get(i).getPosition() +"<br> "+employeeList.get(i).getArea()+"</td>\n" +
@@ -76,7 +76,7 @@ public class AdminEmployeeControl extends HttpServlet {
                     String html="<div class=\"confirm__message\">" +
                             "       <div class=\"info-container\">" +
                             "           <div class=\"info-container__title\">" +
-                            "               <img class=\"w-50\" src=\"./assets/img/employee/"+e.getImgurl()+"\" alt=\"\">" +
+                            "               <img class=\"w-50\" src=\""+e.getImgurl()+"\" alt=\"\">" +
                             "           </div>" +
                             "           <div class=\"info-container__content\">" +
                             "               <h6 style=\"font-size: 30px\">"+e.getName()+"</h6>" +
@@ -331,6 +331,7 @@ public class AdminEmployeeControl extends HttpServlet {
                     String pwdEncoded = User.encodePwd(pwd);
                     int level =1;
                     Image i = new Image(imgurl,idin);
+                    System.out.println("img: " + imgurl);
 //                    Employee e = new Employee(30327, "Tô Minh Nhật", "pharmacity@gmail.com", "4848485049484948", 1, "0587044673","", 1, "===", new Datee(2024,6,5), 0,"");
                     Employee e = new Employee(idin,name,email,pwdEncoded,level,phone,address,branchID,info,dateinDatee,0,role);
 
@@ -595,8 +596,8 @@ public class AdminEmployeeControl extends HttpServlet {
                 "                        <div id=\"imgs-container\">\n" +
                 "                            <div class=\"chosen-img\">\n" +
                 "                                <i class=\"fa-solid fa-circle-xmark delete-img-btn\" onclick=\"deleteImg(this)\"></i>\n" +
-                "                                <img src=\"./assets/img/products/"+afterE.getImgurl() +"\" alt=\"\" style=\"width: 100px\" >\n" +
-                "                                <input class=\"img-name\" name=\"imgurl\" value=\""+afterE.getImgurl() +"\" readonly>\n" +
+                "                                <img src=\""+afterE.getImgurl() +"\" alt=\"\" style=\"width: 100px\" >\n" +
+                "                                <input class=\"img-name\" name=\"imgurl\" value=\""+afterE.getImgurl()+"\" hidden>\n" +
                 "                            </div>\n" +
                 "                        </div>\n" +
                 "                    </div>"+

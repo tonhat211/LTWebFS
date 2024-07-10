@@ -105,7 +105,7 @@ public class CusOrderController extends HttpServlet {
         if(os == null) {
             html ="<div class=\"order-container\">\n" +
                     "                    <div class=\"show-flex-row\">\n" +
-                    "                        <p>Ma don hang: <span class=\"orderID\">...</span> </p>\n" +
+                    "                        <p>Mã đơn hàng: <span class=\"orderID\">...</span> </p>\n" +
                     "                        <p class=\"orderStatus blue-color\">Không xác định</p>\n" +
                     "                    </div>\n" +
                     "                \n" +
@@ -128,7 +128,7 @@ public class CusOrderController extends HttpServlet {
                 String status = item.getKey().getStatusBefore();
                 html += "<div class=\"order-container\">\n" +
                         "        <div class=\"show-flex-row\">\n" +
-                        "            <p>Ma don hang: <span class=\"orderID\">" + item.getKey().getId() + "</span> </p>\n" +
+                        "            <p>Mã đơn hàng: <span class=\"orderID\">" + item.getKey().getId() + "</span> </p>\n" +
                         "            <span class=\"orderStatusNumber\" style=\"display: none\">" + item.getKey().getStatus() + "</span>\n" +
                         "            <span class=\"orderReceiver\" style=\"display: none\">" + item.getKey().getReceiver() + "</span>\n" +
                         "            <span class=\"orderReceiverPhone\" style=\"display: none\">" + item.getKey().getReceiverPhone() + "</span>\n" +
@@ -141,12 +141,13 @@ public class CusOrderController extends HttpServlet {
                             "        <div class=\"order-item\" onclick=\"showDetailsOrder.call(this)\">\n" +
                                     "             <div class=\"show-flex-row\" style=\"justify-content: left; align-items: start\">\n" +
                                     "                  <div class=\"product-img-container\" style=\"width: 10%\">\n" +
+                                    "                       <img src=\"" + p.getValue().getImg() +"\" alt=\"\" class=\"produc-img\" style=\"width: 100%\">"+
                                     "                   </div>\n" +
                                     "                   <div class=\"product-info show-flex-col\" style=\"width: 90%; height: 100%; justify-content: space-between\">\n" +
                                     "                       <p class=\"product-name\" style=\"font-size: 20px; font-weight: 600\">" + p.getValue().getName() + "</p>\n" +
                                     "                            <div class=\"show-flex-row\" style=\"justify-content: space-between; height: 100%\">\n" +
-                                    "                                 <p><span class=\"product-price\">" + p.getValue().getPrice() + "</span>VND</p>\n" +
-                                    "                                 <p style=\"display: block\">So luong: <span class=\"product-qty\">" + p.getKey().getQty() + "</span></p>\n" +
+                                    "                                 <p><span class=\"product-price\">" + ProductUnit.formatPrice(p.getValue().getPrice()) + "</span>VND</p>\n" +
+                                    "                                 <p style=\"display: block\">Số lượng: <span class=\"product-qty\">" + p.getKey().getQty() + "</span></p>\n" +
                                     "                    </div>\n" +
                                     "             </div>\n" +
                                     "        </div>\n" +
@@ -156,15 +157,15 @@ public class CusOrderController extends HttpServlet {
                 html +=
                         "                    <div class=\"show-flex-row\">\n" +
                                 "                        <div>\n" +
-                                "                            <p>Ngay dat: <span class=\"order-dateSet\">10/1/2024</span></p>\n" +
-                                "                            <p>Ngay hoan thanh: <span class=\"order-dateFinish\">12/1/2024</span></p>\n" +
+                                "                            <p>Ngày đặt: <span class=\"order-dateSet\">"+item.getKey().getDateSet()+"</span></p>\n" +
+                                "                            <p>Ngày hoàn thành: <span class=\"order-dateFinish\">"+item.getKey().getCompleteDateSet()+"</span></p>\n" +
                                 "                        </div>\n" +
                                 "                        <div class=\"show-flex-col\" style=\"align-items: end\">\n" +
-                                "                            <p>Tong tien: <span class=\"order-Price\">21982357</span> (VND)</p>\n";
+                                "                            <p>Tổng tiền: <span class=\"order-Price\">"+ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</span> (VND)</p>\n";
                 if (item.getKey().getStatus() >= 0 && item.getKey().getStatus() < 3) {
-                    html += "<button type=\"button\" class=\"btn btn-third\" >Huy</button>\n";
+                    html += "<button type=\"button\" class=\"btn btn-third\" >Hủy</button>\n";
                 } else if (item.getKey().getStatus() == 4) {
-                    html += "                             <button type=\"button\" class=\"btn btn-primary\" >Da nhan hang</button>";
+                    html += "                             <button type=\"button\" class=\"btn btn-primary\" >Đã nhận hàng</button>";
 
                 }
                 html +=

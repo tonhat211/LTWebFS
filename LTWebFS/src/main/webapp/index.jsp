@@ -10,14 +10,95 @@
     <link rel="stylesheet" href="assets/font/fontawesome-free-6.4.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/font/themify-icons/themify-icons.css">
     <title>Trang chủ</title>
+    <script src="assets/js/toast.js"></script>
+    <link rel="stylesheet" href="assets/css/toast.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
 
 <div id="main">
     <%@ include file="header.jsp" %>
     <div id="main">
+
         <div id="slider" style="background-color: #dddddd">
+
             <div class="slideshow-container">
+                <div id="toast">
+
+                </div>
+                <div class="toastt-container" style="height: 30px; margin-top: 5px; margin-bottom: 5px">
+                    <div id="toast-2" style="margin: auto 0">
+                        <%--                <div class="toastt-2 toast-2--success">--%>
+                        <%--                    <p class="toast__msg" style="color: white">thanh cong</p>--%>
+                        <%--                </div>--%>
+
+                    </div>
+                </div>
+                <div class="form-group" id="img-container" style="display: none">
+                    <label class="w-20" for="myfile">Hình ảnh: </label>
+                    <input type="file" id="myfile" name="myfile" accept=".jpg, .png" onchange="preview()" multiple >
+                    <div id="imgs-container">
+                        <div class="chosen-img">
+                            <i class="fa-solid fa-circle-xmark delete-img-btn" onclick="deleteImg(this)"></i>
+                            <input class="img-name" name="img-name" value="" readonly>
+                        </div>
+
+                    </div>
+                </div>
+                <script>
+                    // de chuyen doi file hinh anh sang base va luu vao database
+
+                    let myfile = document.getElementById("myfile");
+                    let imageContainer = document.getElementById("imgs-container");
+                    // let numOfFiles = document.getElementById("num-of-files");
+
+                    function preview() {
+                        let html = "";
+                        <%--numOfFiles.textContent = `${fileInput.files.length} Files Selected`;--%>
+                        for (let i of myfile.files) {
+                            let reader = new FileReader();
+                            reader.onload = () => {
+                                console.log("reader successful");
+                                html = ` <div class="chosen-img">
+                                                <i class="fa-solid fa-circle-xmark" onclick="deleteImg(this)"></i>
+                                                <img src="` + reader.result + `" alt="" style="width: 100px" >
+                                                <input class="img-name" name="img-name" value="` + i.name + `" readonly>
+                                            </div>`;
+                                imageContainer.innerHTML += html;
+                                function updateImgData(name,data) {
+                                    console.log("updating...");
+                                    console.log(name);
+                                    console.log(data);
+                                    $.ajax({
+                                        url: "/LTWebFS/execute-image",
+                                        method: "post",
+                                        data: {name: name, data: data},
+                                        success: function(data) {
+                                            $("#toast-2").html(data);
+                                        }
+                                    });
+                                }
+
+                                updateImgData(i.name,reader.result);
+
+                            }
+                            reader.readAsDataURL(i);
+                        }
+                    }
+
+
+
+                    function deleteImg(e) {
+                        if(document.querySelectorAll(".chosen-img").length==1) return;
+                        e.parentNode.remove();
+                    }
+
+
+
+                </script>
+
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 4</div>
                     <img src="assets/img/slide-show/Thiet_bi_y_te_vat_ly_tri_lieu.png"

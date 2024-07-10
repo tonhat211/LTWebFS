@@ -4,10 +4,7 @@ import database.DeOrderDAO;
 import database.DecartDAO;
 import database.LogDAO;
 import database.OrderDAO;
-import model.DeOrder;
-import model.Log;
-import model.Order;
-import model.User;
+import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -392,6 +389,7 @@ public class UpdateOrderController extends HttpServlet {
         System.out.println("order null");
         String ac = translate(action);
         String html="";
+        System.out.println("Het don hang, method: " + method);
         if(method.equalsIgnoreCase("auto")) {
             int i =0;
             for (Map.Entry<Order, String> item : orders.entrySet()) {
@@ -400,7 +398,7 @@ public class UpdateOrderController extends HttpServlet {
                         "                <td>" + item.getKey().getId()+"</td>\n" +
                         "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
                         "                <td>" +item.getValue()+"</td>\n" +
-                        "                <td>" +item.getKey().getTotalPrice()+"</td>\n" +
+                        "                <td>" + ProductUnit.formatPrice(item.getKey().getTotalPrice()) +"</td>\n" +
                         "                <td class=\""+item.getKey().getColorByStatus()+"\">"+item.getKey().getStatusBefore()+"</td>"+
                         "            </tr>\n";
             }
@@ -427,7 +425,7 @@ public class UpdateOrderController extends HttpServlet {
                     "                <td>" + item.getKey().getId()+"</td>\n" +
                     "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
                     "                <td>" +item.getValue()+"</td>\n" +
-                    "                <td>" +item.getKey().getTotalPrice()+"</td>\n" +
+                    "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
                     "                <td class=\""+item.getKey().getColorByStatus()+"\">"+item.getKey().getStatusBefore()+"</td>"+
                     "            </tr>\n";
         }
@@ -443,7 +441,7 @@ public class UpdateOrderController extends HttpServlet {
                     "                <td>" + item.getKey().getId()+"</td>\n" +
                     "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
                     "                <td>" +item.getValue()+"</td>\n" +
-                    "                <td>" +item.getKey().getTotalPrice()+"</td>\n" +
+                    "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
                     "                <td class=\""+item.getKey().getColorByStatus()+"\">"+item.getKey().getStatusBefore()+"</td>"+
                     "            </tr>\n";
         }
@@ -459,6 +457,7 @@ public class UpdateOrderController extends HttpServlet {
         if(funcStatus.equalsIgnoreCase("successful")) statuss = "thành công";
         else statuss = "thất bại";
         int i;
+        System.out.println("Con don hang, method:" + method);
         if(method.equalsIgnoreCase("auto")) {
             orders = OrderDAO.getInstance().getAllOrderAndDatail();
             i =0;
@@ -468,7 +467,7 @@ public class UpdateOrderController extends HttpServlet {
                         "                <td>" + item.getKey().getId()+"</td>\n" +
                         "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
                         "                <td>" +item.getValue()+"</td>\n" +
-                        "                <td>" +item.getKey().getTotalPrice()+"</td>\n" +
+                        "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
                         "                <td class=\""+item.getKey().getColorByStatus()+"\">"+item.getKey().getStatusBefore()+"</td>"+
                         "            </tr>\n";
             }
@@ -482,7 +481,7 @@ public class UpdateOrderController extends HttpServlet {
                         "                <td>" + item.getKey().getId()+"</td>\n" +
                         "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
                         "                <td>" +item.getValue()+"</td>\n" +
-                        "                <td>" +item.getKey().getTotalPrice()+"</td>\n" +
+                        "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
                         "                <td>" +item.getKey().getStatusBefore()+"</td>\n" +
                         "                <td><button class=\"btn_confirm_order " + action + "\" onclick=\"updateOrder('" +action + "',"+item.getKey().getId()+");\">"+ translate(action) +"</button> </td>\n" +
 
@@ -517,7 +516,7 @@ public class UpdateOrderController extends HttpServlet {
                     "                <td>" + item.getKey().getId()+"</td>\n" +
                     "                <td>" +item.getKey().getDateSet()+ "<br/>"+ item.getKey().getTimeSet()+"</td>\n" +
                     "                <td>" +item.getValue()+"</td>\n" +
-                    "                <td>" +item.getKey().getTotalPrice()+"</td>\n" +
+                    "                <td>" +ProductUnit.formatPrice(item.getKey().getTotalPrice())+"</td>\n" +
                     "                <td class=\"" + item.getKey().getColorByStatus()+"\">" +item.getKey().getStatusBefore()+"</td>\n" +
 
                     "            </tr>\n";

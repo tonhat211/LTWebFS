@@ -1,7 +1,5 @@
-<%@ page import="model.cartitem" %>
 <%@ page import="com.google.gson.Gson" %>
-<%@ page import="model.DeCart" %>
-<%@ page import="model.Address" %>
+<%@ page import="model.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -268,9 +266,9 @@
                         <th scope="col">STT</th>
                         <th scope="col">Hình ảnh</th>
                         <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Đơn giá (VND)</th>
                         <th scope="col">Số lượng </th>
-                        <th scope="col">Thành tiền</th>
+                        <th scope="col">Thành tiền (VND)</th>
 
                     </tr>
                     </thead>
@@ -284,14 +282,15 @@
                         <th scope="row">
                             <%=i+1%>
                         </th>
-                        <td style="height: 100px" ><img src="./assets/img/products/<%=cartTemp.get(i).getP().getImg()%>" alt="" style="height: 100%"></td>
+<%--                        <td style="height: 100px" ><img src="./assets/img/products/<%=cartTemp.get(i).getP().getImg()%>" alt="" style="height: 100%"></td>--%>
+                        <td style="height: 100px" ><img src="<%=cartTemp.get(i).getP().getImg()%>" alt="" style="height: 100%"></td>
 
                         <td><%=cartTemp.get(i).getP().getName()%></td>
-                        <td><%=cartTemp.get(i).getP().getPrice()%></td>
+                        <td><%=ProductUnit.formatPrice(cartTemp.get(i).getP().getPrice())%></td>
                         <td>
                             <%=cartTemp.get(i).getQty()%>
                         </td>
-                        <td><%=cartTemp.get(i).getP().getPrice() * cartTemp.get(i).getQty()%></td>
+                        <td><%=ProductUnit.formatPrice(cartTemp.get(i).getP().getPrice() * cartTemp.get(i).getQty())%></td>
                         <input type="text" name="productID" hidden value="<%=cartTemp.get(i).getP().getId()%>">
                         <input type="text" name="priceUnit" hidden value="<%=cartTemp.get(i).getP().getPrice()%>">
                         <input type="text" name="qty" hidden value="<%=cartTemp.get(i).getQty()%>">
@@ -320,13 +319,17 @@
                     <div class="info-item"></div>
                     <div class="payment-container w-30">
                         <div class="payment-content">
-                            <p>Phương thức thanh toán</p>
-                            <div class="show-flex-row"><span>Thanh toán khi nhận hàng</span><p>Thay đổi</p></div>
-                            <div class="show-flex-row"><p class="txt-color">Tổng tiền sản phẩm</p><p><span class="product-money"><%=totalMoney%></span>(vnd)</p></div>
-                            <div class="show-flex-row"><p class="txt-color">Phí vận chuyển</p><p><span class="delivery-money"><%=deliveryFee%></span>(vnd)</p></div>
-                            <p class="note"> Mua trên <span>1000000</span> VND để được miễn phí vận chuyển</p>
-                            <div class="show-flex-row"><p class="txt-color">Tổng thanh toán</p><p><span class="total-money"><%=totalMoney + deliveryFee%></span> (VND)</p></div>
-                            <input type="text" name="orderMoney" value="<%=totalMoney + deliveryFee%>" hidden>
+                            <p class="txt-color-2">Phương thức thanh toán</p>
+                            <div class="show-flex-row" ><span>Thanh toán khi nhận hàng</span><p class="txt-color-2" style="margin-bottom: 0">Thay đổi</p></div>
+                            <div style="width: 100%;">
+                                <div class="show-flex-row" style="justify-content: space-between;"><p class="txt-color-2" style="margin-bottom: 0">Tổng tiền sản phẩm</p><p style="margin-bottom: 0"><span class="product-money"><%=ProductUnit.formatPrice(totalMoney + deliveryFee)%></span> (VND)</p></div>
+                                <div class="show-flex-row" style="justify-content: space-between"><p class="txt-color-2" style="margin-bottom: 0">Phí vận chuyển</p><p style="margin-bottom: 0"><span class="delivery-money"><%=ProductUnit.formatPrice(deliveryFee)%></span> (VND)</p></div>
+                                <p class="note"> Mua trên <span>1.000.000</span> VND để được miễn phí vận chuyển</p>
+
+                            </div>
+
+                            <div class="show-flex-row" style="justify-content: space-between"><p class="txt-color-2">Tổng thanh toán</p><p><span class="total-money"><%=ProductUnit.formatPrice(totalMoney+deliveryFee)%></span> (VND)</p></div>
+                            <input type="text" name="orderMoney" value="<%=totalMoney+deliveryFee%>" hidden>
                             <input type="text" name="deliveryFee" value="<%=deliveryFee%>" hidden>
                             <div class="show-flex-row center"><button class="btn btn-primary btn-buy w-70" style="border:none" type="submit">Đặt hàng</button></div>
                         </div>

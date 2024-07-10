@@ -374,8 +374,8 @@
                         <div id="imgs-container">
                             <div class="chosen-img">
                                 <i class="fa-solid fa-circle-xmark delete-img-btn" onclick="deleteImg(this)"></i>
-                                <img src="./assets/img/products/<%= e.getImgurl()%>" alt="" style="width: 100px" >
-                                <input class="img-name" name="imgurl" value="<%= e.getImgurl()%>" readonly>
+                                <img src="<%=e.getImgurl()%>" alt="" style="width: 100px" >
+                                <input class="img-name" name="imgurl" value="<%=e.getImgurl()%>" hidden>
                             </div>
                         </div>
                     </div>
@@ -641,7 +641,7 @@
         html = ` <div class="chosen-img">
                                                 <i class="fa-solid fa-circle-xmark" onclick="deleteImg(this)"></i>
                                                 <img src="` + reader.result + `" alt="" style="width: 100px" >
-                                                <input class="img-name" name="img-name" value="` + i.name + `" readonly>
+                                                <input class="img-name" name="imgurl" value="` + reader.result + `" hidden>
                                             </div>`;
         imageContainer.innerHTML += html;
 
