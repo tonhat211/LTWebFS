@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/font/themify-icons/themify-icons.css">
     <title>Xác minh email</title>
     <link rel="stylesheet" href="assets/css/verifyCode.css">
+    <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
 </head>
 <body>

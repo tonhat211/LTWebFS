@@ -1,16 +1,15 @@
 package controller;
 
 import database.BrandDAO;
+import database.CommentDAO;
 import database.ProductDAO;
 import database.ProductUnitDAO;
-import model.Brand;
-import model.Product;
-import model.ProductHeader;
-import model.ProductUnit;
+import model.*;
 
 import java.io.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -59,6 +58,9 @@ public class ProductControl extends HttpServlet {
 //                if(status != null) {
 //                    request.setAttribute("status",status);
 //                }
+                CommentDAO commentDAO = new CommentDAO();
+                List<Comment> comments = commentDAO.getCommentsByProductId(pu.getId());
+                request.setAttribute("comments", comments);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/productDetail.jsp");
                 rd.forward(request, response);
                 break;

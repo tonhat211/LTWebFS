@@ -21,6 +21,7 @@
     <link href="assets/img/Logo/favicon_icon.png" rel="icon">
     <!--        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">

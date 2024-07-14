@@ -1,7 +1,9 @@
-<%@ page import="model.ProductDetail" %>
-<%@ page import="model.Image" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.ProductUnit" %><%--
+<%@ page import="model.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.List" %>
+<%@ page import="database.CommentDAO" %>
+<%@ page import="java.time.format.DateTimeFormatter" %><%--
   Created by IntelliJ IDEA.
   User: TO NHAT
   Date: 04/12/2023
@@ -22,6 +24,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+  <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
   <!--    google font-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +54,81 @@
       margin-bottom: 20px;
     }
 
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .comment-form {
+        margin: 20px auto;
+        padding: 8px;
+
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    /*input[type="text"],*/
+    textarea {
+        width: 1084px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: 4px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .send-comment-btn {
+        background-color: #1877f2;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .send-comment-btn:hover {
+        background-color: #0e5a9f;
+    }
+
+    .send-comment-btn:focus {
+        outline: none;
+    }
+    .existing-comments {
+        margin-top: 20px;
+    }
+
+    .comment-item {
+        margin-bottom: 20px;
+    }
+
+    .comment-item p {
+        margin: 5px 0;
+    }
+
+    .comment-item strong {
+        font-weight: 600;
+        color: #385898;
+        font-size: 16px;
+    }
+
+    .comment-item p:nth-child(2) {
+        margin-top: 8px;
+        font-size: 16px;
+        line-height: 1.4;
+        color: #333;
+    }
+
   </style>
 
 </head>
@@ -65,6 +143,7 @@
 </script>
 <div>
   <%@ include file="header.jsp" %>
+
 
   <%
     ProductUnit pu = (ProductUnit) request.getAttribute("productDetail");
@@ -205,10 +284,55 @@
     <!--        </div>-->
 
     <!-- Comment Section -->
-    <div class="comment-section">
-      <h2>Bình luận</h2>
-      <div class="fb-comments"
-           data-href="productDetail.jsp?id=<%=pu.getId()%>" data-width="1100" data-numposts="5"></div>
+      <div class="comment-section">
+          <h2>Bình luận</h2>
+
+          <% if (user != null) { %>
+          <div class="comment-form">
+              <form id="comment-form" method="post" action="add-comment">
+                  <div class="form-group">
+                      <label class="username"><%= user.getName() %></label>
+                  </div>
+                  <div class="form-group">
+                      <textarea id="comment" name="comment" rows="4" placeholder="Viết bình luận của bạn..." required></textarea>
+                  </div>
+                  <input type="hidden" name="productId" value="<%= pu.getId() %>">
+                  <input type="hidden" name="userId" value="<%= user.getId() %>">
+                  <input type="hidden" name="userName" value="<%= user.getName() %>">
+                  <div class="form-group">
+                      <button class="send-comment-btn" type="submit">Gửi</button>
+                  </div>
+              </form>
+          </div>
+          <% } else { %>
+          <p>Vui lòng <a href="login.jsp">đăng nhập</a> để có thể bình luận.</p>
+          <% } %>
+
+          <div class="existing-comments">
+              <%
+                  // Lấy danh sách bình luận từ CommentDAO
+                  List<Comment> comments = (List<Comment>) request.getAttribute("comments");
+
+                  // Kiểm tra nếu danh sách bình luận không rỗng
+                  if (!comments.isEmpty()) {
+                      for (Comment comment : comments) {
+              %>
+              <div class="comment-item">
+                  <p><strong><%= comment.getUsername() %></strong> - <%= comment.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) %></p>
+                  <p><%= comment.getContent() %></p>
+              </div>
+              <%
+                  }
+              } else {
+              %>
+              <p>Chưa có bình luận nào cho sản phẩm này.</p>
+              <% } %>
+          </div>
+
+          <div class="fb-comments"
+               data-href="productDetail.jsp?id=<%= pu.getId() %>" data-width="1100" data-numposts="5"></div>
+      </div>
+
     </div>
   </div>
 
@@ -248,6 +372,33 @@
         }
       });
     }
+
+    document.querySelector("#comment-form").addEventListener("submit", function (event){
+        event.preventDefault();
+        var data = new FormData(this);
+        console.log(data);
+        var comment = data.get("comment");
+        var productId = data.get("productId");
+        var userId = data.get("userId");
+        var userName = data.get("userName");
+        // var qty = data.get("qty");
+        addComment(comment, productId,userId,userName);
+    });
+
+      function addComment(comment, productId,userId,userName) {
+
+          $.ajax({
+              url: "/LTWebFS/add-comment",
+              method: "POST",
+              data: {comment: comment, productId: productId,userId:userId,userName:userName},
+              success: function (data) {
+                  var html = document.querySelector('.existing-comments').innerHTML;
+                  document.querySelector("#comment").value="";
+                  var newContent = data + html;
+                  $('.existing-comments').html(newContent);
+              }
+          });
+      }
 
 
 

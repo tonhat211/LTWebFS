@@ -48,6 +48,22 @@
             margin-top: 0rem;
             margin-bottom: 0rem;
         }
+        .password-container {
+            position: relative;
+        }
+
+        .password-container .form-control {
+            padding-right: 40px; /* Đảm bảo đủ chỗ cho icon */
+        }
+
+        .password-container .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 2;
+        }
 
         #footer {
             margin-left: auto !important;
@@ -83,20 +99,26 @@
                             <% } %>
 
                             <div class="panel-body">
-                                <form class="form-horizontal" action="newPassword" method="POST">
+                                <form class="form-horizontal" action="newPassword" method="POST" id ="form">
                                     <div class="form-group row justify-content-center px-3">
                                         <div class="col-9 px-0">
+                                            <div class="password-container">
                                             <input type="password" name="password"
                                                    placeholder="Nhập mật khẩu mới"
                                                    class="form-control border-info placeicon">
+                                                <i class="fa-solid fa-eye-slash toggle-password"></i>
+                                            </div>
                                             <div class="error" hidden></div>
                                         </div>
                                     </div>
                                     <div class="form-group row justify-content-center px-3">
                                         <div class="col-9 px-0">
+                                            <div class="password-container">
                                             <input type="password" name="confPassword"
                                                    placeholder="Xác nhận mật khẩu mới"
                                                    class="form-control border-info placeicon">
+                                                <i class="fa-solid fa-eye-slash toggle-password"></i>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row justify-content-center">
@@ -139,6 +161,71 @@
         src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const togglePasswordElements = document.querySelectorAll('.toggle-password');
+
+        togglePasswordElements.forEach(togglePassword => {
+            togglePassword.addEventListener('click', function (e) {
+                const passwordInput = this.previousElementSibling;
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                this.classList.toggle('fa-eye-slash');
+                this.classList.toggle('fa-eye');
+            });
+        });
+        document.querySelector("#form").addEventListener('submit', function (event) {
+            event.preventDefault();
+            // Lấy dữ liệu từ form
+            const formData = new FormData(form);
+            const password = formData.get("password").trim();
+
+            let isValid = true;
+
+            // Kiểm tra cú pháp mật khẩu
+            if (!validatePassword(password, "#password")) isValid = false;
+
+            if (isValid) {
+                // Nếu thông tin hợp lệ, tiến hành submit form
+                form.submit();
+            }
+        });
+
+        function validatePassword(password, selector) {
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            const element = document.querySelector(selector);
+            const errorElement = element.parentElement.querySelector('.error');
+
+            if (password === "") {
+                showMessage(errorElement, "Không được để trống mục này");
+                return false;
+            }
+
+            if (!passwordRegex.test(password)) {
+                showMessage(errorElement, "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số");
+                return false;
+            } else {
+                hideMessage(errorElement);
+                return true;
+            }
+        }
+
+        function showMessage(element, message) {
+            if (element) {
+                element.hidden = false;
+                element.innerText = message;
+            }
+        }
+
+        function hideMessage(element) {
+            if (element) {
+                element.hidden = true;
+                element.innerText = '';
+            }
+        }
+    });
+</script>
 
 </body>
 </html>

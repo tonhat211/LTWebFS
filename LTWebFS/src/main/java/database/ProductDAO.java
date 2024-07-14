@@ -1,20 +1,15 @@
 package database;
 
-import java.beans.BeanDescriptor;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 //
-import com.mysql.cj.protocol.PacketReceivedTimeHolder;
-import com.mysql.cj.protocol.Resultset;
 
-import model.Brand;
 import model.Product;
 
 public class ProductDAO implements IDAO<Product>{
@@ -428,5 +423,4 @@ public class ProductDAO implements IDAO<Product>{
 		System.out.println(ProductDAO.getInstance().update("D", 100));
 
 	}
-
 }

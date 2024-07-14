@@ -7,6 +7,7 @@
     <title>Quản lý tài khoản</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">

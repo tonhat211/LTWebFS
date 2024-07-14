@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="./assets/font/fontawesome-free-6.4.0-web/css/all.min.css">
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
     <!--    content -->
     <link rel="stylesheet" href="assets/css/baseN.css">

@@ -28,6 +28,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
+
     <link rel="shortcut icon" href="assets/img/Logo/favicon_icon.png" type="image/x-icon">
 
     <!--  <link href="assets/img/favicon.png" rel="icon">-->
