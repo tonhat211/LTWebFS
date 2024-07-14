@@ -3,6 +3,8 @@ package controller;
 import database.CommentDAO;
 import model.Comment;
 import model.User;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @WebServlet("/add-comment")
@@ -42,12 +45,27 @@ public class AddCommentServlet extends HttpServlet {
 
         commentsDao.addComment(comment);
 
-        response.sendRedirect("productDetail.jsp?id=" + productId);
+        String html = renderHtml(comment);
+        response.getWriter().write(html);
+
+//        RequestDispatcher rd = getServletContext().getRequestDispatcher("/product?action=detail&&id="+productId);
+//        rd.forward(request, response);
     }
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
+    }
+
+    public String renderHtml(Comment comment) {
+        String html="";
+        html =
+                "<div class=\"comment-item\">\n" +
+                        "                  <p><strong>"+comment.getUsername() +"</strong> - "+comment.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))+"</p>\n" +
+                        "                  <p>"+comment.getContent() +"</p>\n" +
+                        "              </div>";
+
+        return html;
     }
 }

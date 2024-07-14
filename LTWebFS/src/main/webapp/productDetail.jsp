@@ -73,7 +73,7 @@
         display: block;
     }
 
-    input[type="text"],
+    /*input[type="text"],*/
     textarea {
         width: 1084px;
         padding: 10px;
@@ -87,7 +87,7 @@
         resize: vertical;
     }
 
-    button[type="submit"] {
+    .send-comment-btn {
         background-color: #1877f2;
         color: #fff;
         border: none;
@@ -97,11 +97,11 @@
         cursor: pointer;
     }
 
-    button[type="submit"]:hover {
+    .send-comment-btn:hover {
         background-color: #0e5a9f;
     }
 
-    button[type="submit"]:focus {
+    .send-comment-btn:focus {
         outline: none;
     }
     .existing-comments {
@@ -300,7 +300,7 @@
                   <input type="hidden" name="userId" value="<%= user.getId() %>">
                   <input type="hidden" name="userName" value="<%= user.getName() %>">
                   <div class="form-group">
-                      <button type="submit">Gửi</button>
+                      <button class="send-comment-btn" type="submit">Gửi</button>
                   </div>
               </form>
           </div>
@@ -311,8 +311,7 @@
           <div class="existing-comments">
               <%
                   // Lấy danh sách bình luận từ CommentDAO
-                  CommentDAO commentDAO = new CommentDAO();
-                  List<Comment> comments = commentDAO.getCommentsByProductId(pu.getId());
+                  List<Comment> comments = (List<Comment>) request.getAttribute("comments");
 
                   // Kiểm tra nếu danh sách bình luận không rỗng
                   if (!comments.isEmpty()) {
@@ -373,6 +372,33 @@
         }
       });
     }
+
+    document.querySelector("#comment-form").addEventListener("submit", function (event){
+        event.preventDefault();
+        var data = new FormData(this);
+        console.log(data);
+        var comment = data.get("comment");
+        var productId = data.get("productId");
+        var userId = data.get("userId");
+        var userName = data.get("userName");
+        // var qty = data.get("qty");
+        addComment(comment, productId,userId,userName);
+    });
+
+      function addComment(comment, productId,userId,userName) {
+
+          $.ajax({
+              url: "/LTWebFS/add-comment",
+              method: "POST",
+              data: {comment: comment, productId: productId,userId:userId,userName:userName},
+              success: function (data) {
+                  var html = document.querySelector('.existing-comments').innerHTML;
+                  document.querySelector("#comment").value="";
+                  var newContent = data + html;
+                  $('.existing-comments').html(newContent);
+              }
+          });
+      }
 
 
 

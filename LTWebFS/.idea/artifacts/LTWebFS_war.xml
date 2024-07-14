@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" external-system-id="Maven" name="LTWebFS:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>LTWebFS</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="LTWebFS-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="LTWebFS:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -9,84 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="sua mot so loi do cap nhat lai mot so controller">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/database/thietbiyte.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="xoa mot so file khong thiet">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/LTWebFS_war.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/LTWebFS_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/banner/product-banner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/banner/product-banner2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/banner/product-banner3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ForgotPassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ForgotPassword.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/VerifyCode.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/VerifyCode.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminOrder.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminOrderManagement.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminOrderManagement.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminOrderMenu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminOrderMenu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/334546369_3412445862302266_6819467596277794384_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/admin/31_Thiet_bi_y_te_vat_ly_tri_lieu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/admin/laser-dieu-tri.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/admin/may-thuy-luc-dieu-tri.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/admin/may-vi-song.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/admin/profile-img.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/admin/tải xuống.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/messages-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/messages-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/messages-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/news-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/news-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/news-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/news-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/news-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/ao-chi-ko-co-medic.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/bo-dat-noi-khi-quan.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/bo-tieu-phau.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/bong-y-te-tham-nuoc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/den-canh-bao-tia-x.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/kep-gap-di-vat.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/may-pcr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/may-rung-ho-tro-nieng-rang.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/may-tro-thinh-beurer-ha50-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/may-tro-thinh-geno-2-CIC-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/may-tro-thinh.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/ong-dong-y-te.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/phim-x-quang-18x24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/A/tam-chi-can-xa-phong-x-quang.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/B/may-cua-xuong.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/B/mo-to-dien-nha-khoa.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/B/tay-khoan-nhanh.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/B/tu-lanh-am-sau.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/C/may-theo-doi-benh-nhan.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/C/may-tro-tho-bmc-g3-viethamedical-bia.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/D/may-chup-x-quang-ky-thuat-so-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/D/may-ct.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/D/may-soc-tim-rescue-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/banner/product-banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/banner/product-banner2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/product-img/banner/product-banner3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/profile-img.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/slides-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/slides-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/img/slides-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/news.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/news.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderCancel.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderCancel.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderComplete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderComplete.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderCompletedReturn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderCompletedReturn.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderConfirm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderConfirm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderConfirmReturn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderConfirmReturn.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderDelivery.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderDelivery.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderPackage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderPackage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orderReturn.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orderReturn.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/payment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/payment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddCommentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddCommentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProductControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,7 +335,7 @@
       <workItem from="1720139191878" duration="48326000" />
       <workItem from="1720583756882" duration="3362000" />
       <workItem from="1720885102234" duration="4895000" />
-      <workItem from="1720951364359" duration="1521000" />
+      <workItem from="1720951364359" duration="4740000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -589,7 +521,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720591310148</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="xoa mot so file khong thiet">
+      <option name="closed" value="true" />
+      <created>1720964813155</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1720964813155</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,6 +569,7 @@
     <MESSAGE value="chuyen cach chinh sua anh cua san pham va nhan vien thanh add file, cap nhat lai link controller cho mot so chuc nang" />
     <MESSAGE value="them chuc nang doc file excel cho chuc nang cap nhat don hang va nhap/xuat san pham" />
     <MESSAGE value="sua mot so loi do cap nhat lai mot so controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="sua mot so loi do cap nhat lai mot so controller" />
+    <MESSAGE value="xoa mot so file khong thiet" />
+    <option name="LAST_COMMIT_MESSAGE" value="xoa mot so file khong thiet" />
   </component>
 </project>
