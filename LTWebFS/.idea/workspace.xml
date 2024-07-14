@@ -9,24 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="them tinh nang binh luan bang fb">
+    <list default="true" id="d4bbc910-fb5a-43d1-8734-c9f0cf7e4cd7" name="Changes" comment="sua phan tinh nang comment">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddCommentServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/CommentDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Comment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResetPassControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ForgotPassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ForgotPassword.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GoToCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/ProductDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/ResetPassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ResetPassword.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/signup.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/controller/DeleteUserServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/controller/RegisterServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/controller/ShowUsers.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/dao/FactoryUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/dao/UserDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/model/UserModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/services/JDBIConnect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/java/services/Property.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/webapp/register.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demoGKWEB/src/main/webapp/showUsers.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/productDetail.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -362,7 +353,26 @@
       <workItem from="1717576088789" duration="3421000" />
       <workItem from="1717592636093" duration="2482000" />
       <workItem from="1718611367397" duration="7882000" />
-      <workItem from="1718627231428" duration="6546000" />
+      <workItem from="1718627231428" duration="6868000" />
+      <workItem from="1719226705849" duration="597000" />
+      <workItem from="1719881128555" duration="1239000" />
+      <workItem from="1719906529764" duration="2999000" />
+      <workItem from="1719910737233" duration="888000" />
+      <workItem from="1719912001309" duration="725000" />
+      <workItem from="1719913168721" duration="392000" />
+      <workItem from="1719967007443" duration="635000" />
+      <workItem from="1719968675426" duration="397000" />
+      <workItem from="1719969357320" duration="419000" />
+      <workItem from="1719977179076" duration="4375000" />
+      <workItem from="1720150670024" duration="53000" />
+      <workItem from="1720158607204" duration="65000" />
+      <workItem from="1720184534390" duration="90000" />
+      <workItem from="1720394908875" duration="94000" />
+      <workItem from="1720449973256" duration="273000" />
+      <workItem from="1720511747829" duration="5180000" />
+      <workItem from="1720517121121" duration="1910000" />
+      <workItem from="1720527942868" duration="2383000" />
+      <workItem from="1720962572565" duration="692000" />
     </task>
     <task id="LOCAL-00001" summary="xong chi tiet san pham">
       <option name="closed" value="true" />
@@ -500,7 +510,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717579506107</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="validate form">
+      <option name="closed" value="true" />
+      <created>1718634525864</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1718634525864</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -558,6 +576,9 @@
     <MESSAGE value="them tinh nang dang nhap bang fb va ghi log cho dang nhap fb" />
     <MESSAGE value="them tinh nang dang nhap bang google va gho log cho dang nhap google" />
     <MESSAGE value="them tinh nang binh luan bang fb" />
-    <option name="LAST_COMMIT_MESSAGE" value="them tinh nang binh luan bang fb" />
+    <MESSAGE value="validate form" />
+    <MESSAGE value="them phan validate thong tin va them tinh nang cho comment sp" />
+    <MESSAGE value="sua phan tinh nang comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="sua phan tinh nang comment" />
   </component>
 </project>

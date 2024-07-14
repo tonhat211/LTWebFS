@@ -29,7 +29,7 @@ public class GoToCart extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html; charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
+
 
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("userloging");
