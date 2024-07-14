@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="assets/font/fontawesome-free-6.4.0-web/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/font/themify-icons/themify-icons.css">
     <title>Tin Tức</title>
+    <style>
+        .title h2 {
+            color: #0d6efd;
+        }
+    </style>
 </head>
 <body>
 <div id="main">
